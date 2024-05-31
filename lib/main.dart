@@ -5,4 +5,19 @@ void main() {
   print(cleric.name);
   print(cleric.hp);
   print(cleric.mp);
+
+  cleric.selfAid();
+  print(cleric.hp);
+  print(cleric.mp);
+  cleric.selfAid();
+  print(cleric.mp);
+  cleric.selfAid();
+  print(cleric.mp);
+
+  cleric.pray(1);
+  print(cleric.mp);
+  cleric.pray(1);
+  print(cleric.mp);
+  cleric.pray(1);
+  print(cleric.mp);
 }
