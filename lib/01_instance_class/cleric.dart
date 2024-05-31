@@ -22,7 +22,7 @@ class Cleric {
   }
 
   int pray(int seconds) {
-    final randMod = Random().nextInt(2);
+    final randMod = Random().nextInt(3);
     final recoverMod = seconds + randMod;
 
     final lastMp = mp;

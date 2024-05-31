@@ -40,8 +40,7 @@ void main() {
       final cleric = Cleric(name: '클레릭')
         ..mp = 0;
 
-      final seconds = 10;
-      final recoverAmount = cleric.pray(10);
+      cleric.pray(10);
 
       expect(cleric.mp, lessThanOrEqualTo(12));
     });
