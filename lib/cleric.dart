@@ -23,7 +23,7 @@ class Cleric {
   }
 
   int pray(int praySecond) {
-    final int mpRecovery = praySecond + Random().nextInt(2) + 1;
+    final int mpRecovery = praySecond + Random().nextInt(3);
     return (mp + mpRecovery > maxMp) ? maxMp - mp : mpRecovery;
   }
 }
