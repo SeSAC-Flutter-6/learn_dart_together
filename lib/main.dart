@@ -1,4 +1,5 @@
 
+import 'package:learn_dart_together/01_instance_class/cleric.dart';
 import 'package:learn_dart_together/01_instance_class/hero.dart';
 import 'package:learn_dart_together/01_instance_class/slime.dart';
 
@@ -9,6 +10,8 @@ void main(List<String> arguments) {
 
   Slime slime1 = Slime(50, '슬라임A');
   Slime slime2 = Slime(40, '슬라임B');
+
+  Cleric cleric = Cleric('성직자', 50, 50);
 
   hero.attack();
   hero.run();
