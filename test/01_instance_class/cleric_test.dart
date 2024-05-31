@@ -42,7 +42,7 @@ void main() {
 
       cleric.pray(10);
 
-      expect(cleric.mp, lessThanOrEqualTo(12));
+      expect(cleric.mp, inInclusiveRange(10, 12));
     });
 
     test('mp는 maxMp를 초과하지 않는다', () {
