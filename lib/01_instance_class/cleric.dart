@@ -7,7 +7,7 @@ class Cleric {
   final int hpMax = 50;
   final int mpMax = 10;
 
-  Cleric(this.name, this.hp, this.mp);
+  Cleric({required this.name, required this.hp, required this.mp});
 
   void selfAid() {
     if (mp > 5) {
@@ -29,6 +29,6 @@ class Cleric {
 }
 
 void main() {
-  Cleric cleric = Cleric('name', 30, 2);
+  Cleric cleric = Cleric(name: 'name', hp: 30, mp: 2);
   print(cleric.pray(5));
 }
