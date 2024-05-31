@@ -1,4 +1,4 @@
-import 'package:learn_dart_together/cleric.dart';
+import 'package:learn_dart_together/240531/cleric.dart';
 
 void main() {
   Cleric cleric = Cleric(name: 'Cleric', hp: 50, mp: 10);

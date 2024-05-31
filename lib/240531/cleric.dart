@@ -2,12 +2,12 @@ import 'dart:math';
 
 class Cleric {
   String name;
-  int hp = 50;
-  int mp = 10;
+  int hp;
+  int mp;
   final int maxHP = 50;
   final int maxMP = 10;
 
-  Cleric({required this.name, required this.hp, required this.mp});
+  Cleric({required this.name, this.hp = 50, this.mp = 10});
 
   selfAid() {
     if (mp >= 5) {
@@ -19,7 +19,10 @@ class Cleric {
   pray(int sec) {
     int recoveredMP = sec + Random().nextInt(3);
     mp += recoveredMP;
-    if (mp >= maxMP) mp = maxMP;
+    if (mp >= maxMP) {
+      recoveredMP = mp - maxMP;
+      mp = maxMP;
+    }
     return recoveredMP;
   }
 }
