@@ -1,8 +1,7 @@
-import 'package:learn_dart_together/slime.dart';
+import 'package:learn_dart_together/01_instance_class/slime.dart';
 
 void main() {
   Hero hero = Hero(name: '홍길동', hp: 100); //인스턴스 생성 : 힙이라는 메모리에 올라감
-
 }
 
 class Hero {
@@ -25,7 +24,7 @@ class Hero {
 
   void sleep() {
     hp = 100;
-    print('$name 이 잔다.');
+    print('$name가 잤다.');
   }
 }
 //원래 파일하나당 하나의 클래스가 원칙

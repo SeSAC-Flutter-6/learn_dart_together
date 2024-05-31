@@ -1,4 +1,4 @@
-import 'package:learn_dart_together/hero.dart';
+import 'package:learn_dart_together/01_instance_class/hero.dart';
 
 void main() {
   Slime slime = Slime(100, 'A');
