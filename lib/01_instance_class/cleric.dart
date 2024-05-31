@@ -1,3 +1,5 @@
+import 'dart:math';
+
 class Cleric {
   String name;
   int hp = 50;
@@ -17,5 +19,17 @@ class Cleric {
 
     mp -= cost;
     hp = maxHp;
+  }
+
+  int pray(int seconds) {
+    final randMod = Random().nextInt(2);
+    final recoverMod = seconds + randMod;
+
+    final lastMp = mp;
+    mp = min(maxMp, mp + recoverMod);
+
+    final recoverAmount = mp - lastMp;
+
+    return recoverAmount;
   }
 }
