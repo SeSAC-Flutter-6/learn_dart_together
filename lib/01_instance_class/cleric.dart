@@ -9,4 +9,13 @@ class Cleric {
   Cleric({
     required this.name
   });
+
+  void selfAid() {
+    final int cost = 5;
+
+    if (mp < cost) return;
+
+    mp -= cost;
+    hp = maxHp;
+  }
 }
