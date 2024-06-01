@@ -2,10 +2,13 @@ import 'dart:math';
 
 class Cleric {
   String name;
-  int hp = 50;
-  int mp = 10;
+  int hp;
+  int mp;
   final int maxHp = 50;
   final int maxMp = 10;
+
+  final int selfAidMpCost = 5;
+  final int randomRange = 3;
 
   Cleric({
     required this.name,
@@ -14,9 +17,9 @@ class Cleric {
   });
 
   void selfAid() {
-    if ((mp - 5) >= 0) {
+    if (mp >= selfAidMpCost) {
       print('셀프에이드 성공!');
-      mp = mp - 5;
+      mp -= selfAidMpCost;
       hp = maxHp;
     } else {
       print('MP가 부족합니다.');
@@ -25,10 +28,10 @@ class Cleric {
 
   int pray(int praySecond) {
     print('기도하기!');
-    int randomPoint = Random().nextInt(3);
+    int randomPoint = Random().nextInt(randomRange);
     int recoveryMp = praySecond + randomPoint;
     int totalMp = mp + recoveryMp;
-    int realRecoveryMp = 0;
+    int realRecoveryMp;
 
     if (maxMp <= totalMp) {
       realRecoveryMp = maxMp - mp;
