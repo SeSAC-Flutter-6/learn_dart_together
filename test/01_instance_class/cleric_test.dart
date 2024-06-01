@@ -1,5 +1,3 @@
-import 'dart:math';
-
 import 'package:learn_dart_together/01_instance_class/cleric.dart';
 import 'package:test/expect.dart';
 import 'package:test/scaffolding.dart';
@@ -40,9 +38,9 @@ void main() {
       final cleric = Cleric(name: '클레릭')
         ..mp = 0;
 
-      cleric.pray(10);
+      cleric.pray(5);
 
-      expect(cleric.mp, inInclusiveRange(10, 12));
+      expect(cleric.mp, inInclusiveRange(5, 7));
     });
 
     test('mp는 maxMp를 초과하지 않는다', () {
