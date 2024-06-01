@@ -12,7 +12,7 @@ void main() {
     });
 
     test('selfAid()를 하면 최대 체력이 되어야 한다.', () {
-      final cleric = Cleric(name: '클레릭', hp: 37, maxHp: 40, mp: 5);
+      final cleric = Cleric(name: '클레릭', hp: 37, mp: 5);
       cleric.selfAid();
       expect(cleric.hp, equals(cleric.maxHp));
     });
@@ -34,7 +34,7 @@ void main() {
   group('pray()', () {
     test('pray()를 하면 기도 시간 + 0~2의 마나만큼 회복한 량을 return 해야한다.', () {
       final mp = 1;
-      final cleric = Cleric(name: '클레릭', mp: mp, maxMp: 10);
+      final cleric = Cleric(name: '클레릭', mp: mp);
       final preySecond = 3;
       final prayResult = cleric.pray(preySecond);
 
@@ -45,7 +45,7 @@ void main() {
 
     test('pray()를 할 때 회복량이 maxMp 초과시 maxMp에서 기존 mp를 뺀 값을 return 해야한다.', () {
       final mp = 6;
-      final cleric = Cleric(name: '클레릭', mp: mp, maxMp: 10);
+      final cleric = Cleric(name: '클레릭', mp: mp);
       final mpRecovery = cleric.pray(8);
 
       expect(cleric.mp, equals(cleric.maxMp));
