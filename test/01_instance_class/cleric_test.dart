@@ -1,10 +1,9 @@
 import 'package:learn_dart_together/01_instance_class/cleric.dart';
 import 'package:test/test.dart';
-import 'package:test/expect.dart';
 
 void main() {
   test('selfAid test: mp >= 5', () {
-    final cleric = Cleric('성직자', 20, 10);
+    final cleric = Cleric(name: '성직자', hp: 20, mp: 10);
 
     cleric.selfAid();
 
@@ -13,7 +12,7 @@ void main() {
   });
 
   test('selfAid test: mp < 5', () {
-    final cleric = Cleric('성직자', 20, 3);
+    final cleric = Cleric(name: '성직자', hp: 20, mp: 3);
 
     cleric.selfAid();
 
@@ -21,17 +20,16 @@ void main() {
     expect(cleric.mp, 3);
   });
 
-  test('pray test', () {
-    final cleric = Cleric('성직자', 50, 2);
+  test('pray test: mp < maxMp', () {
+    final cleric = Cleric(name: '성직자', hp: 50, mp: 2);
 
     final result = cleric.pray(seconds: 3);
 
-    expect(result, lessThanOrEqualTo(5));
-    expect(result, greaterThanOrEqualTo(3));
+    expect(result, inInclusiveRange(3, 5));
   });
 
-  test('pray test: mp = maxMp', () {
-    final cleric = Cleric('성직자', 50, 10);
+  test('pray test: mp == maxMp', () {
+    final cleric = Cleric(name: '성직자', hp: 50, mp: 10);
 
     final result = cleric.pray(seconds: 3);
 
