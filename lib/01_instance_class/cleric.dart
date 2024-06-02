@@ -7,7 +7,10 @@ class Cleric {
   final int maxHp = 50;
   final int maxMp = 10;
 
-  Cleric({required this.name, this.hp = 50, this.mp = 10});
+  Cleric({required this.name, this.hp = 50, this.mp = 10}) {
+    hp = hp > maxHp ? maxHp : hp;
+    mp = mp > maxMp ? maxMp : mp;
+  }
 
   void selfAid() {
     //남은 mp가 5 이상일때만 발동가능
