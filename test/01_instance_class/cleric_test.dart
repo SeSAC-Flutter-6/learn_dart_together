@@ -15,10 +15,10 @@ void main() {
 
     test('selfAid() test1: 사용 시 5 차감, hp max회복 확인', () {
       //test를 위해 hp를 30으로 설정
-      cleric.mp =cleric.maxMp;
+      cleric.mp = cleric.maxMp;
       cleric.hp = 30;
       cleric.selfAid();
-      expect([cleric.hp, cleric.mp], equals([cleric.maxHp,  5]));
+      expect([cleric.hp, cleric.mp], equals([cleric.maxHp, 5]));
     });
 
     test('selfAid() test2: mp가 5 미만일 때 아무런 효과 없음', () {
@@ -57,7 +57,7 @@ void main() {
 
     test('pray() test4: 음수 초 기도 시 Exception throw', () {
       int praySeconds = -3;
-       expect(cleric.pray(praySeconds: praySeconds), throwsException);
+      expect(() => cleric.pray(praySeconds: praySeconds), throwsException);
     });
   });
 }
