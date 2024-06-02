@@ -6,12 +6,16 @@ void main() {
   test('selfAid() 하면 hp가 회복되어야 함', () {
     final cleric = Cleric(name: '마법사', hp: 30, mp: 7);
     final cleric1 = Cleric(name: '마술사', hp: 30, mp: 0);
+    final cleric4 = Cleric(name: '마술사', hp: 30, mp: 5);
     cleric.selfAid();
     cleric1.selfAid();
+    cleric4.selfAid();
     expect(cleric.hp, 50);
     expect(cleric.mp, 2);
     expect(cleric1.hp, 30);
     expect(cleric1.mp, 0);
+    expect(cleric4.hp, 50);
+    expect(cleric4.mp, 0);
   });
 
   test('pray()하면 mp가 회복되어야 함', () {

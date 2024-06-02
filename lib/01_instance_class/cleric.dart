@@ -10,7 +10,7 @@ class Cleric {
   Cleric({required this.name, required this.hp, required this.mp});
 
   void selfAid() {
-    if (mp > 5) {
+    if (mp >= 5) {
       mp -= 5;
       hp = hpMax;
     }
