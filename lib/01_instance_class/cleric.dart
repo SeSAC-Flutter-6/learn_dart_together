@@ -2,12 +2,12 @@ import 'dart:math';
 
 class Cleric {
   String name;
-  int hp = 50;
-  int mp = 10;
+  int hp;
+  int mp;
   final int maxHp = 50;
   final int maxMp = 10;
 
-  Cleric({required this.name});
+  Cleric({required this.name, this.hp = 50, this.mp = 10});
 
   void selfAid() {
     //남은 mp가 5 이상일때만 발동가능
@@ -23,7 +23,9 @@ class Cleric {
       final int recoverableMp = praySeconds + Random().nextInt(3);
       //실제로 회복할 수 있는 mp => (recoverableMp + mp) 가 maxMp보다 크면 (maxMp - mp) , 작으면 recoverableMp
       final int actualRecoveredMp =
-          (recoverableMp + mp > maxMp) ? maxMp - mp : recoverableMp;
+          (recoverableMp + mp > maxMp) 
+            ? maxMp - mp 
+            : recoverableMp;
       //mp 회복
       mp += actualRecoveredMp;
       return actualRecoveredMp;
