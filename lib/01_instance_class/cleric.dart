@@ -11,7 +11,6 @@ class Cleric {
   int mp;
   final int maxMp = 10;
 
-
   // 생성자
   Cleric({
     required this.name,
@@ -19,13 +18,13 @@ class Cleric {
     required this.mp,
   });
 
-  void selfAid(){
-    try{
-      if(mp >= 5){
+  void selfAid() {
+    try {
+      if (mp >= 5) {
         mp -= 5;
         hp = maxHp;
         print('mp -5 maxHp 회복˙ᵕ˙ 현재 MP: $mp HP: $hp ');
-      }else{
+      } else {
         print("mp가 5 미만! -5 불가 mp 회복 후 다시「(°ヘ°) 현재 MP: $mp HP: $hp");
       }
     } catch (e) {
@@ -34,17 +33,15 @@ class Cleric {
   }
 
   int pray(int second) {
-     try{
-       int recoveredMp = Random().nextInt(3) + second;
-       int realRecoveredMp = recoveredMp + mp > maxMp ? maxMp - mp : recoveredMp;
-       mp += realRecoveredMp;
-       print("mp +$realRecoveredMp 회복되었어요˘ᵕ˘ 현재 MP: $mp HP: $hp");
-       return realRecoveredMp;
-     } catch (e) {
-       print('pray 에서 예외 발생: $e');
-       return -1;
-     }
+    try {
+      int recoveredMp = Random().nextInt(3) + second;
+      int realRecoveredMp = recoveredMp + mp > maxMp ? maxMp - mp : recoveredMp;
+      mp += realRecoveredMp;
+      print("mp +$realRecoveredMp 회복되었어요˘ᵕ˘ 현재 MP: $mp HP: $hp");
+      return realRecoveredMp;
+    } catch (e) {
+      print('pray 에서 예외 발생: $e');
+      return -1;
+    }
   }
-
-
 }
