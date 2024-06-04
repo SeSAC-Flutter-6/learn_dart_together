@@ -7,14 +7,14 @@ class Hero {
   static int money = 100;
 
   //멤버변수
-  String name = '';
-  int hp = 0;
+  String name;
+  int hp;
   Sword? sword;
 
   //생성자
   Hero({
-    required String name,
-    required int hp,
+    required this.name,
+    required this.hp,
     this.sword,
   });
 

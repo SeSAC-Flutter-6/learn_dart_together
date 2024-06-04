@@ -16,7 +16,13 @@ void main(List<String> arguments) {
   //영웅의 검 장착
   final sword = Sword(name: '불꽃의 검', damage: 5);
 
+  // A. 이 클래스는 Cleric(“아서스", hp: 40, mp: 5) 와 같이, 이름, HP, MP 를 지정하여 인스턴스화 할 수 있다
   Cleric cleric = Cleric(name: '성직자', hp: 50, mp: 10);
+  print('클레릭 정보 : (name: ${cleric.name}, hp: ${cleric.hp}, mp: ${cleric.mp})');
+
+  // B. 이 클래스는 Cleric(“아서스", hp: 35) 와 같이, 이름과 HP만으로 지정하여 인스턴스화 할 수 있다.
+  //    이 때, MP는 최대 MP와 같은 값이 초기화 된다
+  // Cleric cleric1 = Cleric(name: '힐링맨', hp: 50);
   Slime slime1 = Slime(50, '슬라임A');
   Slime slime2 = Slime(40, '슬라임B');
 
@@ -45,4 +51,9 @@ void main(List<String> arguments) {
   print('실제로 회복된 MP 양: $recoveredMp2');
   print('현재 MP: ${cleric.mp}');
   hero1.sword;
+  //240604
+
+  // print('힐링맨의 hp : ${cleric1.hp}');
+  // print('힐링맨의 mp : ${cleric1.mp}');
+
 }

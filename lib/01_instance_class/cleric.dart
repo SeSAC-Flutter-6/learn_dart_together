@@ -9,13 +9,13 @@ class Cleric {
   int hp = 0;
 
   //MP
-  int mp = 0;
+  int mp;
 
   //static Hp 공유상수
   static const maxHp = 50;
 
   //static Mp 공유상수
-  static const maxMp = 50;
+  static const maxMp = 10;
 
   //상수 최대 HP
   // final int maxHp = 50;
@@ -26,22 +26,25 @@ class Cleric {
   //생성자
   // 2. 아래의 방침에 따라, 생성자를 추가 하시오
 
-  // A. 이 클래스는 Cleric(“아서스", hp: 40, mp: 5) 와 같이, 이름, HP, MP 를 지정하여 인스턴스화 할 수 있다
 
-  // B. 이 클래스는 Cleric(“아서스", hp: 35) 와 같이, 이름과 HP만으로 지정하여 인스턴스화 할 수 있다.
-  //    이 때, MP는 최대 MP와 같은 값이 초기화 된다
+
+
   // C. 이 클래스는 Cleric(“아서스") 와 같이 이름만을 지정하여 인스턴스화 할 수 있다.
   //    이 때, HP 와 MP 는 최대 HP와 최대 MP로 초기화 된다
   // D. 이 클래스는 Cleric() 과 같이 이름을 지정하지 않는 경우에는 인스턴스화 할 수 없다고 한다.
   //    (이름이 없는 성직자는 존재 할 수 없음)
   // E. 생성자는 가능한 한 중복되는 코드가 없도록 작성한다
 
-  //named parameter로 수정
+
+  // A. 이 클래스는 Cleric(“아서스", hp: 40, mp: 5) 와 같이, 이름, HP, MP 를 지정하여 인스턴스화 할 수 있다
+  // named parameter로 수정
+
   Cleric({
     required this.name,
     required this.hp,
     required this.mp,
   });
+
 
   //메서드 기능 -> 회복
   void selfAid() {
@@ -58,7 +61,7 @@ class Cleric {
     //0-2 숫자가 랜덤으로 생성되는 멤버변수
     int number = Random().nextInt(3);
     //현재 mp의 값
-    int initMp = this.mp;
+    int? initMp = this.mp;
 
     if (sec >= 1) {
       //mp를 회복했는데 최대(조건) mp 이상 채워지지 말아야한다면?

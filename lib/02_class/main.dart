@@ -4,7 +4,7 @@ import '../01_instance_class/hero.dart';
 
 void main() {
  //메모리 할당함 new
-  final hero1 = new Hero(name: 'name', hp: 100);
+  final hero1 = new Hero(name: '용사1', hp: 100);
 
   // dart에서는 = 기호를 쓰면 주소를 복사한다(값을 복사하는게 아니다)
  final hero2 = hero1;
