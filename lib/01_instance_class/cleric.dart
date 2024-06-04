@@ -42,7 +42,7 @@ class Cleric {
   Cleric({
     required this.name,
     required this.hp,
-    required this.mp,
+    this.mp = 10,
   });
 
 
