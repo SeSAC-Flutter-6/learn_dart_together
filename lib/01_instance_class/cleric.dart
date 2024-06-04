@@ -29,8 +29,6 @@ class Cleric {
 
 
 
-  // C. 이 클래스는 Cleric(“아서스") 와 같이 이름만을 지정하여 인스턴스화 할 수 있다.
-  //    이 때, HP 와 MP 는 최대 HP와 최대 MP로 초기화 된다
   // D. 이 클래스는 Cleric() 과 같이 이름을 지정하지 않는 경우에는 인스턴스화 할 수 없다고 한다.
   //    (이름이 없는 성직자는 존재 할 수 없음)
   // E. 생성자는 가능한 한 중복되는 코드가 없도록 작성한다
@@ -41,7 +39,7 @@ class Cleric {
 
   Cleric({
     required this.name,
-    required this.hp,
+    this.hp = 50,
     this.mp = 10,
   });
 
