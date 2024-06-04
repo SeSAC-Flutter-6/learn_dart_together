@@ -17,32 +17,16 @@ class Cleric {
   //static Mp 공유상수
   static const maxMp = 10;
 
-  //상수 최대 HP
-  // final int maxHp = 50;
-
-  //상수 최대 MP
-  // final int maxMp = 10;
-
   //생성자
-  // 2. 아래의 방침에 따라, 생성자를 추가 하시오
 
-
-
-
-  // D. 이 클래스는 Cleric() 과 같이 이름을 지정하지 않는 경우에는 인스턴스화 할 수 없다고 한다.
-  //    (이름이 없는 성직자는 존재 할 수 없음)
-  // E. 생성자는 가능한 한 중복되는 코드가 없도록 작성한다
-
-
-  // A. 이 클래스는 Cleric(“아서스", hp: 40, mp: 5) 와 같이, 이름, HP, MP 를 지정하여 인스턴스화 할 수 있다
-  // named parameter로 수정
+  // A. 이 클래스는 Cleric(“아서스", hp: 40, mp: 5) 와 같이,
+  // 이름, HP, MP 를 지정하여 인스턴스화 할 수 있다
 
   Cleric({
     required this.name,
     this.hp = 50,
     this.mp = 10,
   });
-
 
   //메서드 기능 -> 회복
   void selfAid() {
@@ -74,17 +58,17 @@ class Cleric {
 
     return recoveryMp;
   }
-
+}
 // 문제2
 // 성직자는 용사 처럼 이름과 HP를 가지고 있고, 추가로 마법을 사용하기 위한 MP를 가지고 있다.
 // 연습 1에서 작성한 내용이 없는 Cleric 클래스에 “이름", “HP”, “최대 HP”, “MP”, “최대 MP”를 속성으로 추가 하시오.
 // 또한 HP와 최대 HP는 정수로 초기치 50, MP와 최대 MP는 정수로 초기치 10으로 하고,
 // 최대 HP와 최대 MP는 상수 필드(프로퍼티에 기본값을 주면 생성자를 만들지 않아도 된다)로 선언 하시오.
 
-//  문제3
-//  성직자는 “셀프 에이드" 라는 마법을 사용할 수 있고, MP를 5소비하는 것으로 자신의 HP 를 최대 HP 까지 회복할 수 있다.
-//  연습 2 에 선언한 Cleric 클래스에 “selfAid()” 메소드를 추가 하시오.
-//  또한, 이 메소드는 인수가 없고, 리턴 값도 없다.
+// 문제3
+// 성직자는 “셀프 에이드" 라는 마법을 사용할 수 있고, MP를 5소비하는 것으로 자신의 HP 를 최대 HP 까지 회복할 수 있다.
+// 연습 2 에 선언한 Cleric 클래스에 “selfAid()” 메소드를 추가 하시오.
+// 또한, 이 메소드는 인수가 없고, 리턴 값도 없다.
 
 // 문제4
 // 성직자는 “기도하기" (pray) 라는 행동을 취할 수 있고, 자신의 MP를 회복한다.
@@ -100,4 +84,59 @@ class Cleric {
 // 각 인스턴스가 각각의 정보를 가지는 것은 메모리 낭비이다.
 // 그래서, 최대 HP, 최대 MP의 필드가 공유 되도록
 // 필드 선언에 적절한 키워드를 추가하시오
+
+// A. 이 클래스는 Cleric(“아서스", hp: 40, mp: 5) 와 같이, 이름, HP, MP 를 지정하여 인스턴스화 할 수 있다
+
+class ClericA {
+  String name;
+  int hp;
+  int mp;
+
+  ClericA({
+    required this.name,
+    required this.hp,
+    required this.mp,
+  });
 }
+
+// B. 이 클래스는 Cleric(“아서스", hp: 35) 와 같이, 이름과 HP만으로 지정하여 인스턴스화 할 수 있다.
+//    이 때, MP는 최대 MP와 같은 값이 초기화 된다
+
+class ClericB {
+  String name;
+  int hp;
+  int mp;
+
+  ClericB({
+    required this.name,
+    required this.hp,
+    this.mp = Cleric.maxMp,
+  });
+}
+// C. 이 클래스는 Cleric(“아서스") 와 같이 이름만을 지정하여 인스턴스화 할 수 있다.
+//    이 때, HP 와 MP 는 최대 HP와 최대 MP로 초기화 된다
+class ClericC {
+  String name = '';
+  int hp;
+  int mp;
+
+  ClericC({
+    required this.name,
+    this.hp = Cleric.maxHp,
+    this.mp = Cleric.maxMp,
+  });
+}
+
+
+// D. 이 클래스는 Cleric() 과 같이 이름을 지정하지 않는 경우에는 인스턴스화 할 수 없다고 한다.
+// (이름이 없는 성직자는 존재 할 수 없음)
+class ClericD {
+  String name = '';
+
+  ClericD({
+    required this.name,
+  });
+}
+
+//생성자는 가능한 한 중복되는 코드가 없도록 작성한다
+

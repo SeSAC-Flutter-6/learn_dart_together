@@ -17,19 +17,23 @@ void main(List<String> arguments) {
   final sword = Sword(name: '불꽃의 검', damage: 5);
 
   // A. 이 클래스는 Cleric(“아서스", hp: 40, mp: 5) 와 같이, 이름, HP, MP 를 지정하여 인스턴스화 할 수 있다
-  // Cleric cleric = Cleric(name: '성직자', hp: 50, mp: 10);
-  // print('클레릭 정보 : (name: ${cleric.name}, hp: ${cleric.hp}, mp: ${cleric.mp})');
+  ClericA clericA = ClericA(name: '클레릭A', hp: 50, mp: 10);
+  print('클레릭A의 정보: name: ${clericA.name}, hp: ${clericA.hp}, mp: ${clericA.mp}');
 
   // B. 이 클래스는 Cleric(“아서스", hp: 35) 와 같이, 이름과 HP만으로 지정하여 인스턴스화 할 수 있다.
   //    이 때, MP는 최대 MP와 같은 값이 초기화 된다
-  // Cleric cleric1 = Cleric(name: '힐링맨', hp: 50);
-  // print('클레릭1의 정보 : name : ${cleric1.name}, hp: ${cleric1.hp}, mp: ${cleric1.mp}');
+  ClericB clericB = ClericB(name: '클레릭B', hp: 50);
+  print('클레릭B의 정보: name: ${clericB.name}, hp: ${clericB.hp}, mp: ${clericB.mp}');
 
   // C. 이 클래스는 Cleric(“아서스") 와 같이 이름만을 지정하여 인스턴스화 할 수 있다.
   //    이 때, HP 와 MP 는 최대 HP와 최대 MP로 초기화 된다
+    ClericC clericC = ClericC(name: '클레릭C',);
+    print('클레릭C의 정보: name: ${clericC.name}, hp: ${clericC.hp}, mp: ${clericC.mp}');
 
-  Cleric cleric2 = Cleric(name: '힐링맨2',);
-  print('힐링맨2의 정보: name: ${cleric2.name}, hp: ${cleric2.hp}, mp: ${cleric2.mp}');
+  // D. 이 클래스는 Cleric() 과 같이 이름을 지정하지 않는 경우에는 인스턴스화 할 수 없다고 한다.
+  //    (이름이 없는 성직자는 존재 할 수 없음)
+    ClericD clericD = ClericD(name: '클레릭D');
+    print('클레릭D의 정보: name: ${clericD.name}');
 
-
+  //생성자는 가능한 한 중복되는 코드가 없도록 작성한다
 }
