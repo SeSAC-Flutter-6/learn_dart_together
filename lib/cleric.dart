@@ -33,16 +33,10 @@ class Cleric {
     print('기도하기!');
     int randomPoint = Random().nextInt(randomRange);
     int recoveryMp = praySecond + randomPoint;
-    int totalMp = mp + recoveryMp;
-    int realRecoveryMp;
 
-    if (maxMp <= totalMp) {
-      realRecoveryMp = maxMp - mp;
-      mp = maxMp;
-    } else {
-      mp = totalMp;
-      realRecoveryMp = recoveryMp;
-    }
+    final int lastMp = mp;
+    mp = min(maxMp, mp + recoveryMp);
+    final int realRecoveryMp = mp - lastMp;
 
     print("회복된 MP: $realRecoveryMp");
     return realRecoveryMp;
