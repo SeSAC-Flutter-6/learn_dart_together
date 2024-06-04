@@ -6,10 +6,17 @@ int f(int x) {
 }
 
 void main() {
+  Hero.money = 200;
+
+  // 2
   Hero hero = Hero(name: '홍길동', hp: 100);
+
 }
 
 class Hero {
+  // 1
+  static int money = 100;
+
   // field, 멤버변수, 전역변수, properties
   String name;
   int hp;
@@ -22,6 +29,8 @@ class Hero {
 
   // 메서드
   void attack(Slime slime) {
+    print('$name 이 공격했다');
+    Hero.money = 10;
     // 이름이 김씨면 파워가 +3
     // 오씨면 +10
   }
