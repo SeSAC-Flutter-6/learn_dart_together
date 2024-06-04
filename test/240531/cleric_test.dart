@@ -23,6 +23,13 @@ void main() {
       int recoveredMP = cleric1.pray(1);
       expect(recoveredMP, inInclusiveRange(1, 3));
     });
+    test('실행시, 현재 mp가 최대 mp인 경우 실제 mp 회복량은 0', () {
+      final cleric1 = Cleric(name: 'Cleric1')
+        ..hp = 20
+        ..mp = 10;
+      int recoveredMP = cleric1.pray(1);
+      expect(recoveredMP, equals(0));
+    });
     test('실행시, 최대 mp 이상으로 회복은 불가', () {
       final cleric = Cleric(name: 'Cleric')
         ..hp = 20
