@@ -18,7 +18,7 @@ void main() {
     final int prevMp = cleric.mp;
     final int realRecoveredMp = cleric.pray(prayerTime);
 
-    expect(prevMp <= cleric.mp && realRecoveredMp <= cleric.maxMp - prevMp,
+    expect(prevMp <= cleric.mp && realRecoveredMp <= Cleric.maxMp - prevMp,
         isTrue);
   });
 
@@ -31,7 +31,7 @@ void main() {
     cleric.selfAid();
 
     if (prevMp >= 5) {
-      expect(cleric.hp, equals(cleric.maxHp));
+      expect(cleric.hp, equals(Cleric.maxHp));
       expect(cleric.mp, equals(prevMp - 5));
     } else {
       // MP가 5 미만이면 HP를 회복하지 않으므로, MP와 HP가 변하지 않아야 함
