@@ -6,15 +6,15 @@ void main() {
 
   group('Cleric constructor test', () {
     test('(1): mp, hp 설정 x', () {
-      Cleric cleric = Cleric(name: "기본성직자");
+      Cleric cleric = Cleric(name: '기본성직자');
       expect([cleric.hp, cleric.mp], equals([50, 10]));
     });
     test('(2): mp, hp  max치보다 낮게 설정', () {
-      Cleric cleric = Cleric(name: "빈약한 성직자", hp: 25, mp: 5);
+      Cleric cleric = Cleric(name: '빈약한 성직자', hp: 25, mp: 5);
       expect([cleric.hp, cleric.mp], equals([25, 5]));
     });
     test('(3): mp, hp  max치보다 높게 설정', () {
-      Cleric cleric = Cleric(name: "개쩌는 성직자", hp: 100000, mp: 10000);
+      Cleric cleric = Cleric(name: '개쩌는 성직자', hp: 100000, mp: 10000);
       expect([cleric.hp, cleric.mp], equals([cleric.maxHp, cleric.maxMp]));
     });
   });
