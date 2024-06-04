@@ -9,11 +9,15 @@ void main() {
       Cleric cleric = Cleric(name: '기본성직자');
       expect([cleric.hp, cleric.mp], equals([50, 10]));
     });
-    test('(2): mp, hp  max치보다 낮게 설정', () {
+    test('(2): hp만 설정', () {
+      Cleric cleric = Cleric(name: '기본성직자', hp: 35);
+      expect([cleric.hp, cleric.mp], equals([35, 10]));
+    });
+    test('(3): mp, hp  max치보다 낮게 설정', () {
       Cleric cleric = Cleric(name: '빈약한 성직자', hp: 25, mp: 5);
       expect([cleric.hp, cleric.mp], equals([25, 5]));
     });
-    test('(3): mp, hp  max치보다 높게 설정', () {
+    test('(4): mp, hp  max치보다 높게 설정', () {
       Cleric cleric = Cleric(name: '개쩌는 성직자', hp: 100000, mp: 10000);
       expect([cleric.hp, cleric.mp], equals([Cleric.maxHp, Cleric.maxMp]));
     });
