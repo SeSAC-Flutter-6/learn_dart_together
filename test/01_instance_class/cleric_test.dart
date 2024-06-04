@@ -3,7 +3,7 @@ import 'package:test/expect.dart';
 import 'package:test/scaffolding.dart';
 
 void main() {
-  test('selfAid() 하면 hp가 회복되어야 함', () {
+  test('selfAid() 하면 mp를 5 소모하고 hp가 max로 회복되어야 함', () {
     final cleric = Cleric(name: '마법사', hp: 30, mp: 7);
     final cleric1 = Cleric(name: '마술사', hp: 30, mp: 0);
     final cleric4 = Cleric(name: '마술사', hp: 30, mp: 5);
@@ -18,7 +18,7 @@ void main() {
     expect(cleric4.mp, 0);
   });
 
-  test('pray()하면 mp가 회복되어야 함', () {
+  test('pray()하면 기도한 시간 + 0~2 랜덤숫자만큼 mp가 회복되어야 함', () {
     final cleric2 = Cleric(name: '해리', hp: 20, mp: 2);
     final cleric3 = Cleric(name: '론', hp: 45, mp: 8);
     cleric2.pray(3);
