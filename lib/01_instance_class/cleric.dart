@@ -10,7 +10,7 @@ class Cleric {
   //static const int maxHp = 50;  이렇게 수정 후 생성자에서 사용하자.
   //static : 미리 정해 놓음. 정적
 
-  Cleric({required this.name, this.hp = hpMax, this.mp = mpMax}) {
+  Cleric(this.name, {this.hp = hpMax, this.mp = mpMax}) {
     hp = min(hp, hpMax);
     mp = min(mp, mpMax);
   }
