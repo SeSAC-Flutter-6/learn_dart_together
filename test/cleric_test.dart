@@ -32,6 +32,12 @@ void main() {
   });
 
   group('pray()', () {
+    // setUp : group화 하여도 test Code 실행시 다시 실행
+    // setUpAll : test code가 다시 실행되어도 1번만 실행 됨.
+    // setUpAll(() {
+    //   cleric = Cleric(name: '기본성직자');
+    // });
+
     test('pray()를 하면 기도 시간 + 0~2의 마나만큼 회복한 량을 return 해야한다.', () {
       final mp = 1;
       final cleric = Cleric(name: '클레릭', mp: mp);
