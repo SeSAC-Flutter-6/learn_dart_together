@@ -1,61 +1,70 @@
-import 'dart:math';
-
 import 'package:learn_dart_together/cleric.dart';
 import 'package:test/test.dart';
 
 void main() {
+  late Cleric cleric;
+  final int defaultHp = 50;
+  final int defaultMp = 10;
+
+  setUpAll(() {
+    cleric = Cleric(name: '클레릭');
+  });
+
+  group('constructor()', () {
+    test('클레릭의 defaul 값은 hp는 50, mp는 10이다.', () {
+      expect([cleric.hp, cleric.mp], equals([defaultHp, defaultMp]));
+      expect([Cleric.maxHp, Cleric.maxMp], equals([defaultHp, defaultMp]));
+    });
+  });
+
   group('selfAid()', () {
-    test('selfAid()를 하면 초기값이 정해지지 않은 클레릭은 체력이 50이다.', () {
-      final cleric = Cleric(name: '클레릭');
-      cleric.selfAid();
-      expect(cleric.hp, equals(50));
-    });
-
     test('selfAid()를 하면 최대 체력이 되어야 한다.', () {
-      final cleric = Cleric(name: '클레릭', hp: 37, mp: 5);
-      cleric.selfAid();
-      expect(cleric.hp, equals(cleric.maxHp));
-    });
+      final hp = 37;
+      final mp = 5;
+      cleric.hp = hp;
+      cleric.mp = mp;
 
-    test('selfAid()를 하면 마나가 5 줄어들어야 한다.', () {
-      final cleric = Cleric(name: '클레릭', mp: 7);
-      final mp = cleric.mp;
       cleric.selfAid();
-      expect(cleric.mp, equals(mp - 5));
+
+      expect(cleric.hp, equals(Cleric.maxHp));
+      expect(cleric.mp, equals(mp - Cleric.selfAidCost));
     });
 
     test('selfAid()를 할 때 마나가 없으면 HP 회복이 되지 않는다', () {
-      final cleric = Cleric(name: '클레릭', mp: 4, hp: 37);
+      final hp = 37;
+      final mp = 4;
+      cleric.hp = hp;
+      cleric.mp = mp;
+
       cleric.selfAid();
-      expect(cleric.hp, isNot(cleric.maxHp));
+
+      expect(cleric.hp, isNot(Cleric.maxHp));
+      expect(cleric.mp, equals(mp));
     });
   });
 
   group('pray()', () {
-    // setUp : group화 하여도 test Code 실행시 다시 실행
-    // setUpAll : test code가 다시 실행되어도 1번만 실행 됨.
-    // setUpAll(() {
-    //   cleric = Cleric(name: '기본성직자');
-    // });
-
     test('pray()를 하면 기도 시간 + 0~2의 마나만큼 회복한 량을 return 해야한다.', () {
       final mp = 1;
-      final cleric = Cleric(name: '클레릭', mp: mp);
-      final preySecond = 3;
-      final prayResult = cleric.pray(preySecond);
+      cleric.mp = mp;
+
+      final praySecond = 3;
+      final prayResult = cleric.pray(praySecond);
 
       expect(cleric.mp, equals(mp + prayResult));
-      expect(prayResult, lessThanOrEqualTo(preySecond + 2));
-      expect(prayResult, greaterThanOrEqualTo(preySecond));
+      expect(prayResult, lessThanOrEqualTo(praySecond + Cleric.prayRandomValue));
+      expect(prayResult, greaterThanOrEqualTo(praySecond));
     });
 
     test('pray()를 할 때 회복량이 maxMp 초과시 maxMp에서 기존 mp를 뺀 값을 return 해야한다.', () {
       final mp = 6;
-      final cleric = Cleric(name: '클레릭', mp: mp);
-      final mpRecovery = cleric.pray(8);
+      cleric.mp = mp;
 
-      expect(cleric.mp, equals(cleric.maxMp));
-      expect(mpRecovery, equals(cleric.maxMp - mp));
+      final praySecond = 8;
+      final mpRecovery = cleric.pray(praySecond);
+
+      expect(cleric.mp, equals(Cleric.maxMp));
+      expect(mpRecovery, equals(Cleric.maxMp - mp));
     });
   });
 }
