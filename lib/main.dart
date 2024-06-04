@@ -4,14 +4,25 @@ import 'package:learn_dart_together/01_instance_class/hero.dart';
 import 'package:learn_dart_together/01_instance_class/slime.dart';
 
 void main(List<String> arguments) {
-  // 가상세계에 용사를 생성
-  // 용사는 이름과 hp를 반드시 가져야함
-  Hero hero = Hero('아리', 100);
+  //객체 생성
 
+  // 가상세계에 용사를 생성
+
+  // 용사는 이름과 hp를 반드시 가져야함
+  Hero hero = Hero(name: '아리', hp: 100);
+
+  final hero1 = Hero(name: '슈퍼맨', hp: 100);
+
+  //영웅의 검 장착
+  final sword = Sword(name: '불꽃의 검', damage: 5);
+
+  Cleric cleric = Cleric(name: '성직자', hp: 50, mp: 10);
   Slime slime1 = Slime(50, '슬라임A');
   Slime slime2 = Slime(40, '슬라임B');
 
-  Cleric cleric = Cleric('성직자', 50, 10);
+
+
+
 
   hero.attack();
   hero.run();
@@ -33,4 +44,5 @@ void main(List<String> arguments) {
   int recoveredMp2 = cleric.pray(3);
   print('실제로 회복된 MP 양: $recoveredMp2');
   print('현재 MP: ${cleric.mp}');
+  hero1.sword;
 }

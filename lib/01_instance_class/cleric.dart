@@ -3,31 +3,49 @@ import 'dart:math';
 
 class Cleric {
   //멤버변수
-  String name;
+  String name = '';
 
   //HP
-  int hp = 50;
-
-  //상수 최대 HP
-  final int maxHp = 50;
+  int hp = 0;
 
   //MP
-  int mp = 10;
+  int mp = 0;
+
+  //static Hp 공유상수
+  static const maxHp = 50;
+
+  //static Mp 공유상수
+  static const maxMp = 50;
+
+  //상수 최대 HP
+  // final int maxHp = 50;
 
   //상수 최대 MP
-  final int maxMp = 10;
+  // final int maxMp = 10;
 
   //생성자
-  Cleric(
-    this.name,
-    this.hp,
-    this.mp,
-  );
+  // 2. 아래의 방침에 따라, 생성자를 추가 하시오
+
+  // A. 이 클래스는 Cleric(“아서스", hp: 40, mp: 5) 와 같이, 이름, HP, MP 를 지정하여 인스턴스화 할 수 있다
+
+  // B. 이 클래스는 Cleric(“아서스", hp: 35) 와 같이, 이름과 HP만으로 지정하여 인스턴스화 할 수 있다.
+  //    이 때, MP는 최대 MP와 같은 값이 초기화 된다
+  // C. 이 클래스는 Cleric(“아서스") 와 같이 이름만을 지정하여 인스턴스화 할 수 있다.
+  //    이 때, HP 와 MP 는 최대 HP와 최대 MP로 초기화 된다
+  // D. 이 클래스는 Cleric() 과 같이 이름을 지정하지 않는 경우에는 인스턴스화 할 수 없다고 한다.
+  //    (이름이 없는 성직자는 존재 할 수 없음)
+  // E. 생성자는 가능한 한 중복되는 코드가 없도록 작성한다
+
+  //named parameter로 수정
+  Cleric({
+    required this.name,
+    required this.hp,
+    required this.mp,
+  });
 
   //메서드 기능 -> 회복
   void selfAid() {
     if (mp >= 5) {
-      //mp - 5와 mp -= 5의 차이점은?
       mp -= 5;
       hp = maxHp;
     }
@@ -52,20 +70,9 @@ class Cleric {
     }
     //실제 mp를 업데이트
     this.mp = initMp + recoveryMp;
-    // if (mp < 9 && mp < maxMp) {
-    //   recoveryMp = sec + number;
-    // }
-
-    // if (mp <= 10) {
-    //   recoveryMp = mp += number;
-    // }
 
     return recoveryMp;
   }
-
-// } else if(recoveryMp >= maxMp) {
-// recoveryMp = maxMp;
-// }
 
 // 문제2
 // 성직자는 용사 처럼 이름과 HP를 가지고 있고, 추가로 마법을 사용하기 위한 MP를 가지고 있다.
@@ -84,4 +91,12 @@ class Cleric {
 // 단, 최대 MP 보다 더 회복하는 것은 불가능 하다.
 // 연습 3에서 선언한 Cleric 클래스에 “pray()” 메소드를 추가하시오.
 // 이 메소드는 인수에 “기도할 시간(초)"를 지정할 수 있고, 리턴 값은 “실제로 회복된 MP 양" 을 반환한다.
+
+// 240604_과제
+// 1. Cleric클래스에 관하여, 2가지 수정을 하시오
+// 현시점의 Cleric 클래스의 정의에는, 각 인스턴스별로 최대 HP와 최대 MP 필드에 대한 정보를 가지고 있다.
+// 하지만, 모든 성직자의 최대 HP 는 50, 최대 MP 는 10으로 정해져 있어,
+// 각 인스턴스가 각각의 정보를 가지는 것은 메모리 낭비이다.
+// 그래서, 최대 HP, 최대 MP의 필드가 공유 되도록
+// 필드 선언에 적절한 키워드를 추가하시오
 }
