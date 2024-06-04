@@ -29,7 +29,7 @@ void main() {
 
       cleric.selfAid();
 
-      expect(cleric.mp, equals(lastMp - 5));
+      expect(cleric.mp, equals(lastMp - Cleric.selfAidCost));
     });
   });
   group('pray()', () {
