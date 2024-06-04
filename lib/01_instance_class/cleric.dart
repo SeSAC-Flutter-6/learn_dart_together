@@ -27,7 +27,7 @@ class Cleric {
   }
 
   int pray(int sec) {
-    int recoveryAmount = sec += Random().nextInt(3);
+    int recoveryAmount = sec + Random().nextInt(3);
     if (mp + recoveryAmount < mpMax) {
       mp = mp + recoveryAmount;
       return recoveryAmount;
