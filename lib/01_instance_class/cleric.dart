@@ -7,6 +7,7 @@ class Cleric {
 
   static const maxHp = 50;
   static const maxMp = 10;
+  static const selfAidCost = 5;
 
   Cleric({required this.name, this.hp = maxHp, this.mp = maxMp}) {
     hp = min(hp, maxHp);
@@ -14,11 +15,9 @@ class Cleric {
   }
 
   void selfAid() {
-    final int cost = 5;
+    if (mp < selfAidCost) return;
 
-    if (mp < cost) return;
-
-    mp -= cost;
+    mp -= selfAidCost;
     hp = maxHp;
   }
 
