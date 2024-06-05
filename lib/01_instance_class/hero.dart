@@ -7,11 +7,22 @@ void main() {
 class Hero {
   // 클래스명은 대문자로 시작(pascal), 명사
   //field, 전역변수, 멤버변수, 프로퍼티 : 필드명은 명사로, camel case
-  String name;
+  String _name;
+
+  String get title => _name; // 내부적으로는 name을 쓰지만 외부적으로는 title을 쓸거야
+
+  set name(String value) {
+    if (value.isEmpty) {
+      throw Exception('길이가 짧습니다.');
+    }
+    _name = value;
+  }
+
   int hp;
+  static int money = 100;
 
   //생성자
-  Hero({required this.name, required this.hp});
+  Hero({required String name, required this.hp}) : _name = name;
 
   //메서드
   void attack(Slime slime) {
@@ -24,7 +35,7 @@ class Hero {
 
   void sleep() {
     hp = 100;
-    print('$name가 잤다.');
+    print('$_name가 잤다.');
   }
 }
 //원래 파일하나당 하나의 클래스가 원칙
