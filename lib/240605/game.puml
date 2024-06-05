@@ -1,0 +1,11 @@
+@startuml name
+scale 4
+
+class A {
+    {static} int money
+    +int a
+    +int b
+    +int c
+}
+
+@enduml
