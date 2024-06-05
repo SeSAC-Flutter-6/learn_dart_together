@@ -4,19 +4,18 @@ class Cleric {
   String name;
   int hp;
   int mp;
-  static final int maxHp = 50;
-  static final int maxMp = 10;
-  static final int prayRandomValue = 2;
-  static final int selfAidCost = 5;
-
+  static const int maxHp = 50;
+  static const int maxMp = 10;
+  static const int prayRandomValue = 2;
+  static const int selfAidCost = 5;
 
   Cleric({
     required this.name,
-    this.hp = 50,
-    this.mp = 10,
+    this.hp = maxHp,
+    this.mp = maxMp,
   }) {
-    hp = max(maxHp, hp);
-    mp = max(maxMp, mp);
+    hp = min(hp, maxHp);
+    mp = min(mp, maxMp);
   }
 
   void selfAid() {
@@ -27,7 +26,8 @@ class Cleric {
   }
 
   int pray(int praySecond) {
-    final int mpRecovery = praySecond + Random().nextInt(prayRandomValue + 1);
+    final int mpRecovery =
+        praySecond + Random().nextInt(Cleric.prayRandomValue + 1);
     final originMp = mp;
     mp = min(mpRecovery + mp, maxMp);
     return (originMp + mpRecovery > maxMp) ? maxMp - originMp : mpRecovery;

@@ -11,10 +11,27 @@ void main() {
   });
 
   group('constructor()', () {
+    final hp = 37;
+    final mp = 5;
+
+    test('클레릭의 hp 지정 test', () {
+      cleric = Cleric(name: '클래릭', hp: hp);
+      expect(cleric.hp, equals(hp));
+      expect(cleric.mp, equals(Cleric.maxMp));
+    });
+
+
+    test('클레릭의 hp, mp 값 지정 test', () {
+      cleric = Cleric(name: '클래릭', hp: hp, mp: mp);
+      expect(cleric.hp, equals(hp));
+      expect(cleric.mp, equals(mp));
+    });
+
     test('클레릭의 defaul 값은 hp는 50, mp는 10이다.', () {
       expect([cleric.hp, cleric.mp], equals([defaultHp, defaultMp]));
       expect([Cleric.maxHp, Cleric.maxMp], equals([defaultHp, defaultMp]));
     });
+
   });
 
   group('selfAid()', () {
@@ -52,7 +69,8 @@ void main() {
       final prayResult = cleric.pray(praySecond);
 
       expect(cleric.mp, equals(mp + prayResult));
-      expect(prayResult, lessThanOrEqualTo(praySecond + Cleric.prayRandomValue));
+      expect(
+          prayResult, lessThanOrEqualTo(praySecond + Cleric.prayRandomValue));
       expect(prayResult, greaterThanOrEqualTo(praySecond));
     });
 
