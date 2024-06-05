@@ -6,13 +6,15 @@ class Wizard {
   String _name;
   int _mp;
   int _hp;
-  Wand wand;
+  Wand? _wand;
 
   String get name => _name;
 
   int get mp => _mp;
 
   int get hp => _hp;
+
+  Wand? get wand => _wand;
 
   set name(String value) {
     if (value.length < 3) {
@@ -34,12 +36,19 @@ class Wizard {
     }
   }
 
+  set wand(Wand? value) {
+    if (value == null) {
+      throw Exception('지팡이를 반드시 들어야 합니다.');
+    }
+  }
+
   Wizard(
       {required String name,
       required int mp,
       required int hp,
-      required this.wand})
-      : _mp = max(mp, 0),
+      required Wand? wand})
+      : _wand = wand,
+        _mp = max(mp, 0),
         _hp = max(hp, 0),
         _name = name;
 }

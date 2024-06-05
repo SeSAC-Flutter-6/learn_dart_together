@@ -8,13 +8,6 @@ void main() {
   print(hero1.hp);
 }
 
-class Person {
-  final String name;
-  final int age;
-
-  const Person(this.name, this.age); // const constructor
-}
-
 class Man {
   String name;
   int age;
