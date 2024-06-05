@@ -5,25 +5,27 @@ class Cleric {
   int hp;
   int mp;
 
-  final int maxHp = 50;
-  final int maxMp = 10;
+  static const maxHp = 50;
+  static const maxMp = 10;
+  static const selfAidCost = 5;
 
-  Cleric({
-    required this.name,
-    this.hp = 50,
-    this.mp = 10
-  });
+  Cleric(this.name, { this.hp = maxHp, this.mp = maxMp}) {
+    hp = min(hp, maxHp);
+    mp = min(mp, maxMp);
+  }
 
   void selfAid() {
-    final int cost = 5;
+    if (mp < selfAidCost) return;
 
-    if (mp < cost) return;
-
-    mp -= cost;
+    mp -= selfAidCost;
     hp = maxHp;
   }
 
-  int pray(int seconds) {
+  int pray({required int seconds}) {
+    if (seconds < 0) {
+      throw Exception('기도 시간은 음수가 될 수 없음');
+    }
+
     final randMod = Random().nextInt(3);
     final recoverMod = seconds + randMod;
 
