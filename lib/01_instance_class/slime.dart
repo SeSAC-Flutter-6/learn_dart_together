@@ -18,7 +18,5 @@ class Slime {
 
   Slime(this.hp, this.suffix);
 
-  void attack() {
-
-  }
+  void attack() {}
 }
