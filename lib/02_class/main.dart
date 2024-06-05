@@ -25,9 +25,9 @@ class Man {
   Man(this.name, this.age);
 
   void walk(int meter) {}
-  //오버로드 : 이름은 같고 인풋이 다르게 만드는 것 (동일한 이름의 함수 혹은 생성자 만드는 것) -> 다트에서는  생성 못함.
-  //error
-  // void walk(double meter){
-  // }
-  //dart는 생성자 오버로드 효과를 가져올 수 있다. {}를 사용해서.
+//오버로드 : 이름은 같고 인풋이 다르게 만드는 것 (동일한 이름의 함수 혹은 생성자 만드는 것) -> 다트에서는  생성 못함.
+//error
+// void walk(double meter){
+// }
+//dart는 생성자 오버로드 효과를 가져올 수 있다. {}를 사용해서.
 }
