@@ -7,7 +7,10 @@ class Cleric {
   static const int maxHP = 50;
   static const int maxMP = 10;
 
-  Cleric(this.name, {this.hp = maxHP, this.mp = maxMP});
+  Cleric(this.name, {this.hp = maxHP, this.mp = maxMP}) {
+    hp = min(hp, maxHP);
+    mp = min(mp, maxMP);
+  }
 
   selfAid() {
     if (mp >= 5) {
