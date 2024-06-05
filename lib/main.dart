@@ -44,12 +44,13 @@ void main(List<String> arguments) {
 
     // 240605
     // 연습문제1
-    Wand wand = Wand(name: '스태프', power: 100);
-    Wizard wizard = Wizard(name: '매지컬', hp: 100,);
+    Wand wand = Wand(name: '매직스태프', power: 1);
+    Wizard wizard = Wizard(name: '매지컬', hp: 100, mp: 200,);
 
 
 
-    print('마법사의 이름은 ${wizard.name}, hp는 ${wizard.hp} , 이고 지팡이의 이름은 ${wand.name}, 마력은 ${wand.power} 입니다');
+    print('마법사의 이름은 ${wizard.name}, hp는 ${wizard.hp}이고 지팡이의 이름은 ${wand.name}, 마력은 ${wand.power} 입니다');
+
 
 
 
