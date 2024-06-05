@@ -22,9 +22,9 @@ void main() {
       expect(() => Wizard(name: '아아아', hp: 50, mp: 0, wand: wand), returnsNormally);
     });
 
-    test('3. 마법사는 지팡이를 들고 있어야 한다.', () {
-      expect(() => Wizard(name: '아아아', hp: 50, mp: 0, wand: null), throwsException);
-      expect(() => Wizard(name: '아아아', hp: 50, mp: 0, wand: wand), returnsNormally);
+    test('3. 마법사는 지팡이를 내려놓을 수 없다.', () {
+      final Wizard wizard = Wizard(name: '아아아', hp: 50, mp: 0, wand: wand);
+      expect(() => wizard.wand = null, throwsException);
     });
 
     test('4. 마법사의 HP는 0 이하로 떨어질 수 없다.', () {

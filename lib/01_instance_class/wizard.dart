@@ -5,7 +5,14 @@ class Wizard {
   String name;
   int _hp;
   int mp;
-  Wand? wand;
+  Wand? _wand;
+
+  set wand(Wand? value) {
+    if (value == null) {
+      throw Exception('마법사의 지팡이는 null로 설정될 수 없습니다.');
+    }
+    _wand = value;
+  }
 
   int get hp => _hp;
   set hp(int value) {
@@ -16,14 +23,10 @@ class Wizard {
     required this.name,
     required int hp,
     required this.mp,
-    required this.wand
-  }) : _hp = hp {
+    required Wand wand
+  }) : _hp = hp, _wand = wand {
     if (name.length < 3) {
       throw Exception('마법사의 이름은 3글자 이상이어야 합니다.');
-    }
-
-    if (wand == null) {
-      throw Exception('마법사의 지팡이는 null 일 수 없습니다.');
     }
 
     if (mp < 0) {
