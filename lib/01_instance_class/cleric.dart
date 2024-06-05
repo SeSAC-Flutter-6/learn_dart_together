@@ -1,11 +1,13 @@
 import 'dart:math';
 
 class Cleric {
+  static const int hpMax = 50;
+  static const int mpMax = 10;
   String name;
   int hp;
   int mp;
-  static const int hpMax = 50;
-  static const int mpMax = 10;
+  final int randomRange = 3;
+  final int mpCost = 5;
 
   //static const int maxHp = 50;  이렇게 수정 후 생성자에서 사용하자.
   //static : 미리 정해 놓음. 정적
@@ -20,14 +22,14 @@ class Cleric {
   //       mp = min(mp, mpMax);
 
   void selfAid() {
-    if (mp >= 5) {
-      mp -= 5;
+    if (mp >= mpCost) {
+      mp -= mpCost;
       hp = hpMax;
     }
   }
 
   int pray(int sec) {
-    int recoveryAmount = sec + Random().nextInt(3);
+    int recoveryAmount = sec + Random().nextInt(randomRange);
     if (mp + recoveryAmount < mpMax) {
       mp = mp + recoveryAmount;
       return recoveryAmount;
