@@ -1,5 +1,9 @@
 import 'dart:math';
 
+void main() {
+  final cleric = Cleric.halfHpMp('홍길동');
+}
+
 class Cleric {
   String name;
   int hp;
@@ -7,10 +11,21 @@ class Cleric {
   static const int maxHp = 50;
   static const int maxMp = 10;
 
-  Cleric({required this.name, this.hp = maxHp, this.mp = maxMp}) {
+  Cleric(
+    this.name, {
+    this.hp = maxHp,
+    this.mp = maxMp,
+  }) {
     hp = min(maxHp, hp);
     mp = min(maxMp, mp);
   }
+
+  Cleric.halfHpMp(String name)
+      : this(
+          name,
+          hp: maxHp ~/ 2,
+          mp: maxMp ~/ 2,
+        );
 
   void selfAid() {
     //남은 mp가 5 이상일때만 발동가능

@@ -3,7 +3,7 @@ import 'package:test/test.dart';
 
 void main() {
   test('Cleric pray exception test', () {
-    final cleric = Cleric(name: 'name');
+    final cleric = Cleric('name');
 
     // 안 나는 케이스
     expect(() => cleric.pray(praySeconds: 0), returnsNormally);
