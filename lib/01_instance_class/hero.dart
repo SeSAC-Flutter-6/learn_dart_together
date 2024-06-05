@@ -1,3 +1,5 @@
+import 'package:learn_dart_together/01_instance_class/slime.dart';
+
 class Hero {
   // static 공통 머니 - 개인것이 아님 / 메모리 영역이 달라서
   // 접근이 안됨
@@ -7,21 +9,43 @@ class Hero {
   static int money = 100;
 
   //멤버변수
-  String name;
-  int hp;
+  String _name;
+  int _hp;
   Sword? sword;
 
   //생성자
   Hero({
-    required this.name,
-    required this.hp,
+    required String name,
+    required int hp,
     this.sword,
-  });
+  }) : _hp = hp, _name = name;
+
+  //게터 추가
+  int get hp => _hp;
+  String get name => _name;
+
+  //setter에서 값의 타당성을 검사
+  set name(String value) {
+    if (value.length < 1) {
+      throw Exception('이름이 너무 짧습니다.');
+    }
+
+    if (value.length > 8) {
+      throw Exception('이름이 너무 깁니다');
+    }
+
+    _name = value;
+  }
 
   //메서드
   //공격하기
-  void attack() {
-    print('$name은 공격했다');
+  void attack(Slime slime) {
+    print('$name이 $slime을 공격했다');
+    print('슬라임의 반격을 받았다');
+    _hp -= 10;
+    if (_hp < 0) {
+      _die();
+    }
   }
 
   //도망가기
@@ -31,7 +55,7 @@ class Hero {
 
   //잠자기
   void sleep() {
-    hp = 100;
+    _hp = 100;
     print('$name은 잠을 자고 회복했다');
   }
 
@@ -45,12 +69,21 @@ class Hero {
     print('$name은 $sec초동안 앉아 있었다');
   }
 
-  //공격
+  //검공격
   void SwordAttack() {
     print('공격했습니다.');
   }
-}
 
+  //
+
+  void _die() {
+    print('죽었습니다.');
+  }
+
+  void bye() {
+    print('안녕히가세요');
+  }
+}
 
 class Sword {
   String name;
@@ -61,3 +94,12 @@ class Sword {
     required this.damage,
   });
 }
+
+//회복 Inn
+class Inn {
+  void checkInn(Hero hero) {
+    hero._hp = 100;
+  }
+}
+
+

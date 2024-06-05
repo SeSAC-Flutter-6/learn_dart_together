@@ -35,6 +35,8 @@ void main(List<String> arguments) {
     ClericA clericA = ClericA('클레릭A', 50, 10);
     print('클레릭A의 정보: name: ${clericA.name}, hp: ${clericA.hp}, mp: ${clericA.mp}');
 
+    //생성자는 가능한 한 중복되는 코드가 없도록 작성한다
 
-  //생성자는 가능한 한 중복되는 코드가 없도록 작성한다
+    final hero2 = Hero(name: '홍길동', hp: 100);
+    print('영웅의 이름은 ${hero2.name = 'aa'}');
 }
