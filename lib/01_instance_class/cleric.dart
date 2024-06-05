@@ -3,10 +3,10 @@ import 'dart:math';
 
 class Cleric {
   //멤버변수
-  String name = '';
+  String name;
 
   //HP
-  int hp = 0;
+  int hp;
 
   //MP
   int mp;
@@ -24,8 +24,8 @@ class Cleric {
 
   Cleric({
     required this.name,
-    this.hp = 50,
-    this.mp = 10,
+    this.hp = Cleric.maxHp,
+    this.mp = Cleric.maxMp,
   });
 
   //메서드 기능 -> 회복
@@ -43,7 +43,7 @@ class Cleric {
     //0-2 숫자가 랜덤으로 생성되는 멤버변수
     int number = Random().nextInt(3);
     //현재 mp의 값
-    int? initMp = this.mp;
+    int initMp = this.mp;
 
     if (sec >= 1) {
       //mp를 회복했는데 최대(조건) mp 이상 채워지지 말아야한다면?
@@ -92,11 +92,11 @@ class ClericA {
   int hp;
   int mp;
 
-  ClericA({
-    required this.name,
-    required this.hp,
-    required this.mp,
-  });
+  ClericA(
+    this.name,
+    this.hp,
+    this.mp,
+  );
 }
 
 // B. 이 클래스는 Cleric(“아서스", hp: 35) 와 같이, 이름과 HP만으로 지정하여 인스턴스화 할 수 있다.
@@ -107,36 +107,35 @@ class ClericB {
   int hp;
   int mp;
 
-  ClericB({
-    required this.name,
-    required this.hp,
+  ClericB(
+    this.name,
+    this.hp, {
     this.mp = Cleric.maxMp,
   });
 }
+
 // C. 이 클래스는 Cleric(“아서스") 와 같이 이름만을 지정하여 인스턴스화 할 수 있다.
 //    이 때, HP 와 MP 는 최대 HP와 최대 MP로 초기화 된다
 class ClericC {
-  String name = '';
+  String name;
   int hp;
   int mp;
 
-  ClericC({
-    required this.name,
+  ClericC(
+    this.name, {
     this.hp = Cleric.maxHp,
     this.mp = Cleric.maxMp,
   });
 }
 
-
 // D. 이 클래스는 Cleric() 과 같이 이름을 지정하지 않는 경우에는 인스턴스화 할 수 없다고 한다.
 // (이름이 없는 성직자는 존재 할 수 없음)
 class ClericD {
-  String name = '';
+  String name;
 
-  ClericD({
-    required this.name,
-  });
+  ClericD(
+    this.name,
+  );
 }
 
 //생성자는 가능한 한 중복되는 코드가 없도록 작성한다
-
