@@ -5,7 +5,7 @@ import 'package:test/scaffolding.dart';
 void main() {
   group('selfAid()', () {
     test('hp는 최대치로 회복한다', () {
-      final cleric = Cleric(name: '클레릭');
+      final cleric = Cleric('클레릭');
 
       cleric.selfAid();
 
@@ -13,7 +13,7 @@ void main() {
     });
 
     test('mp가 cost보다 낮다면 hp는 변하지 않는다', () {
-      final cleric = Cleric(name: '클레릭', mp: 0);
+      final cleric = Cleric('클레릭', mp: 0);
 
       final lastHp = cleric.hp;
 
@@ -23,7 +23,7 @@ void main() {
     });
 
     test('mp는 cost만큼 소모된다', () {
-      final cleric = Cleric(name: '클레릭');
+      final cleric = Cleric('클레릭');
 
       final lastMp = cleric.mp;
 
@@ -34,7 +34,7 @@ void main() {
   });
   group('pray()', () {
     test('mp는 seconds + 0...2만큼 회복한다', () {
-      final cleric = Cleric(name: '클레릭', mp: 0);
+      final cleric = Cleric('클레릭', mp: 0);
 
       cleric.pray(seconds: 5);
 
@@ -42,14 +42,14 @@ void main() {
     });
 
     test('mp는 maxMp를 초과하지 않는다', () {
-      final cleric = Cleric(name: '클레릭', mp: 45);
+      final cleric = Cleric('클레릭', mp: 45);
       cleric.pray(seconds: 5);
 
       expect(cleric.mp, lessThanOrEqualTo(Cleric.maxMp));
     });
 
     test('실제 회복량을 반환한다', () {
-      final cleric = Cleric(name: '클레릭', mp: 0);
+      final cleric = Cleric('클레릭', mp: 0);
 
       final recoverAmount = cleric.pray(seconds: 5);
 
