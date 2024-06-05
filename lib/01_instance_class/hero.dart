@@ -11,14 +11,25 @@ void main() {
 
 class Hero {
   // field, 멤버변수, 전역변수, properties
-  String name;
+  String _name;
+
+  String get name => _name;
+
+  set name(String value) {
+    if (value.isEmpty) {
+      throw Exception('이름이 공백이면 안돼요.');
+    }
+
+    _name = value;
+  }
+
   int hp;
 
   // 생성자
   Hero({
-    required this.name,
+    required String name,
     required this.hp,
-  });
+  }) : _name = name;
 
   // 메서드
   void attack(Slime slime) {
@@ -30,7 +41,7 @@ class Hero {
 
   void sleep() {
     hp = 100;
-    print('$name 가 잤다');
+    print('$_name 가 잤다');
   }
 
 // ...
