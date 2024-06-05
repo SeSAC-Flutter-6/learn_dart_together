@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:learn_dart_together/01_instance_class/wand.dart';
 import 'package:learn_dart_together/01_instance_class/wizard.dart';
 import 'package:test/expect.dart';
@@ -17,17 +19,20 @@ void main() {
       expect(() => Wizard(name: '아아아', hp: 50, mp: 10, wand: wand), returnsNormally);
     });
 
-    test('2. 마법사의 MP는 0 이상이어야 한다.', () {
-      expect(() => Wizard(name: '아아아', hp: 50, mp: -1, wand: wand), throwsException);
-      expect(() => Wizard(name: '아아아', hp: 50, mp: 0, wand: wand), returnsNormally);
-    });
-
-    test('3. 마법사는 지팡이를 내려놓을 수 없다.', () {
+    test('2. 마법사는 지팡이를 내려놓을 수 없다.', () {
       final Wizard wizard = Wizard(name: '아아아', hp: 50, mp: 0, wand: wand);
       expect(() => wizard.wand = null, throwsException);
     });
 
-    test('4. 마법사의 HP는 0 이하로 떨어질 수 없다.', () {
+    test('3. 마법사의 MP는 0보다 작을 수 없다.', () {
+      expect(() => Wizard(name: '아아아', hp: 50, mp: -1, wand: wand), throwsException);
+      expect(() => Wizard(name: '아아아', hp: 50, mp: 0, wand: wand), returnsNormally);
+
+      final Wizard wizard = Wizard(name: '아아아', hp: 50, mp: 0, wand: wand);
+      expect(() => wizard.mp = -1, throwsException);
+    });
+
+    test('4. 마법사의 HP는 0보다 작을 수 없다.', () {
       Wizard wizard = Wizard(name: '아아아', hp: -1, mp: 0, wand: wand);
       expect(wizard.hp, greaterThanOrEqualTo(0));
       wizard.hp = -99;
