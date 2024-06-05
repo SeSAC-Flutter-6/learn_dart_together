@@ -32,7 +32,7 @@ class Wizard {
     }
   }
 
-
+  //setter를 이용해 수정시에도 체크를 할 수 있다
   set name(String value) {
     if (value.isEmpty) {
       throw Exception('이름이 꼭 있어야합니다.');
