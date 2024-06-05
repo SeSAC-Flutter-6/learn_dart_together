@@ -14,16 +14,16 @@ class Cleric {
   static const int consumeMp = 5;
   static const int randomMpValue = 3;
 
-  Cleric({
-    required this.name,
-    this.hp = 50,
-    this.mp = 10,
-  }) {
+//required를 쓰는때와 안 쓰는때를 구분하는 것이 좋을 것 가다.
+  Cleric(this.name, {this.hp = maxHp, this.mp = maxMp}) {
     hp = max(maxHp, hp);
     mp = max(maxMp, mp);
   }
 
-//selfAid()는 사실, return을 쓰면 안되는데, 통과 X, 위에서 옮기는 방법을 적어주면 좋을 것 같다.
+// Cleric에 이름있는 생성자 추가하는 방법 -> this를 this.name에 안쓰고, : this를 써서 불러오는 것을 이해하기
+// Cleric.halfHpMp(String name) : this(name, hp: maxHp ~/ 2, mp: maxMp ~/ 2);
+// .this에 접근이 안된다.
+
   void selfAid() {
     //mp가 5소비가 되고, HP가 maxHp가 된다.
     if (mp >= consumeMp) {
