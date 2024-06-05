@@ -2,6 +2,8 @@
 import 'package:learn_dart_together/01_instance_class/cleric.dart';
 import 'package:learn_dart_together/01_instance_class/hero.dart';
 import 'package:learn_dart_together/01_instance_class/slime.dart';
+import 'package:learn_dart_together/01_instance_class/wand.dart';
+import 'package:learn_dart_together/01_instance_class/wizard.dart';
 
 void main(List<String> arguments) {
   // 객체 생성
@@ -39,4 +41,17 @@ void main(List<String> arguments) {
 
     final hero2 = Hero(name: '홍길동', hp: 100);
     print('영웅의 이름은 ${hero2.name = 'aa'}');
+
+    // 240605
+    // 연습문제1
+    Wand wand = Wand(name: '스태프', power: 100);
+    Wizard wizard = Wizard(name: '매지컬', hp: 100,);
+
+
+
+    print('마법사의 이름은 ${wizard.name}, hp는 ${wizard.hp} , 이고 지팡이의 이름은 ${wand.name}, 마력은 ${wand.power} 입니다');
+
+
+
+
 }
