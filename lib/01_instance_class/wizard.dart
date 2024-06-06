@@ -3,8 +3,7 @@ class Wand {
   double _power; //마력
 
   Wand(String name, double power)
-      : assert(power >= 0.5 && power <= 100.0 && name.length >= 3,
-            throw Exception('조건에 맞지 않는 생성자')),
+      : assert(power >= 0.5 && power <= 100.0 && name.length >= 3),
         _name = name,
         _power = power;
 
