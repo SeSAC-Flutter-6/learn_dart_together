@@ -30,6 +30,6 @@ void main() {
   test('hp가 0 미만이면 0 설정', () {
     Wizard wizard = Wizard(name: '마법사', mp: 50, hp: 50);
     wizard.hp = -10;
-    expect(wizard.hp == 0, true);
+    expect(wizard.hp, 0);
   });
 }
