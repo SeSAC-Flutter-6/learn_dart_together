@@ -7,13 +7,13 @@ class Wand {
     required double power,
   })  : _name = name,
         _power = power {
-    //세터를 호출하여 생성자 만들때도 유효성 검사
+    //세터를 호출하여 생성자에서도 유효성 검사
     this.name = name;
     this.power = power;
   }
 
-  String get wandName => _name;
-  double get wandPower => _power;
+  String get name => _name;
+  double get power => _power;
 
   set name(String name) {
     if (name.length < 3) {
