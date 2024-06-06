@@ -8,7 +8,7 @@ void main() {
   Hero.money = 200;
   Hero hero = Hero(name: '홍길동', hp: 100);
   Wand wand = Wand(name: '가지', power: 100);
-  Wizard wizard = Wizard(name: '마법사', hp: -5, mp: -9, wand: wand);
+  Wizard wizard = Wizard(name: '마법사', hp: -5, mp: -9);
   Person person = Person(name: '홍길동', birthYear: 1980);
 
   // wizard.name = '론';
