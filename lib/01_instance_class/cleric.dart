@@ -2,6 +2,7 @@ import 'dart:math';
 
 void main() {
   // Cleric cleric = Cleric(name: '성직자', hp: 50, mp: 10);
+  final cleric = Cleric.halfHpMp('홍길동');
 }
 
 class Cleric {
@@ -16,20 +17,35 @@ class Cleric {
   static const int maxMp = 10;
 
   // 생성자
-  Cleric({
-    required this.name,
-    required this.hp,
-    required this.mp,
-  });
-
-  Cleric.name({
-    required this.name,
-    this.hp = Cleric.maxHp,
-    this.mp = Cleric.maxMp,
-  }) {
-    hp = min(hp, maxHp);
-    mp = min(mp, maxMp);
+  Cleric(
+      this.name, {
+        this.hp = maxHp,
+        this.mp = maxMp,
+      }) {
+    hp = min(maxHp, hp);
+    mp = min(maxMp, mp);
   }
+
+  Cleric.halfHpMp(String name)
+      : this(
+    name,
+    hp: maxHp ~/ 2,
+    mp: maxMp ~/ 2,
+  );
+
+
+  // Cleric(this.name, {this.hp = hpMax, this.mp = mpMax}) {
+  // Cleric.halfHpMaxMp(this.name)
+  //     : hp = maxHp ~/ 2,
+  //       mp = maxHp ~/ 2);
+
+  // Cleric.halfHpMaxMp(String name)
+  //     : this(
+  //     name,
+  //     hp = maxHp ~/ 2,
+  //     mp = maxHp ~/ 2
+  //   //maxHp가 final 이면 안됨 constant한 값마 됨 변수 같은 것도 들어오면 안됨. 필드 접근이 안됨. initialize는 this에 접근이 안 됨 인스턴스가 된 이후에 돌지 않음
+  // );
 
   void selfAid() {
     if (mp >= 5) {
