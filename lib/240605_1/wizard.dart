@@ -42,7 +42,7 @@ class Wizard {
   }
 
   set mp(int value) {
-    if (mp < 0) {
+    if (value < 0) {
       throw Exception('마나가 0 미만입니다');
     }
 
@@ -53,9 +53,9 @@ class Wizard {
     if (value < 0) {
       _hp = 0;
       // throw Exception('체력이 0 미만입니다 (hp는 0으로 설정됩니다)');
+    } else {
+      _hp = value;
     }
-
-    _hp = value;
   }
 
   set wand(Wand? value) {

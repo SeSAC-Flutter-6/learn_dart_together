@@ -1,5 +1,5 @@
 // import 'hero.dart';
-import 'package:learn_dart_together/240605/wizard.dart';
+import 'wizard.dart';
 
 import 'wand.dart';
 
