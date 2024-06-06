@@ -2,7 +2,6 @@ import 'package:learn_dart_together/01_instance_class/wizard.dart';
 import 'package:test/test.dart';
 
 void main() {
-
   test('Wizard 클래스의 생성자가 예외를 발생시키는지 테스트', () {
     // 이름이 null인 경우
     // expect(() => Wizard(null, fixedHp, fixedMp, Wand('test', 10.0)), throwsException);

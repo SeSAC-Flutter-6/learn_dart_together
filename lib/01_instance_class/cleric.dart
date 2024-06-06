@@ -18,21 +18,20 @@ class Cleric {
 
   // 생성자
   Cleric(
-      this.name, {
-        this.hp = maxHp,
-        this.mp = maxMp,
-      }) {
+    this.name, {
+    this.hp = maxHp,
+    this.mp = maxMp,
+  }) {
     hp = min(maxHp, hp);
     mp = min(maxMp, mp);
   }
 
   Cleric.halfHpMp(String name)
       : this(
-    name,
-    hp: maxHp ~/ 2,
-    mp: maxMp ~/ 2,
-  );
-
+          name,
+          hp: maxHp ~/ 2,
+          mp: maxMp ~/ 2,
+        );
 
   // Cleric(this.name, {this.hp = hpMax, this.mp = mpMax}) {
   // Cleric.halfHpMaxMp(this.name)

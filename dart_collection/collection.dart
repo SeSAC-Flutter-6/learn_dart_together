@@ -11,12 +11,13 @@ class Person {
 }
 
 void main() {
-  // Person 인스턴스 생성 및 이름과 나이 쌍으로 Map에 저장
+  // Person 인스턴스 생성 및 이름과 나이 List Map에 저장
   var person1 = Person('홍길동', 20);
   var person2 = Person('한석봉', 25);
 
   List<Person> personList = [person1, person2];
 
+  // List에 저장된 값 출력
   personList.forEach((person) {
     print(person.name);
   });

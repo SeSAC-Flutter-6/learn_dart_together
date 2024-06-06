@@ -11,7 +11,7 @@ void main() {
 
 class Hero {
   // field, 멤버변수, 전역변수, properties
-  String _name;  //name private화
+  String _name; //name private화
   int hp;
 
   // 생성자
