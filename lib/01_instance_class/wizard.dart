@@ -11,6 +11,10 @@ class Wizard {
     if (value == null) {
       throw Exception('마법사의 지팡이는 null로 설정될 수 없습니다.');
     }
+
+    if (value.name.length < 3) {
+      throw Exception('마법사의 지팡이 이름은 3글자 이상이어야 합니다.');
+    }
     _wand = value;
   }
 
@@ -31,7 +35,7 @@ class Wizard {
     required this.name,
     required int hp,
     required int mp,
-    required Wand wand
+    required Wand? wand
   }) : _hp = hp, _mp = mp, _wand = wand {
     if (name.length < 3) {
       throw Exception('마법사의 이름은 3글자 이상이어야 합니다.');
