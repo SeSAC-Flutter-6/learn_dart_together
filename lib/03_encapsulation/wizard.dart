@@ -41,6 +41,7 @@ class Wizard {
     if (value == null) {
       throw Exception('지팡이를 놓지 마세요.');
     }
+    _wand = value;
   }
 
   Wizard({required String name, required int mp, required int hp, Wand? wand})
