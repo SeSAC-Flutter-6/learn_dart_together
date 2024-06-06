@@ -1,3 +1,4 @@
+import 'package:learn_dart_together/03_1_encapsulation/constants/validation_constants.dart';
 import 'package:learn_dart_together/03_1_encapsulation/wand.dart';
 
 class Wizard {
@@ -26,19 +27,21 @@ class Wizard {
   Wand? get wand => _wand;
 
   set name(String name) {
-    if (name.length < 3) {
+    if (name.length < minNameLength) {
       throw Exception('마법사의 이름은 3문자 이상이어야 합니다');
     }
     _name = name;
   }
 
   set hp(int hp) {
-    _hp = hp < 0 ? 0 : hp;
+    _hp = (hp < minMpHp) 
+          ? minMpHp 
+          : hp;
     print('hp는 음수가 될 수 없으므로 0으로 처리');
   }
 
   set mp(int mp) {
-    if (mp < 0) {
+    if (mp < minMpHp) {
       throw Exception('mp는 음수가 될 수 없습니다');
     }
     _mp = mp;
