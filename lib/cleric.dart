@@ -9,8 +9,8 @@ class Cleric {
   static const int prayRandomValue = 2;
   static const int selfAidCost = 5;
 
-  Cleric({
-    required this.name,
+  Cleric(
+    this.name, {
     this.hp = maxHp,
     this.mp = maxMp,
   }) {

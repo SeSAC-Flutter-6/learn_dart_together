@@ -7,30 +7,32 @@ void main() {
   final int defaultMp = 10;
 
   setUpAll(() {
-    cleric = Cleric(name: '클레릭');
+    cleric = Cleric('클레릭');
   });
 
   group('constructor()', () {
+    test('클레릭의 defaul 값은 hp는 50, mp는 10이다.', () {
+      cleric = Cleric('클래릭');
+      expect([cleric.hp, cleric.mp], equals([defaultHp, defaultMp]));
+      expect([Cleric.maxHp, Cleric.maxMp], equals([defaultHp, defaultMp]));
+    });
+
+
     final hp = 37;
     final mp = 5;
-
     test('클레릭의 hp 지정 test', () {
-      cleric = Cleric(name: '클래릭', hp: hp);
+      cleric = Cleric('클래릭', hp: hp);
       expect(cleric.hp, equals(hp));
       expect(cleric.mp, equals(Cleric.maxMp));
     });
 
 
     test('클레릭의 hp, mp 값 지정 test', () {
-      cleric = Cleric(name: '클래릭', hp: hp, mp: mp);
+      cleric = Cleric('클래릭', hp: hp, mp: mp);
       expect(cleric.hp, equals(hp));
       expect(cleric.mp, equals(mp));
     });
 
-    test('클레릭의 defaul 값은 hp는 50, mp는 10이다.', () {
-      expect([cleric.hp, cleric.mp], equals([defaultHp, defaultMp]));
-      expect([Cleric.maxHp, Cleric.maxMp], equals([defaultHp, defaultMp]));
-    });
 
   });
 
