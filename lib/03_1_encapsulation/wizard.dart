@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:learn_dart_together/03_1_encapsulation/constants/validation_constants.dart';
 import 'package:learn_dart_together/03_1_encapsulation/wand.dart';
 
@@ -34,14 +36,11 @@ class Wizard {
   }
 
   set hp(int hp) {
-    _hp = (hp < minMpHp) 
-          ? minMpHp 
-          : hp;
-    print('hp는 음수가 될 수 없으므로 0으로 처리');
+    _hp = max(hp, minHP);
   }
 
   set mp(int mp) {
-    if (mp < minMpHp) {
+    if (mp < minMP) {
       throw Exception('mp는 음수가 될 수 없습니다');
     }
     _mp = mp;
