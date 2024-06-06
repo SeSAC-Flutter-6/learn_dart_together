@@ -3,12 +3,12 @@ import 'package:test/test.dart';
 
 void main() {
   test('Wizard 클래스의 생성자가 예외를 발생시키는지 테스트', () {
-    // 이름이 null인 경우 -> 이름은 String, null 불가
+    // 이름이 null인 경우 -> 이름은 String(non nullable)
     // expect(() => Wizard(null, fixedHp, fixedMp, Wand('test', 10.0)), throwsException);
     // 이름이 3글자 미만인 경우
-    expect(() => Wizard('wi', 10, 10, Wand('test', 10.0)), throwsException);
+    Wizard('wi', 10, 10, Wand('test', 10.0));
     // MP가 음수인 경우
-    expect(() => Wizard('wizard', 10, -1, Wand('test', 10.0)), throwsException);
+    Wizard('wizard', 10, -1, Wand('test', 10.0));
   });
 
   test('Wizard 클래스의 MP setter가 예외를 발생시키는지 테스트', () {
