@@ -9,6 +9,12 @@ void main() {
       expect(() => Wand(name: '아', power: 100), throwsException);
       expect(() => Wand(name: '아아', power: 100), throwsException);
       expect(() => Wand(name: '아아아', power: 100), returnsNormally);
+      
+      final Wand wand = Wand(name: '아아아', power: 100);
+      expect(() => wand.name = '', throwsException);
+      expect(() => wand.name = '아', throwsException);
+      expect(() => wand.name = '아아', throwsException);
+      expect(() => wand.name = '아아아', returnsNormally);
     });
 
     test('지팡이의 마력은 0.5 ~ 100.0 이어야 한다.', () {
