@@ -2,10 +2,18 @@ import 'dart:math';
 import 'package:learn_dart_together/01_instance_class/wand.dart';
 
 class Wizard {
-  String name;
+  String _name;
   int _hp;
   int _mp;
   Wand? _wand;
+
+  String get name => _name;
+  set name(String value) {
+    if (value.length < 3) {
+      throw Exception('마법사의 이름은 3글자 이상이어야 합니다.');
+    }
+    _name = value;
+  }
 
   Wand? get wand => _wand;
   set wand(Wand? value) {
@@ -33,21 +41,14 @@ class Wizard {
   }
 
   Wizard({
-    required this.name,
+    required String name,
     required int hp,
     required int mp,
     required Wand? wand
-  }) : _hp = hp, _mp = mp, _wand = wand {
-    if (name.length < 3) {
-      throw Exception('마법사의 이름은 3글자 이상이어야 합니다.');
-    }
-
-    if (mp < 0) {
-      throw Exception('마법사의 MP는 0 이상이어야 합니다.');
-    }
-
-    if (_hp < 0) {
-      _hp = 0;
-    }
+  }) : _name = name, _hp = hp, _mp = mp, _wand = wand {
+    // 생성자에서 setter를 호출하여 validation
+    this.name = name;
+    this.hp = hp;
+    this.mp = mp;
   }
 }
