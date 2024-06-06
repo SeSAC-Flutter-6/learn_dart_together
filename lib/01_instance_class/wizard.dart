@@ -7,6 +7,7 @@ class Wizard {
   int _mp;
   Wand? _wand;
 
+  Wand? get wand => _wand;
   set wand(Wand? value) {
     if (value == null) {
       throw Exception('마법사의 지팡이는 null로 설정될 수 없습니다.');
