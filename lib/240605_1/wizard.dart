@@ -20,14 +20,14 @@ class Wizard {
       throw Exception('생성자 에러: 이름이 null 입니다');
     }
     if (name.length < 3) {
-      throw Exception('이름이 3문자 미만입니다');
+      throw Exception('생성자 에러: 이름이 3문자 미만입니다');
     }
     if (hp < 0) {
       _hp = 0;
       // throw Exception('체력이 0 미만입니다 (hp는 0으로 설정됩니다)');
     }
     if (mp < 0) {
-      throw Exception('마나가 0 미만입니다');
+      throw Exception('생성자 에러: 마나가 0 미만입니다');
     }
   }
 

@@ -13,7 +13,7 @@ class Wand {
     if (name == null) {
       throw Exception('생성자 에러: 이름이 null 입니다');
     }
-    if (name.length < 2) {
+    if (name.length < 3) {
       throw Exception('생성자 에러: 이름이 3문자 미만입니다');
     }
     if (power < 0.5) {
@@ -28,7 +28,7 @@ class Wand {
     if (value == null) {
       throw Exception('이름이 null 입니다');
     }
-    if (value.length < 2) {
+    if (value.length < 3) {
       throw Exception('이름이 3문자 미만입니다');
     }
     _name = value;
