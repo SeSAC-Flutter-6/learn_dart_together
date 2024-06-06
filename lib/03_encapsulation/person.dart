@@ -9,6 +9,5 @@ class Person {
 
 void main() {
   Person person = Person(name: '홍길동', birthYear: 1980);
-  person.age;
   print(person.age);
 }

@@ -34,6 +34,7 @@ class Wizard {
     if (value < 0) {
       _hp = 0;
     }
+    _hp = value;
   }
 
   set wand(Wand? value) {
