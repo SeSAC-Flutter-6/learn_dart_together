@@ -7,7 +7,7 @@ import 'package:learn_dart_together/03_encapsulation/wizard.dart';
 void main() {
   Hero.money = 200;
   Hero hero = Hero(name: '홍길동', hp: 100);
-  Wand wand = Wand(name: '지팡이', power: 10);
+  Wand wand = Wand(name: '가지', power: 100);
   Wizard wizard = Wizard(name: '마법사', hp: -5, mp: -9, wand: wand);
   Person person = Person(name: '홍길동', birthYear: 1980);
 
@@ -17,6 +17,5 @@ void main() {
   // wizard.mp = -5;
   // wizard.hp = -100;
   // print(wizard.hp);
-
-  print(person.age);
+  // print(person.age);
 }

@@ -42,13 +42,16 @@ class Wizard {
     }
   }
 
-  Wizard(
-      {required String name,
-      required int mp,
-      required int hp,
-      required Wand? wand})
-      : _wand = wand,
-        _mp = max(mp, 0),
+  Wizard({required String name, required int mp, required int hp, Wand? wand})
+      : _name = name,
+        _mp = mp,
         _hp = max(hp, 0),
-        _name = name;
+        _wand = wand {
+    if (name.length < 3) {
+      throw Exception('이름은 3글자 이상이어야 합니다.');
+    }
+    if (mp < 0) {
+      throw Exception('mp는 0보다 작을 수 없습니다.');
+    }
+  }
 }
