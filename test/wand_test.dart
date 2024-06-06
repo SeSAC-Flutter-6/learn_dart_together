@@ -6,7 +6,6 @@ void main() {
   final double minPower = 0.5;
   final double maxPower = 100;
 
-
   group('constructor()', () {
     test('wand의 이름은 3글자 이상이어야 한다.', () {
       Wand wand = Wand(name: '지팡이', power: minPower);
