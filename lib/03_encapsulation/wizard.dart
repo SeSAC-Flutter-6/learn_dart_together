@@ -38,7 +38,7 @@ class Wizard {
 
   set wand(Wand? value) {
     if (value == null) {
-      throw Exception('지팡이를 반드시 들어야 합니다.');
+      throw Exception('지팡이를 놓지 마세요.');
     }
   }
 
