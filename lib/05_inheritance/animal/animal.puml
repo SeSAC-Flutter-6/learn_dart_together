@@ -1,0 +1,30 @@
+@startuml
+class Animal{
++type
++sound
+}
+
+class Dog extends Animal{
++type
++sound
++void dig()
+}
+
+class Cat extends Animal{
++type
++sound
++void scratch()
+}
+
+class Bird extends Animal{
++type
++sound
++void fly()
+}
+
+@enduml
+
+'사람과 동물
+'Animal 클래스를 만들고 type, sound와 같은 속성을 포함합니다.
+'Dog, Cat 및 Bird와 같은 Animal 클래스의 하위 클래스를 만듭니다.
+'각 하위 클래스에 고유한 속성 및 메서드를 추가합니다.
