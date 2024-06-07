@@ -11,14 +11,14 @@ void main() {
 
 class Hero {
   // field, 멤버변수, 전역변수, properties
-  String name;
+  String _name; //name private화
   int hp;
 
   // 생성자
   Hero({
-    required this.name,
+    required String name, // 생성자 매개변수 이름 변경
     required this.hp,
-  });
+  }) : _name = name; //생성자에서 private 변수 초기화
 
   // 메서드
   void attack(Slime slime) {
@@ -30,7 +30,7 @@ class Hero {
 
   void sleep() {
     hp = 100;
-    print('$name 가 잤다');
+    print('$_name 가 잤다');
   }
 
 // ...

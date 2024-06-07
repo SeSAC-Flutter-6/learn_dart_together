@@ -1,0 +1,20 @@
+@startuml
+
+scale 2
+
+class Hero {
+{static} int Money
+    +String name
+    -int hp
+
+    +attack()
+    -die()
+}
+
+class Cleric{
+}
+
+class Wizard{
+}
+
+@enduml

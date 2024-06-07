@@ -13,7 +13,7 @@ void main() {
   test(
       'pray()을 하면 mp를 회복함. 회복량은 기도한 시간(초)에 0 ~ 2포인트의 보정을 한 양. 최대 MP와 같거나 이하로 회복',
       () {
-    final cleric = Cleric(name: '성직자', hp: fixedHp, mp: fixedMp);
+    final cleric = Cleric('성직자', hp: fixedHp, mp: fixedMp);
 
     final int prevMp = cleric.mp;
     final int realRecoveredMp = cleric.pray(prayerTime);
@@ -23,7 +23,7 @@ void main() {
   });
 
   test('selfAid()을 하면 MP를 5소비하는 것으로 자신의 HP 를 최대 HP 까지 회복할 수 있다', () {
-    final cleric = Cleric(name: '성직자', hp: fixedHp, mp: fixedMp);
+    final cleric = Cleric('성직자', hp: fixedHp, mp: fixedMp);
 
     final int prevMp = cleric.mp;
     final int prevHp = cleric.hp;
