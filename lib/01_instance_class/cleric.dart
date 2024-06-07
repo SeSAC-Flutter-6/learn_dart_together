@@ -13,10 +13,7 @@
 
 import 'dart:math';
 
-void main() {
-  // Cleric cleric = Cleric(name: '성직자', hp: 50, mp: 10);
-  // cleric.selfAid();
-}
+void main() {}
 
 class Cleric {
   String name;
@@ -25,11 +22,23 @@ class Cleric {
   final int maxHp = 50;
   final int maxMp = 10;
 
-  Cleric({
-    required this.name,
-    required this.hp,
-    required this.mp,
-  });
+
+  Cleric(
+    this.name, {
+    this.hp = maxHp,
+    this.mp = maxMp,
+  }) {
+    hp = min(maxHp, hp);
+    mp = min(maxMp, mp);
+  }
+
+  Cleric.halfHpMp(String name)
+      : this(
+          name,
+          hp: maxHp ~/ 2,
+          mp: maxMp ~/ 2,
+        );
+
 
   void selfAid() {
     if (hp == maxHp) {

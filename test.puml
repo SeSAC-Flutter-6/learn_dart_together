@@ -1,0 +1,21 @@
+@startuml
+
+scale 2
+
+class Hero {
+    + String name
+    - int HotPink
+    
+    + attack()
+    - die()
+}
+
+class Cleric {
+}
+
+
+class Wizard {}
+
+@enduml
+
+

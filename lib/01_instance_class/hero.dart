@@ -10,26 +10,37 @@ void main() {
 
   // 2
   Hero hero = Hero(name: '홍길동', hp: 100);
-
 }
 
 class Hero {
   // 1
   static int money = 100;
 
-  // field, 멤버변수, 전역변수, properties
-  String name;
+  // field, 멤버변수, 전역변수,
+  String _name;
+
+  // properties
+  String get name => _name;
+
+  set name(String value) {
+    if (value.isEmpty) {
+      throw Exception('길이가 0은 안되요');
+    }
+
+    _name = '$value님';
+  }
+
   int hp;
 
   // 생성자
   Hero({
-    required this.name,
+    required String name,
     required this.hp,
-  });
+  }) : _name = name;
 
   // 메서드
   void attack(Slime slime) {
-    print('$name 이 공격했다');
+    print('$_name 이 공격했다');
     Hero.money = 10;
     // 이름이 김씨면 파워가 +3
     // 오씨면 +10
@@ -39,7 +50,7 @@ class Hero {
 
   void sleep() {
     hp = 100;
-    print('$name 가 잤다');
+    print('$_name 가 잤다');
   }
 
 // ...
