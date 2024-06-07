@@ -36,7 +36,9 @@ class Hero {
   Hero({
     required String name,
     required this.hp,
-  }) : _name = name;
+  }) : _name = name {
+    print('1. Hero 생성자');
+  }
 
   // 메서드
   void attack(Slime slime) {
@@ -46,7 +48,9 @@ class Hero {
     // 오씨면 +10
   }
 
-  void run() {}
+  void run() {
+    print('1번 run()');
+  }
 
   void sleep() {
     hp = 100;
