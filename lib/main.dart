@@ -58,23 +58,13 @@ void main(List<String> arguments) {
   );
 
   print(
-      '마법사의 이름은 ${wizard.name}, hp는 ${wizard.hp}이고 지팡이의 이름은 ${wand.name}, 마력은 ${wand.power} 입니다');
+      '마법사의 이름은 ${wizard.name}, hp는 ${wizard.hp}이고 지팡이의 이름은 ${wand.name}, 마력은 ${wand.power} 입니다',);
 
   PoisonSlime poisonSlime = PoisonSlime(10, '독 슬라임');
   print('독슬라임의 이름은 ${poisonSlime.suffix}, 에너지는 ${poisonSlime.hp} 입니다');
   print({hero.name, hero.hp});
-
   poisonSlime.attack(hero);
-  print('${hero.name}은/는 독 데미지를 받았다 남은 hp는 ${hero.hp}');
-  print('독슬라임의 남은 독 카운트 : ${poisonSlime.poisonAttackCount}');
-
-  poisonSlime.attack(hero);
-  print('${hero.name}은/는 독 데미지를 받았다 남은 hp는 ${hero.hp}');
-  print('독슬라임의 남은 독 카운트 : ${poisonSlime.poisonAttackCount}');
-
-  poisonSlime.attack(hero);
-  print('${hero.name}은/는 독 데미지를 받았다 남은 hp는 ${hero.hp}');
-  print('독슬라임의 남은 독 카운트 : ${poisonSlime.poisonAttackCount}');
-
+  // print('${hero.name}은/는 독 데미지를 받았다 남은 hp는 ${poisonSlime}');
+  // print('독슬라임의 남은 독 카운트 : ${poisonSlime.poisonAttackCount}');
 
 }

@@ -47,9 +47,16 @@ class PoisonSlime extends Slime {
   @override
   void attack(Hero hero) {
     if (poisonAttackCount > 0) {
-      hero.hp = (hero.hp * 0.8.toDouble()).toInt();
+
+      //독 공격을 수행하면 횟수가 줄어든다
       poisonAttackCount -= 1;
+      //독 공격을 수행하면 1/5로 hp가 줄어들고 변수에 담는다
+      int poisonDamageHp = (hero.hp * 0.2.toDouble()).toInt();
+      //독 공격을 받고 남은 hp를 변수에 담는다
+      int remainHp = hero.hp - poisonDamageHp;
+
       print('추가로, 독 포자를 살포했다!');
+      print('$poisonDamageHp 포인트의 데미지 용사의 남은 에너지는 $remainHp');
     }
   }
 }
