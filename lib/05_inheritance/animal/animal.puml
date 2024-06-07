@@ -1,24 +1,24 @@
 @startuml
 class Animal{
-+type
-+sound
++String type
++String sound
 }
 
 class Dog extends Animal{
-+type
-+sound
++String type
++String sound
 +void dig()
 }
 
 class Cat extends Animal{
-+type
-+sound
++String type
++String sound
 +void scratch()
 }
 
 class Bird extends Animal{
-+type
-+sound
++String type
++String sound
 +void fly()
 }
 

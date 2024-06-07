@@ -1,0 +1,29 @@
+@startuml
+class Vehicle{
++String maker
++String model
++int year
+}
+
+class Car extends Vehicle{
++String maker
++String model
++int year
+void openSunRoof()
+}
+
+class Truck extends Vehicle{
++String maker
++String model
++int year
+void loadCargo()
+}
+
+class Motorcycle extends Vehicle{
++String maker
++String model
++int year
+void popWheel()
+}
+
+@enduml
