@@ -7,9 +7,11 @@ class Wizard {
   int _mp;
   Wand? _wand;
 
+  static const minNameLength = 3;
+
   String get name => _name;
   set name(String value) {
-    if (value.length < 3) {
+    if (value.length < minNameLength) {
       throw Exception('마법사의 이름은 3글자 이상이어야 합니다.');
     }
     _name = value;
@@ -21,7 +23,7 @@ class Wizard {
       throw Exception('마법사의 지팡이는 null로 설정될 수 없습니다.');
     }
 
-    if (value.name.length < 3) {
+    if (value.name.length < minNameLength) {
       throw Exception('마법사의 지팡이 이름은 3글자 이상이어야 합니다.');
     }
     _wand = value;
