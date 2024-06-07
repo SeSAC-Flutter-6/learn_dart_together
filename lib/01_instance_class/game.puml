@@ -1,0 +1,20 @@
+@startuml
+
+class Hero{
+-name
++hp
+{static}money
+ }
+class Slime{
++hp
++suffix
++level
+}
+class Cleric{
++name
++hp
++m[
+
+}
+
+@enduml

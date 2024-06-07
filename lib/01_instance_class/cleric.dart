@@ -14,7 +14,7 @@ class Cleric {
 
   Cleric(this.name, {this.hp = hpMax, this.mp = mpMax}) {
     hp = min(hp, hpMax);
-    mp = min(mp, mpMax);
+    mp = min(mp, mpMax); // 인스턴스 생성 이후 접근됨(?)
   }
 
   // Cleric({required this.name, int hp = hpMax, int mp = mpMax})
