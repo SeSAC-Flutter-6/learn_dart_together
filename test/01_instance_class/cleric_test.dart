@@ -6,26 +6,26 @@ void main() {
 
   group('Cleric constructor test', () {
     test('(1): mp, hp 설정 x', () {
-      Cleric cleric = Cleric(name: '기본성직자');
+      Cleric cleric = Cleric('기본성직자');
       expect([cleric.hp, cleric.mp], equals([50, 10]));
     });
     test('(2): hp만 설정', () {
-      Cleric cleric = Cleric(name: '기본성직자', hp: 35);
+      Cleric cleric = Cleric('기본성직자', hp: 35);
       expect([cleric.hp, cleric.mp], equals([35, 10]));
     });
     test('(3): mp, hp  max치보다 낮게 설정', () {
-      Cleric cleric = Cleric(name: '빈약한 성직자', hp: 25, mp: 5);
+      Cleric cleric = Cleric('빈약한 성직자', hp: 25, mp: 5);
       expect([cleric.hp, cleric.mp], equals([25, 5]));
     });
     test('(4): mp, hp  max치보다 높게 설정', () {
-      Cleric cleric = Cleric(name: '개쩌는 성직자', hp: 100000, mp: 10000);
+      Cleric cleric = Cleric('개쩌는 성직자', hp: 100000, mp: 10000);
       expect([cleric.hp, cleric.mp], equals([Cleric.maxHp, Cleric.maxMp]));
     });
   });
 
   group('Cleric method test', () {
     setUpAll(() {
-      cleric = Cleric(name: '기본성직자');
+      cleric = Cleric('기본성직자');
     });
     test('selfAid() - (1): 사용 시 5 차감, hp max회복 확인', () {
       //test를 위해 hp를 30으로 설정
@@ -46,7 +46,6 @@ void main() {
       cleric.mp = 2;
       int praySeconds = 3;
       int prayResult = cleric.pray(praySeconds: praySeconds);
-
       expect(
           [prayResult, prayResult],
           equals([
@@ -58,7 +57,6 @@ void main() {
     test('pray() - (2): 0초 기도 시 회복량 0', () {
       int praySeconds = 0;
       int prayResult = cleric.pray(praySeconds: praySeconds);
-
       expect([prayResult, cleric.mp], equals([0, cleric.mp]));
     });
 

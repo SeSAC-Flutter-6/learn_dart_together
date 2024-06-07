@@ -8,7 +8,7 @@ class Cleric {
   static const int maxMp = 10;
   final int selfAidCost = 5;
 
-  Cleric({required this.name, this.hp = maxHp, this.mp = maxMp}) {
+  Cleric(this.name, {this.hp = maxHp, this.mp = maxMp}) {
     hp = min(hp, maxHp);
     mp = min(mp, maxMp);
   }
