@@ -9,8 +9,6 @@ class Wizard {
   int _mp;
   Wand? _wand;
 
-  static const int minNameLength = 3;
-
   Wizard({required String name, required int hp, required int mp, Wand? wand})
       : _name = name,
         _hp = hp,

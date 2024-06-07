@@ -20,11 +20,11 @@ void main() {
           throwsException);
     });
     test('3: 마법사의 MP는 $minMP이상이어야 한다', () {
-      expect(() => Wizard(name: '마법사', hp: 100, mp: minMP-1, wand: testWand),
+      expect(() => Wizard(name: '마법사', hp: 100, mp: minMP - 1, wand: testWand),
           throwsException);
       expect(() => Wizard(name: '마법사', hp: 100, mp: minMP, wand: testWand),
           returnsNormally);
-      expect(() => Wizard(name: '마법사', hp: 100, mp: minMP+1, wand: testWand),
+      expect(() => Wizard(name: '마법사', hp: 100, mp: minMP + 1, wand: testWand),
           returnsNormally);
     });
     test('4: 마법사의 HP가 음수라면 $minHP으로 설정한다', () {
@@ -37,7 +37,7 @@ void main() {
 
   group('Wizard getter setter test', () {
     late Wizard testWizard;
-    setUpAll(() {
+    setUp(() {
       testWizard = Wizard(name: '테스트마법사', hp: 10, mp: 10, wand: testWand);
     });
     test('1: 마법사의 이름은 $minNameLength글자 이상이다', () {
@@ -49,9 +49,9 @@ void main() {
       expect(() => testWizard.wand = null, throwsException);
     });
     test('3: 마법사의 MP는 $minMP이상이어야 한다', () {
-      expect(() => testWizard.mp = minMP-1, throwsException);
+      expect(() => testWizard.mp = minMP - 1, throwsException);
       expect(() => testWizard.mp = minMP, returnsNormally);
-      expect(() => testWizard.mp = minMP+1, returnsNormally);
+      expect(() => testWizard.mp = minMP + 1, returnsNormally);
     });
     test('4: 마법사의 HP가 음수라면 $minHP으로 설정한다', () {
       testWizard.hp = -1;
