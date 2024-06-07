@@ -7,17 +7,17 @@ import 'package:test/test.dart';
 void main() {
   test('Wizard hp가 음수가 되었을 때 테스트',() {
     //준비(given)
-    final Wizard wizard = Wizard(name: '마법사', mp: 100, hp: 5);
-    Slime slime = Slime(100, 'suffix');
+    final wizard = Wizard(name: '마법사', mp: 100, hp: -1);
 
+    expect(wizard.hp == 0, true);
 
     //실행(when)
-    slime.attack(wizard);
+
 
 
 
     //검증(then)
-    expect(wizard.hp == 0, 0);
+        
 
   });
 }

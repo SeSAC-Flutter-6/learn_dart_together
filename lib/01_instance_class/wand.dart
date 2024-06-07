@@ -1,6 +1,6 @@
 class Wand {
-  String _name = ''; //이름
-  double _power = 0; //마력
+  String _name; //이름
+  double _power; //마력
 
 
   String get name => _name;
