@@ -1,0 +1,22 @@
+@startuml
+scale 2
+skinparam classAttributeIconSize 0
+
+Class Hero {
+    {static} int money
+    + String name
+    + int hp
+    + int mp
+
+    + attack()
+    - die()
+}
+
+Class Cleric {
+}
+
+Class Wizard {
+}
+
+
+@enduml

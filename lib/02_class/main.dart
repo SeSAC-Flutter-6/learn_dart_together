@@ -9,7 +9,7 @@ void main() {
   // dart에서는 = 기호를 쓰면 주소를 복사한다(값을 복사하는게 아니다)
  final hero2 = hero1;
 
- hero2.hp = 200;
+ //hero2.hp = 200;
 
  print(hero1.hp);
 }
