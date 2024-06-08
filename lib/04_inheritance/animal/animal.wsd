@@ -1,0 +1,60 @@
+@startuml animal
+
+class Animal {
+  + type: AnimalType
+  + sound: String
+
+  + talk()
+}
+
+enum AnimalType {
+  mammals
+  birds
+  fish
+  reptiles
+  amphibians
+}
+
+class Bird {
+  + isMigratory: bool
+
+  + talk()
+  + fly()
+}
+
+class Cat {
+  + color: String
+
+  + talk()
+  + purr()
+}
+
+class Dog {
+  + breed: String
+
+  + talk()
+  + walk()
+}
+
+class Person {
+  + name: String
+  + age: int
+  + pet: Animal?
+
+  + sayHello()
+  + feed()
+}
+
+Animal <|-- Bird
+Animal <|-- Cat
+Animal <|-- Dog
+Animal -right.. AnimalType
+
+Person "1" -- "0..*" Animal : has >
+
+note left of Animal::talk
+  Every subclass of Animal
+  overrides talk()
+end note
+
+@enduml
