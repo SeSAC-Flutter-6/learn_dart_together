@@ -1,6 +1,6 @@
 import 'dart:math';
 
-import 'package:learn_dart_together/wand.dart';
+import 'package:learn_dart_together/03_encapsulation/wand.dart';
 
 class Wizard {
   String _name;

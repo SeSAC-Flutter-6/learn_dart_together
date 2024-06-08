@@ -1,0 +1,28 @@
+@startuml
+scale 2
+
+class Animal {
+    + String type
+    + String sound
+}
+
+class Dog extends Animal {
+    + int teeth;
+
+    + void run()
+}
+
+class Cat extends Animal {
+    + int teeth;
+
+    + void run()
+}
+
+class Bird extends Animal {
+    + bool hasWing;
+
+    + void flying()
+}
+
+
+@enduml
