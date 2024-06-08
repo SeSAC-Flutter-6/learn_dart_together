@@ -10,9 +10,9 @@ void main() {
     });
 
     test('지팡이의 마력은 0.5 이상 100.0 이하여야함', () {
-      expect(() => Wand(name: "지팡이", power: 0.3), throwsException);
-      expect(() => Wand(name: "지팡이", power: 0.7), returnsNormally);
-      expect(() => Wand(name: "지팡이", power: 120), throwsException);
+      expect(() => Wand(name: '지팡이', power: 0.3), throwsException);
+      expect(() => Wand(name: '지팡이', power: 0.7), returnsNormally);
+      expect(() => Wand(name: '지팡이', power: 120), throwsException);
     });
   });
 
