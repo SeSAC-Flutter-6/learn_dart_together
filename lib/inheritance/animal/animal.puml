@@ -1,0 +1,21 @@
+@startuml
+skinparam classAttributeIconSize 0
+class Animal {
+    +String type
+    +String sound
+    +void soundCheck()
+}
+
+class Bird extends Animal {
+   +bool canFly
+   +void soundCheck()
+   +void Fly()
+}
+
+class Dog extends Animal {
+    +String breed
+    +void soundCheck()
+    +void checkBreed()
+}
+
+@enduml
