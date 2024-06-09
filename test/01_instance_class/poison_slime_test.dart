@@ -12,7 +12,6 @@ void main() {
       int initialHp = hero.hp;
       int maxRemains = poisonSlime.remains;
 
-
       // remains 초기값 5로 5번의 독 공격이 가능
       for (int i = maxRemains; i > 0; i--) {
         poisonSlime.attack(hero);

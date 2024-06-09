@@ -6,7 +6,9 @@ class Vehicle {
   Vehicle(this._maker, this._model, this._year);
 
   String get maker => _maker;
+
   String get model => _model;
+
   int get year => _year;
 }
 
@@ -18,6 +20,7 @@ class Truck extends Vehicle {
       : super(maker, model, year);
 
   String get type => _type;
+
   int get cargoCapacity => _cargoCapacity;
 }
 
@@ -29,6 +32,7 @@ class Car extends Vehicle {
       : super(maker, model, year);
 
   String get type => _type;
+
   int get passengerCapacity => _passengerCapacity;
 }
 
@@ -40,5 +44,6 @@ class Motorcycle extends Vehicle {
       : super(maker, model, year);
 
   String get type => _type;
+
   int get maxSpeed => _maxSpeed;
 }

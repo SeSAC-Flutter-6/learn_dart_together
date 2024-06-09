@@ -15,6 +15,7 @@ void main() {
 class Slime {
   // int hp = 50;
   final String suffix;
+
   // final int level = 10;
   // int hp;
   // String suffix;
