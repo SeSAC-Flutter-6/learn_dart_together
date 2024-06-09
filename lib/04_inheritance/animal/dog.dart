@@ -1,17 +1,22 @@
 import 'package:learn_dart_together/04_inheritance/animal/animal.dart';
 
 class Dog extends Animal {
-  int teeth;
+  String ordered;
 
-  Dog(super.type, super.sound, this.teeth);
+  Dog(this.ordered);
 
-  void run() {
-    print('그리고 개가 달립니다.');
+  void listenOrder() {
+    print('개가 $ordered를 따릅니다');
   }
 
   @override
-  void crying() {
-    super.crying();
-    run();
+  void makeSound() {
+    print('개가 $sound하고 짖습니다');
   }
+
+  @override
+  String get sound => 'Bark';
+
+  @override
+  MoveType get type => MoveType.walking;
 }

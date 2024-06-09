@@ -1,17 +1,22 @@
 import 'package:learn_dart_together/04_inheritance/animal/animal.dart';
 
 class Bird extends Animal {
-  bool hasWing;
+  double wingSpan;
 
-  Bird(super.type, super.sound, this.hasWing);
+  Bird(this.wingSpan);
 
-  void flying() {
-    print('그리고 새가 날아다니고 있습니다.');
+  void showWingSpan() {
+    print('새의 날개는 $wingSpan cm 입니다.');
   }
 
   @override
-  void crying() {
-    super.crying();
-    flying();
+  void makeSound() {
+    print('새가 $sound하고 지저귑니다.');
   }
+
+  @override
+  String get sound => 'Tweet';
+
+  @override
+  MoveType get type => MoveType.flying;
 }

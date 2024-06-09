@@ -41,7 +41,7 @@ void main() {
 
     test('attack 횟수가 없으면 독 데미지는 없다.', () {
       final heroHp = hero.hp;
-      poisonSlime.attackableCount = 0;
+      poisonSlime = PoisonSlime('A', attackableCount: 0);
       poisonSlime.attack(hero);
 
       expect(hero.hp, heroHp - 10);

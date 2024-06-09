@@ -1,10 +1,11 @@
-class Animal {
-  String type;
-  String sound;
+abstract class Animal {
+  MoveType get type; // 2족보행, 4족보행
+  String get sound; // 울음 소리
 
-  Animal(this.type, this.sound);
+  void makeSound();
+}
 
-  void crying() {
-    print('$type가 $sound 소리를 내고 있습니다');
-  }
+enum MoveType {
+  walking,
+  flying,
 }

@@ -3,9 +3,12 @@ import 'package:learn_dart_together/04_inheritance/slime/slime.dart';
 import 'hero.dart';
 
 class PoisonSlime extends Slime {
-  int attackableCount = 5;
+  int _attackableCount;
 
-  PoisonSlime(super.suffix);
+  int get attackableCount => _attackableCount;
+
+  PoisonSlime(super.suffix, {attackableCount = 5})
+      : _attackableCount = attackableCount;
 
   @override
   void attack(Hero hero) {
@@ -14,7 +17,7 @@ class PoisonSlime extends Slime {
     if (attackableCount <= 0) return;
     final damage = hero.hp ~/ 5;
     hero.hp -= damage;
-    attackableCount -= 1;
+    _attackableCount -= 1;
 
     print('추가로, 독 포자를 살포했다!');
     print('$damage포인트의 데미지');
