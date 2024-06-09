@@ -1,4 +1,4 @@
-@startuml
+@startuml slime
 class Slime {
   + hp: int 
   + suffix : String

@@ -1,0 +1,38 @@
+@startuml animal
+
+enum AnimalType {
+  mammal, 
+  bird,   
+  fish,  
+  amphibian, 
+  reptile,   
+}
+
+class Animal {
+  + type: AnimalType
+  + sound: String
+  + makeSound(): void
+  + checkType(): void
+}
+
+class Dog {
+  + breed: String
+  + goForWalk(): void
+}
+
+class Cat {
+  + breed: String
+  + doGrooming(): void
+}
+
+class Bird {
+  - isFlying: boolean
+  + fly(): void
+}
+
+Animal --> AnimalType
+Dog --|> Animal
+Cat --|> Animal
+Bird --|> Animal
+
+@enduml

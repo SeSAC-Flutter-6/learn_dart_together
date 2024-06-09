@@ -1,0 +1,29 @@
+@startuml vehicle
+
+class Vehicle {
+  + maker: String
+  + model: String
+  + year: int
+}
+
+class Ship {
+  + isDocked: bool
+  + dock(): void
+  + depart(): void
+}
+
+class Train {
+  + numberOfCars: int
+  + addCar(count: int): void
+}
+
+class Bicycle {
+  + numberOfGears: int
+  + changeGear(gearLevel: int): void
+}
+
+Vehicle <|-- Ship
+Vehicle <|-- Train
+Vehicle <|-- Bicycle
+
+@enduml
