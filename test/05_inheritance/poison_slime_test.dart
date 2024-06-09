@@ -26,7 +26,7 @@ void main() {
     poisonSlime.attack(hero);
     expect(poisonSlime.attackCount, 0);
   });
-  test('attackCount가 0이하면 추가 공격 없음', () {
+  test('attackCount를 모두 소모하면 추가 공격 없음', () {
     Hero hero = Hero(name: '슈퍼맨', hp: 1000);
     PoisonSlime poisonSlime = PoisonSlime('A');
     poisonSlime.attack(hero);
