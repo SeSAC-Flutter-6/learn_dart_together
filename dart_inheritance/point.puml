@@ -1,0 +1,25 @@
+@startuml
+
+scale 1
+
+class Point {
+    - int _x
+    - int _y
+
+    + Point(x: int, y: int)
+    + set y(value: int)
+    + set x((value: int)
+}
+
+class Rectangle {
+    - int _width
+    - int _height
+    - Point _topLeftPointer
+    + int get area()
+    + int get perimeter()
+    + set _topLeftPointer(Point point)
+}
+
+Rectangle -- Point : contains
+
+@enduml

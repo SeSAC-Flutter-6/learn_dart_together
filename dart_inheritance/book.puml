@@ -1,0 +1,30 @@
+@startuml
+
+scale 1
+
+class Book {
+    -String _title
+    -String _author
+    -String _genre
+
+    +String get title()
+    +String get author()
+    +String get genre()
+    +void set title(String title)
+    +void set author(String author)
+    +void set genre(String genre)
+}
+
+class Fiction extends Book{
+    -String _subGenre
+
+    +String get subGenre()
+}
+
+class NonFiction extends Book{
+    -String _subject
+
+    +String get subject()
+}
+
+@enduml

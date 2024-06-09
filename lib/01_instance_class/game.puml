@@ -5,10 +5,12 @@ scale 2
 class Hero {
 {static} int Money
     +String name
-    -int hp
+    +int hp
 
-    +attack()
-    -die()
+    +void attack(Slime slime)
+    +void run()
+'    +attack()
+'    -die()
 }
 
 class Cleric{
@@ -17,4 +19,7 @@ class Cleric{
 class Wizard{
 }
 
+class SuperHero extends Hero {
+    +bool isFlying
+}
 @enduml

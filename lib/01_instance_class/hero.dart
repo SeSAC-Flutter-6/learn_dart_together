@@ -18,7 +18,9 @@ class Hero {
   Hero({
     required String name, // 생성자 매개변수 이름 변경
     required this.hp,
-  }) : _name = name; //생성자에서 private 변수 초기화
+  }) : _name = name{
+    print('1번 생성자');
+  } //생성자에서 private 변수 초기화
 
   // 메서드
   void attack(Slime slime) {
@@ -26,7 +28,9 @@ class Hero {
     // 오씨면 +10
   }
 
-  void run() {}
+  void run() {
+    print('1번 run');
+  }
 
   void sleep() {
     hp = 100;
