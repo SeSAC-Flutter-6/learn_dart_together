@@ -5,10 +5,10 @@ import 'package:test/scaffolding.dart';
 
 void main() {
   test('포이즌 슬라임이 공격하면 추가로 히어로의 hp의 1/5 깎임', () {
-    Hero hero = Hero(name: '슈퍼맨', hp: 100);
+    Hero hero = Hero(name: '슈퍼맨', hp: 1000);
     PoisonSlime poisonSlime = PoisonSlime('A');
     poisonSlime.attack(hero);
-    expect(hero.hp, 72);
+    expect(hero.hp, 792);
   });
   test('포이즌 슬라임이 공격하면 attackCount -1', () {
     Hero hero = Hero(name: '슈퍼맨', hp: 1000);
