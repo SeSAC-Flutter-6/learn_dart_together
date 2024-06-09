@@ -1,8 +1,9 @@
+import 'package:learn_dart_together/04_inheritance/constants/constants.dart';
 import 'package:learn_dart_together/04_inheritance/hero.dart';
 import 'package:learn_dart_together/04_inheritance/slime.dart';
 
 class PoisonSlime extends Slime {
-  int _poisonAttackCount = 5;
+  int _poisonAttackCount = slimeMaxPoisonAttackCount;
 
   PoisonSlime(super.suffix);
 
@@ -19,9 +20,8 @@ class PoisonSlime extends Slime {
       print('독 데미지 공격 모두 소모.');
       return;
     }
-    print('추가로, 독 포자를 살포했다!');
+    print('추가로, 독 포자를 살포했다! ${hero.hp ~/ 5}포인트의 추가 데미지');
     hero.hp -= hero.hp ~/ 5;
-    print('${hero.hp ~/ 5}포인트의 추가 데미지 입힘');
     _poisonAttackCount--;
   }
 }

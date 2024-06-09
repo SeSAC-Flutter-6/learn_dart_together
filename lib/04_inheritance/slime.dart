@@ -14,7 +14,8 @@ class Slime {
       return;
     }
     print('슬라임$suffix이/가 공격했다.');
-    print('$slimeAttackDamage 데미지 입힘');
-    hero.hp = max(hero.hp - slimeAttackDamage, 0);
+    int actualAttackDamage = min(hero.hp, slimeAttackDamage);
+    print('$actualAttackDamage 데미지 입힘');
+    hero.hp -= actualAttackDamage;
   }
 }
