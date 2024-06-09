@@ -33,13 +33,13 @@ void main() {
     poisonSlime.attack(hero);
     poisonSlime.attack(hero);
     poisonSlime.attack(hero);
-    expect(poisonSlime.attackCount, 1);
     expect(poisonSlime.plusDamage > 0, true);
+    expect(poisonSlime.attackCount, 1);
     poisonSlime.attack(hero);
-    expect(poisonSlime.attackCount, 0); // 카운트 -1
-    expect(poisonSlime.plusDamage > 0, true); // 데미지 추가
+    expect(poisonSlime.plusDamage > 0, true); // 추가데미지
+    expect(poisonSlime.attackCount, 0); // 카운트 -1. 다음번 추가 공격 없음
     poisonSlime.attack(hero);
-    expect(poisonSlime.attackCount, 0);
     expect(poisonSlime.plusDamage, 0);
+    expect(poisonSlime.attackCount, 0);
   });
 }
