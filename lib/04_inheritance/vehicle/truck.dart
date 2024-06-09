@@ -18,8 +18,3 @@ class Truck extends Vehicle {
     print('짐 내리기');
   }
 }
-
-void main() {
-  var a = Truck(maker: "", model: "", year: 123, capacity: 123);
-  a.move();
-}

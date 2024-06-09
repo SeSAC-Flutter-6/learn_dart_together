@@ -1,12 +1,12 @@
 import 'package:learn_dart_together/04_inheritance/animal/animal.dart';
 
 class Cat extends Animal {
-  String color;
+  String hairLength; // short or long
 
   Cat({
     required super.sound,
     required super.type,
-    required this.color,
+    required this.hairLength,
   });
 
   @override

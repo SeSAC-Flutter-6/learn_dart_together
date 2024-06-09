@@ -23,7 +23,7 @@ class Bird {
 }
 
 class Cat {
-  + color: String
+  + hairLength: String
 
   + talk()
   + purr()

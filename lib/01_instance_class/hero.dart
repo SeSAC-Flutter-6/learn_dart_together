@@ -3,16 +3,16 @@ import 'slime.dart';
 
 class Hero {
   String name;
-  double _hp;
+  int _hp;
 
-  double get hp => _hp;
-  set hp(double value) {
+  int get hp => _hp;
+  set hp(int value) {
     _hp = max(0, value);
   }
 
   Hero({
     required this.name,
-    required double hp,
+    required int hp,
   }) : _hp = hp {
     this.hp = hp;
   }
