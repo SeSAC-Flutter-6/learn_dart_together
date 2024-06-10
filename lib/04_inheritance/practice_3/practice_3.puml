@@ -1,0 +1,24 @@
+@startuml
+
+scale 2
+
+class Slime {
+    + final String suffix
+    + int hp
+    + void attack(Hero hero)
+}
+
+class PoisonSlime extends Slime{
+    + int poisonAttackCount
+    + void attack(Hero hero) @override 
+}
+
+class Hero{
+    + final String name
+    + int hp
+}
+
+PoisonSlime -right-> Hero
+Slime -right-> Hero
+
+@enduml

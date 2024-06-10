@@ -1,0 +1,26 @@
+@startuml
+
+scale 1
+
+class Vehicle {
+    + String maker
+    + String model
+    + int year
+}
+
+class Car extends Vehicle{
+    + int wheel
+    + String engine
+    + void accelerate()
+    + void stop()
+}
+class Truck extends Car{
+    + void load()
+    + void unload()
+}
+
+class Motorcycle extends Car{
+    + void boost()
+}
+
+@enduml

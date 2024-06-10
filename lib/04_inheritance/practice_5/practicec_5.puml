@@ -1,0 +1,17 @@
+@startuml
+
+class Rectangle {
+  + double width
+  + double height
+  + Point topLeftPointer
+  - double get area
+  - double get perimeter
+}
+
+class Point {
+  + double x
+  + double y
+  + Point(double x, double y)
+}
+
+Rectangle *-- Point : topLeftPointer

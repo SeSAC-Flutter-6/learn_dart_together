@@ -1,0 +1,17 @@
+@startuml name
+
+scale 2
+
+class Hero{ 
+    {static} int money
+    +int a
+    +int b
+    +int c
+}
+
+class SuperHero extends Hero{
+    +int d
+    +int e
+}
+
+@enduml
