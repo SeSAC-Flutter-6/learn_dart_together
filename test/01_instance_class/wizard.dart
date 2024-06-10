@@ -1,24 +1,49 @@
 import 'package:learn_dart_together/01_instance_class/cleric.dart';
 import 'package:learn_dart_together/01_instance_class/slime.dart';
+import 'package:learn_dart_together/01_instance_class/wand.dart';
 import 'package:learn_dart_together/01_instance_class/wizard.dart';
+import 'package:test/expect.dart';
 import 'package:test/test.dart';
 
 
 void main() {
-  test('Wizard hp가 음수가 되었을 때 테스트',() {
-    //준비(given)
-    final wizard = Wizard(name: '마법사', mp: 100, hp: -1);
+  group('Wizard 테스트', () {
+    test('Wizard 생성시 이름이 null 이면 예외 발생', () {
+      expect(Wizard(name: '', mp: 100, hp: -1), throwsException);
+      expect(Wizard(name: '론니', mp: 100, hp: -1), throwsException);
+      expect(Wizard(name: '위자드', mp: 100, hp: 100), returnsNormally);
+    });
 
-    expect(wizard.hp == 0, true);
+    test('Wizard 생성시 mp가 0일 경우 예외 발생', () {
+      expect(Wizard(name: '위자드', mp: -1, hp: 100), throwsException);
+      expect(Wizard(name: '위자드', mp: 0, hp: 100), returnsNormally);
+      expect(Wizard(name: '위자드', mp: 1, hp: 100), returnsNormally);
+    });
 
-    //실행(when)
+    test('wand 생성시 이름 관련 예외 발생', () {
+      expect(Wand(name: '지팡이', power: 100), returnsNormally);
+      expect(Wand(name: '팡이', power: 100), throwsException);
+      expect(Wand(name: '', power: 100), throwsException);
+      expect(Wand(name: '지팡이', power: 0), throwsException);
+      expect(Wand(name: '지팡이', power: 101), throwsException);
+      expect(Wand(name: '지팡이', power: 99), returnsNormally);
 
+    });
 
-
-
-    //검증(then)
-        
 
   });
 }
+
+
+
+
+
+
+
+
+
+        
+
+
+
 

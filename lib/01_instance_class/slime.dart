@@ -2,7 +2,8 @@
 import 'package:learn_dart_together/01_instance_class/hero.dart';
 
 class Slime {
-  final int level = 10;
+  //static으로 공유자원으로 선언
+  static final int level = 10;
 
   //멤버변수
   int hp;
@@ -51,7 +52,7 @@ class PoisonSlime extends Slime {
       //독 공격을 수행하면 횟수가 줄어든다
       poisonAttackCount -= 1;
       //독 공격을 수행하면 1/5로 hp가 줄어들고 변수에 담는다
-      int poisonDamageHp = (hero.hp * 0.2.toDouble()).toInt();
+      int poisonDamageHp = (hero.hp * 0.2.toInt());
       //독 공격을 받고 남은 hp를 변수에 담는다
       int remainHp = hero.hp - poisonDamageHp;
 
