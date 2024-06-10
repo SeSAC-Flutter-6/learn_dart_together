@@ -19,10 +19,13 @@ void main() {
       }
       expect(poisonSlime.poisonAttackCount, equals(0));
     });
-    test('독 공격을 할 때, 용사의 HP의 1/5 만큼 데미지를 준다', () {
-      int initialHp = hero.hp;
-      poisonSlime.attack(hero);
-      expect(hero.hp, equals(initialHp - initialHp ~/ 5));
+    test('독 공격을 할 때, 항상 용사의 현재 HP의 1/5 만큼 데미지를 준다', () {
+      int initialHp;
+      for (var i = 0; i < poisonMaxAttackCount; i++) {
+        initialHp = hero.hp;
+        poisonSlime.attack(hero);
+        expect(hero.hp, equals(initialHp - initialHp ~/ 5));
+      }
     });
     test('독 공격 횟수가 0이면 독 공격이 아닌 일반공격을 한다', () {
       poisonSlime.poisonAttackCount = 0;
@@ -30,7 +33,7 @@ void main() {
       poisonSlime.attack(hero);
       expect(hero.hp, equals(initialHp - 10));
     });
-    test('독 공격 횟수는 항상 0이상이다', () {
+    test('독 공격 횟수는 항상 0 이상이다', () {
       poisonSlime.poisonAttackCount = 0;
       poisonSlime.attack(hero);
       expect(poisonSlime.poisonAttackCount, greaterThanOrEqualTo(0));

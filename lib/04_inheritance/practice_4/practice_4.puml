@@ -16,6 +16,7 @@ class Dog extends Animal {
 class Cat extends Animal {
     + bool hasSpots
     + String color
+    + void makeSound() @override
     + void scratch()
 }
 
@@ -23,6 +24,7 @@ class Bird extends Animal {
     + bool hasSpots
     + String beakColor
     + String color
+    + void makeSound() @override
     + void fly()
 }
 
