@@ -46,7 +46,9 @@ class Hero {
     // 오씨면 +10
   }
 
-  void run() {}
+  void run() {
+    print('1번 run');
+  }
 
   void sleep() {
     hp = 100;

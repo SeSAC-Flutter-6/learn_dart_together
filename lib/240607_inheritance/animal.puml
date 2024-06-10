@@ -1,0 +1,21 @@
+@startuml
+
+class Animal {
+ +type
+ +sound
+ +move()
+}
+class Dog extends Animal{
+ +move()
+ +bark()
+}
+class Cat extends Animal{
+ +move()
+ +meow()
+}
+class Bird extends Animal{
+ +move()
+ +sing()
+}
+
+@enduml

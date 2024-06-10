@@ -22,14 +22,11 @@ void main() {
 }
 
 class Person {
-
   // Person() {
   //
   // }
 
-  Person({int? age}) {
-
-  }
+  Person({int? age}) {}
 }
 
 int fibonacci(int n) {

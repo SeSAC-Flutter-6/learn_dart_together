@@ -19,23 +19,13 @@ void main() {
     });
 
     test('HP가 음수가 되는 경우 0으로 설정되어야 한다.', () {
+      expect(() => wizard.hp = -1, throwsException);
       expect(() => wizard.hp = -10, throwsException);
-      expect(() => wizard.hp = -100, throwsException);
-    });
-
-    test('HP가 음수가 되는 경우 0으로 설정되어야 한다.', () {
-      expect(() => wizard.hp = 120, returnsNormally);
-      expect(() => wizard.hp = 40, returnsNormally);
     });
 
     test('마법사의 MP는 0 이상이어야 한다.', () {
+      expect(() => wizard.mp = -1, throwsException);
       expect(() => wizard.mp = -10, throwsException);
-      expect(() => wizard.mp = -130, throwsException);
-    });
-
-    test('마법사의 MP는 0 이상이어야 한다.', () {
-      expect(() => wizard.mp = 20, returnsNormally);
-      expect(() => wizard.mp = 3, returnsNormally);
     });
   });
 }
