@@ -1,7 +1,5 @@
-import 'dart:math';
-
-import 'package:learn_dart_together/01_instance_class/wand.dart';
-import 'package:learn_dart_together/01_instance_class/wizard.dart';
+import 'package:learn_dart_together/03_encapsulation/wand.dart';
+import 'package:learn_dart_together/03_encapsulation/wizard.dart';
 import 'package:test/expect.dart';
 import 'package:test/scaffolding.dart';
 

@@ -1,4 +1,4 @@
-import 'package:learn_dart_together/01_instance_class/person.dart';
+import 'package:learn_dart_together/03_encapsulation/person.dart';
 import 'package:test/expect.dart';
 import 'package:test/scaffolding.dart';
 
