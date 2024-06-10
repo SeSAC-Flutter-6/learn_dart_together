@@ -5,20 +5,16 @@ enum RectanglePointer {
 }
 
 class Rectangle {
-  int width;
-  int height;
+  double width;
+  double height;
 
-  int get area {
-   return width * height;
-  }
+  double get area => width * height;
 
-  int get round {
-    return (width + height) * 2;
-  }
+  double get round => (width + height) * 2;
 
   Rectangle(this.width, this.height);
 
-  // Rectangle의 각 모서리 4군데의 좌표 값을 pointfh qksghksgksms gkatn
+  // Rectangle의 각 모서리 4군데의 좌표 값을 point type으로 반환
   Point getPoint({required RectanglePointer pointer}) {
     switch (pointer) {
       case RectanglePointer.topLeft:

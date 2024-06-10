@@ -2,7 +2,10 @@ class Animal {
   String type;
   String sound;
 
-  Animal(this.type, this.sound);
+  Animal({
+    required this.type,
+    required this.sound
+  });
 
   void say() {
     print(sound);

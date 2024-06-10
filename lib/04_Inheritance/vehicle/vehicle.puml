@@ -1,0 +1,25 @@
+@startuml
+class Vehicle {
+  + maker: VehicleMaker
+  + model: String
+  + year: int
+  + driveSound(): Void
+}
+
+class Car {
+
+}
+
+class Motorcycle {
+
+}
+
+class Truck {
+
+}
+
+Vehicle <|-- Car
+Vehicle <|-- Motorcycle
+Vehicle <|-- Truck
+
+@enduml

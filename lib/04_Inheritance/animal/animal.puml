@@ -1,0 +1,19 @@
+@startuml
+class Animal {
+  + type: String
+  + sound: String
+  + say(): void
+}
+
+class Dog {
+  + sit(): void
+}
+
+class Cat {
+  + hairType: HairType
+  + haack(): void
+}
+
+Dog --|> Animal
+Cat --|> Animal
+@enduml

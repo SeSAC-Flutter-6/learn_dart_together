@@ -6,4 +6,9 @@ class Car extends Vehicle {
     required super.model,
     required super.year
   });
+
+  @override
+  void driveSound() {
+    print('차 굴러가는 소리');
+  }
 }

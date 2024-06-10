@@ -9,6 +9,10 @@ class Vehicle {
     required this.model,
     required this.year
   });
+
+  void driveSound() {
+    print("탈 것 굴러가는 소리");
+  }
 }
 
 class VehicleMaker {

@@ -6,4 +6,9 @@ class Motorcycle extends Vehicle {
     required super.model,
     required super.year
   });
+
+  @override
+  void driveSound() {
+    print('오토바이 굴러가는 소리');
+  }
 }
