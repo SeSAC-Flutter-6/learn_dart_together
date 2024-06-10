@@ -10,6 +10,12 @@ class Cat extends Animal {
     this.hasSpots,
     this.color,
   });
+
+  @override
+  void makeSound() {
+    print('$this.sound 야옹한다');
+  }
+
   void scratch() {
     print('할퀴기!');
   }

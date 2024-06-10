@@ -13,6 +13,11 @@ class Bird extends Animal {
     this.color,
   });
 
+  @override
+  void makeSound() {
+    print('$this.sound 지저귄다');
+  }
+
   void fly() {
     print('날다');
   }
