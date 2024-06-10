@@ -1,4 +1,7 @@
 @startuml
+scale 2
+skinparam classAttributeIconSize 0
+
 class Vehicle {
 + String maker
 + String model
