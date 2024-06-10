@@ -5,7 +5,7 @@ class Car extends Vehicle {
   Car(super.maker, super.model, super.year, this.warranty);
 
   void move() {
-    super.sound;
+    super.sound();
     print('차가 시동이 걸린 후 출발한다');
   }
 
@@ -13,9 +13,3 @@ class Car extends Vehicle {
     print('100마력 이상으로 달립니다');
   }
 }
-
-//  @override
-//   void move(){
-//     super.move();
-//     print("차가 지나갑니다");
-//   }
