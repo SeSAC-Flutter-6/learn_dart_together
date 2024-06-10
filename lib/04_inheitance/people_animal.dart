@@ -39,22 +39,46 @@ class Dog extends Animal {
 
 class Cat extends Animal {
   String flexibility; //유연성
+  String claws; //발톱
 
   Cat(
     super.type,
     super.sound,
     this.flexibility,
+    this.claws,
   );
 
   void meow() {
     print('야옹');
   }
 
-  void claw() {
-    print('발톱 긁기를 시전했다');
+  void clawsHidden() {
+    print('발톱 숨기기를 시전했다');
   }
 
   void grooming() {
     print('혀로 몸을 씻는다');
+  }
+}
+
+class Bird extends Animal {
+  String fly; //날개
+  String beak; //부리
+  String claws; //발톱
+
+  Bird(
+    super.type,
+    super.sound,
+    this.fly,
+    this.beak,
+    this.claws,
+  );
+
+  void attackBeak() {
+    print('부리로 공격한다');
+  }
+
+  void clawsGrab() {
+    print('나뭇가지를 잡고 서있다');
   }
 }

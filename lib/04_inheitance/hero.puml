@@ -1,5 +1,7 @@
 @startuml
 scale 2
+skinparam classAttributeIconSize 0
+
 class Hero {
  + String name
  + int hp
