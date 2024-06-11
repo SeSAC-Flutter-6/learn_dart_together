@@ -36,6 +36,14 @@ class Hero {
 
     _name = value;
   }
+//데미지를 받으면 수정되는 setter
+  set hp (int value) {
+
+    if(value <= 0) {
+      throw Exception('캐릭터가 사망했습니다.');
+    }
+    _hp = value;
+  }
 
   //메서드
   //공격하기
@@ -93,13 +101,6 @@ class Sword {
     required this.name,
     required this.damage,
   });
-}
-
-//회복 Inn
-class Inn {
-  void checkInn(Hero hero) {
-    hero._hp = 100;
-  }
 }
 
 

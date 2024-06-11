@@ -1,0 +1,33 @@
+@startuml
+scale 2
+skinparam classAttributeIconSize 0
+
+class Book {
++ String title
++ String author
++ String genre
++ String bookId
+
+void openBook ()
+void checkRefund()
+}
+
+class Fiction extends Book {
++ String subgenre
++ String creativity
++ String imagination
+
++ void openBook (@override)
++ void checkRefund (@override))
+}
+
+class NonFiction extends Book {
++ String subject
++ String reality
++ String infoTransfer
++ String eduValue
+
++ void openBook (@override)
++ void checkRefund (@override))
+}
+@enduml

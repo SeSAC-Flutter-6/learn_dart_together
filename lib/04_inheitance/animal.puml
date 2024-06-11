@@ -1,0 +1,38 @@
+@startuml
+scale 2
+skinparam classAttributeIconSize 0
+
+class Animal {
+ + String type
+ + String sound
+}
+
+class Dog extends Animal {
+ + String smell
+ + String loyalty
+ + void barks()
+ + void playInstinct()
+ + void learning()
+}
+
+class Cat extends Animal {
+ + String flexibility
+ + void meow()
+ + void clawsHidden()
+ + void grooming()
+}
+
+class Bird extends Animal {
+ + String fly
+ + String beak
+ + String claws
+ + void attackBeak()
+ + void clawsGrab()
+}
+
+
+
+
+
+
+@enduml

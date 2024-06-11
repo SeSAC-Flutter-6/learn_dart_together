@@ -1,0 +1,40 @@
+@startuml
+scale 2
+skinparam classAttributeIconSize 0
+
+class Vehicle {
++ String maker
++ String model
++ int year
+
++ void horn() {
+
+}
+
+class Car extends Vehicle {
++ void horn() @override
++ int numberOfSeats
+
+
+}
+
+class Truck extends Vehicle {
++ double loadCapatiry
++ bool hasEightTires
+
+
++ void horn() @override
++ void displayTireInfo()
+
+}
+
+class Motorcycle extends Vehicle {
++ bool hasSideCar
+
++ void horn() @override
++ void handAccel()
++ void helmet()
+
+}
+
+@enduml

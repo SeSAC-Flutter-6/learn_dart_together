@@ -1,4 +1,3 @@
-
 import 'package:learn_dart_together/01_instance_class/cleric.dart';
 import 'package:learn_dart_together/01_instance_class/hero.dart';
 import 'package:learn_dart_together/01_instance_class/slime.dart';
@@ -20,39 +19,52 @@ void main(List<String> arguments) {
 
   // D. 이 클래스는 Cleric() 과 같이 이름을 지정하지 않는 경우에는 인스턴스화 할 수 없다고 한다.
   //    (이름이 없는 성직자는 존재 할 수 없음)
-    ClericD clericD = ClericD('클레릭D');
-    print('클레릭D의 정보: name: ${clericD.name}');
+  ClericD clericD = ClericD('클레릭D');
+  print('클레릭D의 정보: name: ${clericD.name}');
 
   // C. 이 클래스는 Cleric(“아서스") 와 같이 이름만을 지정하여 인스턴스화 할 수 있다.
   //    이 때, HP 와 MP 는 최대 HP와 최대 MP로 초기화 된다
-    ClericC clericC = ClericC('클레릭C', hp: Cleric.maxHp, mp: Cleric.maxMp,);
-    print('클레릭C의 정보: name: ${clericC.name}, hp: ${clericC.hp}, mp: ${clericC.mp}');
+  ClericC clericC = ClericC(
+    '클레릭C',
+    hp: Cleric.maxHp,
+    mp: Cleric.maxMp,
+  );
+  print(
+      '클레릭C의 정보: name: ${clericC.name}, hp: ${clericC.hp}, mp: ${clericC.mp}');
 
   // B. 이 클래스는 Cleric(“아서스", hp: 35) 와 같이, 이름과 HP만으로 지정하여 인스턴스화 할 수 있다.
   //    이 때, MP는 최대 MP와 같은 값이 초기화 된다
-    ClericB clericB = ClericB('클레릭B', 50, mp: Cleric.maxMp);
-    print('클레릭B의 정보: name: ${clericB.name}, hp: ${clericB.hp}, mp: ${clericB.mp}');
+  ClericB clericB = ClericB('클레릭B', 50, mp: Cleric.maxMp);
+  print(
+      '클레릭B의 정보: name: ${clericB.name}, hp: ${clericB.hp}, mp: ${clericB.mp}');
 
-    // A. 이 클래스는 Cleric(“아서스", hp: 40, mp: 5) 와 같이, 이름, HP, MP 를 지정하여 인스턴스화 할 수 있다
-    ClericA clericA = ClericA('클레릭A', 50, 10);
-    print('클레릭A의 정보: name: ${clericA.name}, hp: ${clericA.hp}, mp: ${clericA.mp}');
+  // A. 이 클래스는 Cleric(“아서스", hp: 40, mp: 5) 와 같이, 이름, HP, MP 를 지정하여 인스턴스화 할 수 있다
+  ClericA clericA = ClericA('클레릭A', 50, 10);
+  print(
+      '클레릭A의 정보: name: ${clericA.name}, hp: ${clericA.hp}, mp: ${clericA.mp}');
 
-    //생성자는 가능한 한 중복되는 코드가 없도록 작성한다
+  //생성자는 가능한 한 중복되는 코드가 없도록 작성한다
 
-    final hero2 = Hero(name: '홍길동', hp: 100);
-    print('영웅의 이름은 ${hero2.name = 'aa'}');
+  final hero2 = Hero(name: '홍길동', hp: 100);
+  print('영웅의 이름은 ${hero2.name = 'aa'}');
 
-    // 240605
-    // 연습문제1
-    Wand wand = Wand(name: '매직스태프', power: 1);
-    Wizard wizard = Wizard(name: '매지컬', hp: 100, mp: 200,);
+  // 240605
+  // 연습문제1
+  Wand wand = Wand(name: '매직스태프', power: 10);
+  Wizard wizard = Wizard(
+    name: '매지컬',
+    hp: 100,
+    mp: 100,
+  );
 
+  print(
+      '마법사의 이름은 ${wizard.name}, hp는 ${wizard.hp}이고 지팡이의 이름은 ${wand.name}, 마력은 ${wand.power} 입니다',);
 
-
-    print('마법사의 이름은 ${wizard.name}, hp는 ${wizard.hp}이고 지팡이의 이름은 ${wand.name}, 마력은 ${wand.power} 입니다');
-
-
-
-
+  PoisonSlime poisonSlime = PoisonSlime(10, '독 슬라임');
+  print('독슬라임의 이름은 ${poisonSlime.suffix}, 에너지는 ${poisonSlime.hp} 입니다');
+  print({hero.name, hero.hp});
+  poisonSlime.attack(hero);
+  // print('${hero.name}은/는 독 데미지를 받았다 남은 hp는 ${poisonSlime}');
+  // print('독슬라임의 남은 독 카운트 : ${poisonSlime.poisonAttackCount}');
 
 }

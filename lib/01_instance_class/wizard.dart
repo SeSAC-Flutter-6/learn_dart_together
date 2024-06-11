@@ -56,7 +56,6 @@ class Wizard {
   set hp(int value) {
     if (value < 0) {
       _hp = 0;
-      throw Exception('hp는 마이너스가 되지 못합니다. 0으로 돌아갑니다.');
     }
     _hp = value;
   }
@@ -68,7 +67,7 @@ class Wizard {
     }
     _wand = value;
   }
-
+//캐릭터 사망코드
   void die() {
     print('$name이 사망했습니다.');
   }
