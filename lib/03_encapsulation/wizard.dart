@@ -33,8 +33,9 @@ class Wizard {
   set hp(int value) {
     if (value < 0) {
       _hp = 0;
+    } else {
+      _hp = value;
     }
-    _hp = value;
   }
 
   set wand(Wand? value) {

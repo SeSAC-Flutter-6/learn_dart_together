@@ -1,0 +1,19 @@
+@startuml
+class Animal{
++String type
++String sound
+}
+
+class Dog extends Animal{
++void dig()
+}
+
+class Cat extends Animal{
++void scratch()
+}
+
+class Bird extends Animal{
++void fly()
+}
+
+@enduml

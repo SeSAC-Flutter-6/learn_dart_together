@@ -1,0 +1,16 @@
+@startuml
+class Point{
++int x
++int y
+}
+
+class Rectangle{
++int width
++int height
++Point topLeftPointer
++int area
++int perimeter
+}
+
+Rectangle *-- Point : contains
+@enduml
