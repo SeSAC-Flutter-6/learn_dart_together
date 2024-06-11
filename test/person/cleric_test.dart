@@ -1,4 +1,4 @@
-import 'package:learn_dart_together/cleric.dart';
+import 'package:learn_dart_together/01_instance_class/cleric.dart';
 import 'package:test/test.dart';
 
 void main() {

@@ -1,4 +1,6 @@
-import 'package:learn_dart_together/wand.dart';
+import 'dart:math';
+
+import 'package:learn_dart_together/03_encapsulation/wand.dart';
 
 class Wizard {
   String _name;
@@ -40,7 +42,7 @@ class Wizard {
 
   Wizard({required name, hp = 50, mp = 10, wand})
       : _name = name,
-        _hp = hp,
+        _hp = max(hp, 0),
         _mp = mp,
         _wand = wand {
     if (name.length < minNameLenth) {

@@ -25,6 +25,8 @@ class Wand {
   }
 
   Wand({required String name, required double power})
+      // asser를 쓰면 굳이 아래에서 throw를 사용할 필요가 없다.
+      // debug에서만 가능, release 모드에선 작동 안함.
       : _name = name,
         _power = power {
     if (name.length < minNameLenth) {
@@ -34,5 +36,9 @@ class Wand {
     if (power < minPower || power > maxPower) {
       throw Exception("지팡이의 마력은 $minPower 이상 $maxPower 이하여야 합니다.");
     }
+
+    // this.name = name; 을 사용하게 되면 생서자 block에서도 setter가 호출이 된다.
+    // -> 위 name check처럼 중복되는 코드를 줄일 수 있다.
+
   }
 }

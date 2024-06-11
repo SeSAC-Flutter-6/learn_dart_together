@@ -1,0 +1,15 @@
+@startuml
+scale 2
+
+class Slime {
+    + String suffix
+    + int hp
+
+    + void attack(Hero hero)
+}
+
+class PoisonSlime extends Slime {
+    + int attackCount
+}
+
+@enduml

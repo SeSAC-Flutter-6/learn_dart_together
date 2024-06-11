@@ -1,0 +1,16 @@
+@startuml
+scale 2
+
+class Hero {
+    + String name
+    + int hp
+
+    + void attack(Slime slime)
+    + void run()
+}
+
+class SuperHero extends Hero {
+    + bool isFlying
+}
+
+@enduml

@@ -1,0 +1,30 @@
+@startuml
+scale 2
+
+class Vehicle {
+    + String model
+    + String marker
+    + int year
+
+    + void sound()
+}
+
+class Car extends Vehicle {
+    + bool is4WD
+
+    + void sound()
+}
+
+class truck extends Car {
+    + bool isStick
+
+    + void sound()
+}
+
+class Motorcycle extends Vehicle {
+    + String safetyEquipment
+
+    + void sound()
+}
+
+@enduml

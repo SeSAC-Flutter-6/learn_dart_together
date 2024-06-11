@@ -1,4 +1,4 @@
-import 'package:learn_dart_together/wand.dart';
+import 'package:learn_dart_together/03_encapsulation/wand.dart';
 import 'package:test/test.dart';
 
 void main() {

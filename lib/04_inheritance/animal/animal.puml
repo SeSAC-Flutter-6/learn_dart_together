@@ -1,0 +1,36 @@
+@startuml
+scale 2
+
+abstract class Animal {
+    + MoveType type
+    + String sound
+
+    + void makeSound()
+}
+
+enum MoveType {
+    + walking,
+    + flying,
+}
+
+class Dog extends Animal {
+    + String ordered
+
+    + void listenOrder()
+    + void makeSound()
+}
+
+class Cat extends Animal {
+    + bool isNocturnal
+
+    + void activePattern()
+    + void makeSound()
+}
+
+class Bird extends Animal {
+    + bool isNocturnal
+
+    + void showWingSpan()
+    + void makeSound()
+}
+@enduml
