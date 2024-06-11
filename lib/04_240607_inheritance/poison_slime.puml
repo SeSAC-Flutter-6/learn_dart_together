@@ -1,0 +1,26 @@
+@startuml
+
+class Hero {
+  - String _name
+  - int hp
+  + String name
+  + Hero({name: String, hp: int})
+  + attack(slime: Slime): void
+  + run(): void
+  + sleep(): void
+}
+
+class Slime {
+  - int hp
+  - final String suffix
+  + attack(hero: Hero): void
+}
+
+class PoisonSlime extends Slime {
+  - int poisonAttack
+  + attack(hero: Hero): void
+}
+
+
+
+@enduml

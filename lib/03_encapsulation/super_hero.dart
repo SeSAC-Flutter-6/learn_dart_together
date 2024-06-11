@@ -1,4 +1,3 @@
-import 'dart:html_common';
 import 'package:learn_dart_together/01_instance_class/hero.dart';
 
 class SuperHero extends Hero {

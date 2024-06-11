@@ -1,4 +1,4 @@
-import 'package:learn_dart_together/240607_inheritance/vehicle.dart';
+import 'package:learn_dart_together/04_240607_inheritance/vehicle.dart';
 
 class Motorcycle extends Vehicle {
   Motorcycle(super.maker, super.model, super.year);
