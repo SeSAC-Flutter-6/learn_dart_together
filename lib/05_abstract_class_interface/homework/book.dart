@@ -9,6 +9,7 @@ class Book extends TangibleAsset {
     required super.price,
     required super.color,
     required this.isbn,
+    required super.isRare,
   });
 
   @override
@@ -17,7 +18,13 @@ class Book extends TangibleAsset {
 
 void main() {
   Book book = Book(
-      weight: 10.5, name: '생존플러터', price: 33000, color: 'blue', isbn: '저작권');
+    weight: 10.5,
+    name: '생존플러터',
+    price: 33000,
+    color: 'blue',
+    isbn: '저작권',
+    isRare: true,
+  );
   book.weightInfo();
   book.checkAssetType();
 }
