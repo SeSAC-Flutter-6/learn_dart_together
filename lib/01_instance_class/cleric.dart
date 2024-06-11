@@ -19,9 +19,8 @@ class Cleric {
   String name;
   int hp;
   int mp;
-  final int maxHp = 50;
-  final int maxMp = 10;
-
+  static const int maxHp = 50;
+  static const int maxMp = 10;
 
   Cleric(
     this.name, {
@@ -38,7 +37,6 @@ class Cleric {
           hp: maxHp ~/ 2,
           mp: maxMp ~/ 2,
         );
-
 
   void selfAid() {
     if (hp == maxHp) {

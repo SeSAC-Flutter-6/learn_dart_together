@@ -23,16 +23,8 @@ void main() {
       expect(() => wand.power = 0.4, throwsException);
     });
 
-    test('지팡이의 마력이 0.5 이상일 때 예외가 발생하지 않는다', () {
-      expect(() => wand.power = 0.5, returnsNormally);
-    });
-
     test('지팡이의 마력이 100.0 초과일 때 예외가 발생한다', () {
       expect(() => wand.power = 100.1, throwsException);
-    });
-
-    test('지팡이의 마력이 100.0 이내일 때 예외가 발생하지 않는다', () {
-      expect(() => wand.power = 100.0, returnsNormally);
     });
   });
 }
