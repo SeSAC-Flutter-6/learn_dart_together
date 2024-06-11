@@ -1,0 +1,14 @@
+@startuml
+scale 2
+
+abstract interface class Asset {}
+
+
+abstract class TangibleAsset implements Asset {}
+
+
+class Book extends TangibleAsset {}
+
+class Computer extends TangibleAsset {}
+
+@enduml

@@ -11,7 +11,7 @@ class Vehicle {
 
 }
 
-class Car extends Vehicle {
+class Car extends  Vehicle {
 + void horn() @override
 + int numberOfSeats
 
