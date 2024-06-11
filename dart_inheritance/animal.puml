@@ -7,8 +7,7 @@ class Animal {
     -String sound
 
     +Animal(String type, String sound)
-    +String getType()
-    +String getSound()
+
     +void setType(String type)
     +void setSound(String sound)
 }

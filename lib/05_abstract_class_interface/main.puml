@@ -1,0 +1,26 @@
+@startuml
+
+interface Attackable {
+    +{abstract} void attack(); //인터페이스 안에는 다 미 정의 된
+}
+
+interface Runnable {
+    +{abstract} void run()
+}
+
+class Dog implements Runnable {
+}
+
+abstract class Character implements Attackable, Runnable {
+    +int hp;
+    +String name;
+}
+
+abstract class Monster extends Character {
+    +void run()
+}
+
+class Goblin extends Monster {
+}
+
+@enduml

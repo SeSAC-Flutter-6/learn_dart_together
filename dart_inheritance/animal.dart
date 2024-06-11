@@ -4,9 +4,9 @@ class Animal {
 
   Animal(this._type, this._sound);
 
-  String get type => _type;
-
-  String get sound => _sound;
+  // String get type => _type;
+  //
+  // String get sound => _sound;
 
   void set type(String type) {
     _type = type;
