@@ -7,7 +7,7 @@ import 'package:test/test.dart';
 void main() {
   group('PoisonSlime test', () {
     test('1: 독슬라임은 기본슬라임의 hp의 두배이다', () {
-      Slime slime = Slime('nomal');
+      Slime slime = Slime('normal');
       PoisonSlime poisonSlime = PoisonSlime('poison');
       expect(poisonSlime.hp, slime.hp * 2);
     });
