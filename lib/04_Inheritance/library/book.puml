@@ -1,0 +1,18 @@
+@startuml
+class Book {
+  + title: String
+  + author: Set<String>
+  + genre: Genre
+}
+
+class Fiction {
+  + genres: Set<Genre>
+}
+
+class NonFiction {
+  + subject: String
+}
+
+Book <|-- Fiction
+Book <|-- NonFiction
+@enduml

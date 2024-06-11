@@ -1,4 +1,4 @@
-import 'package:learn_dart_together/01_instance_class/person.dart';
+import 'package:learn_dart_together/03_encapsulation/person.dart';
 
 void main() {
   // Q1. 다음 정보를 저장하기 좋은 컬렉션을 List, Set, Map 중 고르시오.

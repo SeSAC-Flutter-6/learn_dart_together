@@ -1,0 +1,18 @@
+@startuml
+
+class Point {
+  + x: double
+  + y: double
+}
+
+class Rectangle {
+  + width: double
+  + height: double
+  + area: double
+  + round: double
+  + getPoint(): Point
+}
+
+Rectangle --> Point
+
+@enduml
