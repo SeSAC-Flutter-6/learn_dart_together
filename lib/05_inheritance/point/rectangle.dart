@@ -9,8 +9,9 @@ class Rectangle {
 
   int get perimeter => 2 * (width + height);
 
-  Rectangle(
-      {required this.width,
-      required this.height,
-      required this.topLeftPointer});
+  Rectangle({
+    required this.width,
+    required this.height,
+    required this.topLeftPointer,
+  });
 }
