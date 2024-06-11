@@ -1,0 +1,15 @@
+@startuml slime
+class Slime {
+  + hp: int 
+  + suffix : String
+  + attack(hero: Hero): void
+}
+
+class PoisonSlime {
+  + hp: int  
+  - possiblePoisonAttackCount: int
+  + attack(hero: Hero): void
+}
+
+Slime <|-- PoisonSlime
+@enduml
