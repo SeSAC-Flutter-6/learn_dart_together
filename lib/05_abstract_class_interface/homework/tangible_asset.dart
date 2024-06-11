@@ -2,15 +2,14 @@ import 'package:learn_dart_together/05_abstract_class_interface/homework/asset.d
 import 'package:learn_dart_together/05_abstract_class_interface/homework/thing.dart';
 
 abstract class TangibleAsset extends Asset implements Thing {
-  String name;
-  int price;
   String color;
 
   TangibleAsset({
     required this.weight,
-    required this.name,
-    required this.price,
+    required super.name,
+    required super.price,
     required this.color,
+    required super.isRare,
   });
 
   void uniqueOptions();
