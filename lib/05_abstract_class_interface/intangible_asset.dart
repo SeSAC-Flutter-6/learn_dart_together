@@ -4,6 +4,7 @@ abstract class IntangibleAsset extends Asset {
   IntangibleAssetType type;
   IntangibleAsset({
     required super.name,
+    required super.price,
     required this.type,
   });
 }

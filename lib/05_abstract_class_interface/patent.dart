@@ -5,6 +5,7 @@ class Patent extends IntangibleAsset {
   DateTime expirationDate;
   Patent({
     required super.name,
+    required super.price,
     required this.expirationDate,
   }) : super(type: IntangibleAssetType.industrialProperty);
 }
