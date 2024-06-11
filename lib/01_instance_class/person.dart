@@ -9,8 +9,7 @@ class Person {
   int get birthYear => _birthYear;
 
   Person(String name, int birthYear)
-      : assert(birthYear <= nowYear,
-            throw Exception('태어난 년도가 올바르지 않습니다. 현재 년도보다 클 수 없어요. 미래에서 오셨나요?')),
+      : assert(birthYear <= nowYear),
         _name = name,
         _birthYear = birthYear;
 

@@ -1,0 +1,38 @@
+@startuml
+
+scale 1
+
+class Animal {
+    -String type
+    -String sound
+
+    +Animal(String type, String sound)
+    +String getType()
+    +String getSound()
+    +void setType(String type)
+    +void setSound(String sound)
+}
+
+class Dog extends Animal {
+    -bool isLongHair
+    +Dog(String type, String sound, bool isLongHair)
+    +bool get isLongHair()
+    +void set isLongHair(bool isLongHair)
+    +void run(int speed)
+}
+class Cat extends Animal {
+    -String eyeColor
+    +Cat(String type, String sound, String eyeColor)
+    +String get eyeColor()
+    +void set eyeColor(String eyeColor)
+    +void treeClimbing(int height)
+}
+class Bird extends Animal {
+    -bool aggression
+    +Bird(String type, String sound, String aggression)
+    +bool getAggression()
+    +void setAggression(bool aggression)
+    +void flying()
+}
+
+@enduml

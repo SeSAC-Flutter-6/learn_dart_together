@@ -1,0 +1,41 @@
+@startuml
+
+scale 1
+
+class Vehicle {
+    -String _maker
+    -String _model
+    -int _year
+
+    +Vehicle(String maker, String model, int year)
+    +String get maker()
+    +String get model()
+    +int get year()
+}
+
+class Truck extends Vehicle{
+    -String _type
+    -int _cargoCapacity
+
+    +Truck(String maker, String model, int year, String type, int cargoCapacity)
+    +String get type()
+    +int get cargoCapacity()
+}
+class Car extends Vehicle{
+    -String _type
+    -int _passengerCapacity
+
+    +Car(String maker, String model, int year, String type, int passengerCapacity)
+    +String get type()
+    +int get passengerCapacity()
+}
+class Motorcycle extends Vehicle{
+    -String _type
+    -int _maxSpeed
+
+    +Motorcycle(String maker, String model, int year, String type, int maxSpeed)
+    +String get type()
+    +int get maxSpeed()
+}
+
+@enduml
