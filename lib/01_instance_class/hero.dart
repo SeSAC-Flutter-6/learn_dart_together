@@ -1,37 +1,32 @@
+import 'dart:math';
 import 'slime.dart';
 
-// 함수 : input 이 동일할 때 output 항상 동일한 결과
-int f(int x) {
-  return x + 4;
-}
-
-void main() {
-  Hero hero = Hero(name: '홍길동', hp: 100);
-}
-
 class Hero {
-  // field, 멤버변수, 전역변수, properties
   String name;
-  int hp;
+  int _hp;
 
-  // 생성자
-  Hero({
-    required this.name,
-    required this.hp,
-  });
-
-  // 메서드
-  void attack(Slime slime) {
-    // 이름이 김씨면 파워가 +3
-    // 오씨면 +10
+  int get hp => _hp;
+  set hp(int value) {
+    _hp = max(0, value);
   }
 
-  void run() {}
+  Hero({
+    required this.name,
+    required int hp,
+  }) : _hp = hp {
+    this.hp = hp;
+  }
+
+  void attack(Slime slime) {
+    print('$name이 $slime을 공격했다!');
+    slime.hp -= 10;
+  }
+
+  void run() {
+    print('1번 run');
+  }
 
   void sleep() {
     hp = 100;
-    print('$name 가 잤다');
   }
-
-// ...
 }
