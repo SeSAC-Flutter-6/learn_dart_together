@@ -1,7 +1,7 @@
 import 'package:learn_dart_together/05_abstract_class_interface/asset/asset.dart';
 import 'package:learn_dart_together/05_abstract_class_interface/asset/thing.dart';
 
-class TangibleAsset extends Asset implements Thing {
+abstract class TangibleAsset extends Asset implements Thing {
   String color;
   @override
   double weight;
