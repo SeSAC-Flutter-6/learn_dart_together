@@ -1,0 +1,82 @@
+@startuml
+
+interface Thing{
+    + {abstract} double get getWeight()
+    + {abstract} set setWeight(double newWeight)
+}
+
+abstract Asset{
+    + String name
+    + int price
+    + {abstract} void purchase()
+    + {abstract} void sell()
+    + {abstract} void rent(int piece, int days)
+}
+
+abstract TangibleAsset extends Asset, Thing{
+    + String color
+    - double _weight
+    + double get getWeight()
+    + set setWeight(double newWeight)
+    + void purchase()
+    + void sell()
+    + {abstract} void rent(int piece, int days)
+}
+
+abstract IntangibleAsset extends Asset{
+    + String description
+    + int registrationDate
+    + void purchase()
+    + void sell()
+    + {abstract} void rent(int piece, int days)
+}
+
+class Book extends TangibleAsset{
+    + String isbn
+    + int pages
+    + double get getWeight()
+    + set setWeight(double newWeight)
+    + void purchase()
+    + void sell()
+    + void rent(int piece, int days)
+}
+
+class Computer extends TangibleAsset{
+    + String makerName
+    + int cpuSpeed
+    + int ramSize
+    + double get getWeight()
+    + set setWeight(double newWeight)
+    + void purchase()
+    + void sell()
+    + void rent(int piece, int days)
+}
+
+class Patent extends IntangibleAsset{
+    + String firstInventor
+    + String country
+    + int registrationNumber
+    + int expirationDate
+    + void purchase()
+    + void sell()
+    + void rent(int piece, int days)
+}
+
+class Software extends IntangibleAsset{
+    + String version
+    + int licenseNumber
+    + String licenseType
+    + void purchase()
+    + void sell()
+    + void rent(int piece, int days)
+}
+
+class Copyright extends IntangibleAsset{
+    + String coholder
+    + int expirationDate
+    + void purchase()
+    + void sell()
+    + void rent(int piece, int days)
+}
+
+@enduml
