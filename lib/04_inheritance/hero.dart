@@ -6,7 +6,10 @@ class Hero {
   String name;
   int hp;
 
-  Hero({required this.name, required this.hp});
+  Hero({
+    required this.name,
+    required this.hp,
+  });
 
   void attack(Slime slime) {
     if (hp < heroAttackCost) {

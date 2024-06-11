@@ -2,7 +2,10 @@ class Animal {
   AnimalType type;
   String sound;
 
-  Animal({required this.type, required this.sound});
+  Animal({
+    required this.type,
+    required this.sound,
+  });
 
   void makeSound() {
     print(sound);
