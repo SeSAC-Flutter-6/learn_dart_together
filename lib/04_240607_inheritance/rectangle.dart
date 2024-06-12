@@ -4,7 +4,7 @@ Rectangle 클래스의 면적 및 둘레를 알려주는 프로퍼티를 추가�
 
 import 'dart:core';
 
-import 'package:learn_dart_together/240607_inheritance/point.dart';
+import 'package:learn_dart_together/04_240607_inheritance/point.dart';
 
 class Rectangle {
   double width;

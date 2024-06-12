@@ -1,6 +1,6 @@
 import 'package:test/test.dart';
-import 'package:learn_dart_together/240607_inheritance/point.dart';
-import 'package:learn_dart_together/240607_inheritance/rectangle.dart';
+import 'package:learn_dart_together/04_240607_inheritance/point.dart';
+import 'package:learn_dart_together/04_240607_inheritance/rectangle.dart';
 
 void main() {
   group('Rectangle 클래스 테스트', () {
