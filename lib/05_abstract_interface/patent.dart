@@ -1,4 +1,4 @@
-import 'package:learn_dart_together/05_abstract_interface/intangibleAsset.dart';
+import 'package:learn_dart_together/05_abstract_interface/intangible_asset.dart';
 
 enum PatentStatus {
   active, expired, abandoned, pending
