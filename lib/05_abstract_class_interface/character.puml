@@ -5,7 +5,7 @@ interface Attackable {
 }
 
 interface Runnable {
-    + {abstract} void arun()
+    + {abstract} void run()
 }
 
 abstract class Character implements Attackable, Runnable {

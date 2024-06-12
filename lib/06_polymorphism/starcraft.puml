@@ -1,0 +1,108 @@
+@startuml
+
+abstract class Races {}
+
+abstract class Human {}
+
+abstract class Alien {}
+
+abstract class Terran {}
+
+abstract class Zerg {
+  + void recoverHp()
+}
+
+abstract class Protos {
+  + int sp
+  + void recoverSp()
+}
+
+interface Unit {
+  + void attack(Races races)
+}
+
+interface Structure {}
+
+interface Bionic {}
+
+interface Mechanic {}
+
+interface Healable {}
+
+interface RangedUnit {}
+
+class Marine {}
+
+class Medic {
+  + void attack(Races races) {}
+  + void heal(Healable healable)
+}
+
+class Vulture {}
+
+class Tank {}
+
+class Scv {
+  + void collect(Mineral mineral)
+  + void repair(Mechanic mechanic)
+}
+
+class Zergling {}
+
+class Hydra {}
+
+class Zealot {}
+
+class Dragun {}
+
+Races <|-- Human
+Races <|-- Alien
+
+Human <|-- Terran
+
+Alien <|-- Zerg
+Bionic <|.. Zerg
+
+Alien <|-- Protos
+
+Terran <|-- Marine
+Bionic <|.. Marine
+Unit <|.. Marine
+Healable <|.. Marine
+
+Terran <|-- Medic
+Bionic <|.. Medic
+Unit <|.. Medic
+Healable <|.. Medic
+
+Terran <|-- Vulture
+Unit <|.. Vulture
+Mechanic <|.. Vulture
+
+Terran <|-- Tank
+Unit <|.. Tank
+Mechanic <|.. Tank
+
+Terran <|-- Scv
+Unit <|.. Scv
+Mechanic <|.. Scv
+Healable <|.. Scv
+
+Zerg <|-- Zergling
+Unit <|.. Zergling
+Healable <|.. Zergling
+
+Zerg <|-- Hydra
+Unit <|.. Hydra
+Healable <|.. Hydra
+
+Protos <|-- Zealot
+Protos <|-- Dragun
+
+RangedUnit <|.. Marine
+RangedUnit <|.. Vulture
+RangedUnit <|.. Hydra
+RangedUnit <|.. Dragun
+RangedUnit <|.. Tank
+
+@enduml
