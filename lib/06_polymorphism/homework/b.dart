@@ -38,6 +38,11 @@ void main() {
   list.add(a1);
   list.add(b1);
 
-  list[0].b();
-  list[1].b();
+/*  list.forEach((list) {
+    list.b();
+  });*/ // for문 권장?
+
+  for (var list in list) {
+    list.b();
+  }
 }
