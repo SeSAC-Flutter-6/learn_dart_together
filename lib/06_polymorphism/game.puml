@@ -1,0 +1,81 @@
+@startuml
+
+abstract class Object {
+    + String name
+}
+
+abstract class Terran extends Object
+abstract class Zerg extends Object
+abstract class Protoss extends Object
+
+interface Bionic
+interface Mechanic
+interface Unit implements Moveable {
+}
+interface Structure {
+}
+interface Attackable {
+    + void attack()
+}
+interface Healable {
+    + void heal(Bionic bionic)
+}
+interface Shieldable
+interface Collectable {
+    + void collect()
+}
+interface Repairable {
+    + void repair()
+}
+interface Generatable {
+    + void generate()
+}
+interface SelfAidable {
+    + void selfAid()
+}
+interface Moveable {
+    + void move()
+}
+
+interface Structure implements Generatable {
+}
+
+class ProtossStructure extends Protoss implements Structure, Mechanic, Shieldable {
+
+}
+
+class ZergStructure extends Zerg implements Structure, Bionic, SelfAidable{
+}
+
+class TerranStructure extends Terran implements Structure, Mechanic {
+
+}
+
+class Marine extends Terran implements Unit, Bionic, Attackable {
+}
+
+class Medic extends Terran implements Unit, Bionic, Healable {
+}
+
+class Vulture extends Terran implements Unit, Mechanic, Attackable{
+}
+
+class Tank extends Terran implements Unit, Mechanic, Attackable {
+}
+
+class SCV extends Terran implements Unit, Bionic, Mechanic, Attackable, Collectable, Repairable {
+}
+
+class Zergling extends Zerg implements Unit, Bionic, Attackable, SelfAidable {
+}
+
+class Hydra extends Zerg implements Unit, Bionic, Attackable, SelfAidable {
+}
+
+class Zealot extends Protoss implements Unit, Bionic, Attackable, Shieldable {
+}
+
+class Dragun extends Protoss implements Unit, Mechanic, Attackable, Shieldable {
+}
+
+@enduml
