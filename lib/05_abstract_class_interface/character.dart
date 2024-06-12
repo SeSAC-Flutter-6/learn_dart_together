@@ -1,11 +1,13 @@
 abstract class Character {
   void attack();
 
-  void run();
+  void run() => print('달린다');
 }
 
-abstract class Monster extends Character {
-  //void run();
+class Monster extends Character {
+  @override
+  void attack() => print('공격시작');
+
 }
 
 class Goblin extends Monster {
