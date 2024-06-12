@@ -38,7 +38,7 @@ class Slime {
 //      d.용사의 HP 의 1/5에 해당하는 포인트를 용사의 HP 로부터 감소시키고, “~포인트의 데미지" 라고 표시
 //      e.“독 공격의 남은 횟수" 를 1 감소 시킨다
 class PoisonSlime extends Slime {
-  int poisonAttackCount = 5;
+  int poisonAttackCount = 5;//외부에서 수정이 가능할 수 있기때문에 안전하게 캡슐화 하는게 낫다
 
   PoisonSlime(
     super.hp,

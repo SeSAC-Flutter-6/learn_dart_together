@@ -1,0 +1,19 @@
+@startuml
+scale 2
+
+abstract class Character {
++ {abstract} void attack()
++ {abstract} void run()
+}
+
+
+abstract class Monster extends Character {
++ void run()
+}
+
+
+class Goblin extends Monster {
+}
+
+
+@enduml

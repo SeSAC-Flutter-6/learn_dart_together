@@ -75,12 +75,12 @@ class Motorcycle extends Vehicle {
     this.hasSideCar,
   );
 
-  void handAccel() {
+  void ishandAcceling() {//시작이 동사로 되야한다
     print('손으로 돌려서 속도 증가');
   }
 
-  void helmet() {
-    print('모터사이클 탑승시에 헬멧 체크 필수');
+  void ishandBreak() {//시작이 동사로 되야한다. 속성으로 넣기도 애매함 그렇다고 메서드가 맞나?
+    print('손으로 돌려서 멈춤');
   }
 
   //오버라이드 메서드
