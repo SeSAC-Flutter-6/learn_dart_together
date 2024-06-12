@@ -1,0 +1,47 @@
+@startuml
+
+abstract class Races{}
+abstract class Human extends Races{}
+abstract class Alien extends Races{}
+
+abstract class Terran extends Human{}
+abstract class Zerg extends Alien implements Bionic{
+    + void recoverHp()
+}
+abstract class Protos extends Alien{
+    + int sp
+    + void recoverSp()
+}
+
+interface Unit {
+    + {abstract}void attack(Races races)
+}
+interface Structure{}
+interface Bionic{}
+interface Mechanic{}
+interface Healable{}
+interface RangedUnit{}
+
+class Marine extends Terran implements Bionic, Unit, Healable,RangedUnit{}
+class Medic extends Terran implements Bionic, Unit, Healable{
+    + void attack(Races races) {}
+    + void heal(Healable healable)
+}
+class Vulture extends Terran implements Unit, Mechanic, RangedUnit{}
+class Tank extends Terran implements Unit, Mechanic, RangedUnit{}
+class Scv extends Terran implements Unit, Mechanic, Healable{
+    + void collect(Mineral mineral)
+    + void repair(Mechanic mechanic)
+}
+
+class Zergling extends Zerg implements Unit, Healable{}
+class Hydra extends Zerg implements Unit, Healable,RangedUnit{}
+
+class Zealot extends Protos implements Bionic, Unit, Healable {}
+class Dragun extends Protos implements Mechanic, Unit, RangedUnit{}
+
+
+
+
+
+@enduml
