@@ -1,0 +1,16 @@
+@startuml
+
+interface Attackable {
+    + {abstract} void attack()
+}
+
+interface Runnable {
+    + {abstract} void arun()
+}
+
+abstract class Character implements Attackable, Runnable {
+    + int hp;
+    + String name;
+}
+
+@enduml 
