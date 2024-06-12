@@ -2,15 +2,19 @@ import 'package:learn_dart_together/01_instance_class/hero.dart';
 
 void main() {
   Slime slimeA = Slime(100, 'A');
-  Slime slimeB = Slime(100, 'B');
+  Monster slimeB = Slime(100, 'B');
 
-  Hero hero = Hero(name: '용사', hp: 100);
+  slimeA.run();
+  slimeB.run();
 
-  hero.attack(slimeA);
-  hero.attack(slimeB);
+  //
+  // Hero hero = Hero(name: '용사', hp: 100);
+  //
+  // hero.attack(slimeA);
+  // hero.attack(slimeB);
 }
 
-class Slime {
+class Slime extends Monster {
   final int level = 10;
 
   int hp;
@@ -20,5 +24,16 @@ class Slime {
 
   void attack() {
 
+  }
+
+  @override
+  void run() {
+    print('1');
+  }
+}
+
+abstract class Monster {
+  void run() {
+    print('2');
   }
 }
