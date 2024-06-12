@@ -70,6 +70,6 @@ abstract class Monster {
 
 void main() {
   Slime slimeA = Slime(50, '슬라임2');
-  Monster slimeB = Slime(30, '슬라임2');
+  //Monster slimeB = Slime(30, '슬라임2');
 }
 
