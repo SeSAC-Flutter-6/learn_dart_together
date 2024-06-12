@@ -3,12 +3,13 @@ import 'package:learn_dart_together/06_abstract_class_interface/asset_management
 class Computer extends TangibleAsset {
   String makerName;
 
-  Computer(
-      {required super.name,
-      required super.price,
-      required super.color,
-      required super.weight,
-      required this.makerName});
+  Computer({
+    required super.name,
+    required super.price,
+    required super.color,
+    required super.weight,
+    required this.makerName,
+  });
 
   @override
   void touch(String name) {

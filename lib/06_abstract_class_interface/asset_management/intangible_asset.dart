@@ -6,6 +6,6 @@ abstract class IntangibleAsset extends Asset {
   IntangibleAsset({
     required super.name,
     required super.price,
-    required this.isHumanResource
+    required this.isHumanResource,
   });
 }
