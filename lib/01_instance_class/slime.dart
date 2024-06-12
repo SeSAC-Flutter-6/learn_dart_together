@@ -60,4 +60,16 @@ class PoisonSlime extends Slime {
       print('$poisonDamageHp 포인트의 데미지 용사의 남은 에너지는 $remainHp');
     }
   }
+
+
 }
+
+abstract class Monster {
+
+}
+
+void main() {
+  Slime slimeA = Slime(50, '슬라임2');
+  //Monster slimeB = Slime(30, '슬라임2');
+}
+

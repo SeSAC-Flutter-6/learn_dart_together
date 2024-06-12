@@ -1,0 +1,33 @@
+@startuml
+interface X {
+  void a()
+}
+
+abstract class Y {
+  void b()
+}
+
+class A extends Y {
+  @override
+  void a() {
+    print('Aa')
+  }
+
+
+
+class B extends Y {
+   @override
+   void a()
+   print('Ba')
+
+   @override
+   void b()
+   print('Bb')
+
+   @override
+   void c()
+   print('Bc')
+
+
+}
+@enduml
