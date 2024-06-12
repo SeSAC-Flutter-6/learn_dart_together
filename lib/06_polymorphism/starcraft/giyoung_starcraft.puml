@@ -1,0 +1,111 @@
+@startuml
+
+abstract class Object {
+    + int hp
+    + int maxHp
+}
+
+interface Structure extends Object {
+    + void generate(Unit unit)
+}
+
+abstract class Unit extends Object {
+     + void move()
+ }
+
+abstract class AttackUnit extends Unit {
+    + int damage
+
+    + void attack(Unit unit))
+}
+
+abstract class MagicUnit extends Unit {
+    + int mp
+
+    + void useMagic({Unit unit)})
+}
+
+abstract class Terran {}
+
+abstract class Protoss {
+    + int shield
+    + int maxShield
+
+    + void chargeShield()
+}
+
+abstract class Zerg {
+  + void selfAid()
+}
+
+interface Bionic {}
+interface Mechanic {}
+
+class Marine extends Terran implements AttackUnit, Bionic {
+   + int hp
+   + int maxHp
+   + int damage
+
+   + void attack(Unit unit))
+   + void move()
+}
+
+class Medic extends Terran implements MagicUnit, Bionic {
+   + int hp
+   + int mp
+   + int maxHp
+   + int maxMp
+
+   + void move()
+   + void useMagic({Unit unit)})
+   + void heal()
+}
+
+class Scv extends Terran implements AttackUnit, Bionic, Mechanic {
+   + int hp
+   + int maxHp
+   + int damage
+
+   + void move()
+   + void attack(Unit unit))
+   + void containMineral()
+   + void repair(Unit unit))
+}
+
+class Zealot extends Protoss implements AttackUnit, Bionic {
+   + int hp
+   + int maxHp
+   + int shield
+   + int maxShield
+   + int damage
+
+   + void move()
+   + void attack(Unit unit))
+   + void chargeShield()
+}
+
+class Dragun extends Protoss implements AttackUnit, Mechanic {
+   + int hp
+   + int maxHp
+   + int shield
+   + int maxShield
+   + int damage
+
+   + void move()
+   + void attack(Unit unit))
+   + void chargeShield()
+}
+
+class Zergling extends Zerg implements AttackUnit, Bionic {
+   + int hp
+   + int maxHp
+   + int damage
+
+   + void move()
+   + void attack(Unit unit))
+   + void selfAid()
+}
+
+
+
+@enduml
