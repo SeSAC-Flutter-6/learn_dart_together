@@ -1,0 +1,86 @@
+@startuml
+
+interface Terran
+
+interface Unit {
+  void group()
+}
+
+interface Structure
+
+interface Treatable {
+  void heal()
+}
+
+interface Worker {
+  void mine()
+}
+
+interface Bionic extends Unit
+
+interface Mechanic extends Unit
+
+interface BionicStructure extends Structure
+
+interface MechanicStructure extends Structure
+
+
+class Marine implements Terran, Bionic {
+  void group()
+}
+
+class Vulture implements Terran, Mechanic {
+  void group()
+}
+
+class Tank implements Mechanic, Terran {
+  void group()
+}
+
+class SCV implements Terran, Mechanic, Worker, Treatable {
+  void mine()
+  void repair(Mechanic mechanic)
+  void heal()
+  void group()
+}
+
+class Medic implements Terran, Bionic, Treatable {
+  void heal()
+  void group()
+}
+
+interface Protoss {
+  void shield()
+}
+
+class Zealot implements Protoss, Bionic, Treatable {
+  void heal()
+  void shield()
+  void group()
+}
+
+class Dragun implements Protoss, Mechanic, Treatable {
+  void heal()
+  void shield()
+  void group()
+}
+
+interface Zerg {
+  void selfAid()
+}
+
+class AilenBionicBuilding implements Zerg, BionicStructure {
+  void selfAid()
+}
+
+class Zergling implements Zerg, Bionic {
+  void selfAid()
+  void group()
+}
+
+class Hydra implements Zerg, Bionic {
+  void selfAid()
+  void group()
+}
+
+@enduml
