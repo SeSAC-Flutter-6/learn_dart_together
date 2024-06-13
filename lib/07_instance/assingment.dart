@@ -25,7 +25,8 @@ class Book implements Comparable<Book> {
           publishDate.day == other.publishDate.day;
 
   @override
-  int get hashCode => title.hashCode ^ publishDate.hashCode ^ comment.hashCode;
+  int get hashCode =>
+      title.hashCode ^ publishDate.year ^ publishDate.month ^ publishDate.day;
 
   Book copyWith({
     String? title,
@@ -43,18 +44,4 @@ class Book implements Comparable<Book> {
   int compareTo(Book other) {
     return -publishDate.compareTo(other.publishDate);
   }
-}
-
-void main() {
-  Book a = Book(title: 'title', comment: 'comment');
-  Book b = Book(
-      title: 'title', comment: 'comment', publishDate: DateTime(2024, 6, 12));
-  print(a.publishDate);
-  print(b.publishDate);
-  print(a == b);
-
-  final books = [b, a];
-  print(books.toString());
-  books.sort();
-  print(books.toString());
 }
