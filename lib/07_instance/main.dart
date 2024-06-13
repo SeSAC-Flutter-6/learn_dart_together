@@ -16,9 +16,9 @@ void main() {
   print(hero1.toString());
 
 
-  //모든 객체는 == 이 사용가능하다
-  //hashcode : 내가 원하는 객체를 찾을때 그냥 찾을거냐 숫자를 부여해서 찾는게 좋으냐? 객체를 해시값으로 표현
-  //
+  // 모든 객체는 == 이 사용가능하다
+  // hashcode : 내가 원하는 객체를 찾을때 그냥 찾을거냐 숫자를 부여해서 찾는게 좋으냐? 객체를 해시값으로 표현
+
 
   final heroes = <Hero>{};
 
@@ -27,8 +27,9 @@ void main() {
 
   heroes.add(h1);
   heroes.remove(h2);
-  //해시코드는 메모리주소는 아니다
-  //그러나 identical(this.other) 나(this)하고 다른(other) 진짜 다른건지 확인하는 코드
+  // 해시코드는 메모리주소는 아니다
+  // 그러나 identical(this.other) 나(this)하고 다른(other) 진짜 다른건지 확인하는 코드
+
 
 
 }
