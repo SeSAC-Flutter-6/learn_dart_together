@@ -24,4 +24,11 @@ class Hero {
   void run() {
     print('$name(이/가) 도망쳤다');
   }
+
+  @override
+  bool operator ==(Object other) {
+    return runtimeType == other.runtimeType &&
+        other is Hero &&
+        name == other.name;
+  }
 }
