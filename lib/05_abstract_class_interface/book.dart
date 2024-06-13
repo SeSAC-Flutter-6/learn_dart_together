@@ -12,4 +12,11 @@ class Book extends TangibleAsset {
     required super.weight,
     required this.isbn,
   });
+
+  //Book의 ==동등성 비교 작성
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        other is Book && runtimeType == other.runtimeType && isbn == other.isbn;
+  }
 }
