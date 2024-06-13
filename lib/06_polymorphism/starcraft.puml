@@ -97,7 +97,13 @@ Unit <|.. Hydra
 Healable <|.. Hydra
 
 Protos <|-- Zealot
+Unit <|.. Zealot
+Bionic <|.. Zealot
+Healable <|.. Zealot
+
 Protos <|-- Dragun
+Unit <|.. Dragun
+Mechanic <|.. Dragun
 
 RangedUnit <|.. Marine
 RangedUnit <|.. Vulture
