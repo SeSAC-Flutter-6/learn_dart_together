@@ -18,7 +18,8 @@ class Book implements Comparable<Book> {
           _isSamePublishDate(publishDate, other.publishDate);
 
   @override
-  int get hashCode => title.hashCode ^ publishDate.hashCode;
+  int get hashCode =>
+      title.hashCode ^ publishDate.year ^ publishDate.month ^ publishDate.day;
 
   @override
   int compareTo(Book other) {
