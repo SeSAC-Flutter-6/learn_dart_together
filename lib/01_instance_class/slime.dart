@@ -30,6 +30,11 @@ class Slime extends Monster {
   void run() {
     print('1');
   }
+
+  @override
+  String toString() {
+    return 'Slime{hp: $hp, suffix: $suffix}';
+  }
 }
 
 abstract class Monster {
