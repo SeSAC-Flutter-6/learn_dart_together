@@ -22,4 +22,9 @@ class Slime {
   void attack() {
 
   }
+
+  @override
+  String toString() {
+    return 'Slime{level: $level, hp: $hp, suffix: $suffix}';
+  }
 }
