@@ -1,4 +1,4 @@
-import 'package:learn_dart_together/07_polymorphism/practice_02/y.dart';
+import 'package:learn_dart_together/06_polymorphism/practice_02/y.dart';
 
 class B extends Y {
   @override

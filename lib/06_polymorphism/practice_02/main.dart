@@ -1,10 +1,12 @@
 // 이런 클래스가 선언되어 있다.
 // 다음 물음에 답하시오
 // X obj = A(); 로 A인스턴스를 생성한 후, 변수 obj에서 호출할 수 있는 메소드를 a(), b(), c() 중에 골라보시오
-import 'package:learn_dart_together/07_polymorphism/practice_02/a.dart';
-import 'package:learn_dart_together/07_polymorphism/practice_02/b.dart';
-import 'package:learn_dart_together/07_polymorphism/practice_02/x.dart';
-import 'package:learn_dart_together/07_polymorphism/practice_02/y.dart';
+
+
+import 'package:learn_dart_together/06_polymorphism/practice_02/a.dart';
+import 'package:learn_dart_together/06_polymorphism/practice_02/b.dart';
+import 'package:learn_dart_together/06_polymorphism/practice_02/x.dart';
+import 'package:learn_dart_together/06_polymorphism/practice_02/y.dart';
 
 void main() {
   // 추상클래스 Y를 상속받아 오버라이드를 a,b,c를 했다면 클래스 A는 extends를 했기때문에
