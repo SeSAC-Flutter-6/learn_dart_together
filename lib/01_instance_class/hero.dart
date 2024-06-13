@@ -91,7 +91,38 @@ class Hero {
   void bye() {
     print('안녕히가세요');
   }
+  @override
+  String toString() {
+    return 'Hero{_name: $_name, hp: $hp}';
+  }
+
+  operator ==() 메서드의 규칙을 재정의
+  나만의 해석 ? Object 타입의 other랑 this를 비교하는것을 재정의 할거야
+  identical 함수는 (내거, 비교대상 ) 을 먼저 비교해보고 같으면 좋지만 같지 않은 경우에 ||
+  로 넘어가서
+  비교대상 is 타입도 비교하고 && (this)runtimeType 과 비교대상.runtimeType도
+  비교하고 그 이후는 추가적으로 하고 싶은 것을 하는 거 같다
+
+ @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+   other is Hero && runtimeType == other.runtimeType
+        && _name == other._name;
+ }
+
+
+
+
+  //List 는 O(N) 이라 시간복잡도가 늘어날 수 있고 Set,Map은 O(1)은 시간복잡도가 일정하다
+ @override
+  int get hashCode => name.hashCode;
+  //내가 만든 객체의 순서를 뒤집는 방법 -> -를 붙이던지 , * -1을 하던지 하면됨
+  @override
+  int compareTo(Hero other) {
+    return name.compareTo(other.name);
+  }
 }
+
 
 class Sword {
   String name;
@@ -101,6 +132,8 @@ class Sword {
     required this.name,
     required this.damage,
   });
+
+
 }
 
 
