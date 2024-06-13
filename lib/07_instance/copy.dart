@@ -33,12 +33,3 @@ class Person {
 //     age: age ?? this.age,
 //   );
 // }
-
-bool operator(Object other) {
-  return identical(this, other) ||
-    other is Person && runtimeType == other.runtimeType
-      && name == other.name
-      && hp == other.hp;
-
-
-}

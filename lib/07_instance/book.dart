@@ -1,15 +1,14 @@
-import 'package:learn_dart_together/05_abstract_class_interface/exam/tangible_asset.dart';
+import 'package:learn_dart_together/05_abstract_class_interface/tangible_asset.dart';
 
 class Book extends TangibleAsset {
   String isbn;
 
   Book({
-   required super.name;
-   required super.price;
-   required super.color;
-   required this.isbn;
-   required super.weight;
-});
-
-
+    required super.name,
+    required super.id,
+    required super.price,
+    required super.color,
+    required super.weight,
+    required this.isbn,
+  });
 }
