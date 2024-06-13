@@ -19,7 +19,7 @@ void main() {
     test('제목과 출간일이 같으면 같은 책으로 판단하여 true 반환', () {
       expect((book1 == book2), true);
       expect((book1 == book3), false);
-      expect((book1 == book3), false);
+      expect((book1 == book4), false);
     });
 
     test('Book 컬렉션을 sort() 하면 출간일 최신순으로 정렬', () {
