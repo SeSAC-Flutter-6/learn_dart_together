@@ -23,7 +23,11 @@ class Book {
           publishDate.day == other.publishDate.day;
 
   @override
-  int get hashCode => title.hashCode ^ publishDate.hashCode;
+  int get hashCode =>
+      title.hashCode ^
+      publishDate.year.hashCode ^
+      publishDate.month.hashCode ^
+      publishDate.day.hashCode;
 
   Book({
     required this.title,
@@ -50,7 +54,7 @@ class Book {
 }
 
 void main() {
-  Book book = Book(title: '자바의정석', comment: '어렵')
+
   final books = [
     Book(
       title: '플러터마스터되기',
@@ -68,6 +72,18 @@ void main() {
       publishDate: DateTime(2025, 12, 25),
     ),
   ];
+
+  Book books1 = Book(title: '자바정석', comment: '11');
+  Book books2 = Book(title: '자바정석', comment: '11');
+
+  Set bookSet = {books1, books2};
+  print(bookSet.length);
+
+  final bookList = [];
+  bookList.add(books1);
+  bookList.add(books2);
+
+  print(bookList.length);
 
   books.sort((a, b) => a.publishDate.compareTo(b.publishDate));
   print(books);
