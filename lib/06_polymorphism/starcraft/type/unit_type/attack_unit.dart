@@ -1,6 +1,6 @@
 import 'unit.dart';
 
-abstract class AttackUnit extends Unit {
+abstract interface class AttackUnit implements Unit {
   int get damage;
 
   set damage(int value);

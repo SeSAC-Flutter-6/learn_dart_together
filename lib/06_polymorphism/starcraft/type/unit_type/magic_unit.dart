@@ -1,6 +1,6 @@
 import 'unit.dart';
 
-abstract class MagicUnit extends Unit {
+abstract interface class MagicUnit implements Unit {
   int get mp;
 
   int get maxMp;

@@ -1,6 +1,6 @@
 @startuml
 
-abstract class Object {
+interface Object {
     + int hp
     + int maxHp
 }
@@ -9,17 +9,17 @@ interface Structure extends Object {
     + void generate(Unit unit)
 }
 
-abstract class Unit extends Object {
+interface Unit implements Object {
      + void move()
  }
 
-abstract class AttackUnit extends Unit {
+interface AttackUnit implements Unit {
     + int damage
 
     + void attack(Unit unit))
 }
 
-abstract class MagicUnit extends Unit {
+interface MagicUnit implements Unit {
     + int mp
 
     + void useMagic({Unit unit)})
