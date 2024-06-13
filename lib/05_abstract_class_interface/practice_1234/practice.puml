@@ -13,7 +13,7 @@ abstract Asset{
     + {abstract} void rent(int piece, int days)
 }
 
-abstract TangibleAsset extends Asset, Thing{
+abstract TangibleAsset extends Asset implements Thing{
     + String color
     - double _weight
     + double get getWeight()
@@ -36,8 +36,6 @@ class Book extends TangibleAsset{
     + int pages
     + double get getWeight()
     + set setWeight(double newWeight)
-    + void purchase()
-    + void sell()
     + void rent(int piece, int days)
 }
 
@@ -47,8 +45,6 @@ class Computer extends TangibleAsset{
     + int ramSize
     + double get getWeight()
     + set setWeight(double newWeight)
-    + void purchase()
-    + void sell()
     + void rent(int piece, int days)
 }
 
@@ -57,8 +53,6 @@ class Patent extends IntangibleAsset{
     + String country
     + int registrationNumber
     + int expirationDate
-    + void purchase()
-    + void sell()
     + void rent(int piece, int days)
 }
 
@@ -66,16 +60,12 @@ class Software extends IntangibleAsset{
     + String version
     + int licenseNumber
     + String licenseType
-    + void purchase()
-    + void sell()
     + void rent(int piece, int days)
 }
 
 class Copyright extends IntangibleAsset{
     + String coholder
     + int expirationDate
-    + void purchase()
-    + void sell()
     + void rent(int piece, int days)
 }
 
