@@ -1,0 +1,69 @@
+@startuml
+abstract class Races{
+    + int hp
+}
+abstract class Human extends Races{}
+abstract class Alien extends Races{}
+abstract class Terran extends Human{}
+abstract class Zerg extends Alien implements Bionic{
+    + void recoverHp()
+}
+abstract class Protos extends Alien{
+    + int sp
+    + void recoverSp()
+}
+
+interface Unit {
+    + void attack(Races races)
+    + void move(String location)
+}
+interface Structure{}
+
+interface Bionic implements Unit, Healable{}
+interface Mechanic implements Unit{}
+
+interface Healable{}
+interface RangedUnit{}
+
+class Marine extends Terran implements RangedUnit,Bionic{
+}
+class Medic extends Terran implements Bionic{
+    + void attack(Races races) {}
+    + void heal(Healable healable)
+}
+class Vulture extends Terran implements RangedUnit, Mechanic{
+    
+}
+class Tank extends Terran implements RangedUnit, Mechanic{
+  
+}
+class Scv extends Terran implements Mechanic, Healable{
+    + void collect(Mineral mineral)
+    + void repair(Mechanic mechanic)
+}
+class Zergling extends Zerg{
+}
+class Hydra extends Zerg implements RangedUnit{
+   
+}
+class Zealot extends Protos implements Bionic {
+   }
+class Dragun extends Protos implements RangedUnit,Mechanic {
+    
+}
+
+class UnitGroup {
+    + List<Unit> units
+    + void attack(Races races)
+    + void move(String location)
+}
+
+class UnitGroupManager {
+    + List<UnitGroup> unitGroups
+    + UnitGroup getGroup(int index)
+}
+
+Unit <-- UnitGroup
+UnitGroupManager *-- UnitGroup
+
+@enduml
