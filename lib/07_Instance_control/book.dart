@@ -1,6 +1,6 @@
-import 'package:learn_dart_together/07_Instance_control/Copyable.dart';
+import 'package:learn_dart_together/07_Instance_control/copyable.dart';
 
-class Book implements Comparable, Copyable {
+class Book implements Comparable {
   String title;
   DateTime publishDate;
   String comment;
@@ -10,7 +10,6 @@ class Book implements Comparable, Copyable {
     required this.comment,
     DateTime? publishDate,
   }) : publishDate = publishDate ?? DateTime.now();
-
 
   /// == 메서드 재정의
   /// 타입, title, publishDate(년, 월, 일)이 동일한지 비교
@@ -24,16 +23,21 @@ class Book implements Comparable, Copyable {
           publishDate.month == other.publishDate.month &&
           publishDate.day == other.publishDate.day;
 
-
   /// Comparable 인터페이스 구현.
   /// DateTime publishDate로 우선순위 비교
   @override
-  int compareTo(other) => publishDate.compareTo(other.publishDate);
+  int compareTo(other) => publishDate.compareTo(other.publishDate) * -1;
 
-  /// Copyable 인터페이스 구현
   /// Book 인스턴스 복사하여 반환
-  @override
-  copyWith() {
-    return Book(title: title, comment: comment, publishDate: publishDate);
+  copyWith({
+    String? title,
+    String? comment,
+    DateTime? publishDate,
+  }) {
+    return Book(
+        title: title ?? this.title,
+        comment: comment ?? this.comment,
+        publishDate: publishDate
+    );
   }
 }
