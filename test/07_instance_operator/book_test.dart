@@ -13,6 +13,10 @@ void main() {
         comment: 'bad book!',
       );
       expect(book1 == book2, true);
+      final bookSet1 = <Book>{};
+      bookSet1.add(book1);
+      bookSet1.add(book2);
+      expect(bookSet1.length, 1);
 
       Book book3 = Book(
           title: 'Harry Potter',
@@ -25,6 +29,11 @@ void main() {
           publishDate: DateTime(2024, 01, 01));
       expect(book3 == book4, true);
 
+      final bookSet2 = <Book>{};
+      bookSet2.add(book3);
+      bookSet2.add(book4);
+      expect(bookSet2.length, 1);
+
       Book book5 = Book(
           title: 'Harry Potter',
           comment: 'Great book!',
@@ -35,6 +44,11 @@ void main() {
           comment: 'bad book!',
           publishDate: DateTime(2024, 01, 01, 15, 21, 30));
       expect(book5 == book6, true);
+
+      final bookSet3 = <Book>{};
+      bookSet3.add(book5);
+      bookSet3.add(book6);
+      expect(bookSet3.length, 1);
     });
 
     test('Book 인스턴스를 담고 있는 컬렉션에 대해 sort() 를 수행하여 출간일이 신상 순서대로 정렬한다.', () {
