@@ -108,7 +108,7 @@ class Hero {
   //List 는 O(N) 이라 시간복잡도가 늘어날 수 있고 Set,Map은 O(1)은 시간복잡도가 일정하다
  @override
   int get hashCode => name.hashCode;
-  //내가 만든 객체의 순서를 뒤집는 방법 -> -를 붙이던지 , * -1을 하던지 하면됨
+  //내가 만든 리스트 객체의 순서를 뒤집는 방법 -> -를 붙이던지 , * -1을 하던지 하면됨
   @override
   int compareTo(Hero other) {
     return name.compareTo(other.name);
