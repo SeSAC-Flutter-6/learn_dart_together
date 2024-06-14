@@ -1,7 +1,6 @@
+import 'slime.dart';
 
 // 함수 : input 이 동일할 때 output 항상 동일한 결과
-import 'package:learn_dart_together/slime.dart';
-
 int f(int x) {
   return x + 4;
 }
@@ -13,7 +12,7 @@ void main() {
   Hero hero = Hero(name: '홍길동', hp: 100);
 }
 
-class Hero {
+class Hero implements Comparable<Hero> {
   // 1
   static int money = 100;
 
@@ -37,7 +36,9 @@ class Hero {
   Hero({
     required String name,
     required this.hp,
-  }) : _name = name;
+  }) : _name = name {
+    print('1. Hero 생성자');
+  }
 
   // 메서드
   void attack(Slime slime) {
@@ -48,12 +49,17 @@ class Hero {
   }
 
   void run() {
-    print('1번 run');
+    print('1번 run()');
   }
 
   void sleep() {
     hp = 100;
     print('$_name 가 잤다');
+  }
+
+  @override
+  int compareTo(Hero other) {
+    return name.compareTo(other.name); //조건: 이름가지고 비교할 것 이다.
   }
 
 // ...
