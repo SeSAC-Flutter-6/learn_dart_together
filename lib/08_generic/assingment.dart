@@ -9,11 +9,7 @@ class StrongBox<T> {
     _thing = thing;
   }
 
-  T? get() {
-    _count += 1;
-    if (_type.count >= _count) return null;
-    return _thing;
-  }
+  T? get() => (_type.count > _count++) ? null : _thing;
 
   StrongBox(this._type, {count = 0}) : _count = count;
 }
