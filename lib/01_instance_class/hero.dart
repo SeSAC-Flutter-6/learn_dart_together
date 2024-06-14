@@ -1,4 +1,5 @@
 import 'package:learn_dart_together/01_instance_class/slime.dart';
+import 'package:learn_dart_together/01_instance_class/sword.dart';
 
 class Hero {
   // static 공통 머니 - 개인것이 아님 / 메모리 영역이 달라서
@@ -91,16 +92,26 @@ class Hero {
   void bye() {
     print('안녕히가세요');
   }
+  @override
+  String toString() {
+    return 'Hero{_name: $_name, hp: $hp}';
+  }
+
+ @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+   other is Hero && runtimeType == other.runtimeType
+        && _name == other._name;
+ }
+
+
+  //List 는 O(N) 이라 시간복잡도가 늘어날 수 있고 Set,Map은 O(1)은 시간복잡도가 일정하다
+ @override
+  int get hashCode => name.hashCode;
+  //내가 만든 리스트 객체의 순서를 뒤집는 방법 -> -를 붙이던지 , * -1을 하던지 하면됨
+  @override
+  int compareTo(Hero other) {
+    return name.compareTo(other.name);
+  }
 }
-
-class Sword {
-  String name;
-  int damage;
-
-  Sword({
-    required this.name,
-    required this.damage,
-  });
-}
-
 
