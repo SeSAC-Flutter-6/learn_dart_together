@@ -11,7 +11,7 @@ class StrongBox<T> {
 
   T? get() => (_type.count > _count++) ? null : _thing;
 
-  StrongBox(this._type, {count = 0}) : _count = count;
+  StrongBox(this._type) : _count = 0;
 }
 
 enum KeyType {
