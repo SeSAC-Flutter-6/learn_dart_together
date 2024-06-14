@@ -1,6 +1,6 @@
 import 'package:learn_dart_together/07_Instance_control/copyable.dart';
 
-class Book implements Comparable {
+class Book implements Comparable<Book> {
   String title;
   DateTime publishDate;
   String comment;
@@ -26,10 +26,10 @@ class Book implements Comparable {
   /// Comparable 인터페이스 구현.
   /// DateTime publishDate로 우선순위 비교
   @override
-  int compareTo(other) => publishDate.compareTo(other.publishDate) * -1;
+  int compareTo(Book other) => publishDate.compareTo(other.publishDate) * -1;
 
   /// Book 인스턴스 복사하여 반환
-  copyWith({
+  Book copyWith({
     String? title,
     String? comment,
     DateTime? publishDate,
