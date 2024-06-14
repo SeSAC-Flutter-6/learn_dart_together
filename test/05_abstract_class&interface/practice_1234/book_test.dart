@@ -1,6 +1,6 @@
 import 'package:test/test.dart';
-import 'package:learn_dart_together/05_abstract_class_interface/practice_1234/book.dart';
-import 'package:learn_dart_together/05_abstract_class_interface/practice_1234/constants.dart';
+import 'package:learn_dart_together/05_abstract_class&interface/practice_1234/book.dart';
+import 'package:learn_dart_together/05_abstract_class&interface/practice_1234/constants.dart';
 
 void main() {
   group('book 테스트', () {

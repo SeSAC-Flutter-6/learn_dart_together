@@ -1,19 +1,19 @@
 import 'package:test/test.dart';
-import 'package:learn_dart_together/08_string/practice/strongbox.dart';
-import 'package:learn_dart_together/08_string/practice/keytype.dart';
-import 'package:learn_dart_together/08_string/practice/constants.dart';
+import 'package:learn_dart_together/08_generic&enum&string/practice_1/strongbox.dart';
+import 'package:learn_dart_together/08_generic&enum&string/practice_1/keytype.dart';
+import 'package:learn_dart_together/08_generic&enum&string/practice_1/constants.dart';
 
 void main() {
-  late Strongbox strongboxPadlock;
-  late Strongbox strongboxButton;
-  late Strongbox strongboxDial;
-  late Strongbox strongboxFinger;
+  late StrongBox strongboxPadlock;
+  late StrongBox strongboxButton;
+  late StrongBox strongboxDial;
+  late StrongBox strongboxFinger;
   group('StrongBox 클래스 테스트', () {
     setUp(() {
-      strongboxPadlock = Strongbox(keytype: Keytype.padlock);
-      strongboxButton = Strongbox(keytype: Keytype.button);
-      strongboxDial = Strongbox(keytype: Keytype.dial);
-      strongboxFinger = Strongbox(keytype: Keytype.finger);
+      strongboxPadlock = StrongBox(keytype: Keytype.padlock);
+      strongboxButton = StrongBox(keytype: Keytype.button);
+      strongboxDial = StrongBox(keytype: Keytype.dial);
+      strongboxFinger = StrongBox(keytype: Keytype.finger);
     });
     test('strongbox에는 어떤 type의 object든 넣을 수 있다', () {
       strongboxPadlock.put('Padlock');

@@ -1,12 +1,12 @@
 import 'keytype.dart';
 import 'constants.dart';
 
-class Strongbox<E> {
+class StrongBox<E> {
   E? _item;
   final Keytype _keytype;
   int _count;
 
-  Strongbox({required Keytype keytype})
+  StrongBox({required Keytype keytype})
       : _keytype = keytype,
         _count = 0 {
     switch (_keytype) {
