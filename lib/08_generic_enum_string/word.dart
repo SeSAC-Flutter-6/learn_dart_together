@@ -4,11 +4,11 @@ class Word {
   Word(this.word);
 
   bool isVowel(int i) {
-    return 'aeiou'.split('').contains(word[i]);
+    return 'aeiou'.split('').contains(word.toLowerCase()[i]);
   }
 
   bool isConsonant(int i) {
-    return !isVowel(i);
+    return 'qwrtypsdfghjklzxcvbnm'.split('').contains(word.toLowerCase()[i]);
   }
 }
 
