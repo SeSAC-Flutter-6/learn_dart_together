@@ -10,11 +10,11 @@ enum KeyType {
 
 final class StrongBox<T> {
   T? _data;
-  KeyType keyType;
-  int unlockHistory = 0;
+  KeyType _keyType;
+  int _unlockHistory = 0;
 
   StrongBox({
-    required this.keyType
+    required KeyType _keyType
   });
 
   void put(T item) {
@@ -22,14 +22,14 @@ final class StrongBox<T> {
   }
 
   T? get() {
-    unlockHistory++;
-    if (keyType.limit > unlockHistory) {
+    _unlockHistory++;
+    if (_keyType.limit > _unlockHistory) {
       return null;
     } else {
       // 기존 아이템은 비우고 반환.
       final T? data = _data;
       _data = null;
-			unlockHistory = 0;
+			_unlockHistory = 0;
       return data;
     }
   }
