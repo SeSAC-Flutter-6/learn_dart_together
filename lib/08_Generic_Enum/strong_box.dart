@@ -29,6 +29,7 @@ final class StrongBox<T> {
       // 기존 아이템은 비우고 반환.
       final T? data = _data;
       _data = null;
+			unlockHistory = 0;
       return data;
     }
   }
