@@ -29,16 +29,12 @@ class StrongBox<T> {
     switch (keyType) {
       case KeyType.padlock:
         return 1024;
-      // TODO: Handle this case.
       case KeyType.button:
         return 10000;
-      // TODO: Handle this case.
       case KeyType.dial:
         return 30000;
-      // TODO: Handle this case.
       case KeyType.finger:
         return 1000000;
-      // TODO: Handle this case.
     }
   }
 }
