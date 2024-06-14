@@ -25,12 +25,5 @@ class Strongbox<E> {
     _item = item;
   }
 
-  E? get() {
-    if (_count > 0) {
-      _count--;
-      return null;
-    } else {
-      return _item;
-    }
-  }
+  E? get() => _count-- > 0 ? null : _item;
 }
