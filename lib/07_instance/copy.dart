@@ -12,6 +12,10 @@ void main() {
 
   final person5 = person1.copyWith(age: 50);
   print(person5);
+
+  [1, 2, 3].forEach((e) {
+
+  });
 }
 
 // 데이타 클래스
