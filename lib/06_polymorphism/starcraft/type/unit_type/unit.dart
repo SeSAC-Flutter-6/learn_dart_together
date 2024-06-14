@@ -1,5 +1,5 @@
 import '../../object/object.dart';
 
-abstract class Unit extends StarObject {
+abstract interface class Unit implements StarObject {
   void move();
 }
