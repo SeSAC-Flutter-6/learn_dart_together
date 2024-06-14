@@ -6,7 +6,7 @@ void main() {
   Hero hero = Hero(name: '홍길동', hp: 100); //인스턴스 생성 : 힙이라는 메모리에 올라감
 }
 
-class Hero {
+class Hero implements Comparable<Hero> {
   // 클래스명은 대문자로 시작(pascal), 명사
   //field, 전역변수, 멤버변수, 프로퍼티 : 필드명은 명사로, camel case
   int _hp;
@@ -48,5 +48,34 @@ class Hero {
     _hp = 100;
     print('$_name가 잤다.');
   }
+
+  @override
+  String toString() {
+    return '내가 $_name이다.';
+  }
+
+  //generate 사용
+  // @override
+  // bool operator ==(Object other) =>
+  //     identical(this, other) ||
+  //     other is Hero && runtimeType == other.runtimeType && _name == other._name;
+  //
+  // @override
+  // int get hashCode => _name.hashCode;
+
+  @override
+  bool operator ==(Object other) {
+    return other is Hero &&
+        runtimeType == other.runtimeType &&
+        _name == other._name;
+  }
+
+  @override
+  int get hashCode => _name.hashCode;
+
+  @override
+  int compareTo(Hero other) {
+    return _name.compareTo(other._name); // _name이라고 해야하나 title 이라고 해야하나
+  } //스트링은 항상 동일한 해시값이 나온다.
 }
 //원래 파일하나당 하나의 클래스가 원칙
