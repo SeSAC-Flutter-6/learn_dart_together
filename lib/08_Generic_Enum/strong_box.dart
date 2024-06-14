@@ -13,9 +13,12 @@ final class StrongBox<T> {
   KeyType _keyType;
   int _unlockHistory = 0;
 
+  KeyType get keyType => _keyType;
+  int get unlockHistory => _unlockHistory;
+
   StrongBox({
-    required KeyType _keyType
-  });
+    required KeyType keyType,
+  }) : _keyType = keyType;
 
   void put(T item) {
     _data = item;
