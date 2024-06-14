@@ -26,7 +26,10 @@ final class StrongBox<T> {
     if (keyType.limit > unlockHistory) {
       return null;
     } else {
-      return _data;
+      // 기존 아이템은 비우고 반환.
+      final T? data = _data;
+      _data = null;
+      return data;
     }
   }
 }
