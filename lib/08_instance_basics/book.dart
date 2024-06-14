@@ -25,7 +25,12 @@ class Book extends Object implements Comparable {
   }
 
   @override
-  int get hashCode => title.hashCode ^ publishDate.hashCode;
+  int get hashCode =>
+      title.hashCode ^ publishDate.toString().split(' ')[0].hashCode;
+
+  // @override
+  // int get hashCode =>
+  //     title.hashCode ^ publishDate.year ^ publishDate.month ^ publishDate.day;
 
   Book copyWith({String? title, DateTime? publishDate, String? comment}) {
     return Book(
