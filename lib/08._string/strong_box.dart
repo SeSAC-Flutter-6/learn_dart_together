@@ -1,5 +1,6 @@
 import 'package:collection/collection.dart';
-class StrongBox <T> {
+
+class StrongBox<T> {
   final KeyType _keyType;
   final int _maxAttempts;
 
@@ -8,40 +9,40 @@ class StrongBox <T> {
   T? _item;
 
   void put(T item) {
-     _item ??= item;
+    _item ??= item;
   }
+
   T? get() {
-    if(_attemps < _maxAttempts){
+    if (_attemps < _maxAttempts) {
       _attemps++;
       return null;
-    }else {
+    } else {
       T? temp = _item;
       _item = null;
       return temp;
     }
   }
 
-  StrongBox(this._keyType)
-      : _maxAttempts = _maxAttemptsForType(_keyType);
+  StrongBox(this._keyType) : _maxAttempts = _maxAttemptsForType(_keyType);
 
-  static int _maxAttemptsForType(KeyType keyType){
-    switch(keyType) {
-
+  static int _maxAttemptsForType(KeyType keyType) {
+    switch (keyType) {
       case KeyType.padlock:
         return 1024;
-        // TODO: Handle this case.
+      // TODO: Handle this case.
       case KeyType.button:
         return 10000;
-        // TODO: Handle this case.
+      // TODO: Handle this case.
       case KeyType.dial:
         return 30000;
-        // TODO: Handle this case.
+      // TODO: Handle this case.
       case KeyType.finger:
         return 1000000;
-        // TODO: Handle this case.
+      // TODO: Handle this case.
     }
   }
 }
+
 enum KeyType {
   padlock,
   button,
@@ -49,10 +50,10 @@ enum KeyType {
   finger,
 }
 
-void main(){
-  StrongBox<String> strongBox = StrongBox <String> (KeyType.dial);
+void main() {
+  StrongBox<String> strongBox = StrongBox<String>(KeyType.dial);
   strongBox.put('gold');
-  for(int i = 0 ; i <strongBox.maxAttempts ; i++){
+  for (int i = 0; i < strongBox.maxAttempts; i++) {
     print(strongBox.get()); // null
   }
   // 사용 횟수가 허용 범위를 초과한 경우 열림
