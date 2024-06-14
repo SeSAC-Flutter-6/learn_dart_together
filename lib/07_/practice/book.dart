@@ -42,24 +42,6 @@ class Book implements Comparable {
 
   @override
   int compareTo(other) {
-    if (publishDate.year > other.publishDate.year) {
-      return 1;
-    } else if (publishDate.year < other.publishDate.year) {
-      return -1;
-    } else {
-      if (publishDate.month > other.publishDate.month) {
-        return 1;
-      } else if (publishDate.month < other.publishDate.month) {
-        return -1;
-      } else {
-        if (publishDate.day > other.publishDate.day) {
-          return 1;
-        } else if (publishDate.day < other.publishDate.day) {
-          return -1;
-        } else {
-          return 0;
-        }
-      }
-    }
+    return publishDate.compareTo(other.publishDate) * -1;
   }
 }

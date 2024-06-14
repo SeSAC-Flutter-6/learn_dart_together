@@ -1,5 +1,3 @@
-import 'dart:math';
-
 import 'package:test/test.dart';
 import 'package:learn_dart_together/07_/practice/book.dart';
 
@@ -44,11 +42,11 @@ void main() {
 
       books.sort();
 
-      expect(books[0].title, '책2');
-      expect(books[1].title, '책3');
+      expect(books[0].title, '책1');
+      expect(books[1].title, '책5');
       expect(books[2].title, '책4');
-      expect(books[3].title, '책5');
-      expect(books[4].title, '책1');
+      expect(books[3].title, '책3');
+      expect(books[4].title, '책2');
     });
 
     test('deep copy 를 위한 copyWith() 메서드를 제공한다', () {
