@@ -8,7 +8,7 @@ void main() {
       // 테스트에 사용될 hero 객체 생성
       Hero hero = Hero(name: '용사', hp: 100);
       // 테스트에 사용될 PoisonSlime 객체 생성
-      PoisonSlime poisonSlime = PoisonSlime('A');
+      PoisonSlime poisonSlime = PoisonSlime('A', hp: 100);
       int initialHp = hero.hp;
       int maxRemains = poisonSlime.remains;
 
@@ -29,7 +29,7 @@ void main() {
       // 테스트에 사용될 hero 객체 생성
       Hero hero = Hero(name: '용사', hp: 100);
       // remains가 0인 PoisonSlime 객체 생성
-      PoisonSlime poisonSlime = PoisonSlime('A');
+      PoisonSlime poisonSlime = PoisonSlime('A', hp: 100);
       poisonSlime.remains = 0; // remains를 0으로 설정하여 추가로 독 공격을 수행하지 않도록 설정
 
       poisonSlime.attack(hero);

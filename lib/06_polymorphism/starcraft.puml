@@ -1,0 +1,59 @@
+@startuml
+
+scale 0.7
+
+interface Unit {
+}
+interface Structure {
+}
+interface Terran {
+}
+interface Zerg {
+    +void selfAid
+}
+interface Protoss {
+    +void selfShield
+}
+interface Mechanic {
+}
+interface Bionic {
+}
+interface Worker {
+    +void mining
+}
+interface Treatable {
+}
+interface UnitBionic implements Unit, Bionic {
+}
+interface UnitMechanic implements Unit, Mechanic {
+}
+interface StructureBionic implements Structure, Bionic{
+}
+interface StructureMechanic implements Structure, Mechanic{
+}
+interface AlienBionic {
+}
+class Tank implements Terran, UnitMechanic {
+}
+class Vulture implements Terran, UnitMechanic {
+}
+class SCV implements Terran, Worker, UnitMechanic, Treatable {
+    +void repair(Mechanic mechanic)
+}
+class Marine implements Terran, UnitBionic {
+}
+class Medic implements Terran, UnitBionic {
+    +void treat(Treatable treatable)
+}
+class Zergling implements Zerg, UnitBionic{
+}
+class Hydra implements Zerg, UnitBionic{
+}
+class Hatchery implements Zerg, StructureBionic {
+}
+class Zealot implements Protoss, UnitBionic, Treatable{
+}
+class Dragun implements Protoss, UnitMechanic {
+}
+
+@enduml

@@ -9,11 +9,12 @@ void main() {
   Hero hero = Hero(name: '홍길동', hp: 100);
 }
 
-class Hero {
+class Hero implements Comparable<Hero>{
   // field, 멤버변수, 전역변수, properties
   String _name; //name private화
   int hp;
 
+  String get name => _name;
   // 생성자
   Hero({
     required String name, // 생성자 매개변수 이름 변경
@@ -36,6 +37,43 @@ class Hero {
     hp = 100;
     print('$_name 가 잤다');
   }
+
+  @override
+  String toString() {
+    return 'Hero{_name: $_name}';
+  }
+
+  @override
+  int compareTo(Hero other){
+    return name.compareTo(other.name) * -1;
+  }
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is Hero &&
+          runtimeType == other.runtimeType &&
+          _name == other._name &&
+          hp == other.hp;
+
+  @override
+  int get hashCode => _name.hashCode ^ hp.hashCode;
+
+// @override
+  // bool operator ==(Object other) {
+  //   return other is Hero &&
+  //       runTimeType == other.runTimeType &&
+  //       name == other.name;
+  // }
+  //
+  // @override
+  // int get hashCode {
+  //   return name.hashCode
+  // }
+
+// @overrride
+// String toString(){
+//   return '내가 $name이다'
+// }
 
 // ...
 }
