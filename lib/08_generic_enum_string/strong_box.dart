@@ -8,10 +8,7 @@ class StrongBox<E> {
   E? get valuables => _valuables;
   int get count => _count;
 
-  StrongBox({
-    required E? valuables,
-    required this.key,
-  }) : _valuables = valuables {
+  StrongBox({required this.key}) {
     switch (key) {
       case KeyType.padlock:
         _count = 1024;
@@ -45,8 +42,4 @@ enum KeyType {
   dial,
   finger,
   test,
-}
-
-void main() {
-  final a = StrongBox(valuables: 'gold', key: KeyType.button);
 }

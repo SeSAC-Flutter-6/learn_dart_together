@@ -3,7 +3,7 @@ import 'package:test/test.dart';
 
 void main() {
   group('Word test', () {
-    final word = Word('aEBd');
+    final word = Word('aEB*');
 
     test('word의 i번째 문자가 자음이면 isVowel(i)가 true 반환', () {
       expect(
@@ -12,7 +12,7 @@ void main() {
 
     test('word의 i번째 문자가 모음이면 isConsonant(i)가 true 반환', () {
       expect([0, 1, 2, 3].map((i) => word.isConsonant(i)),
-          [false, false, true, true]);
+          [false, false, true, false]);
     });
   });
 }
