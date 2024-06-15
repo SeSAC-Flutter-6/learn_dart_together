@@ -17,14 +17,14 @@ class Word {
 
   bool isVowel(int i) {
     if (i < 0 || i >= word.length) {
-      throw RangeError('Index out of range');
+      throw RangeError('글자 길이를 확인 해 주세요');
     }
     return vowels.contains(word.substring(i, i + 1));
   }
 
   bool isConsonant(int i) {
     if (i < 0 || i >= word.length) {
-      throw RangeError('Index out of range');
+      throw RangeError('글자 길이를 확인 해 주세요');
     }
     return !vowels.contains(word.substring(i, i + 1));
   }
