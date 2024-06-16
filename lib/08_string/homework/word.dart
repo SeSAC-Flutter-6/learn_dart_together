@@ -11,7 +11,9 @@
 
 class Word {
   String word;
-  List<String> vowels = ['a', 'e', 'o', 'u', 'i'];
+  final List<String> _vowels = ['a', 'e', 'o', 'u', 'i'];
+
+  List<String> get vowels => _vowels;
 
   Word({required this.word});
 
@@ -19,14 +21,14 @@ class Word {
     if (i < 0 || i >= word.length) {
       throw RangeError('글자 길이를 확인 해 주세요');
     }
-    return vowels.contains(word.substring(i, i + 1));
+    return _vowels.contains(word.substring(i, i + 1));
   }
 
   bool isConsonant(int i) {
     if (i < 0 || i >= word.length) {
       throw RangeError('글자 길이를 확인 해 주세요');
     }
-    return !vowels.contains(word.substring(i, i + 1));
+    return !_vowels.contains(word.substring(i, i + 1));
   }
 }
 
@@ -38,4 +40,5 @@ void main() {
   print(word.isVowel(2)); //true
   print(word.isConsonant(2)); //false
   print(word.isConsonant(6)); //RangeError
+  //word.vowels = ['a,b,c']; error
 }
