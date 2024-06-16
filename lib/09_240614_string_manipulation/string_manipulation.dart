@@ -21,10 +21,4 @@ class Word {
   }
 }
 
-void main() {
-  // print('aeious'.substring(0, 1)); //a
-  // print('aeious'.substring(1, 2)); //e
-  // print('aeious'.substring(2, 3)); //i
-  // print('aeious'.substring(3, 4)); //o
-  // print('aeious'.substring(4, 5)); //u
-}
+void main() {}
