@@ -51,7 +51,7 @@ class Hero implements Comparable<Hero> {
 
   @override
   String toString() {
-    return '내가 $_name이다.';
+    return 'Hero{hp: $_hp, name: $_name}';
   }
 
   //generate 사용

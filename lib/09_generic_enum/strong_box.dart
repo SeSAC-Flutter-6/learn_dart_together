@@ -24,10 +24,9 @@ class StrongBox<E> {
     if (_trialCount > 1) {
       _trialCount -= 1;
       return null;
-    } else {
-      _trialCount = 0;
-      return _item;
     }
+    _trialCount = 0;
+    return _item;
   }
 }
 
