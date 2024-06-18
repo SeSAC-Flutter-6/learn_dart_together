@@ -18,7 +18,7 @@ void main() {
   test('역직렬화', () {
     Department department =
         Department(name: '총무부', leader: Employee(name: '홍길동', age: 41));
-    introduce(department, 'lib/13_data_format/company.txt');
+    introduce(department, 'lib/13_data_format/company.txt'); // 직렬화 후 파일에 저장
     File file = File('lib/13_data_format/company.txt');
     String context = file.readAsStringSync();
     Map<String, dynamic> json = jsonDecode(context);
