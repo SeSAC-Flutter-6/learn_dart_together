@@ -6,7 +6,7 @@ Book 인스턴스를 담고 있는 컬렉션에 대해 sort() 를 수행하여 �
 deep copy 를 위한 copyWith() 메서드를 제공한다
 */
 
-class Book {
+class Book implements Comparable<Book> {
   String title;
   String comment;
   DateTime publishDate;
@@ -51,6 +51,11 @@ class Book {
       publishDate: publishDate ?? this.publishDate,
     );
   }
+
+  @override
+  int compareTo(Book other) {
+    return -publishDate.compareTo(other.publishDate);
+  }
 }
 
 void main() {
@@ -73,18 +78,26 @@ void main() {
     ),
   ];
 
-  Book books1 = Book(title: '자바정석', comment: '11');
-  Book books2 = Book(title: '자바정석', comment: '11');
+  Book books2 = Book(title: '자바의정석111', comment: '222');
+
+  Book books1 = Book(title: '자바의정석', comment: '11');
+
+  Book deepCopy = books1.copyWith(title: books1.title,comment: books1.comment);
+  deepCopy.title = '플러터의 정석';
+  print(books1.title); // 자바의 정석
+
+  Book shallowCopy = books1;
+  shallowCopy.title = '플러터의 정석';
+  print(shallowCopy.title); // 플러터의 정석
 
   Set bookSet = {books1, books2};
-  print(bookSet.length);
+  //print(bookSet.length);
 
   final bookList = [];
   bookList.add(books1);
   bookList.add(books2);
-
-  print(bookList.length);
+  //print(bookList.length);
 
   books.sort((a, b) => a.publishDate.compareTo(b.publishDate));
-  print(books);
+ // print(books);
 }
