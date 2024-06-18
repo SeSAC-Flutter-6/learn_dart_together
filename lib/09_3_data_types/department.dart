@@ -11,10 +11,10 @@ class Department {
 
   Department.fromJson(Map<String, dynamic> json)
     : name = json['name'],
-      leader = json['leader'];
+      leader = Employee.fromJson(json['leader']);
 
   @override
-  int get hashCode => name.hashCode ^ leader.hashCode;
+  int get hashCode => Object.hash(name, leader);
 
   @override
   bool operator ==(Object other) =>

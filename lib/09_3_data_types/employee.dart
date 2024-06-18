@@ -12,7 +12,7 @@ class Employee {
         age = json['age'];
 
   @override
-  int get hashCode => name.hashCode ^ age.hashCode;
+  int get hashCode => Object.hash(name, age);
 
   @override
   bool operator ==(Object other) =>
