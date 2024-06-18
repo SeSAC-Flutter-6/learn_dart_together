@@ -6,7 +6,7 @@ void main() {
 
 void copy(String source, String target) {
   final file = File(source);
-  final copyfile = File(target);
+  final copyFile = File(target);
 
-  copyfile.writeAsStringSync(file.readAsStringSync());
+  copyFile.writeAsStringSync(file.readAsStringSync());
 }
