@@ -9,6 +9,6 @@ void main() {
     introduce('홍길동', 41, '총무부');
     File file = File('lib/13_data_format/company.txt');
     expect(file.readAsStringSync(),
-        '{name: 총무부, leader: Employee{name: 홍길동, age: 41}}');
+        '{name: 총무부, leader: {name: 홍길동, age: 41}}');
   });
 }

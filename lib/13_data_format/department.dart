@@ -34,6 +34,6 @@ class Department {
   }
 
   Map<String, dynamic> toJson() {
-    return {'name': name, 'leader': leader};
+    return {'name': name, 'leader': leader.toJson()};
   }
 }
