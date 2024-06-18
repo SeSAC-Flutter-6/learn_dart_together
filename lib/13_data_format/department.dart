@@ -11,7 +11,7 @@ class Department {
 
   Department.fromJson(Map<String, dynamic> json)
       : name = json['name'],
-        leader = json['leader'];
+        leader = Employee.fromJson(json['leader']);
 
   @override
   bool operator ==(Object other) =>
@@ -30,10 +30,16 @@ class Department {
   }
 
   Department copyWith(String? name, Employee? leader) {
-    return Department(name: name ?? this.name, leader: leader ?? this.leader);
+    return Department(
+      name: name ?? this.name,
+      leader: leader ?? this.leader,
+    );
   }
 
   Map<String, dynamic> toJson() {
-    return {'name': name, 'leader': leader.toJson()};
+    return {
+      'name': name,
+      'leader': leader.toJson(),
+    };
   }
 }
