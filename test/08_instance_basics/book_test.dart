@@ -39,4 +39,18 @@ void main() {
     books.sort();
     expect(books, [book2, book3, book1]);
   });
+  test('제목과 날짜가 같은 책이 set에 들어가면 같은 책으로 취급한다.', () {
+    Book book1 = Book(
+      title: 'title1',
+      comment: 'comment1',
+      publishDate: DateTime(2024, 1, 1, 12),
+    );
+    Book book2 = Book(
+      title: 'title1',
+      comment: 'comment2',
+      publishDate: DateTime(2024, 1, 1, 23),
+    );
+    final set = {book1, book2};
+    expect(set.length, 1);
+  });
 }
