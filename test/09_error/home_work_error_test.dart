@@ -12,7 +12,7 @@ void main() {
     });
 
     test('numString이 "abc" 일 때, num은 0이 되어야 한다.', () {
-      numString = '10.5';
+      numString = 'abc';
       num = int.tryParse(numString) ?? 0;
       expect(num, 0);
     });
@@ -23,7 +23,7 @@ void main() {
       expect(num, 0);
     });
 
-    test('numString이 "10" 일 때, int.tryParse 하면 10이 되어야 한다.', () {
+    test('numString이 "10" 일 때, num은 하면 10이 되어야 한다.', () {
       numString = '10';
       num = int.tryParse(numString) ?? 0;
       expect(num, 10);
