@@ -1,12 +1,12 @@
 import 'dart:io';
 
 void main() {
-
-  copy('abc.txt', 'copy/');
- 
+  print('Current Directory: ${Directory.current.path}');
+  copy('lib/09_2_file/abc.txt', 'lib/09_2_file/def.txt');
 }
 
 void copy(String source, String target) {
   File sourceFile = File(source);
-  File copyFile = sourceFile.copySync(target);
+  File copyFile = File(target);
+  copyFile.writeAsStringSync(sourceFile.readAsStringSync());
 }
