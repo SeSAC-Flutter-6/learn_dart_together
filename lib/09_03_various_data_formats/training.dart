@@ -12,14 +12,13 @@ class Employee {
   });
 
   Map<String, dynamic> toJson() => {
-    'name': name,
-    'age': age,
-  };
+        'name': name,
+        'age': age,
+      };
 
   Employee.fromJson(Map<String, dynamic> json)
       : name = json['name'],
         age = json['age'];
-
 
   @override
   bool operator ==(Object other) {
@@ -58,14 +57,23 @@ class Department {
     required this.leader,
   });
 
+  Map<String, dynamic> toJson() => {
+        'name': name,
+        'leader': leader.toJson(),
+      };
+
+  Department.fromJson(Map<String, dynamic> json)
+      : name = json['name'],
+        leader = Employee.fromJson(json['leader']);
+
+
   @override
   bool operator ==(Object other) {
-    identical(this, other) ||
+    return identical(this, other) ||
         runtimeType == other.runtimeType &&
             other is Department &&
             name == other.name &&
             leader == other.leader;
-    return true;
   }
 
   @override
