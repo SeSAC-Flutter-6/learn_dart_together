@@ -78,6 +78,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "3.0.3"
+  csv:
+    dependency: "direct main"
+    description:
+      name: csv
+      sha256: c6aa2679b2a18cb57652920f674488d89712efaf4d3fdf2e537215b35fc19d6c
+      url: "https://pub.dev"
+    source: hosted
+    version: "6.0.0"
   file:
     dependency: transitive
     description:
@@ -102,6 +110,22 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.1.2"
+  html_character_entities:
+    dependency: transitive
+    description:
+      name: html_character_entities
+      sha256: "0eaf2acb67feeae8aba67c113aedbda71a57a36c38e3670fd677ec26e397faa3"
+      url: "https://pub.dev"
+    source: hosted
+    version: "1.0.0+1"
+  http:
+    dependency: transitive
+    description:
+      name: http
+      sha256: "5895291c13fa8a3bd82e76d5627f69e0d85ca6a30dcac95c4ea19a5d555879c2"
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.13.6"
   http_multi_server:
     dependency: transitive
     description:
@@ -222,6 +246,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.1.4"
+  recursive_regex:
+    dependency: transitive
+    description:
+      name: recursive_regex
+      sha256: f7252e3d3dfd1665e594d9fe035eca6bc54139b1f2fee38256fa427ea41adc60
+      url: "https://pub.dev"
+    source: hosted
+    version: "1.0.0"
   shelf:
     dependency: transitive
     description:
@@ -390,6 +422,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.2.1"
+  xml_parser:
+    dependency: "direct main"
+    description:
+      name: xml_parser
+      sha256: "5db4f4a1640320855caccad9c6de5a371c195ca36e703e977652e86f52424829"
+      url: "https://pub.dev"
+    source: hosted
+    version: "1.0.0"
   yaml:
     dependency: transitive
     description:
