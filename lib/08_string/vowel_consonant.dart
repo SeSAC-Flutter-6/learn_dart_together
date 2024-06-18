@@ -5,11 +5,7 @@ class Word {
     return word.substring(i, i + 1).toLowerCase();
   }
 
-  bool isVowel(int i) {
-    return RegExp('[aeiou]').hasMatch(letter(i));
-  }
+  bool isVowel(int i) => RegExp('[aeiou]').hasMatch(letter(i));
 
-  bool isConsonant(int i) {
-    return !isVowel(i) && RegExp('[a-z]').hasMatch(letter(i));
-  }
+  bool isConsonant(int i) => !isVowel(i) && RegExp('[a-z]').hasMatch(letter(i));
 }
