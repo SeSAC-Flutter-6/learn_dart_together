@@ -1,5 +1,5 @@
 import 'package:test/test.dart';
-import 'package:learn_dart_together/07_/practice/book.dart';
+import 'package:learn_dart_together/07_instance_basic_operation/practice/book.dart';
 
 void main() {
   group('book 클래스 테스트', () {
