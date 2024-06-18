@@ -5,7 +5,7 @@ class StrongBox<T> {
   final int _maxAttempts;
 
   int get maxAttempts => _maxAttempts;
-  int _attemps = 0;
+  int _attempts = 0;
   T? _item;
 
   void put(T item) {
@@ -13,14 +13,14 @@ class StrongBox<T> {
   }
 
   T? get() {
-    if (_attemps < _maxAttempts) {
-      _attemps++;
-      return null;
-    } else {
+    if (_attempts >= _maxAttempts) {
       T? temp = _item;
       _item = null;
       return temp;
     }
+
+    _attempts++;
+    return null;
   }
 
   StrongBox(this._keyType) : _maxAttempts = _maxAttemptsForType(_keyType);
