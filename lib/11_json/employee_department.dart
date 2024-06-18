@@ -1,3 +1,4 @@
+import 'dart:convert';
 import 'dart:io';
 
 class Employee {
@@ -47,15 +48,19 @@ class Department {
           name == other.name &&
           leader == other.leader;
 
-  Department(this.name, this.leader);
+  // Department(this.name, this.leader);
+  Department({
+    required this.name,
+    required this.leader,
+  });
 
   Department.fromJson(Map<String, dynamic> json)
       : name = json['name'],
-        leader = json['leader'];
+        leader = Employee.fromJson(json['leader']); //json['leader'] 자체가 map
 
   Map<String, dynamic> toJson() => {
         'name': name,
-        'leader': leader,
+        'leader': leader.toJson(),
       };
 
   @override
@@ -67,10 +72,9 @@ class Department {
   }
 }
 
-void companyInformation(String departureName, String name, int age) {
-  final Employee employee = Employee(name: name, age: age);
-  final Department department = Department(departureName, employee);
-  final departmentString = department.toJson().toString();
-  File company = File('lib/11_json/company.txt');
+void companyInformation(Department department, String target) {
+  final departmentString = jsonEncode(department.toJson());
+
+  File company = File(target);
   company.writeAsStringSync(departmentString);
 }
