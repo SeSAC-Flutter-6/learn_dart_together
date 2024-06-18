@@ -5,7 +5,6 @@ void main() {
     num = int.parse(numString);
   } catch (e) {
     print(e);
-    num = 0;
   } finally {
     print(num);
   }
