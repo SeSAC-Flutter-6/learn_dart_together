@@ -1,13 +1,10 @@
 void main() {
   final book1 =
       Book(title: "가가", publishDate: DateTime(1998, 3, 15), comment: "Hi");
-
   final book2 =
       Book(title: "나나", publishDate: DateTime(1998, 12, 16), comment: "Hi");
-
   final book3 =
       Book(title: "다다", publishDate: DateTime(2000, 11, 12), comment: "Hi");
-
   final book4 =
       Book(title: "다다", publishDate: DateTime(2000, 11, 12), comment: "Hiii");
 
