@@ -12,9 +12,9 @@ class Employee {
   });
 
   Map<String, dynamic> toJson() => {
-        'name': name,
-        'age': age,
-      };
+    'name': name,
+    'age': age,
+  };
 
   Employee.fromJson(Map<String, dynamic> json)
       : name = json['name'],
@@ -85,8 +85,4 @@ class Department {
       leader: leader ?? this.leader,
     );
   }
-}
-
-void main() {
-  Employee employee = Employee(name: '홍길동', age: 41);
 }
