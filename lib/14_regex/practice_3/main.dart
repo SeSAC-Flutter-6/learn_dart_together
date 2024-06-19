@@ -1,3 +1,5 @@
+import 'custom_reg_exp.dart';
+
 void main() {
   List<String> testCases = [
     'A12',
@@ -12,10 +14,8 @@ void main() {
     'A123'
   ];
 
-  RegExp regExp = RegExp(r'^(A\d{1,2}|U[A-Z]{2,4}).*$');
-
   for (String testCase in testCases) {
-    if (regExp.hasMatch(testCase)) {
+    if (customRegExp(testCase)) {
       print('$testCase: 매칭됨');
     } else {
       print('$testCase: 매칭되지 않음');

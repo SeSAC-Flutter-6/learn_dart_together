@@ -1,5 +1,7 @@
 import 'get_path.dart';
 
 void main() {
-  print(getPath('C:\\dev', 'abc.txt'));
+  String path = 'C:\\dev\\';
+  String fileName = 'test.dart';
+  print(getPath(path, fileName));
 }
