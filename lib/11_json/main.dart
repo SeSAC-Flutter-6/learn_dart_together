@@ -5,15 +5,16 @@ void main() {
   final Map<String, dynamic> json = {
     "name": true,
     "email": "john@example.com",
-    "address": [
-      {
-        "city": "suwon",
-      }
-    ]
+    "address": {
+      "city": "suwon",
+    },
   };
 
+  Map ddd = json['address'];
+  print(ddd['city']);
+
   User user = User(name: 'user', email: 'a@ac.com');
-  User user2 = User.fromJson({'name': '어쩌구', 'email': '저쩌구'});
+  User user2 = User.fromJson(json);
 
   print(user2);
 
@@ -21,10 +22,9 @@ void main() {
   print(userJson['name']);
   print(userJson['email']);
 
-  final json3 = "{'name': '어쩌구', 'email': '저쩌구'}";  // NG
-  final json4 = '{"name": "어쩌구", "email": "저쩌구"}';  // OK
+  final json3 = "{'name': '어쩌구', 'email': '저쩌구'}"; // NG
+  final json4 = '{"name": "어쩌구", "email": "저쩌구"}'; // OK
   final json3Map = jsonDecode(json4);
-
 }
 
 // 4종 : data class + 직렬화,역직렬화
@@ -44,10 +44,10 @@ class User {
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
-      other is User &&
-          runtimeType == other.runtimeType &&
-          name == other.name &&
-          email == other.email;
+          other is User &&
+              runtimeType == other.runtimeType &&
+              name == other.name &&
+              email == other.email;
 
   @override
   int get hashCode => name.hashCode ^ email.hashCode;
