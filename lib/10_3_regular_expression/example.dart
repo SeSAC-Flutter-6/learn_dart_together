@@ -1,3 +1,5 @@
+// ignore_for_file: unused_local_variable
+
 import 'dart:io';
 
 void main() {
@@ -32,14 +34,11 @@ void main() {
 }
 
 String getPath(String folder, String fileName) {
-  // 현재 운영체제에 맞는 경로 구분자 설정
   String separator = Platform.isWindows ? '\\' : '/';
 
-  // 폴더명의 끝이 구분자로 끝나지 않으면 추가
   if (!folder.endsWith(separator)) {
     folder += separator;
   }
 
-  // 폴더명과 파일명을 연결
   return folder + fileName;
 }
