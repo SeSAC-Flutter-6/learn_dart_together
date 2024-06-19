@@ -9,7 +9,7 @@ void main() {
   Department adminDept = Department(name: '총무부', leader: hongGilDong);
 
   // Department 객체를 직렬화.
-  final String jsonString = jsonEncode(adminDept.toString());
+  final String jsonString = jsonEncode(adminDept.toJson());
 
   // 경로에 company.txt 파일 생성
   final File companyFile = File('lib/09_3_data_types/company.txt');
