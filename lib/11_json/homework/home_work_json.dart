@@ -47,7 +47,7 @@ class Department {
 
   Map<String, dynamic> toJson() => {
         'name': name,
-        'leader': leader,
+        'leader': leader.toJson(),
       };
 
   @override
