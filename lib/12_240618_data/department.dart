@@ -13,9 +13,17 @@ class Department {
 
   Department.fromJson(Map<String, dynamic> json)
       : name = json['name'],
-        leader = Employee.fromJson(json['leader']);
-  Department copyWith({String? name, Employee? leader}) {
-    return Department(name: name ?? this.name, leader: leader ?? this.leader);
+        leader = Employee.fromJson(
+          json['leader'],
+        );
+  Department copyWith({
+    String? name,
+    Employee? leader,
+  }) {
+    return Department(
+      name: name ?? this.name,
+      leader: leader ?? this.leader,
+    );
   }
 
   @override
