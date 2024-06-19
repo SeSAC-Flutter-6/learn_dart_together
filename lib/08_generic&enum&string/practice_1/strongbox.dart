@@ -1,5 +1,5 @@
-import 'keytype.dart';
 import 'constants.dart';
+import 'keytype.dart';
 
 class StrongBox<E> {
   E? _item;
