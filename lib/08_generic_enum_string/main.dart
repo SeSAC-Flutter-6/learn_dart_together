@@ -15,8 +15,7 @@ void main() {
   print(identical(hero1, hero2)); // false 이게 일반적
 
   // String은 불변
-  // final stopWatch = Stopwatch();
-  // stopWatch.start();
+  // final stopWatch = Stopwatch()..start();
   // String result = ''; // new
   // for (var i = 0; i < 10000; i++) {
   //   result += '$i'; // new
@@ -24,12 +23,12 @@ void main() {
   // stopWatch.stop();
   // print(stopWatch.elapsedMilliseconds);
 
-//   final stopWatch = Stopwatch();
-//   stopWatch.start();
-//   final sb = StringBuffer('');
-//   for (var i = 0; i < 10000; i++) {
-//     //
-//   }
-//   stopWatch.stop();
-//   print(stopWatch.elapsedMilliseconds);
+  // StringBuffer 썼을때
+  final stopWatch = Stopwatch()..start();
+  final sb = StringBuffer('');
+  for (var i = 0; i < 10000; i++) {
+    sb.write(i.toString());
+  }
+  stopWatch.stop();
+  print(stopWatch.elapsedMilliseconds);
 }

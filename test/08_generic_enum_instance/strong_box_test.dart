@@ -8,7 +8,6 @@ void main() {
     test('put() 메서드로 물건을 보관할 수 있음, 이미 보관중인 경우 Exception 발생', () {
       sb.put('Gold');
       expect(sb.valuables, 'Gold');
-
       expect(() => sb.put('Silver'), throwsException);
     });
 
