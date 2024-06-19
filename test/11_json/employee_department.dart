@@ -7,9 +7,9 @@ void main() {
   test('employee department test', () {
     final department =
         Department(name: '총무부', leader: Employee(name: '홍길동', age: 41));
-    String target = 'lib/11_json/company_test.txt';
+    final String target = 'lib/11_json/company_test.txt';
     companyInformation(department, target);
-    File company = File(target);
+    final File company = File(target);
     final companyRead = company.readAsStringSync();
     print(department);
     print(Department.fromJson(jsonDecode(companyRead)));
