@@ -1,47 +1,5 @@
 import 'dart:convert';
 
-class User {
-  final String name;
-  final String email;
-
-  //4종 : data class + 직렬화 역직렬화
-  User.fromJson(Map<String, dynamic> json)
-      : name = json['name'],
-        email = json['email'];
-
-  //이니셜라이즈 리스트에서 초기화 쓰기
-  Map<String, dynamic> toJson() {
-    return {
-      'name': name,
-      'email': email,
-    };
-  }
-}
-
-void main() {
-  final Map<String, dynamic> json = {
-    "name": true,
-    "email": "john@example.com",
-    "address": [
-      {
-        "city": "suwon",
-      }
-    ]
-  };
-  User user = User(name: 'user', email: 'a@ac.com');
-  User user2 = User.fromJson({'name': '어쩌구', 'email': '저쩌구'});
-
-  print(user2);
-
-  final Map<String, dynamic> userJson = user2.toJson();
-  print(userJson['name']);
-  print(userJson['email']);
-
-  final json3 = "{'name': '어쩌구', 'email': '저쩌구'}"; // NG
-  final json4 = '{"name": "어쩌구", "email": "저쩌구"}'; // OK
-  final json3Map = jsonDecode(json4);
-}
-
 // 4종 : data class + 직렬화,역직렬화
 class User {
   final String name;
@@ -52,6 +10,7 @@ class User {
     required this.email,
   });
 
+  //이니셜라이즈 리스트에서 초기화 쓰기
   User.fromJson(Map<String, dynamic> json)
       : name = json['name'],
         email = json['email'];
@@ -88,4 +47,28 @@ class User {
       'email': email,
     };
   }
+}
+
+void main() {
+  final Map<String, dynamic> json = {
+    "name": true,
+    "email": "john@example.com",
+    "address": [
+      {
+        "city": "suwon",
+      }
+    ]
+  };
+  User user = User(name: 'user', email: 'a@ac.com');
+  User user2 = User.fromJson({'name': '어쩌구', 'email': '저쩌구'});
+
+  print(user2);
+
+  final Map<String, dynamic> userJson = user2.toJson();
+  print(userJson['name']);
+  print(userJson['email']);
+
+  final json3 = "{'name': '어쩌구', 'email': '저쩌구'}"; // NG
+  final json4 = '{"name": "어쩌구", "email": "저쩌구"}'; // OK
+  final json3Map = jsonDecode(json4);
 }
