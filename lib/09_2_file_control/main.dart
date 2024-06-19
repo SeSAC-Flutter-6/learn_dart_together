@@ -8,5 +8,5 @@ void copy(String source, String target) {
   final File originalFile = File(source);
   final String text = originalFile.readAsStringSync();
 
-  final _ = File(target).writeAsStringSync(text);
+  File(target).writeAsStringSync(text);
 }
