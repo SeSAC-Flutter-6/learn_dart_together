@@ -48,7 +48,7 @@ void main() {
   print(transactions
       .where((e) => e.trader.city == 'Cambridge')
       .sorted((a, b) => (a.trader.name.compareTo(b.trader.name)))
-      .map((e) => e.trader.name));
+      .map((e) => e.trader.name).toSet());
 
   // 4. 모든 거래자의 이름을 알파벳순으로 정렬하여 나열하시오
   print(transactions
