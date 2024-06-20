@@ -1,0 +1,26 @@
+final String json = {
+ "collectionChartDataList": [
+   {
+     "collectionName": "collectionName",
+     "collectionSalePrice": null
+   },
+   {
+     "collectionName": "collectionName",
+     "collectionSalePrice": [
+       {
+         "price": 59.75,
+         "cvtDatetime": "2023-03-26T08:08:35"
+       },
+       {
+         "price": 60.00,
+         "cvtDatetime": "2023-03-26T08:08:45"
+       }
+     ]
+   }
+ ]
+};
+
+* null이 들어가면 고려해야할 사항이 많아지며 버그가 발생할 가능성이 높아지기 때문에 []처럼 빈 값을 넣어주는게 좋다.
+* collectionChartDataList의 value중 key인 collectionName과 collectionSalePrice가 중복으로 있다.
+    - null로 사용할 바엔 둘의 데이터를 합치거나, null이 들어간 data를 없애버리자.
+    - 아니면 key가 중복으로 있기 때문에 2번째 data의 key값을 바꾸자.
