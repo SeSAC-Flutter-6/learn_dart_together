@@ -2,7 +2,7 @@ import 'package:learn_dart_together/11_json/employee.dart';
 import 'package:test/test.dart';
 
 void main() {
-  test('Department 직렬화', () {
+  test('Department 직렬화', () async {
     final Map<String, dynamic> expected = {
       'name': '총무부',
       'leader': {
