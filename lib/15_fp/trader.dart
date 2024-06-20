@@ -48,7 +48,8 @@ void main() {
   print(transactions
       .where((e) => e.trader.city == 'Cambridge')
       .sorted((a, b) => (a.trader.name.compareTo(b.trader.name)))
-      .map((e) => e.trader.name).toSet());
+      .map((e) => e.trader.name)
+      .toSet());
 
   // 4. 모든 거래자의 이름을 알파벳순으로 정렬하여 나열하시오
   print(transactions
@@ -60,7 +61,9 @@ void main() {
   print(transactions.where((e) => e.trader.city == "Milan").isNotEmpty);
 
   // 6. 케임브리지에 거주하는 거래자의 모든 트랙잭션값을 출력하시오
-  print(transactions.where((e) => e.trader.city == "Cambridge"));
+  print(transactions
+      .where((e) => e.trader.city == "Cambridge")
+      .map((e) => e.value));
 
   // 7. 전체 트랜잭션 중 최대값은 얼마인가?
   print(transactions.sorted((a, b) => -a.value.compareTo(b.value)).first.value);
