@@ -6,11 +6,11 @@ void main() {
   final sourceFile = './test/15_async/practice_1/test.csv';
   final targetFile = './test/15_async/practice_1/test_copy.csv';
   group('파일 처리 테스트', () {
-    setUp(() {
-      File(sourceFile).writeAsString('1,홍길동,30\n2,한석봉,20');
+    setUp(() async {
+      await File(sourceFile).writeAsString('1,홍길동,30\n2,한석봉,20');
     });
-    tearDown(() {
-      File(sourceFile).delete();
+    tearDown(() async {
+      await File(sourceFile).delete();
     });
 
     test('파일을 읽은 후, 특정 문자열이 있는지 찾아 원하는 문자열로 수정한다', () async {
@@ -24,7 +24,7 @@ void main() {
       // final fileContent = await File(targetFile).readAsString();
       expect(
         () async => await fileRead(wrongSourceFile, targetFile, '한석봉', '김석봉'),
-        throwsA(isA<Exception>),
+        throwsA(isA<Exception>()),
       );
     });
   });
