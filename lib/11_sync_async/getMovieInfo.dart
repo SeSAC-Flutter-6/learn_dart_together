@@ -2,6 +2,7 @@ import 'dart:convert';
 
 Future<void> main() async {
   Future<Movie> getMovieInfo() async {
+    await Future.delayed(const Duration(seconds: 2));
     final String jsonString = '''{
       "title": "Star Ward",
       "director": "George Lucas",
