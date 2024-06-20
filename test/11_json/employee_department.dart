@@ -4,7 +4,7 @@ import 'package:learn_dart_together/11_json/employee_department.dart';
 import 'package:test/test.dart';
 
 void main() {
-  test('employee department test', () {
+  test('employee department test', () async {
     final department =
         Department(name: '총무부', leader: Employee(name: '홍길동', age: 41));
     final String target = 'lib/11_json/company_test.txt';

@@ -25,8 +25,9 @@ void main() {
   final jsonDecoded = jsonDecode(json);
   // List<Map<String, dynamic>> collectionChartDataList = jsonDecoded['collectionChartDataList']; // dynamic 안되는 이유: null
   List<dynamic> collectionChartDataList =
-      jsonDecoded['collectionChartDataList'];
-  final collectionChartDataListMap = collectionChartDataList.map((e)=> e as Map<String, dynamic>);
+      jsonDecoded['collectionChartDataList'] as List; // 타입 캐스팅 하거나 앞에 차입 명시 해주면
+  final collectionChartDataListMap =
+      collectionChartDataList.map((e) => e as Map<String, dynamic>);
   print(jsonDecoded['collectionChartDataList']);
   collectionChartDataListMap.toList().forEach((i) {
     if (i.containsKey('collectionSalePrice') &&
