@@ -23,9 +23,9 @@ void main() {
  ]
 }''';
   final data = jsonDecode(json)['collectionChartDataList'] as List;
-  final decoded = data.map((data) => CollectionChartData.fromJson(data));
+  final result = data.map((data) => CollectionChartData.fromJson(data));
 
-  print(decoded);
+  print(result);
 }
 
 class CollectionChartData {
