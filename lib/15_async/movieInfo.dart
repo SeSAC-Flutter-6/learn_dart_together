@@ -27,9 +27,9 @@ class Movie {
   });
 
   Movie.fromJson(Map<String, dynamic> json)
-      : title = json['title'],
-        director = json['director'],
-        year = json['year'];
+      : title = json['title'] ?? '',
+        director = json['director'] ?? '',
+        year = json['year'] ?? 0;
 }
 
 void main() async {
