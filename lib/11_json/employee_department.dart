@@ -65,6 +65,7 @@ class Department {
 
   @override
   int get hashCode => name.hashCode ^ leader.hashCode;
+  // int get hashCode => Object.hash(name, leader); 위와 같음
 
   @override
   String toString() {
