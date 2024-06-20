@@ -27,6 +27,7 @@ void main() {
   final jsonData = jsonDecode(jsonStr);
 
   Iterable<dynamic> chartDataList = jsonData['collectionChartDataList'];
+  print('chartDataList는 $chartDataList');
   chartDataList.forEach((data) {
     String collectionName = data['collectionName'];
     dynamic salePrices = data['collectionSalePrice'];
