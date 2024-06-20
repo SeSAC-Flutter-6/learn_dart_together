@@ -7,11 +7,10 @@ Future<void> main() async {
 
   print((await getMovieInfo()).director);
 
-  try {
-    await timeoutFuture().timeout(Duration(seconds: 5));
-  } catch (e) {
-    print('timeout!');
-  }
+  // 연습문제 3.
+  final result = await timeoutFuture()
+      .timeout(Duration(seconds: 5), onTimeout: () => 'timeout!');
+  print(result);
 }
 
 // 연습문제 1.
@@ -38,7 +37,6 @@ Future<Movie> getMovieInfo() async {
   return decodedData;
 }
 
-// 연습문제 3.
 Future<String> timeoutFuture() async {
   await Future.delayed(Duration(seconds: 6));
   return 'ok';
