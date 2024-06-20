@@ -9,10 +9,10 @@ Future<Movie> getMovieInfo() async {
      "year": 1977
    }
  ''';
-  Map<String, dynamic> json = jsonDecode(jsonString);
-  Movie movie = Movie.fromJson(json);
-
-  return movie;
+  // Map<String, dynamic> json = jsonDecode(jsonString);
+  // Movie movie = Movie.fromJson(json);
+  // return movie;
+  return Movie.fromJson(jsonDecode(jsonString));
 }
 
 class Movie {
