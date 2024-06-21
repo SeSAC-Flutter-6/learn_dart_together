@@ -1,6 +1,7 @@
+import 'dart:async';
 import 'dart:io';
 
-void copy(String source, String target) {
+Future<void> copy(String source, String target) async {
   final File sourceFile = File(source);
 
   final File targetFile = File(target);

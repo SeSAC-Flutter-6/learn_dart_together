@@ -35,18 +35,18 @@ void main() {
       .map((transaction) => transaction.trader.city)
       .toSet()
       .toList()
-    ..sort(); //2
+      .sorted(); //2
 
   List<String> cambridgeTrader = transactions
       .where((e) => e.trader.city == "Cambridge")
       .map((transaction) => transaction.trader.name)
       .toList()
-    ..sort(); //3
+      .sorted(); //3
 
   List<String> allTrader = transactions
       .map((transaction) => transaction.trader.name)
       .toList()
-    ..sort(); //4
+    ..sorted(); //4
 
   bool isMilanTrader =
       transactions.any((transaction) => transaction.trader.city == "Milan");
@@ -56,10 +56,12 @@ void main() {
       .toList();
 
   int maxValue =
-      transactions.map((transaction) => transaction.value).reduce(max);
+      // transactions.map((transaction) => transaction.value).reduce(max);
+      transactions.map((transaction) => transaction.value).max;
 
   int minValue =
-      transactions.map((transaction) => transaction.value).reduce(min);
+      // transactions.map((transaction) => transaction.value).reduce(min);
+      transactions.map((transaction) => transaction.value).min;
 }
 
 bool isValidPlayerName(String name) {
