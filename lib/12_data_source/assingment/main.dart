@@ -3,7 +3,7 @@ import 'dart:io';
 import 'package:learn_dart_together/data_source/todo_data_source.dart';
 
 Future<void> main() async {
-  final dataSource = TodoDataSource();
+  final dataSource = DataSource();
   final savePath = 'lib/12_data_source/assingment';
 
   // assingment 1

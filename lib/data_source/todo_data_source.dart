@@ -8,7 +8,7 @@ import 'package:xml/xml.dart';
 import '../12_data_source/status/status.dart';
 import '../12_data_source/subway/subway.dart';
 
-class TodoDataSource {
+class DataSource {
   Future<List<Todo>> getTodos() async {
     final http.Response response =
         await http.get(Uri.parse('https://jsonplaceholder.typicode.com/todos'));
