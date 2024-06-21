@@ -1,0 +1,42 @@
+import 'dart:convert';
+
+import 'package:http/http.dart' as http;
+
+// void main() {
+//   http.get(Uri.parse('https://jsonplaceholder.typicode.com/todos/1'))
+//       .then((response) => jsonDecode(response.body))
+//       .then((json) => print(json));
+// }
+
+void main() async {
+  final response =
+      await http.get(Uri.parse('https://jsonplaceholder.typicode.com/todos/1'));
+
+  final jsonString = jsonDecode(response.body);
+  print(Todo.fromJson(jsonString));
+}
+
+class Todo {
+  int userId;
+  int id;
+  String title;
+  bool completed;
+
+  Todo({
+    required this.userId,
+    required this.id,
+    required this.title,
+    required this.completed,
+  });
+
+  Todo.fromJson(Map<String, dynamic> json)
+      : userId = json['userId'],
+        id = json['id'],
+        title = json['title'],
+        completed = json['completed'];
+
+  @override
+  String toString() {
+    return 'Todo{userId: $userId, id: $id, title: $title, completed: $completed}';
+  }
+}
