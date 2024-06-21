@@ -13,6 +13,5 @@ Future<void> main() async {
   } catch (e) {
     print('타임아웃');
   }
-  //.catchError((err) => throw Exception('timeout'));
-  // 비동기를 비동기로 하는게 catchError
+
 }

@@ -14,16 +14,7 @@ Future<void> main() async {
   }
 
 
-  // Future<void> write(String source) async {
-  //   final result = File('lib/14_async/sample_copy.csv');
-  //   await result.writeAsString('김석봉');
-  //
-  //   print(result);
-  // }
-
   //원본 수정 문자열 수정 메서드.. replaceAll
 
   read('lib/14_async/sample.csv');
-
-  // write('lib/14_async/sample_copy.csv');
 }
