@@ -47,12 +47,11 @@ Future<Movie> getMovieInfo() async {
 
   final String jsonString =
       '{"title" : "Star word","director" : "Georage Lucas", "year" : 1997}';
-  Map<String, dynamic> json = jsonDecode(jsonString);
 
-  return Movie(
-      title: json['title'], director: json['director'], year: json['year']);
+  return Movie.fromJson(jsonDecode(jsonString));
 }
 
 void main() async {
-  print(await getMovieInfo());
+  final Movie movie = await getMovieInfo();
+  print(movie.director);
 }

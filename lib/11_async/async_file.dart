@@ -1,11 +1,11 @@
 import 'dart:io';
 
-void copyWriteFile() {
-  File file = File('sample.csv');
+Future<void> copyWriteFile() async {
+  final File file = File('sample.csv');
   file.exists().then((exist) async {
     if (exist) {
       final fileText = await file.readAsString();
-      File newFile = File('sample_copy.csv');
+      final File newFile = File('sample_copy.csv');
       await newFile.writeAsString(fileText.replaceAll('한석봉', '김석봉'));
       print(await newFile.readAsString());
     } else {
