@@ -33,7 +33,7 @@ class Movie {
 }
 
 void main() async {
-  Movie movie = await getMovieInfo();
+  final Movie movie = await getMovieInfo();
   print(movie.director);
   print(movie.title);
   print(movie.year);
