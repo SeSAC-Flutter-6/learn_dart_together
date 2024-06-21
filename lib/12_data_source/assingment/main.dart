@@ -19,17 +19,18 @@ Future<void> main() async {
 
   // assingment 3
   final users = dataSource.getUsers();
-  // print(await users);
+  final File assingment3 = File('$savePath/assingment3');
+  await assingment3.writeAsString((await users).toString());
 
   // assingment 4
   final subways = dataSource.getSubways();
-  // print(await subways);
+  final File assingment4 = File('$savePath/assingment4');
+  await assingment4.writeAsString((await subways).toString());
 
   // assingment 5
   final status = dataSource.getStatuses();
-  // print(await status);
-
-
+  final File assingment5 = File('$savePath/assingment5');
+  await assingment5.writeAsString((await status).toString());
 }
 
 
