@@ -1,3 +1,4 @@
+
 import 'package:learn_dart_together/01_instance_class/cleric.dart';
 import 'package:learn_dart_together/01_instance_class/hero.dart';
 import 'package:learn_dart_together/01_instance_class/slime.dart';
