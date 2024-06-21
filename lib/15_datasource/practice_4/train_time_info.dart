@@ -4,11 +4,11 @@ import 'dart:convert';
 import 'package:xml/xml.dart' as xml;
 
 class TrainTimeInfo {
-  String trainLineNm; // 출발-도착
-  String btrainSttus; // 급행 or 일반
-  String statnNm; // 출발지
-  String bstatnNm; // 도착지
-  int subwayId; // 기차 ID
+  final String trainLineNm; // 출발-도착
+  final String btrainSttus; // 급행 or 일반
+  final String statnNm; // 출발지
+  final String bstatnNm; // 도착지
+  final int subwayId; // 기차 ID
 
   TrainTimeInfo({
     required this.trainLineNm,
@@ -60,13 +60,15 @@ class TrainTimeInfo {
       TrainTimeInfo.fromMap(json.decode(source) as Map<String, dynamic>);
 
   factory TrainTimeInfo.fromXml(xml.XmlElement element) {
-    return TrainTimeInfo(
-      trainLineNm: element.findElements('trainLineNm').first.innerText,
-      btrainSttus: element.findElements('btrainSttus').first.innerText,
-      statnNm: element.findElements('statnNm').first.innerText,
-      bstatnNm: element.findElements('bstatnNm').first.innerText,
-      subwayId: int.parse(element.findElements('subwayId').first.innerText),
-    );
+    final Map<String, dynamic> data = {
+      'trainLineNm': element.findElements('trainLineNm').first.innerText,
+      'btrainSttus': element.findElements('btrainSttus').first.innerText,
+      'statnNm': element.findElements('statnNm').first.innerText,
+      'bstatnNm': element.findElements('bstatnNm').first.innerText,
+      'subwayId': int.parse(element.findElements('subwayId').first.innerText),
+    };
+
+    return TrainTimeInfo.fromMap(data);
   }
 
   @override
