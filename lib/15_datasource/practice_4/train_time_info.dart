@@ -34,41 +34,42 @@ class TrainTimeInfo {
     );
   }
 
-  Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'trainLineNm': trainLineNm,
-      'btrainSttus': btrainSttus,
-      'statnNm': statnNm,
-      'bstatnNm': bstatnNm,
-      'subwayId': subwayId,
-    };
-  }
+  // Map<String, dynamic> toMap() {
+  //   return <String, dynamic>{
+  //     'trainLineNm': trainLineNm,
+  //     'btrainSttus': btrainSttus,
+  //     'statnNm': statnNm,
+  //     'bstatnNm': bstatnNm,
+  //     'subwayId': subwayId,
+  //   };
+  // }
 
-  factory TrainTimeInfo.fromMap(Map<String, dynamic> map) {
-    return TrainTimeInfo(
-      trainLineNm: map['trainLineNm'] as String,
-      btrainSttus: map['btrainSttus'] as String,
-      statnNm: map['statnNm'] as String,
-      bstatnNm: map['bstatnNm'] as String,
-      subwayId: map['subwayId'] as int,
-    );
-  }
-
-  String toJson() => json.encode(toMap());
-
-  factory TrainTimeInfo.fromJson(String source) =>
-      TrainTimeInfo.fromMap(json.decode(source) as Map<String, dynamic>);
+  // factory TrainTimeInfo.fromMap(Map<String, dynamic> map) {
+  //   return TrainTimeInfo(
+  //     trainLineNm: map['trainLineNm'] as String,
+  //     btrainSttus: map['btrainSttus'] as String,
+  //     statnNm: map['statnNm'] as String,
+  //     bstatnNm: map['bstatnNm'] as String,
+  //     subwayId: map['subwayId'] as int,
+  //   );
+  // }
 
   factory TrainTimeInfo.fromXml(xml.XmlElement element) {
-    final Map<String, dynamic> data = {
-      'trainLineNm': element.findElements('trainLineNm').first.innerText,
-      'btrainSttus': element.findElements('btrainSttus').first.innerText,
-      'statnNm': element.findElements('statnNm').first.innerText,
-      'bstatnNm': element.findElements('bstatnNm').first.innerText,
-      'subwayId': int.parse(element.findElements('subwayId').first.innerText),
-    };
-
-    return TrainTimeInfo.fromMap(data);
+    // final Map<String, dynamic> data = {
+    //   'trainLineNm': element.findElements('trainLineNm').first.innerText,
+    //   'btrainSttus': element.findElements('btrainSttus').first.innerText,
+    //   'statnNm': element.findElements('statnNm').first.innerText,
+    //   'bstatnNm': element.findElements('bstatnNm').first.innerText,
+    //   'subwayId': int.parse(element.findElements('subwayId').first.innerText),
+    // };
+    // return TrainTimeInfo.fromMap(data);
+    return TrainTimeInfo(
+      trainLineNm: element.findElements('trainLineNm').first.innerText,
+      btrainSttus: element.findElements('btrainSttus').first.innerText,
+      statnNm: element.findElements('statnNm').first.innerText,
+      bstatnNm: element.findElements('bstatnNm').first.innerText,
+      subwayId: int.parse(element.findElements('subwayId').first.innerText),
+    );
   }
 
   @override
