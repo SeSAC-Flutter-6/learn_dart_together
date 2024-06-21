@@ -1,7 +1,20 @@
 //총무부 리더 ‘홍길동(41세)’의 인스턴스를 생성하고 직렬화하여 company.txt 파일에 쓰는 프로그램을 작성하시오.
 //직렬화를 위해 위의 2개 클래스를 일부 수정해도 됩니다.
-
 //data class 를 위한 4종도 추가하시오.
+// class Employee {
+//   String name;
+//   int age;
+//
+//   Employee(this.name, this.age);
+// }
+//
+// class Department {
+//   String name;
+//   Employee leader;
+//
+//   Department(this.name, this.leader);
+// }
+
 class Employee {
   String name;
   int age;
@@ -50,7 +63,7 @@ class Employee {
 
 class Department {
   String name;
-  Employee leader;
+  Employee leader;//Employee 타입에 leader가 어디있지?
 
   Department({
     required this.name,
