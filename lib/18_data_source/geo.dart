@@ -27,8 +27,14 @@ class Geo {
     return 'Geo{lat: $lat, lng: $lng}';
   }
 
-  Geo copyWith(String? lat, String? lng,) {
-    return Geo(lat: lat ?? this.lat, lng: lng ?? this.lng,);
+  Geo copyWith(
+    String? lat,
+    String? lng,
+  ) {
+    return Geo(
+      lat: lat ?? this.lat,
+      lng: lng ?? this.lng,
+    );
   }
 
   Map<String, dynamic> toJson() {
