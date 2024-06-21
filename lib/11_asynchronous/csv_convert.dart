@@ -7,7 +7,7 @@ Future<void> processCsvFile(
     throw FileSystemException('파일을 찾을 수 없습니다.', sourceFilePath);
   }
 
-  String csvString = await inputFile.readAsString();
+  final String csvString = await inputFile.readAsString();
   File convertedFile = File(convertFilePath);
 
   if (csvString.contains('한석봉')) {

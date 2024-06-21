@@ -2,6 +2,7 @@ class Movie {
   String title;
   String director;
   int releaseYear;
+
   Movie({
     required this.title,
     required this.director,

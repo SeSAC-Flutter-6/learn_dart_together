@@ -1,10 +1,9 @@
 import 'dart:convert';
 import 'dart:io';
-
 import 'package:learn_dart_together/11_asynchronous/movie.dart';
 import 'package:learn_dart_together/11_asynchronous/service/movie_service.dart';
 
-class MovieServiceImpl extends MovieService {
+class MovieServiceImpl implements MovieService {
   @override
   Future<Movie> getMovieInfo() async {
     await Future.delayed(Duration(seconds: 2));
@@ -15,8 +14,8 @@ class MovieServiceImpl extends MovieService {
     if (response.statusCode != 200) {
       throw Exception();
     }
-    String responseBody = await response.transform(utf8.decoder).join();
-    Movie movie = Movie.fromJson(jsonDecode(responseBody));
+    final String responseBody = await response.transform(utf8.decoder).join();
+    final Movie movie = Movie.fromJson(jsonDecode(responseBody));
     return movie;
   }
 }

@@ -5,7 +5,7 @@ import 'package:learn_dart_together/11_asynchronous/timeout.dart';
 
 Future<void> main() async {
   final MovieServiceFake movieService = MovieServiceFake();
-  Movie movie = await movieService.getMovieInfo();
+  final Movie movie = await movieService.getMovieInfo();
   print(movie.director);
   print(movie.title);
   print(movie.releaseYear);
