@@ -18,7 +18,7 @@ Future<void> changeSB(String source, String target) async {
   try {
     final content = await File(source).readAsString();
     final modified = content.replaceAll('한석봉', '김석봉');
-    File(target).writeAsString(modified);
+    await File(target).writeAsString(modified); // await 써야함
   } catch (e) {
     print('파일을 찾을 수 없습니다!');
   }
