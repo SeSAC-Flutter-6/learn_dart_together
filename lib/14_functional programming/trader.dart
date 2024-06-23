@@ -1,5 +1,7 @@
 import 'package:collection/collection.dart';
-import 'package:learn_dart_together/11_functional%20programming/training_01.dart';
+import 'package:learn_dart_together/14_functional%20programming/training_01.dart';
+
+
 
 
 class Trader {
