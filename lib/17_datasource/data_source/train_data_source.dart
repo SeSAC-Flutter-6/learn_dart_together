@@ -23,7 +23,6 @@ void main() async {
   TrainApi trainApi = TrainApi();
   try {
     List<Train> trains = await trainApi.getSTrains();
-    // 여기서 trains를 사용하여 필요한 작업을 수행할 수 있습니다.
     print(trains);
   } catch (e) {
     print('Error: $e');

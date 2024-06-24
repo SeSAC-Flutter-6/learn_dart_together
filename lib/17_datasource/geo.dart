@@ -1,5 +1,3 @@
-// data 클래스 4종 (==, hasCode, toString, copyWith), 직렬화 역직렬화 (fromJson, toJson)
-
 class Geo {
   final num lat;
   final num lng;

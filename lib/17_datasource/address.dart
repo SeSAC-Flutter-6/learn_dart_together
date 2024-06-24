@@ -1,5 +1,3 @@
-// data 클래스 4종 (==, hasCode, toString, copyWith), 직렬화 역직렬화 (fromJson, toJson)
-
 import 'package:learn_dart_together/17_datasource/geo.dart';
 
 class Address {

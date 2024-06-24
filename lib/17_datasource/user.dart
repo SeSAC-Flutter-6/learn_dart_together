@@ -1,8 +1,6 @@
 import 'package:learn_dart_together/17_datasource/address.dart';
 import 'package:learn_dart_together/17_datasource/company.dart';
 
-// data 클래스 4종 (==, hasCode, toString, copyWith), 직렬화 역직렬화 (fromJson, toJson)
-
 class User {
   final int id;
   final String name;
