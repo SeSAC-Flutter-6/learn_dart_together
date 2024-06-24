@@ -5,9 +5,9 @@ import 'package:learn_dart_together/18_data_source/todo.dart';
 
 class TodoDataSource {
   Future<Todo> getTodo() async {
-    final result = await http
+    final response = await http
         .get(Uri.parse('https://jsonplaceholder.typicode.com/todos/1'));
-    final json = jsonDecode(result.body);
+    final json = jsonDecode(response.body);
     return Todo.fromJson(json);
   }
 }
