@@ -1,4 +1,5 @@
 import 'package:learn_dart_together/utils/xml_util.dart';
+import 'package:xml/xml.dart';
 
 class RealtimeStationArrival {
   final int rowNum;
@@ -40,11 +41,28 @@ class RealtimeStationArrival {
     );
   }
 
+  factory RealtimeStationArrival.fromXmlPackage(XmlElement xmlElement) {
+    return RealtimeStationArrival(
+      rowNum: int.parse(xmlElement.getElement('rowNum')?.innerText ?? '0'),
+      totalCount:
+          int.parse(xmlElement.getElement('totalCount')?.innerText ?? '0'),
+      subwayId: xmlElement.getElement('subwayId')?.innerText ?? '',
+      updnLine: xmlElement.getElement('updnLine')?.innerText ?? '',
+      trainLineNm: xmlElement.getElement('trainLineNm')?.innerText ?? '',
+      statnNm: xmlElement.getElement('statnNm')?.innerText ?? '',
+      btrainSttus: xmlElement.getElement('btrainSttus')?.innerText ?? '',
+      btrainNo: xmlElement.getElement('btrainNo')?.innerText ?? '',
+      recptnDt: DateTime.parse(
+          xmlElement.getElement('recptnDt')?.innerText ?? '2999-12-31'),
+      arvlMsg2: xmlElement.getElement('arvlMsg2')?.innerText ?? '',
+    );
+  }
+
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
       other is RealtimeStationArrival &&
-          runtimeType == other.runtimeType &&
+          other.runtimeType == runtimeType &&
           other.rowNum == rowNum &&
           other.totalCount == totalCount &&
           other.subwayId == subwayId &&

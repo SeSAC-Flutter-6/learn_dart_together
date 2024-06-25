@@ -5,4 +5,8 @@ abstract interface class SubwayService {
       {required String startIndex,
       required String endIndex,
       required String statnNm});
+  Future<List<RealtimeStationArrival>> getRealtimeStationArrivalUsingXmlPackage(
+      {required String startIndex,
+      required String endIndex,
+      required String statnNm});
 }
