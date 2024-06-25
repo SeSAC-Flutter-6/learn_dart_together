@@ -44,6 +44,13 @@ class Todo {
         title = json['title'],
         completed = json['completed'];
 
+  Map<String, dynamic> toJson() => {
+        'userId': userId,
+        'id': id,
+        'title': title,
+        'completed': completed,
+      };
+
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||

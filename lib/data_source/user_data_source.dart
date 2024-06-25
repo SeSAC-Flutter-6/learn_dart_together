@@ -47,6 +47,17 @@ class User {
         website = json['website'],
         company = Company.fromJson(json['company']);
 
+  Map<String, dynamic> toJson() => {
+        'id': id,
+        'name': name,
+        'username': username,
+        'email': email,
+        'address': address.toJson(),
+        'phone': phone,
+        'website': website,
+        'company': company.toJson(),
+      };
+
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
@@ -116,6 +127,12 @@ class Company {
         catchPhrase = json['catchPhrase'],
         bs = json['bs'];
 
+  Map<String, dynamic> toJson() => {
+        'name': name,
+        'catchPhrase': catchPhrase,
+        'bs': bs,
+      };
+
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
@@ -167,6 +184,13 @@ class Address {
         city = json['city'],
         zipcode = json['zipcode'],
         geo = Geo.fromJson(json['geo']);
+
+  Map<String, dynamic> toJson() => {
+        'street': street,
+        'suite': suite,
+        'city': city,
+        'geo': geo.toJson(),
+      };
 
   @override
   bool operator ==(Object other) =>
@@ -221,6 +245,11 @@ class Geo {
   Geo.fromJson(Map<String, dynamic> json)
       : lat = json['lat'],
         lng = json['lng'];
+
+  Map<String, dynamic> toJson() => {
+        'lat': lat,
+        'lng': lng,
+      };
 
   @override
   bool operator ==(Object other) =>
