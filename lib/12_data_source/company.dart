@@ -29,7 +29,7 @@ class Company {
   bool operator ==(Object other) =>
       identical(this, other) ||
       other is Company &&
-          runtimeType == other.runtimeType &&
+          other.runtimeType == runtimeType &&
           other.name == name &&
           other.catchPhrase == catchPhrase &&
           other.bs == bs;

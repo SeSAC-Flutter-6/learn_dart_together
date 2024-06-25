@@ -43,7 +43,7 @@ class Address {
   bool operator ==(Object other) =>
       identical(this, other) ||
       other is Address &&
-          runtimeType == other.runtimeType &&
+          other.runtimeType == runtimeType &&
           other.street == street &&
           other.suite == suite &&
           other.city == city &&

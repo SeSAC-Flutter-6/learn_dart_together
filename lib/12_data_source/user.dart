@@ -52,7 +52,7 @@ class User {
   bool operator ==(Object other) =>
       identical(this, other) ||
       other is User &&
-          runtimeType == other.runtimeType &&
+          other.runtimeType == runtimeType &&
           other.id == id &&
           other.name == name &&
           other.username == username &&
