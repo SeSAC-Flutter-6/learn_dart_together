@@ -1,4 +1,3 @@
-// ignore_for_file: unused_local_variable
 import 'package:learn_dart_together/12_data_source/realtime_station_arrival.dart';
 import 'package:learn_dart_together/12_data_source/stock.dart';
 import 'package:learn_dart_together/12_data_source/todo.dart';
@@ -45,49 +44,5 @@ Future<void> main() async {
   List<Stock> stocks = await stockService.getStockAndETFList();
   for (Stock stock in stocks) {
     print(stock);
-  }
-
-  // csv 파싱시간비교
-  await compareCsvParsingPerformance(stockService);
-
-  //xml 파싱시간비교
-  await compareXmlParsingPerformance(subwayService);
-}
-
-Future<void> compareCsvParsingPerformance(StockServiceImpl stockService) async {
-  try {
-    final Stopwatch stopwatch1 = Stopwatch()..start();
-    List<Stock> stocksDirectParsing = await stockService.getStockAndETFList();
-    stopwatch1.stop();
-    print('직접 csv 파싱: ${stopwatch1.elapsedMilliseconds} ms');
-
-    final Stopwatch stopwatch2 = Stopwatch()..start();
-    List<Stock> stocksUsingCsvPackage =
-        await stockService.getStockAndETFListUsingCsvPackage();
-    stopwatch2.stop();
-    print('csv패키지 사용: ${stopwatch2.elapsedMilliseconds} ms');
-  } catch (e) {
-    print('Error: $e');
-  }
-}
-
-Future<void> compareXmlParsingPerformance(
-    SubwayServiceImpl subwayService) async {
-  try {
-    final Stopwatch stopwatch1 = Stopwatch()..start();
-    List<RealtimeStationArrival> resultDirectParsing =
-        await subwayService.getRealtimeStationArrival(
-            startIndex: '0', endIndex: '5', statnNm: '서울');
-    stopwatch1.stop();
-    print('직접 XML 파싱: ${stopwatch1.elapsedMilliseconds} ms');
-
-    final Stopwatch stopwatch2 = Stopwatch()..start();
-    List<RealtimeStationArrival> resultUsingPackage =
-        await subwayService.getRealtimeStationArrivalUsingXmlPackage(
-            startIndex: '0', endIndex: '5', statnNm: '서울');
-    stopwatch2.stop();
-    print('xml 패키지 사용: ${stopwatch2.elapsedMilliseconds} ms');
-  } catch (e) {
-    print('Error: $e');
   }
 }
