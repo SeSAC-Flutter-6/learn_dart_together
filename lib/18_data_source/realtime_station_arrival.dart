@@ -14,11 +14,10 @@ class RealtimeStationArrival {
   });
 
   RealtimeStationArrival.fromXml(XmlElement xml)
-      : subwayId =
-            int.parse(xml.getElement('subwayId')?.innerText.toString() ?? '0'),
-        upDownLine = xml.getElement('updnLine')?.innerText.toString() ?? '',
-        stationName = xml.getElement('statnNm')?.innerText.toString() ?? '',
-        recptnDt = xml.getElement('recptnDt')?.innerText.toString() ?? '';
+      : subwayId = int.parse(xml.getElement('subwayId')?.innerText ?? '0'),
+        upDownLine = xml.getElement('updnLine')?.innerText ?? '',
+        stationName = xml.getElement('statnNm')?.innerText ?? '',
+        recptnDt = xml.getElement('recptnDt')?.innerText ?? '';
 
   @override
   bool operator ==(Object other) =>
