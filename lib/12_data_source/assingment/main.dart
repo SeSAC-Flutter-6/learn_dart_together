@@ -1,9 +1,10 @@
 import 'dart:io';
 
-import 'package:learn_dart_together/data_source/status_data_source.dart';
-import 'package:learn_dart_together/data_source/subway_data_source.dart';
-import 'package:learn_dart_together/data_source/todo_data_source.dart';
-import 'package:learn_dart_together/data_source/user_data_source.dart';
+import '../data_source/status_data_source.dart';
+import '../data_source/subway_data_source.dart';
+import '../data_source/todo_data_source.dart';
+import '../data_source/user_data_source.dart';
+
 
 Future<void> main() async {
   final savePath = 'lib/12_data_source/assingment';

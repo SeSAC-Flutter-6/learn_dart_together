@@ -2,7 +2,8 @@ import 'dart:convert';
 
 import 'package:http/http.dart' as http;
 
-import '../12_data_source/user/user.dart';
+import '../user/user.dart';
+
 
 class UserDataSource {
   Future<List<User>> getUsers() async {
