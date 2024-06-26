@@ -1,5 +1,5 @@
 class Memo {
-  int id;
+  final int id;
   String content;
   Memo({
     required this.id,
