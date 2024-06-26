@@ -1,7 +1,7 @@
 class Company {
-  String name;
-  String catchPhrase;
-  String bs;
+  final String name;
+  final String catchPhrase;
+  final String bs;
 
   Company({
     required this.name,

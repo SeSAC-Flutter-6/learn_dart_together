@@ -1,11 +1,11 @@
 import 'package:learn_dart_together/12_data_source/realtime_station_arrival.dart';
 import 'package:learn_dart_together/12_data_source/stock.dart';
-import 'package:learn_dart_together/12_data_source/todo.dart';
-import 'package:learn_dart_together/12_data_source/user.dart';
-import 'package:learn_dart_together/data_source/stock/stock_service_impl.dart';
-import 'package:learn_dart_together/data_source/subway/subway_service_impl.dart';
-import 'package:learn_dart_together/data_source/todo/todo_service_impl.dart';
-import 'package:learn_dart_together/data_source/user/user_service_impl.dart';
+import 'package:learn_dart_together/13_model_repository/data/model/todo.dart';
+import 'package:learn_dart_together/13_model_repository/data/model/user.dart';
+import 'package:learn_dart_together/12_data_source/data_source/stock/stock_service_impl.dart';
+import 'package:learn_dart_together/12_data_source/data_source/subway/subway_service_impl.dart';
+import 'package:learn_dart_together/12_data_source/data_source/todo/todo_service_impl.dart';
+import 'package:learn_dart_together/12_data_source/data_source/user/user_service_impl.dart';
 
 Future<void> main() async {
   final todoService = TodoServiceImpl();

@@ -1,6 +1,6 @@
 import 'dart:convert';
 import 'package:learn_dart_together/12_data_source/stock.dart';
-import 'package:learn_dart_together/data_source/stock/stock_service.dart';
+import 'package:learn_dart_together/12_data_source/data_source/stock/stock_service.dart';
 import 'package:csv/csv.dart';
 import 'package:http/http.dart' as http;
 

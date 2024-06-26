@@ -1,15 +1,15 @@
-import 'package:learn_dart_together/12_data_source/address.dart';
-import 'package:learn_dart_together/12_data_source/company.dart';
+import 'package:learn_dart_together/13_model_repository/data/model/address.dart';
+import 'package:learn_dart_together/13_model_repository/data/model/company.dart';
 
 class User {
-  int id;
-  String name;
-  String username;
-  String email;
-  Address address;
-  String phone;
-  String website;
-  Company company;
+  final int id;
+  final String name;
+  final String username;
+  final String email;
+  final Address address;
+  final String phone;
+  final String website;
+  final Company company;
 
   User({
     required this.id,

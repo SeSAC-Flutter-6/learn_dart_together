@@ -1,6 +1,6 @@
 import 'dart:convert';
 import 'package:learn_dart_together/12_data_source/realtime_station_arrival.dart';
-import 'package:learn_dart_together/data_source/subway/subway_service.dart';
+import 'package:learn_dart_together/12_data_source/data_source/subway/subway_service.dart';
 import 'package:http/http.dart' as http;
 import 'package:xml/xml.dart';
 import 'package:learn_dart_together/utils/xml_util.dart';
