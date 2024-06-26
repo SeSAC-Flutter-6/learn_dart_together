@@ -1,5 +1,7 @@
 import 'package:learn_dart_together/16_model_repository/data_source/albums.dart';
 
+import '../model/album.dart';
+
 class AlbumRepositoryImpl implements AlbumRepository {
   @override
   Future<List<Album>> getAlbums() async {

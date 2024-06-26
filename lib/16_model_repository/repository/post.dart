@@ -1,3 +1,5 @@
+import 'package:learn_dart_together/16_model_repository/model/post.dart';
+
 import '../data_source/posts.dart';
 
 class PostRepositoryImpl implements PostRepository {

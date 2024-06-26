@@ -1,4 +1,5 @@
 import '../data_source/comments.dart';
+import '../model/comment.dart';
 
 class CommentRepositoryImpl implements CommentRepository {
   @override
