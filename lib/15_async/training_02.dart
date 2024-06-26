@@ -14,6 +14,35 @@ class Movie {
     required this.year,
   });
 
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        runtimeType == other.runtimeType &&
+            other is Movie &&
+            title == other.title &&
+            director == other.director &&
+            year == other.year;
+  }
+
+  @override
+  int get hashCode => year.hashCode ^ title.hashCode ^ director.hashCode;
+
+  @override
+  String toString() {
+    return 'Movie{title : $title, director : $director, year: $year}';
+  }
+
+  Movie copyWith({
+    String? title,
+    String? director,
+    int? year,
+  }) {
+    return Movie(
+        title: title ?? this.title,
+        director: director ?? this.director,
+        year: year ?? this.year);
+  }
+
   Movie.fromJson(Map<String, dynamic> json)
       : title = json['title'],
         director = json['director'],
