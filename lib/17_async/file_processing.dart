@@ -10,7 +10,7 @@ void changeFile(String path, String target) async {
     String text = await source.readAsString();
     text = text.replaceAll('한석봉', '김석봉');
     File result = File(target);
-    result.writeAsString(text);
+    await result.writeAsString(text);
   } catch (e) {
     print('파일을 찾을 수 없습니다: $e');
   }
