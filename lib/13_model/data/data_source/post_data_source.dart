@@ -22,15 +22,6 @@ class PostDataSource {
     final http.Response response = await http.get(Uri.parse(_baseUrl));
     final List jsonList = jsonDecode(response.body);
 
-    if (page == null || page < 1) page = 1;
-    if (limit == null || limit < 1) {
-      return jsonList.map((posts) => Post.fromJson(posts)).toList();
-    }
-
-    return jsonList
-        .map((posts) => Post.fromJson(posts))
-        .skip((page - 1) * limit)
-        .take(limit)
-        .toList();
+    return jsonList.map((posts) => Post.fromJson(posts)).toList();
   }
 }

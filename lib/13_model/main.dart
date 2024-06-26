@@ -51,7 +51,6 @@ Future<void> main() async {
   // print(await getPost);
   final getPosts = postRepository.getPosts();
   // print(await getPosts);
-  final pagePosts = postRepository.getPosts(limit: 3);
+  final pagePosts = postRepository.getPosts(page: 1, limit: 3);
   // print(await pagePosts);
-
 }
