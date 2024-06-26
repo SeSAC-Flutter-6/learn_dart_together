@@ -13,7 +13,22 @@ Future<void> main() async {
     return Movie.fromJson(decodedString);
   }
 
+
+  final movie2 = getMovieInfo();
+  movie2.then((value) {
+    print(value);
+  });
+
+  print('안녕1');
+
   final movie = await getMovieInfo();
+  print('안녕2');
+
+  final movie3 = getMovieInfo();
+  movie3.then((value) {
+    print(value);
+  });
+
   print(movie.director);
 }
 

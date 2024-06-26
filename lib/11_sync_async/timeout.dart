@@ -1,14 +1,12 @@
 import 'dart:async';
 
 Future<void> main() async {
-  try {
-    await timeoutFuture().timeout(const Duration(seconds: 5));
-  } on TimeoutException {
-    print("타임 아웃!!");
-  }
+  String result = await timeoutFuture()
+      .timeout(Duration(seconds: 5), onTimeout: () => 'timeout');
+  print(result);
 }
 
 Future<String> timeoutFuture() async {
-  await Future.delayed(Duration(seconds: 6));
+  await Future.delayed(Duration(seconds: 5));
   return 'ok';
 }
