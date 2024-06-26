@@ -23,8 +23,9 @@ class MemoRepository {
   //
   Future<void> deleteMemo(int id) async {
     final data = await _memoDataSource.getData();
-    final deletedMemo = data.where((e) => e.id != id).toString();
+    final deletedMemo = data.where((e) => e.id != id).toList();
+    final file = deletedMemo.map((e)=>e.toJson()).toList.toString();
     final result = File(filePath);
-    await result.writeAsString(deletedMemo);
+    await result.writeAsString(file);
   }
 }
