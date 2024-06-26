@@ -1,3 +1,4 @@
+import 'dart:convert';
 import 'dart:io';
 
 import 'package:learn_dart_together/19_model_repository/data_source/memo_data_source.dart';
@@ -24,7 +25,7 @@ class MemoRepository {
   Future<void> deleteMemo(int id) async {
     final data = await _memoDataSource.getData();
     final deletedMemo = data.where((e) => e.id != id).toList();
-    final file = deletedMemo.map((e)=>e.toJson()).toList.toString();
+    final file = jsonEncode(deletedMemo.map((e)=>e.toJson()).toList);
     final result = File(filePath);
     await result.writeAsString(file);
   }
