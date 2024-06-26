@@ -4,19 +4,12 @@ import 'package:http/http.dart' as http;
 import '../12_data_source/status/status.dart';
 
 class StatusDataSource {
-  Future<List<Status>> getStatuses() async {
+  Future<List<Status>> getStatusAsJson() async {
     final http.Response response = await http.get(Uri.parse(
         'https://www.alphavantage.co/query?function=LISTING_STATUS&apikey=demo'));
     final data = CsvConverter().convert(response.body);
-    final List<String> fields = [
-      'symbol',
-      'name',
-      'exchange',
-      'assetType',
-      'ipoDate',
-      'delistingDate',
-      'status'
-    ];
+    final List<String> fields = data[0];
+    data.removeAt(0);
 
     List<Map<String, dynamic>> jsonList = [];
     for (var row in data) {
@@ -28,5 +21,13 @@ class StatusDataSource {
     }
 
     return jsonList.map((element) => Status.fromJson(element)).toList();
+  }
+
+  Future<List<Status>> getStatusAsCsv() async {
+    final http.Response response = await http.get(Uri.parse(
+        'https://www.alphavantage.co/query?function=LISTING_STATUS&apikey=demo'));
+    final data = CsvConverter().convert(response.body);
+    data.removeAt(0);
+    return data.map((row) => Status.fromCsv(row)).toList();
   }
 }

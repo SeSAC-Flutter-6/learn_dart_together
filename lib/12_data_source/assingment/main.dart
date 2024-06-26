@@ -34,9 +34,14 @@ Future<void> main() async {
 
   // assingment 5
   final statusDataSource = StatusDataSource();
-  final status = statusDataSource.getStatuses();
+  final status = statusDataSource.getStatusAsJson();
   final File assingment5 = File('$savePath/assingment5');
   await assingment5.writeAsString((await status).toString());
+
+  final statusAsCsv = statusDataSource.getStatusAsCsv();
+  final File assingment6 = File('$savePath/assingment6');
+  await assingment6.writeAsString((await statusAsCsv).toString());
+
+  print(await assingment5.readAsString() ==
+      await assingment6.readAsString()); // result : true
 }
-
-

@@ -17,6 +17,18 @@ class Status {
     required this.status,
   });
 
+  factory Status.fromCsv(List<String> csv) {
+    return Status(
+      symbol: csv[0],
+      name: csv[1],
+      exchange: csv[2],
+      assetType: csv[3],
+      ipoDate: csv[4],
+      delistingDate: csv[5],
+      status: csv[6],
+    );
+  }
+
   Status.fromJson(Map<String, dynamic> json)
       : symbol = json['symbol'],
         name = json['name'],
