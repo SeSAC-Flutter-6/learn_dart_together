@@ -21,7 +21,7 @@ void main() async {
   final users = await UserRepositoryImpl().getUsers();
   // print(completedTodos);
   final usersTop10ByUserName =
-      await UserRepositoryImpl().getUsersTop10ByUserName();
+      await UserRepositoryImpl().getUsersTopByUserName(10);
   // print(usersTop10ByUserName);
   final postList = await PostRepositoryImpl().getPosts(page: 2, limit: 3);
   print(postList);

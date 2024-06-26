@@ -9,10 +9,10 @@ class UserRepositoryImpl implements UserRepository {
   }
 
   @override
-  Future<List<User>> getUsersTop10ByUserName() async {
+  Future<List<User>> getUsersTopByUserName(int top) async {
     final results = await UsersDataSource().getUserList();
     final List<User> filteredComments =
-        results.sortedBy((user) => user.name).take(10).toList();
+        results.sortedBy((user) => user.name).take(top).toList();
     return filteredComments;
   }
 }
@@ -20,5 +20,5 @@ class UserRepositoryImpl implements UserRepository {
 abstract interface class UserRepository {
   Future<List<User>> getUsers();
 
-  Future<List<User>> getUsersTop10ByUserName();
+  Future<List<User>> getUsersTopByUserName(int top);
 }
