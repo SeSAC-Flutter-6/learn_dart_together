@@ -55,14 +55,6 @@ class TrainTimeInfo {
   // }
 
   factory TrainTimeInfo.fromXml(xml.XmlElement element) {
-    // final Map<String, dynamic> data = {
-    //   'trainLineNm': element.findElements('trainLineNm').first.innerText,
-    //   'btrainSttus': element.findElements('btrainSttus').first.innerText,
-    //   'statnNm': element.findElements('statnNm').first.innerText,
-    //   'bstatnNm': element.findElements('bstatnNm').first.innerText,
-    //   'subwayId': int.parse(element.findElements('subwayId').first.innerText),
-    // };
-    // return TrainTimeInfo.fromMap(data);
     return TrainTimeInfo(
       trainLineNm: element.findElements('trainLineNm').first.innerText,
       btrainSttus: element.findElements('btrainSttus').first.innerText,
