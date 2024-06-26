@@ -42,7 +42,7 @@ class Todo {
 
   @override
   String toString() {
-    return 'ToDoo{userId: $userId, id: $id, title: $title, completed: $completed}';
+    return 'ToDo{userId: $userId, id: $id, title: $title, completed: $completed}';
   }
 
   Todo copyWith({

@@ -1,6 +1,6 @@
 import 'package:learn_dart_together/13_model_repository/data/data_source/album_api.dart';
 import 'package:learn_dart_together/13_model_repository/data/model/album.dart';
-import 'package:learn_dart_together/13_model_repository/data/repository/album_repository.dart';
+import 'package:learn_dart_together/13_model_repository/data/repository/album/album_repository.dart';
 
 class AlbumRepositoryImpl implements AlbumRepository {
   final _albumApi = AlbumApi();

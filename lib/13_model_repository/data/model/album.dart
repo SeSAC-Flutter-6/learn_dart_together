@@ -2,6 +2,7 @@ class Album {
   final String userId;
   final int id;
   final String title;
+  
   Album({
     required this.userId,
     required this.id,
