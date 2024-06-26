@@ -32,3 +32,13 @@ class PostRepositoryImpl implements PostRepository {
     }
   }
 }
+
+Future<void> main() async {
+  final postDataSource = PostDataSource();
+  final repository = PostRepositoryImpl(postDataSource);
+  final post = await repository.getPost(1);
+  final List<Post> posts = await repository.getPosts(limit: 3, page: 3);
+
+  print(post);
+  print(posts);
+}
