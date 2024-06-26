@@ -5,6 +5,7 @@
 
 import 'dart:convert';
 
+import 'package:learn_dart_together/17_factory_singleton/model/album_model.dart';
 import 'package:learn_dart_together/17_factory_singleton/model/comment_model.dart';
 import 'package:http/http.dart' as http;
 
@@ -24,4 +25,22 @@ class CommentDataSource {
     final jsonList = jsonDecode(jsonStringList) as List;
     return jsonList.map((e) => Comment.fromJson(e)).toList();
   }
+}
+
+class AlbumDataSource {
+  Future<List<Album>> getAlbums() async {
+    final response = await http.get(
+        Uri.parse('https://jsonplaceholder.typicode.com/albums'));
+    final jsonStringList = response.body;
+    final jsonList = jsonDecode(jsonStringList) as List;
+    return jsonList.map((e) => Album.fromJson(e)).toList();
+  }
+
+  // Future<List<Album>> getAlbumsTop10() async {
+  //   final response = await http.get(
+  //       Uri.parse('https://jsonplaceholder.typicode.com/albums'));
+  //   final jsonStringList = response.body;
+  //   final jsonList = jsonDecode(jsonStringList) as List;
+  //   return jsonList.map((e) => Album.fromJson(e)).toList();
+  // }
 }
