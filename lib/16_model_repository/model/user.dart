@@ -30,29 +30,29 @@ class User {
         company = Company.fromJson(json['company']);
 
   Map<String, dynamic> toJson() => {
-    'id': id,
-    'name': name,
-    'username': username,
-    'email': email,
-    'address': address.toJson(),
-    'phone': phone,
-    'website': website,
-    'company': company.toJson(),
-  };
+        'id': id,
+        'name': name,
+        'username': username,
+        'email': email,
+        'address': address.toJson(),
+        'phone': phone,
+        'website': website,
+        'company': company.toJson(),
+      };
 
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
-          other is User &&
-              runtimeType == other.runtimeType &&
-              id == other.id &&
-              name == other.name &&
-              username == other.username &&
-              email == other.email &&
-              address == other.address &&
-              phone == other.phone &&
-              website == other.website &&
-              company == other.company;
+      other is User &&
+          runtimeType == other.runtimeType &&
+          id == other.id &&
+          name == other.name &&
+          username == other.username &&
+          email == other.email &&
+          address == other.address &&
+          phone == other.phone &&
+          website == other.website &&
+          company == other.company;
 
   @override
   int get hashCode =>
@@ -110,19 +110,19 @@ class Company {
         bs = json['bs'];
 
   Map<String, dynamic> toJson() => {
-    'name': name,
-    'catchPhrase': catchPhrase,
-    'bs': bs,
-  };
+        'name': name,
+        'catchPhrase': catchPhrase,
+        'bs': bs,
+      };
 
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
-          other is Company &&
-              runtimeType == other.runtimeType &&
-              name == other.name &&
-              catchPhrase == other.catchPhrase &&
-              bs == other.bs;
+      other is Company &&
+          runtimeType == other.runtimeType &&
+          name == other.name &&
+          catchPhrase == other.catchPhrase &&
+          bs == other.bs;
 
   @override
   String toString() {
@@ -168,22 +168,22 @@ class Address {
         geo = Geo.fromJson(json['geo']);
 
   Map<String, dynamic> toJson() => {
-    'street': street,
-    'suite': suite,
-    'city': city,
-    'geo': geo.toJson(),
-  };
+        'street': street,
+        'suite': suite,
+        'city': city,
+        'geo': geo.toJson(),
+      };
 
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
-          other is Address &&
-              runtimeType == other.runtimeType &&
-              street == other.street &&
-              suite == other.suite &&
-              city == other.city &&
-              zipcode == other.zipcode &&
-              geo == other.geo;
+      other is Address &&
+          runtimeType == other.runtimeType &&
+          street == other.street &&
+          suite == other.suite &&
+          city == other.city &&
+          zipcode == other.zipcode &&
+          geo == other.geo;
 
   @override
   int get hashCode =>
@@ -229,17 +229,17 @@ class Geo {
         lng = json['lng'];
 
   Map<String, dynamic> toJson() => {
-    'lat': lat,
-    'lng': lng,
-  };
+        'lat': lat,
+        'lng': lng,
+      };
 
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
-          other is Geo &&
-              runtimeType == other.runtimeType &&
-              lat == other.lat &&
-              lng == other.lng;
+      other is Geo &&
+          runtimeType == other.runtimeType &&
+          lat == other.lat &&
+          lng == other.lng;
 
   @override
   int get hashCode => lat.hashCode ^ lng.hashCode;

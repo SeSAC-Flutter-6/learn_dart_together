@@ -1,6 +1,6 @@
 class Memo {
-  String content;
-  int id;
+  final String content;
+  final int id;
 
 //<editor-fold desc="Data Methods">
   Memo({
