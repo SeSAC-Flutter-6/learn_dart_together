@@ -8,6 +8,7 @@ import 'dart:convert';
 import 'package:learn_dart_together/17_factory_singleton/model/album_model.dart';
 import 'package:learn_dart_together/17_factory_singleton/model/comment_model.dart';
 import 'package:http/http.dart' as http;
+import 'package:learn_dart_together/17_factory_singleton/model/photo_model.dart';
 
 class CommentDataSource {
   Future<List<Comment>> getComments() async {
@@ -35,12 +36,14 @@ class AlbumDataSource {
     final jsonList = jsonDecode(jsonStringList) as List;
     return jsonList.map((e) => Album.fromJson(e)).toList();
   }
+}
 
-  // Future<List<Album>> getAlbumsTop10() async {
-  //   final response = await http.get(
-  //       Uri.parse('https://jsonplaceholder.typicode.com/albums'));
-  //   final jsonStringList = response.body;
-  //   final jsonList = jsonDecode(jsonStringList) as List;
-  //   return jsonList.map((e) => Album.fromJson(e)).toList();
-  // }
+class PhotoDataSource {
+  Future<List<Photo>> getPhotos(int albumId) async {
+    final response = await http
+        .get(Uri.parse('https://jsonplaceholder.typicode.com/photos'));
+    final jsonStringList = response.body;
+    final jsonList = jsonDecode(jsonStringList) as List;
+    return jsonList.map((e) => Photo.fromJson(e)).toList();
+  }
 }
