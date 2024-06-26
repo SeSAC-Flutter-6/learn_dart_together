@@ -11,7 +11,7 @@ class UserRepositoryImpl implements UserRepository {
   @override
   Future<List<User>> getUsersTop10ByUserName() async {
     final results = await UsersDataSource().getUserList();
-    List<User> filteredComments =
+    final List<User> filteredComments =
         results.sortedBy((user) => user.name).take(10).toList();
     return filteredComments;
   }

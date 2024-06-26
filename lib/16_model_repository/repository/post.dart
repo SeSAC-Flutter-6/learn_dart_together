@@ -4,7 +4,8 @@ class PostRepositoryImpl implements PostRepository {
   @override
   Future<Post> getPost(int id) async {
     final results = await PostDataSource().getPostList();
-    List<Post> filteredPosts = results.where((post) => post.id == id).toList();
+    final List<Post> filteredPosts =
+        results.where((post) => post.id == id).toList();
     return filteredPosts[0];
   }
 
@@ -13,12 +14,12 @@ class PostRepositoryImpl implements PostRepository {
     final results = await PostDataSource().getPostList();
 
     int pageNumber = page ?? 1;
-    int limitNumber = limit ?? results.length;
+    final int limitNumber = limit ?? results.length;
 
     pageNumber = pageNumber < 1 ? 1 : pageNumber;
 
     List<Post> filteredPosts = [];
-    if (limitNumber <= results.length) {
+    if (limitNumber > 0 && limitNumber <= results.length) {
       filteredPosts = results
           .skip((pageNumber - 1) * limitNumber)
           .take(limitNumber)

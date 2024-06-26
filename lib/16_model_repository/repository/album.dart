@@ -10,7 +10,7 @@ class AlbumRepositoryImpl implements AlbumRepository {
   @override
   Future<List<Album>> getAlbumsTop(int top) async {
     final results = await AlbumDataSource().getAlbumList();
-    List<Album> filteredAlbums =
+    final List<Album> filteredAlbums =
         results.where((album) => album.id <= top).toList();
     return filteredAlbums;
   }

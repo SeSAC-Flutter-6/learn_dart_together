@@ -7,17 +7,16 @@ class AlbumDataSource {
     final responseAlbum = await http
         .get(Uri.parse('https://jsonplaceholder.typicode.com/albums'));
     final List<Album> albumList = jsonDecode(responseAlbum.body)
-            .map<Album>((json) => Album.fromJson(json as Map<String, dynamic>))
-            .toList() ??
-        [];
+        .map<Album>((json) => Album.fromJson(json as Map<String, dynamic>))
+        .toList();
     return albumList;
   }
 }
 
 class Album {
-  int userId;
-  int id;
-  String title;
+  final int userId;
+  final int id;
+  final String title;
 
 //<editor-fold desc="Data Methods">
 

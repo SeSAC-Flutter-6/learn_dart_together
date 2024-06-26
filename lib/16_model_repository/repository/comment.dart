@@ -4,7 +4,7 @@ class CommentRepositoryImpl implements CommentRepository {
   @override
   Future<List<Comment>> getComments(int postId) async {
     final results = await CommentsDataSource().getCommentList();
-    List<Comment> filteredComments =
+    final List<Comment> filteredComments =
         results.where((comment) => comment.postId == postId).toList();
     return filteredComments;
   }

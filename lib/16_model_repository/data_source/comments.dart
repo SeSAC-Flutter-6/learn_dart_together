@@ -9,18 +9,17 @@ class CommentsDataSource {
     final List<Comment> commentList = jsonDecode(responseComment.body)
             .map<Comment>(
                 (json) => Comment.fromJson((json as Map<String, dynamic>)))
-            .toList() ??
-        [];
+            .toList();
     return commentList;
   }
 }
 
 class Comment {
-  int postId;
-  int id;
-  String name;
-  String email;
-  String body;
+  final int postId;
+  final int id;
+  final String name;
+  final String email;
+  final String body;
 
 //<editor-fold desc="Data Methods">
 
