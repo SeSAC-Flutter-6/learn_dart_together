@@ -1,4 +1,6 @@
-{
-  "id": 1,
-  "content": "first memo"
-}
+[
+  {
+    "id": 1,
+    "content": "first memo"
+  }
+]
