@@ -12,13 +12,12 @@ final class User {
   });
 
   User copyWith({
-    int? id,
     String? name,
     String? email,
     String? createdAt,
   }) {
     return User(
-      id: id ?? this.id,
+      id: this.id,
       name: name ?? this.name,
       email: email ?? this.email,
       createdAt: createdAt ?? this.createdAt,
