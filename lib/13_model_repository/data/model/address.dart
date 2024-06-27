@@ -1,10 +1,10 @@
 class Address {
-  String street;
-  String suite;
-  String city;
-  String zipcode;
-  double geoLat;
-  double geoLng;
+  final String street;
+  final String suite;
+  final String city;
+  final String zipcode;
+  final double geoLat;
+  final double geoLng;
 
   Address({
     required this.street,

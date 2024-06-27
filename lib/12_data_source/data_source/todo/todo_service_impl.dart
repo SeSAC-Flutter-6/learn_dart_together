@@ -1,6 +1,6 @@
 import 'dart:convert';
-import 'package:learn_dart_together/data_source/todo/todo_service.dart';
-import 'package:learn_dart_together/12_data_source/todo.dart';
+import 'package:learn_dart_together/12_data_source/data_source/todo/todo_service.dart';
+import 'package:learn_dart_together/13_model_repository/data/model/todo.dart';
 import 'package:http/http.dart' as http;
 
 class TodoServiceImpl implements ToDoService {

@@ -1,4 +1,4 @@
-import 'package:learn_dart_together/12_data_source/user.dart';
+import 'package:learn_dart_together/13_model_repository/data/model/user.dart';
 
 abstract interface class UserService {
   Future<User> getUser({required int userId});

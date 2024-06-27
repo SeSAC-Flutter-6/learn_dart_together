@@ -1,6 +1,6 @@
-import 'package:learn_dart_together/data_source/stock/stock_service_impl.dart';
+import 'package:learn_dart_together/12_data_source/data_source/stock/stock_service_impl.dart';
 import 'package:test/test.dart';
-import 'package:learn_dart_together/data_source/subway/subway_service_impl.dart';
+import 'package:learn_dart_together/12_data_source/data_source/subway/subway_service_impl.dart';
 
 void main() {
   test('Measure Direct XML Parsing Performance', () async {
