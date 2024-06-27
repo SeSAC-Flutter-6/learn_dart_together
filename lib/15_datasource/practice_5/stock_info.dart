@@ -94,15 +94,7 @@ class StockInfo {
 
   @override
   String toString() {
-    return 'StockInfo{' +
-        ' symbol: $symbol,' +
-        ' name: $name,' +
-        ' exchange: $exchange,' +
-        ' assetType: $assetType,' +
-        ' ipoDate: $ipoDate,' +
-        ' delistingDate: $delistingDate,' +
-        ' status: $status,' +
-        '}';
+    return 'StockInfo{ symbol: $symbol, name: $name, exchange: $exchange, assetType: $assetType, ipoDate: $ipoDate, delistingDate: $delistingDate, status: $status,}';
   }
 
   StockInfo copyWith({
@@ -127,13 +119,13 @@ class StockInfo {
 
   Map<String, dynamic> toMap() {
     return {
-      'symbol': this.symbol,
-      'name': this.name,
-      'exchange': this.exchange,
-      'assetType': this.assetType,
-      'ipoDate': this.ipoDate,
-      'delistingDate': this.delistingDate,
-      'status': this.status,
+      'symbol': symbol,
+      'name': name,
+      'exchange': exchange,
+      'assetType': assetType,
+      'ipoDate': ipoDate,
+      'delistingDate': delistingDate,
+      'status': status,
     };
   }
 
