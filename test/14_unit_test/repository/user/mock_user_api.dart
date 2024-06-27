@@ -1,6 +1,6 @@
 import 'dart:async';
 import 'package:learn_dart_together/14_unit_test/data/data_source/user/user_api.dart';
-import '../../dummy_data/dummy_user.dart';
+import '../../../dummy_data/dummy_user.dart';
 
 class MockUserApi implements UserApi {
   @override

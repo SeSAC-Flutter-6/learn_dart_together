@@ -1,7 +1,7 @@
 import 'package:test/test.dart';
 import 'package:learn_dart_together/14_unit_test/data/model/user.dart';
 import 'package:learn_dart_together/14_unit_test/data/repository/user/user_repository_impl.dart';
-import '../../dummy_data/dummy_user.dart';
+import '../../../dummy_data/dummy_user.dart';
 import 'mock_user_api.dart';
 
 void main() {
