@@ -6,7 +6,7 @@ import 'package:learn_dart_together/13_model/data/model/photo.dart';
 class PhotoDataSource {
   static final _baseUrl = 'https://jsonplaceholder.typicode.com/photos';
 
-  Future<List<Photo>> getPhotos(int albumId) async {
+  Future<List<Photo>> getPhotos() async {
     final http.Response response = await http.get(Uri.parse(_baseUrl));
     final List jsonList = jsonDecode(response.body);
 

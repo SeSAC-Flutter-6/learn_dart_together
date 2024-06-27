@@ -11,6 +11,9 @@ class PostDataSource {
   Future<Post> getPost(int id) async {
     final http.Response response = await http.get(Uri.parse('$_baseUrl/$id'));
     final Map<String, dynamic> json = jsonDecode(response.body);
+    if (json.isEmpty) {
+      throw Exception('json이 비어있습니다.');
+    }
 
     return Post.fromJson(json);
   }

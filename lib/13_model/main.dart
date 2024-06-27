@@ -43,11 +43,11 @@ Future<void> main() async {
   final getUserTop10 = userRepository.getUsersTop10ByUserName();
 
   // print(await getUser);
-  print(await getUserTop10);
+  // print(await getUserTop10);
 
   final postDataSource = PostDataSource();
   final postRepository = PostRepositoryImpl(postDataSource);
-  final getPost = postRepository.getPost(1);
+  final getPost = postRepository.getPost(1361616);
   // print(await getPost);
   final getPosts = postRepository.getPosts();
   // print(await getPosts);

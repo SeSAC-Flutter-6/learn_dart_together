@@ -8,6 +8,8 @@ class PhotoRepositoryImpl implements PhotoRepository {
   PhotoRepositoryImpl(this._photoDataSource);
 
   @override
-  Future<List<Photo>> getPhotos(int albumId) =>
-      _photoDataSource.getPhotos(albumId);
+  Future<List<Photo>> getPhotos(int albumId) async {
+    final getPhotos = await _photoDataSource.getPhotos();
+    return getPhotos.where((photo) => photo.albumId == albumId).toList();
+  }
 }
