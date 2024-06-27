@@ -1,5 +1,3 @@
-import 'dart:convert';
-
 final class User {
   final int id;
   final String name;
@@ -27,7 +25,7 @@ final class User {
     );
   }
 
-  Map<String, dynamic> toMap() {
+  Map<String, dynamic> toJson() {
     return <String, dynamic>{
       'id': id,
       'name': name,
@@ -36,7 +34,7 @@ final class User {
     };
   }
 
-  factory User.fromMap(Map<String, dynamic> map) {
+  factory User.fromJson(Map<String, dynamic> map) {
     return User(
       id: map['id']?.toInt(),
       name: map['name'],
@@ -44,10 +42,6 @@ final class User {
       createdAt: map['createdAt'],
     );
   }
-
-  String toJson() => json.encode(toMap());
-
-  factory User.fromJson(String source) => User.fromMap(json.decode(source));
 
   @override
   String toString() {
