@@ -1,7 +1,7 @@
 import 'package:learn_dart_together/14_datasource/user/address.dart';
 import 'package:learn_dart_together/14_datasource/user/company.dart';
 
-class UserInfo {
+class User {
   int id;
   String name;
   String username;
@@ -10,7 +10,7 @@ class UserInfo {
   String website;
   Company company;
 
-  UserInfo({
+  User({
     required this.id,
     required this.name,
     required this.username,
@@ -20,7 +20,7 @@ class UserInfo {
     required this.company,
   });
 
-  UserInfo copyWith({
+  User copyWith({
     int? id,
     String? name,
     String? username,
@@ -29,7 +29,7 @@ class UserInfo {
     String? website,
     Company? company,
   }) {
-    return UserInfo(
+    return User(
       id: id ?? this.id,
       name: name ?? this.name,
       username: username ?? this.username,
@@ -50,7 +50,7 @@ class UserInfo {
         'company': company.toJson(),
       };
 
-  UserInfo.fromJson(Map<String, dynamic> json)
+  User.fromJson(Map<String, dynamic> json)
       : id = json['id'],
         name = json['name'],
         username = json['username'],
@@ -64,7 +64,7 @@ class UserInfo {
       'UserInfo(id: $id, name: $name, username: $username, address: $address, phone: $phone, website: $website, company: $company)';
 
   @override
-  bool operator ==(covariant UserInfo other) {
+  bool operator ==(covariant User other) {
     if (identical(this, other)) return true;
 
     return other.id == id &&
