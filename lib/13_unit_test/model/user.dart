@@ -64,6 +64,6 @@ final class User {
 
   @override
   int get hashCode {
-    return id.hashCode ^ name.hashCode ^ email.hashCode ^ createdAt.hashCode;
+    return id.hashCode;
   }
 }
