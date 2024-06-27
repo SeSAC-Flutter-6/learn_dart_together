@@ -18,11 +18,9 @@ class PostRepositoryImpl implements PostRepository {
   @override
   Future<List<Post>> getPosts(int page, int limit) async {
     final data = await _postDataSource.getData();
-    final List<Post> list = [];
-    for (int i = 0; i < max(limit, 0); i++) {
-      list.add(data.firstWhere((e) => e.id == page));
-    }
-    return list;
+    final pageNum = max(page, 1);
+    final startIndex = (pageNum - 1) * limit;
+    return data.skip(startIndex).take(limit).toList();
   }
 }
 
