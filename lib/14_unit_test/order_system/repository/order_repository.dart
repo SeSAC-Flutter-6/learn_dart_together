@@ -1,6 +1,7 @@
 import 'package:learn_dart_together/14_unit_test/order_system/model/order_item.dart';
 
 import '../model/order.dart';
+import '../model/product.dart';
 
 abstract interface class OrderRepository {
   Future<void> createOrder(Order order);
@@ -13,7 +14,7 @@ abstract interface class OrderRepository {
 
   Future<List<Order>> getOrdersByUser(int userId);
 
-  Future<void> addOrderItem(Order order, OrderItem orderItem);
+  Future<void> addOrderItem(Order order, Product product, int quantity);
 
   Future<void> removeOrderItem(Order order, OrderItem orderItem);
 
