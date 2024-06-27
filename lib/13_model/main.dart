@@ -14,12 +14,12 @@ import 'data/repositoryImpl/comment_repository_impl.dart';
 
 Future<void> main() async {
   final commentDataSource = CommentDataSource();
-  final commentRepository = CommentrepositoryImpl(commentDataSource);
+  final commentRepository = CommentRepositoryImpl(commentDataSource);
   final getComment = commentRepository.getComments(1);
   // print(await getComment);
 
   final albumDataSource = AlbumDataSource();
-  final albumRepository = Albumrepositoryimpl(albumDataSource);
+  final albumRepository = AlbumRepositoryimpl(albumDataSource);
   final getAlbums = albumRepository.getAlbums();
   final getalbumsTop10 = albumRepository.getAlbumsTop10();
   // print(await getAlbums);
@@ -43,7 +43,7 @@ Future<void> main() async {
   final getUserTop10 = userRepository.getUsersTop10ByUserName();
 
   // print(await getUser);
-  // print(await getUserTop10);
+  print(await getUserTop10);
 
   final postDataSource = PostDataSource();
   final postRepository = PostRepositoryImpl(postDataSource);

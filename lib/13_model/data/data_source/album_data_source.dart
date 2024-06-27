@@ -12,11 +12,4 @@ class AlbumDataSource {
 
     return jsonList.map((album) => Album.fromJson(album)).toList();
   }
-
-  Future<List<Album>> getAlbumsTop10() async {
-    final http.Response response = await http.get(Uri.parse(_baseUrl));
-    final List jsonList = jsonDecode(response.body);
-
-    return jsonList.take(10).map((album) => Album.fromJson(album)).toList();
-  }
 }

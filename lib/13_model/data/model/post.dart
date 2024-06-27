@@ -1,8 +1,8 @@
 class Post {
-  int userId;
-  int id;
-  String title;
-  String body;
+  final int userId;
+  final int id;
+  final String title;
+  final String body;
 
 //<editor-fold desc="Data Methods">
   Post({

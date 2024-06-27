@@ -12,14 +12,4 @@ class TodosDataSource {
 
     return jsonList.map((todos) => Todos.fromJson(todos)).toList();
   }
-
-  Future<List<Todos>> getCompletedTodos() async {
-    final http.Response response = await http.get(Uri.parse(_baseUrl));
-    final List jsonList = jsonDecode(response.body);
-
-    return jsonList
-        .map((todos) => Todos.fromJson(todos))
-        .where((todo) => todo.completed == true)
-        .toList();
-  }
 }

@@ -9,16 +9,13 @@ class PostDataSource {
   static final _baseUrl = 'https://jsonplaceholder.typicode.com/posts';
 
   Future<Post> getPost(int id) async {
-    final http.Response response = await http.get(Uri.parse(_baseUrl));
-    final List jsonList = jsonDecode(response.body);
+    final http.Response response = await http.get(Uri.parse('$_baseUrl/$id'));
+    final Map<String, dynamic> json = jsonDecode(response.body);
 
-    return jsonList
-        .map((posts) => Post.fromJson(posts))
-        .where((post) => post.id == id)
-        .first;
+    return Post.fromJson(json);
   }
 
-  Future<List<Post>> getPosts({int? page, int? limit}) async {
+  Future<List<Post>> getPosts() async {
     final http.Response response = await http.get(Uri.parse(_baseUrl));
     final List jsonList = jsonDecode(response.body);
 

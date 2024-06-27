@@ -9,8 +9,10 @@ class TodosRepositoryImpl implements TodosRepository {
   TodosRepositoryImpl(this._todosDataSource);
 
   @override
-  Future<List<Todos>> getCompletedTodos() =>
-      _todosDataSource.getCompletedTodos();
+  Future<List<Todos>> getCompletedTodos() async {
+    final todos = await _todosDataSource.getTodos();
+    return todos.where((todo) => todo.completed == true).toList();
+  }
 
   @override
   Future<List<Todos>> getTodos() => _todosDataSource.getTodos();

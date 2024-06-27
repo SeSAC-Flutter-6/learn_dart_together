@@ -8,18 +8,17 @@ class PostRepositoryImpl implements PostRepository {
   PostRepositoryImpl(this._postDataSource);
 
   @override
-  Future<Post> getPost(int id) => _postDataSource.getPost(id);
+  Future<Post> getPost(int id) async => await _postDataSource.getPost(id);
 
   @override
   Future<List<Post>> getPosts({int? page, int? limit}) async {
     if (page == null || page < 1) page = 1;
     if (limit == null || limit < 1) {
-      return _postDataSource.getPosts(page: page, limit: limit);
+      return _postDataSource.getPosts();
     }
 
-    final posts = await _postDataSource.getPosts(page: page, limit: limit);
+    final posts = await _postDataSource.getPosts();
     final result = posts.skip((page - 1) * limit).take(limit).toList();
-
 
     return result;
   }
