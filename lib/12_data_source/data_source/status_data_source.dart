@@ -1,7 +1,7 @@
 import 'package:fast_csv/csv_converter.dart';
 import 'package:http/http.dart' as http;
 
-import '../12_data_source/status/status.dart';
+import '../status/status.dart';
 
 class StatusDataSource {
   Future<List<Status>> getStatusAsJson() async {

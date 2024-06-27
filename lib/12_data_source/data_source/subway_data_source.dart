@@ -3,7 +3,8 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'package:xml/xml.dart';
 
-import '../12_data_source/subway/subway.dart';
+import '../subway/subway.dart';
+
 
 class SubwayDataSource {
   Future<List<Subway>> getSubways() async {
