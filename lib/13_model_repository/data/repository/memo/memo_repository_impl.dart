@@ -20,7 +20,7 @@ class MemoRepositoryImpl implements MemoRepository {
 
   @override
   Future<List<Memo>> getAllMemos() async {
-    return List<Memo>.from(_memos);
+    return List<Memo>.unmodifiable(_memos);
   }
 
   @override
