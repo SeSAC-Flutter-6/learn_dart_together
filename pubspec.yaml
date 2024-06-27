@@ -17,6 +17,7 @@ dependencies:
   xml: ^6.5.0
   xml2json: ^6.2.3
   json_annotation: ^4.9.0
+  mockito: ^5.4.4
   # path: ^1.8.0
 
 dev_dependencies:
