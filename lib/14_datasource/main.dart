@@ -2,7 +2,7 @@ import 'dart:convert';
 import 'package:learn_dart_together/14_datasource/asset.dart';
 import 'package:learn_dart_together/14_datasource/subway.dart';
 import 'package:learn_dart_together/14_datasource/todo.dart';
-import 'package:learn_dart_together/14_datasource/user/user_info.dart';
+import 'package:learn_dart_together/14_datasource/user/user.dart';
 import 'package:http/http.dart' as http;
 import 'package:xml/xml.dart';
 
@@ -31,11 +31,11 @@ Future<List<Todo>> getTodoList() async {
 }
 
 // 연습문제 3.
-Future<List<UserInfo>> getUserList() async {
+Future<List<User>> getUserList() async {
   final response =
       await http.get(Uri.parse('https://jsonplaceholder.typicode.com/users'));
   final List json = jsonDecode(response.body);
-  return json.map((e) => UserInfo.fromJson(e)).toList();
+  return json.map((e) => User.fromJson(e)).toList();
 }
 
 // 연습문제 4.

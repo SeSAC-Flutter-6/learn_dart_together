@@ -16,15 +16,14 @@ class Subway {
   });
 
   factory Subway.fromXml(XmlElement xml) {
-    int getInt(String tag) => int.parse(xml.findElements(tag).single.innerText);
-    String getStr(String tag) => xml.findElements(tag).single.innerText;
-
+    String get(String tag) => xml.findElements(tag).single.innerText;
+    
     return Subway(
-      subwayId: getInt('subwayId'),
-      fromId: getInt('statnFid'),
-      toId: getInt('statnTid'),
-      currentStn: getStr('statnNm'),
-      status: getStr('btrainSttus'),
+      subwayId: int.parse(get('subwayId')),
+      fromId: int.parse(get('statnFid')),
+      toId: int.parse(get('statnTid')),
+      currentStn: get('statnNm'),
+      status: get('btrainSttus'),
     );
   }
 
