@@ -9,7 +9,7 @@ class PostRepositoryImpl implements PostRepository {
 
   @override
   Future<Post> getPost(int id) async {
-    return _baseDataSource.fetchDataSingle(
+    return _baseDataSource.fetchDataSingle<Post>(
         'https://jsonplaceholder.typicode.com/posts',
         (json) => Post.fromJson(json),
         id);
@@ -32,7 +32,7 @@ class PostRepositoryImpl implements PostRepository {
       }
       return posts;
     }
-    return _baseDataSource.fetchData(
+    return _baseDataSource.fetchData<Post>(
       'https://jsonplaceholder.typicode.com/posts',
       (json) => Post.fromJson(json),
     );
