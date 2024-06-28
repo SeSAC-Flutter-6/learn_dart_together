@@ -1,4 +1,5 @@
 import 'package:collection/collection.dart';
+import 'package:learn_dart_together/14_unit_test/data/enum/order_status.dart';
 import 'package:learn_dart_together/14_unit_test/data/model/order_item.dart';
 
 class Order {
@@ -46,7 +47,7 @@ class Order {
     return Order(
       id: json['id'] as int,
       userId: json['userId'] as String,
-      status: _parseStatus(json['status'] as String), // enum 값으로 변환
+      status: parseStatus(json['status'] as String),
       createdAt: DateTime.parse(json['createdAt'] as String),
       orderItems: (json['orderItems'] as List<Map<String, dynamic>>)
           .map((item) => OrderItem.fromJson(item))
@@ -79,24 +80,4 @@ class Order {
         createdAt.hashCode ^
         orderItems.hashCode;
   }
-
-  // Helper method to parse string status to enum
-  static OrderStatus _parseStatus(String status) {
-    switch (status) {
-      case '대기':
-        return OrderStatus.pending;
-      case '처리중':
-        return OrderStatus.processing;
-      case '완료':
-        return OrderStatus.completed;
-      default:
-        throw ArgumentError('Unknown status: $status');
-    }
-  }
-}
-
-enum OrderStatus {
-  pending,
-  processing,
-  completed,
 }
