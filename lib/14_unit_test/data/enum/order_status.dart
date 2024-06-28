@@ -1,7 +1,25 @@
 enum OrderStatus {
-  pending,
-  processing,
-  completed,
+  pending(0),
+  processing(1),
+  completed(2);
+
+  final int value;
+
+  const OrderStatus(this.value);
+
+  @override
+  String toString() {
+    switch (this) {
+      case OrderStatus.pending:
+        return '대기';
+      case OrderStatus.processing:
+        return '처리중';
+      case OrderStatus.completed:
+        return '완료';
+      default:
+        throw Exception('Unknown OrderStatus: $this');
+    }
+  }
 }
 
 OrderStatus parseStatus(String status) {
