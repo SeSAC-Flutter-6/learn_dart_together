@@ -3,7 +3,7 @@ import '../model/memo.dart';
 class MemoDataSource {
   final List<Memo> _memos = [];
 
-  Future<List<Memo>> get memos async => _memos;
+  Future<List<Memo>> get memos async => List.unmodifiable(_memos);
 
   Future<void> addMemo(Memo memo) async {
     _memos.add(memo);
