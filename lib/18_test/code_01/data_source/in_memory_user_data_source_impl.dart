@@ -45,9 +45,18 @@ class InMemoryUserDataSourceImpl implements UserDataSource {
   }
 
   @override
-  Future<User> updateUser(User user) {
-    // TODO: implement updateUser
-    throw UnimplementedError();
+  Future<User> updateUser(User user) async {
+    //유저의 업데이트는 무엇을 말하는 걸까? - 사용자 정보의 변경 될 때 호출되고, 데이터소스에 반영
+
+    //해당 사용자를 찾고
+    final findUser = _json.firstWhere((e) => e['id'] == user.id);
+    //해당 사용자를 업데이트
+    findUser['name'] = user.name;
+    findUser['email'] = user.email;
+    //업데이트된 사용자를 반환
+    //Future.value()는 주어진 값을 가진 완료된 Future를 생성하는 메서드이고
+    //이걸 사용해서 User 객체를 반환한다.
+    return User.fromJson(findUser);
   }
 
   @override
@@ -59,21 +68,27 @@ class InMemoryUserDataSourceImpl implements UserDataSource {
   }
 
   @override
-  Future<User> findUserByEmail(String email) {
-    // TODO: implement findUserByEmail
-    throw UnimplementedError();
+  Future<User> findUserByEmail(String email) async {
+    //이메일로 유저를 찾자
+    final findUserEmail = _json.firstWhere((e) => e['email'] == email);
+    //Map 을 User 객체로 변환해서 반환하자
+    return User.fromJson(findUserEmail);
   }
 
   @override
-  Future<List<User>> getAllUsers() {
-    // TODO: implement getAllUsers
-    throw UnimplementedError();
+  Future<List<User>> getAllUsers() async {
+    // User 객체 내 모든 값에 접근하고
+    // User.fromJson을 이용해서 map을 역직렬화해서 Iterable을 반환하고 다시 리스트로 호출
+    final allUsersMap = _json.map((e) => User.fromJson(e)).toList();
+    //
+    return allUsersMap;
   }
 
   @override
-  Future<User> getUser(int id) {
-    // TODO: implement getUser
-    throw UnimplementedError();
+  Future<User> getUser(int id) async {
+    //해당하는 사용자 id를 찾고 객체를 반환하는 메서드
+    final findUserId = await _json.firstWhere((e) => e['id'] == id);
+    //Map을 User 객체로 변환하자
+    return User.fromJson(findUserId);
   }
-
 }
