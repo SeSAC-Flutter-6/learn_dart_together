@@ -19,13 +19,13 @@ class Order {
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
-          (other is Order &&
-              runtimeType == other.runtimeType &&
-              id == other.id &&
-              userId == other.userId &&
-              status == other.status &&
-              createdAt == other.createdAt &&
-              orderItems == other.orderItems);
+      (other is Order &&
+          runtimeType == other.runtimeType &&
+          id == other.id &&
+          userId == other.userId &&
+          status == other.status &&
+          createdAt == other.createdAt &&
+          orderItems == other.orderItems);
 
   @override
   int get hashCode =>

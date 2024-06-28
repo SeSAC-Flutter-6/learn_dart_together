@@ -1,9 +1,5 @@
-
 import '../data_source/product_data_source.dart';
 import '../model/product.dart';
-import '../data_source/order_data_source.dart';
-import '../model/order.dart';
-import '../model/order_item.dart';
 
 class InMemoryProductDataSourceImpl implements ProductDataSource {
   List<Product> _productList = [
@@ -47,7 +43,7 @@ class InMemoryProductDataSourceImpl implements ProductDataSource {
   @override
   Future<Product> updateProduct(Product product) async {
     final index =
-    _productList.indexWhere((element) => element.id == product.id);
+        _productList.indexWhere((element) => element.id == product.id);
     if (index != -1) {
       _productList[index] = product;
     } else {
