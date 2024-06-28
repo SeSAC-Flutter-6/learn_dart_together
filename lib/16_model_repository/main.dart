@@ -32,13 +32,13 @@ void main() async {
   // }
 
   // 과제2
-  // AlbumRepositoryImpl albumRepository = AlbumRepositoryImpl(baseDataSource);
+  AlbumRepositoryImpl albumRepository = AlbumRepositoryImpl(baseDataSource);
 
-  // List<Album> albums = await albumRepository.getAlbums();
-  // List<Album> albumsTop10 = await albumRepository.getAlbumsTop10();
+  List<Album> albums = await albumRepository.getAlbums();
+  List<Album> albumsTop10 = await albumRepository.getAlbumsTop10();
 
-  // albums.forEach(print);
-  // albumsTop10.forEach(print);
+  albums.forEach(print);
+  albumsTop10.forEach(print);
 
   // 과제3
   // PhotoRepositoryImpl photoRepository = PhotoRepositoryImpl(baseDataSource);
@@ -81,23 +81,23 @@ void main() async {
   // }
 
   // 과제 6
-  PostRepositoryImpl postRepository = PostRepositoryImpl(baseDataSource);
+  // PostRepositoryImpl postRepository = PostRepositoryImpl(baseDataSource);
 
-  int postId = 5;
-  Post post = await postRepository.getPost(postId);
-  List<Post> posts = await postRepository.getPosts();
-  List<Post> postsPaginated = await postRepository.getPosts(page: 3, limit: 5);
+  // int postId = 5;
+  // Post post = await postRepository.getPost(postId);
+  // List<Post> posts = await postRepository.getPosts();
+  // List<Post> postsPaginated = await postRepository.getPosts(page: 3, limit: 5);
 
-  print('Post ID $postId:');
-  print(post);
+  // print('Post ID $postId:');
+  // print(post);
 
-  print('All Posts:');
-  for (var e in posts) {
-    print(e.title);
-  }
+  // print('All Posts:');
+  // for (var e in posts) {
+  //   print(e.title);
+  // }
 
-  print('Paginated Posts:');
-  for (var e in postsPaginated) {
-    print('${e.id} - ${e.title}');
-  }
+  // print('Paginated Posts:');
+  // for (var e in postsPaginated) {
+  //   print('${e.id} - ${e.title}');
+  // }
 }
