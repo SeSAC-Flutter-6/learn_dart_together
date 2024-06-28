@@ -1,0 +1,3 @@
+class MaskStoreRepositoryImpl implements MaskStoreRepository {
+
+}

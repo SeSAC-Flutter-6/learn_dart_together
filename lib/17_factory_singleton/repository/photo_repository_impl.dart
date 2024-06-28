@@ -8,6 +8,7 @@ class PhotoRepositoryImpl implements PhotosRepository {
   PhotoRepositoryImpl(this.photoDataSource);
 
   //왜 익스프레션 바디로 만들어야 에러가 없어질까?
+  //리턴을 안써서 그랭~
   @override
   Future<List<Photo>> getPhotos(int albumId) async =>
       photoDataSource.getPhotos(albumId);
