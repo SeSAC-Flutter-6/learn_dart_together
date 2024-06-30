@@ -1,9 +1,9 @@
 class Store {
-  String address;
-  double latitude;
-  double longitude;
-  String name;
-  String remainStatus;
+  final String address;
+  final double latitude;
+  final double longitude;
+  final String name;
+  final String remainStatus;
 
   Store({
     required this.address,

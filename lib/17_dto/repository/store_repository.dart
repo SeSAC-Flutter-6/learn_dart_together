@@ -14,9 +14,10 @@ class StoreRepositoryImpl implements StoreRepository {
   @override
   Future<List<Store>> getStores() async {
     final storeDto = await _storeDataSource.getStores();
-    return storeDto
+    final stores = storeDto
         .where((dto) => dto.name != null)
         .map((dto) => dto.toStore())
         .toList();
+    return List.unmodifiable(stores);
   }
 }
