@@ -68,10 +68,9 @@ class MockUserDataSource implements UserDataSource {
 
   @override
   Future<UserDto?> getUser(String name) async {
-    final result = _jsonList
-        .singleWhereOrNull((json) => UserDto.fromJson(json).name == name);
-
-    return UserDto.fromJson(result);
+    return _jsonList
+        .map((json) => UserDto.fromJson(json))
+        .singleWhereOrNull((user) => user.name == name);
   }
 
   @override

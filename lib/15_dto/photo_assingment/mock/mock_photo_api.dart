@@ -28,10 +28,9 @@ class MockPhotoApi implements PhotoDataSource {
 
   @override
   Future<PhotoDto?> getPhoto(int id) async {
-    final result =
-        _jsonList.singleWhereOrNull((json) => PhotoDto.fromJson(json).id == id);
-
-    return (result != null) ? PhotoDto.fromJson(result) : null;
+    return _jsonList
+        .map((json) => PhotoDto.fromJson(json))
+        .singleWhereOrNull((photo) => photo.id == id);
   }
 
   @override

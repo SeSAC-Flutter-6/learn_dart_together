@@ -6,7 +6,7 @@ extension UserMapper on UserDto {
   User toUser() {
     return User(
       name: name ?? '',
-      eamil: email ?? '',
+      email: email ?? '',
       latitude: double.parse(address?.geo?.lat ?? '0.0'),
       londtitude: double.parse(address?.geo?.lng ?? '0.0'),
     );
