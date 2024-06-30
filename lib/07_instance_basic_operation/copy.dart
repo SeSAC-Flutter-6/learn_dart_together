@@ -35,7 +35,6 @@ class Person {
   @override
   int get hashCode => name.hashCode ^ age.hashCode;
 
-
   @override
   String toString() {
     return 'Person{name: $name, age: $age}';
@@ -50,5 +49,4 @@ class Person {
       age: age ?? this.age,
     );
   }
-
 }

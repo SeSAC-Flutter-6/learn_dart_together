@@ -24,7 +24,7 @@ class InMemoryUserDataSourceImpl implements UserDataSource {
   ];
   int _id = 3;
 
-  get json => _json;
+  List<Map<String, dynamic>> get json => _json;
 
   @override
   Future<User> getUser(int? id) async {
@@ -38,8 +38,8 @@ class InMemoryUserDataSourceImpl implements UserDataSource {
   }
 
   @override
-  Future<String> createUser(User user) async {
-    User temp = user.copyWith(id: ++_id);
+  Future<String> createUser(User? user) async {
+    User temp = user!.copyWith(id: ++_id);
     _json.add(temp.toJson());
     return '${temp.id} created';
   }
