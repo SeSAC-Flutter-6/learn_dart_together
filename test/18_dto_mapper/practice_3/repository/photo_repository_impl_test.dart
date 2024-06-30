@@ -54,7 +54,7 @@ void main() {
   PhotoRepository photoRepositoryImpl = PhotoRepositoryImpl(MockPhotoApi());
 
   group('MockPhotoApi 테스트', () {
-    test('description', () async {
+    test('mock json 데이터에서 변환된 것과 실제로 같은지 테스트', () async {
       final actualData = await photoRepositoryImpl.getAllPhotos();
       final testData = json.map((e) => PhotoDto.fromJson(e).toPhoto()).toList();
       expect(IterableEquality().equals(actualData, testData), true);
