@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:learn_dart_together/17_test/practice_1/data_source/user_data_source.dart';
 import 'package:learn_dart_together/17_test/practice_1/model/user.dart';
 import 'package:learn_dart_together/17_test/practice_1/repository/user_repository.dart';
@@ -8,8 +10,8 @@ class UserRepositoryImpl implements UserRepository {
   UserRepositoryImpl(this._dataSource);
 
   @override
-  Future<String> createUser(User user) async {
-    if (user.id != null) {
+  Future<String> createUser(User? user) async {
+    if (user!.id != null) {
       throw Exception('Id must be null');
     }
     if (user.name.isEmpty || user.email.isEmpty || user.createdAt == null) {

@@ -13,6 +13,4 @@ void main() {
   print(hero1);
 }
 
-class AAA extends Object {
-
-}
+class AAA extends Object {}

@@ -15,10 +15,13 @@ void main() {
 
   print(nums);
 
-  final names = ['c', 'a', 'b',];
+  final names = [
+    'c',
+    'a',
+    'b',
+  ];
   names.sort();
   print(names);
-
 
   final heroes = [
     Hero(name: '홍길동', hp: 100),
@@ -37,5 +40,4 @@ void main() {
 
   slimes.sort((a, b) => -a.suffix.compareTo(b.suffix));
   print(slimes.toString());
-
 }
