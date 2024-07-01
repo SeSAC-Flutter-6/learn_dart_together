@@ -39,14 +39,7 @@ class Media {
 
   @override
   String toString() {
-    return 'Media{' +
-        ' id: $id,' +
-        ' type: $type,' +
-        ' caption: $caption,' +
-        ' content: $content,' +
-        ' url: $url,' +
-        ' createdAt: $createdAt,' +
-        '}';
+    return 'Media{ id: $id, type: $type, caption: $caption, content: $content, url: $url, createdAt: $createdAt,}';
   }
 
   Media copyWith({
