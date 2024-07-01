@@ -1,5 +1,5 @@
 import 'package:learn_dart_together/15_dto_mapper/dto/photo_dto/photo_dto.dart';
-import 'package:learn_dart_together/15_dto_mapper/model/photo/photo.dart';
+import 'package:learn_dart_together/15_dto_mapper/model/photo.dart';
 
 extension PhotoMapper on PhotoDto {
   Photo toPhoto() {

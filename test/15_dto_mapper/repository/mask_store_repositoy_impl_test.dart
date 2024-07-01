@@ -1,19 +1,20 @@
 import 'package:learn_dart_together/15_dto_mapper/data_source/mask_store/mask_store_api.dart';
 import 'package:learn_dart_together/15_dto_mapper/data_source/mask_store/mask_store_api_impl.dart';
 import 'package:learn_dart_together/15_dto_mapper/data_source/mask_store/mock_mask_store_api.dart';
-import 'package:learn_dart_together/15_dto_mapper/model/mask_store/mask_store.dart';
+import 'package:learn_dart_together/15_dto_mapper/model/mask_store.dart';
+import 'package:learn_dart_together/15_dto_mapper/repository/mask_store/mask_store_repository.dart';
 import 'package:learn_dart_together/15_dto_mapper/repository/mask_store/mask_store_repository_impl.dart';
 import 'package:test/test.dart';
 
 void main() {
   group('MaskStoreRepository Tests', () {
-    late MaskStoreRepositoryImpl repository;
-    late MaskStoreApi realApi; // 실제 API
-    late MaskStoreApi mockApi; // Mock API
+    late MaskStoreRepository repository;
+    late MaskStoreApi realApi; 
+    late MaskStoreApi mockApi;
 
     setUp(() {
-      realApi = MaskStoreApiImpl(); // 실제 API 인스턴스
-      mockApi = MockMaskStoreApi(); // Mock API 인스턴스
+      realApi = MaskStoreApiImpl(); 
+      mockApi = MockMaskStoreApi(); 
     });
 
     test('getAllStores', () async {
