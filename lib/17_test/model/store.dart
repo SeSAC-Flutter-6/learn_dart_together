@@ -11,26 +11,20 @@
 // }
 
 class Store {
-  final String addr;
-  final String code;
-  final String createdAt;
-  final double lat;
-  final double lng;
-  final String name;
-  final String remainStat;
-  final String stockAt;
+  final String address;
+  final double latitude;
+  final double longitude;
+  final String title;
+  final String remainStatus;
   final String type;
 
 //<editor-fold desc="Data Methods">
   const Store({
-    required this.addr,
-    required this.code,
-    required this.createdAt,
-    required this.lat,
-    required this.lng,
-    required this.name,
-    required this.remainStat,
-    required this.stockAt,
+    required this.address,
+    required this.latitude,
+    required this.longitude,
+    required this.title,
+    required this.remainStatus,
     required this.type,
   });
 
@@ -39,81 +33,70 @@ class Store {
       identical(this, other) ||
       (other is Store &&
           runtimeType == other.runtimeType &&
-          addr == other.addr &&
-          code == other.code &&
-          createdAt == other.createdAt &&
-          lat == other.lat &&
-          lng == other.lng &&
-          name == other.name &&
-          remainStat == other.remainStat &&
-          stockAt == other.stockAt &&
+          address == other.address &&
+          latitude == other.latitude &&
+          longitude == other.longitude &&
+          title == other.title &&
+          remainStatus == other.remainStatus &&
           type == other.type);
 
   @override
   int get hashCode =>
-      addr.hashCode ^
-      code.hashCode ^
-      createdAt.hashCode ^
-      lat.hashCode ^
-      lng.hashCode ^
-      name.hashCode ^
-      remainStat.hashCode ^
-      stockAt.hashCode ^
+      address.hashCode ^
+      latitude.hashCode ^
+      longitude.hashCode ^
+      title.hashCode ^
+      remainStatus.hashCode ^
       type.hashCode;
 
   @override
   String toString() {
-    return 'Store{ addr: $addr, code: $code, createdAt: $createdAt, lat: $lat, lng: $lng, name: $name, remainStat: $remainStat, stockAt: $stockAt, type: $type,}';
+    return 'Store{' +
+        ' address: $address,' +
+        ' latitude: $latitude,' +
+        ' longitude: $longitude,' +
+        ' title: $title,' +
+        ' remainStatus: $remainStatus,' +
+        ' type: $type,' +
+        '}';
   }
 
   Store copyWith({
-    String? addr,
-    String? code,
-    String? createdAt,
-    double? lat,
-    double? lng,
-    String? name,
-    String? remainStat,
-    String? stockAt,
+    String? address,
+    double? latitude,
+    double? longitude,
+    String? title,
+    String? remainStatus,
     String? type,
   }) {
     return Store(
-      addr: addr ?? this.addr,
-      code: code ?? this.code,
-      createdAt: createdAt ?? this.createdAt,
-      lat: lat ?? this.lat,
-      lng: lng ?? this.lng,
-      name: name ?? this.name,
-      remainStat: remainStat ?? this.remainStat,
-      stockAt: stockAt ?? this.stockAt,
+      address: address ?? this.address,
+      latitude: latitude ?? this.latitude,
+      longitude: longitude ?? this.longitude,
+      title: title ?? this.title,
+      remainStatus: remainStatus ?? this.remainStatus,
       type: type ?? this.type,
     );
   }
 
   Map<String, dynamic> toJson() {
     return {
-      'addr': addr,
-      'code': code,
-      'createdAt': createdAt,
-      'lat': lat,
-      'lng': lng,
-      'name': name,
-      'remainStat': remainStat,
-      'stockAt': stockAt,
-      'type': type,
+      'address': this.address,
+      'latitude': this.latitude,
+      'longitude': this.longitude,
+      'title': this.title,
+      'remainStatus': this.remainStatus,
+      'type': this.type,
     };
   }
 
   factory Store.fromJson(Map<String, dynamic> map) {
     return Store(
-      addr: map['addr'] as String,
-      code: map['code'] as String,
-      createdAt: map['created_at'],
-      lat: map['lat'] as double,
-      lng: map['lng'] as double,
-      name: map['name'] as String,
-      remainStat: map['remain_stat'] as String,
-      stockAt: map['stock_at'],
+      address: map['address'] as String,
+      latitude: map['latitude'] as double,
+      longitude: map['longitude'] as double,
+      title: map['title'] as String,
+      remainStatus: map['remainStatus'] as String,
       type: map['type'] as String,
     );
   }

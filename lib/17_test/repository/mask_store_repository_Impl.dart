@@ -2,6 +2,7 @@ import 'dart:math';
 
 import 'package:collection/collection.dart';
 import 'package:learn_dart_together/17_test/data_source/mask_store_data_source.dart';
+import 'package:learn_dart_together/17_test/mapper/mask_store_mapper.dart';
 import 'package:learn_dart_together/17_test/model/store.dart';
 import 'package:learn_dart_together/17_test/repository/mask_store_repository.dart';
 
@@ -43,7 +44,16 @@ class MaskStoreRepositoryImpl implements MaskStoreRepository {
   @override
   Future<List<Store>> getAllStores() async {
     final (num, num) location = await _locationDataSource.getCurrentLocation();
-    return await _maskStoreDataSource.getStores(location.$1, location.$2);
+
+    // create_at, 재고 없는거는 빼자
+    final maskStoreDto =
+    await _maskStoreDataSource.getStores(location.$1, location.$2);
+
+    // 거를거 거르고 모델로 변환
+    return maskStoreDto
+        .where((dto) => dto.createdAt != null)
+        .map((dto) => dto.toStore())
+        .toList();
   }
 
   @override
@@ -51,19 +61,21 @@ class MaskStoreRepositoryImpl implements MaskStoreRepository {
     final stores = await getAllStores();
     // 소팅
     return stores
-        .sorted((a, b) => -_getDistance(a.lat, a.lng, b.lat, b.lng).toInt())
+        .sorted((a, b) =>
+    -_getDistance(a.latitude, a.longitude, b.latitude, b.longitude)
+        .toInt())
         .toList();
   }
 
   @override
   Future<Store?> getStore(String name) async {
     final stores = await getAllStores();
-    return stores.singleWhereOrNull((e) => e.name == name);
+    return stores.singleWhereOrNull((e) => e.title == name);
   }
 
   @override
   Future<List<Store>> getStoresByRemainStat(String remainStat) async {
     final stores = await getAllStores();
-    return stores.where((e) => e.remainStat == remainStat).toList();
+    return stores.where((e) => e.remainStatus == remainStat).toList();
   }
 }
