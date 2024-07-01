@@ -17,7 +17,7 @@ class Subway {
 
   factory Subway.fromXml(XmlElement xml) {
     String get(String tag) => xml.findElements(tag).single.innerText;
-    
+
     return Subway(
       subwayId: int.parse(get('subwayId')),
       fromId: int.parse(get('statnFid')),
