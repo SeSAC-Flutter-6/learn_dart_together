@@ -37,10 +37,11 @@ void main() {
       // Act
       final List<Media> medias = await mediaRepository.getMedias();
 
+      expect(medias, isNotEmpty);
+
       final expectedResults =
           fakeResults.map((e) => MediaDto.fromJson(e).toMedia()).toList();
       expect(medias, expectedResults);
-      expect(medias, isNotEmpty);
     });
   });
 }

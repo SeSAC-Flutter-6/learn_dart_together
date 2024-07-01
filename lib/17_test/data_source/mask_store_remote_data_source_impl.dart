@@ -1,7 +1,6 @@
 import 'dart:convert';
 
 import 'package:learn_dart_together/17_test/data_source/mask_store_data_source.dart';
-import 'package:learn_dart_together/17_test/model/store.dart';
 
 import 'package:http/http.dart' as http;
 
