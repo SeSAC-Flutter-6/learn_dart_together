@@ -22,11 +22,11 @@ void main() {
       "type": null,
       "url": "https://example.com/image.jpg",
       "caption": "This is an image.",
-      "created_at": "2020-02-02"
+      "created_at": "2020- 02 - 02a"
     },
     {
       "id": 3,
-      "type": "article",
+      "type": "articlesa",
       "url": "https://example.com/video.mp4",
       "caption": "This is a video.",
       "created_at": "2020-03-03"

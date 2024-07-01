@@ -13,7 +13,7 @@ PhotoDto _$PhotoDtoFromJson(Map<String, dynamic> json) => PhotoDto()
       : Type.unknown
   ..title = json['title']
   ..content = json['content']
-  ..createdAt = DateTime.parse(json['createdAt'] ?? "0001-01-01");
+  ..createdAt = json['createdAt'];
 
 Map<String, dynamic> _$PhotoDtoToJson(PhotoDto instance) => <String, dynamic>{
       'id': instance.id,

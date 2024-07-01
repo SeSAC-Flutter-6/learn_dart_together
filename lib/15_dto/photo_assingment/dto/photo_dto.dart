@@ -9,6 +9,8 @@ class PhotoDto {
   Type? type;
   String? title;
   String? content;
+
+  @EpochDateTimeConverter()
   DateTime? createdAt;
 
   PhotoDto({
@@ -23,4 +25,14 @@ class PhotoDto {
       _$PhotoDtoFromJson(json);
 
   Map<String, dynamic> toJson() => _$PhotoDtoToJson(this);
+}
+
+class EpochDateTimeConverter implements JsonConverter<DateTime, int> {
+  const EpochDateTimeConverter();
+
+  @override
+  DateTime fromJson(int json) => DateTime.fromMillisecondsSinceEpoch(json);
+
+  @override
+  int toJson(DateTime object) => object.millisecondsSinceEpoch;
 }
