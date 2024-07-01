@@ -101,8 +101,9 @@ void main() {
     //       }),
     //     ]),
     //     true);
-    final expectedResults = fakeResults.map((e)=> StoreDto.fromJson(e).toStore()).toList();
-    expect(results.equals(expectedResults),true);
+    final expectedResults =
+        fakeResults.map((e) => StoreDto.fromJson(e).toStore()).toList();
+    expect(results.equals(expectedResults), true);
   });
 }
 

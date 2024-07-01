@@ -47,7 +47,7 @@ class MaskStoreRepositoryImpl implements MaskStoreRepository {
 
     // create_at, 재고 없는거는 빼자
     final maskStoreDto =
-    await _maskStoreDataSource.getStores(location.$1, location.$2);
+        await _maskStoreDataSource.getStores(location.$1, location.$2);
 
     // 거를거 거르고 모델로 변환
     return maskStoreDto
@@ -62,8 +62,8 @@ class MaskStoreRepositoryImpl implements MaskStoreRepository {
     // 소팅
     return stores
         .sorted((a, b) =>
-    -_getDistance(a.latitude, a.longitude, b.latitude, b.longitude)
-        .toInt())
+            -_getDistance(a.latitude, a.longitude, b.latitude, b.longitude)
+                .toInt())
         .toList();
   }
 
