@@ -1,8 +1,8 @@
 class Photo {
-  int id;
-  PhotoType type;
-  DateTime createdAt;
-  String url;
+  final int id;
+  final PhotoType type;
+  final DateTime createdAt;
+  final String url;
   Photo({
     required this.id,
     required this.type,
