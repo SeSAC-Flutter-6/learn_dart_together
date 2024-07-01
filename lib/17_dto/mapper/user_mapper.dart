@@ -6,12 +6,8 @@ extension UserMapper on UserDto {
     return User(
       name: name ?? '',
       email: email ?? '',
-      latitude: address?.geo?.lat == null
-          ? 0.0
-          : double.tryParse(address!.geo!.lat!) ?? 0.0,
-      longitude: address?.geo?.lng == null
-          ? 0.0
-          : double.tryParse(address!.geo!.lng!) ?? 0.0,
+      latitude: double.tryParse(address?.geo?.lat ?? '0.0') ?? 0.0,
+      longitude: double.tryParse(address?.geo?.lng ?? '0.0') ?? 0.0,
     );
   }
 }
