@@ -29,9 +29,8 @@ class UserServiceImpl implements UserService {
       );
       if (response.statusCode == 200) {
         final List<dynamic> userListJson = jsonDecode(response.body);
-        final List<User> userList = userListJson
-            .map<User>((json) => User.fromJson(json))
-            .toList();
+        final List<User> userList =
+            userListJson.map<User>((json) => User.fromJson(json)).toList();
         return userList;
       } else {
         throw Exception('Failed to load: ${response.statusCode}');
