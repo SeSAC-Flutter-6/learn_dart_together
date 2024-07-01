@@ -3,7 +3,7 @@ import 'package:collection/collection.dart';
 import 'package:learn_dart_together/15_dto_mapper/data_source/mask_store/mask_store_api.dart';
 import 'package:learn_dart_together/15_dto_mapper/dto/mask_store_dto/mask_store_dto.dart';
 import 'package:learn_dart_together/15_dto_mapper/mapper/mask_store_mapper.dart';
-import 'package:learn_dart_together/15_dto_mapper/model/mask_store/mask_store.dart';
+import 'package:learn_dart_together/15_dto_mapper/model/mask_store.dart';
 import 'package:learn_dart_together/15_dto_mapper/repository/mask_store/mask_store_repository.dart';
 
 class MaskStoreRepositoryImpl implements MaskStoreRepository {
