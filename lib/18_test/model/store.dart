@@ -12,15 +12,15 @@
 // },
 
 class Store {
-  String addr;
-  String code;
-  DateTime created_at;
-  num lat;
-  num lng;
-  String name;
-  String remainStat;
-  DateTime stock_at;
-  String type;
+  final String addr;
+  final String code;
+  final DateTime created_at;
+  final num lat;
+  final num lng;
+  final String name;
+  final String remainStat;
+  final DateTime stock_at;
+  final String type;
 
 //<editor-fold desc="Data Methods">
   Store({
