@@ -16,7 +16,8 @@ void main() {
   A aInstance = A();
   B bInstance = B();
 
-  List<Y> list = [];  //Y는 X 인터페이스를 구현하고 있지만 X 인터페이스에는 b()메소드가 없다. 따라서 b()메소드를 호출하려면 리스트의 타입은 Y여야 한다.
+  List<Y> list =
+      []; //Y는 X 인터페이스를 구현하고 있지만 X 인터페이스에는 b()메소드가 없다. 따라서 b()메소드를 호출하려면 리스트의 타입은 Y여야 한다.
 
   list.add(aInstance);
   list.add(bInstance);

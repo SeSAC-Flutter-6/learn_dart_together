@@ -30,9 +30,8 @@ class TodoServiceImpl implements ToDoService {
       );
       if (response.statusCode == 200) {
         final List<dynamic> todoListJson = jsonDecode(response.body);
-        final List<Todo> todoList = todoListJson
-            .map<Todo>((json) => Todo.fromJson(json))
-            .toList();
+        final List<Todo> todoList =
+            todoListJson.map<Todo>((json) => Todo.fromJson(json)).toList();
         return todoList;
       } else {
         throw Exception('Failed to load: ${response.statusCode}');
