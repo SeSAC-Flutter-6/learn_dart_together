@@ -1,7 +1,7 @@
 import 'package:learn_dart_together/14_dto_mapper/data_source/mask_store/mask_store_api.dart';
 import 'package:learn_dart_together/14_dto_mapper/dto/mask_store_dto.dart';
 
-class MockMaskStoreApi implements MaskStoreAPI {
+class MockMaskStoreAPI implements MaskStoreAPI {
   final List<Map<String, dynamic>> _fakeResults = [
     {
       "addr": "서울역",
