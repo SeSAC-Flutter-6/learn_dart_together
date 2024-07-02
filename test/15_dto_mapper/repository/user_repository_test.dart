@@ -23,13 +23,12 @@ void main() {
 
       // createUser 호출
       User createdUser = await repository.createUser(
-        name: name,
-        email: email,
-        latitude: latitude,
-        longitude: longitude,
-        phone: 111111.toString(),
-        website: 'www.abs.kr'
-      );
+          name: name,
+          email: email,
+          latitude: latitude,
+          longitude: longitude,
+          phone: 111111.toString(),
+          website: 'www.abs.kr');
       expect(
           createdUser,
           User(
