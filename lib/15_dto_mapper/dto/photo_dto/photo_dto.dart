@@ -3,12 +3,13 @@ part 'photo_dto.g.dart';
 
 @JsonSerializable()
 class PhotoDto {
-  String? id;
+  dynamic id;
   String? type;
   String? url;
   String? title;
   String? content;
   String? caption;
+  @JsonKey(name: 'created_at')
   String? createdAt;
 
   PhotoDto({

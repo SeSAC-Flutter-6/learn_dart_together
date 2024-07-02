@@ -1,12 +1,13 @@
 import 'package:learn_dart_together/15_dto_mapper/dto/photo_dto/photo_dto.dart';
 import 'package:learn_dart_together/15_dto_mapper/model/photo.dart';
+import 'package:learn_dart_together/utils/date_time_util.dart';
 
 extension PhotoMapper on PhotoDto {
   Photo toPhoto() {
     return Photo(
-      id: int.parse(id ?? '0'),
+      id: int.tryParse(id?.toString() ?? '0') ?? 0,
       type: _mapPhotoType(type?.toLowerCase()),
-      createdAt: _parseDateTime(createdAt),
+      createdAt: DateTimeUtil.parseDateTime(createdAt),
       url: url ?? '',
     );
   }
@@ -21,18 +22,6 @@ extension PhotoMapper on PhotoDto {
         return PhotoType.video;
       default:
         return PhotoType.unknown;
-    }
-  }
-
-  //TODO:DateTime을 변환하는건 특정 모델을 가리지 않고 사용할 것 같아서 따로 유틸로 빼는게 나을지도. 일단은 필요할때마다 작성해서 쓰는걸로
-  DateTime _parseDateTime(String? dateStr) {
-    if (dateStr == null || dateStr.isEmpty) {
-      return DateTime.fromMillisecondsSinceEpoch(0);
-    }
-    try {
-      return DateTime.parse(dateStr);
-    } catch (e) {
-      return DateTime.fromMillisecondsSinceEpoch(0);
     }
   }
 }
