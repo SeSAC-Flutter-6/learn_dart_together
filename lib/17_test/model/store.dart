@@ -1,12 +1,12 @@
 class Store {
   final String addr;
   final String code;
-  final DateTime createdAt;
+  final String createdAt;
   final num lat;
   final num lng;
   final String name;
   final String remainStat;
-  final DateTime stockAt;
+  final String stockAt;
   final String type;
 
 //<editor-fold desc="Data Methods">
@@ -57,12 +57,12 @@ class Store {
   Store copyWith({
     String? addr,
     String? code,
-    DateTime? createdAt,
+    String? createdAt,
     num? lat,
     num? lng,
     String? name,
     String? remainStat,
-    DateTime? stockAt,
+    String? stockAt,
     String? type,
   }) {
     return Store(
@@ -96,12 +96,12 @@ class Store {
     return Store(
       addr: map['addr'] as String,
       code: map['code'] as String,
-      createdAt: map['created_at'] as DateTime,
+      createdAt: map['created_at'] as String,
       lat: map['lat'] as num,
       lng: map['lng'] as num,
       name: map['name'] as String,
       remainStat: map['remain_stat'] as String,
-      stockAt: map['stock_at'] as DateTime,
+      stockAt: map['stock_at'] as String,
       type: map['type'] as String,
     );
   }
