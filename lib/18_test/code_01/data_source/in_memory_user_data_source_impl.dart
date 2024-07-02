@@ -79,7 +79,7 @@ class InMemoryUserDataSourceImpl implements UserDataSource {
   Future<List<User>> getAllUsers() async {
     // User 객체 내 모든 값에 접근하고
     // User.fromJson을 이용해서 map을 역직렬화해서 Iterable을 반환하고 다시 리스트로 호출
-    final allUsersMap = _json.map((e) => User.fromJson(e)).toList();
+    final allUsersMap = List<User>.unmodifiable(_json.map((e) => User.fromJson(e)).toList());
     //
     return allUsersMap;
   }
