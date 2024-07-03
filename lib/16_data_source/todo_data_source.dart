@@ -3,27 +3,78 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 
 class TodoDataSource {
-  Future<Todo> getTodo() async {
+  final String _baseUrl;
+
+  const TodoDataSource({
+    String? baseUrl,
+  }) : _baseUrl = baseUrl ?? 'https://jsonplaceholder.typicode.com/todos';
+
+  Future<Todo> getTodo({int? id}) async {
     // http
     //     .get(Uri.parse('https://jsonplaceholder.typicode.com/todos/1'))
     //     .then((res) => jsonDecode(res.body))
     //     .then((json) => print(json));
-    final response = await http
-        .get(Uri.parse('https://jsonplaceholder.typicode.com/todos/1'));
+    final response = await http.get(Uri.parse('$_baseUrl/$id'));
     final Todo todo = Todo.fromJson(jsonDecode(response.body));
 
     return todo;
   }
 
   Future<List<Todo>> getTodoList() async {
-    final responseTodos =
-        await http.get(Uri.parse('https://jsonplaceholder.typicode.com/todos'));
+    final responseTodos = await http.get(Uri.parse(_baseUrl));
 
     final List<Todo> todoList = jsonDecode(responseTodos.body)
             .map<Todo>((json) => Todo.fromJson((json as Map<String, dynamic>)))
             .toList() ??
         [];
     return todoList;
+  }
+
+  Future<String> createTodo() async {
+    final response = await http.post(Uri.parse(_baseUrl),
+        headers: <String, String>{
+          'Content-Type': 'application/json; charset=UTF-8',
+        },
+        body: jsonEncode(<String, String>{
+          'userId': 'test id',
+          'title': 'test title',
+        }));
+    final String message;
+    if (response.statusCode == 201) {
+      message = response.body;
+    } else {
+      message = 'create failed';
+    }
+    return message;
+  }
+
+  Future<String> updateTodo({int? id}) async {
+    final response = await http.put(Uri.parse('$_baseUrl/$id'),
+        headers: <String, String>{
+          'Content-Type': 'application/json; charset=UTF-8',
+        },
+        body: jsonEncode(<String, String>{
+          'userId': 'updated id',
+          'title': 'updated title',
+        }));
+    final String message;
+    if (response.statusCode == 200) {
+      message = response.body;
+    } else {
+      message = 'update failed';
+    }
+    return message;
+  }
+
+  Future<String> deleteTodo({int? id}) async {
+    final response = await http.delete(Uri.parse('$_baseUrl/$id'));
+    final String message;
+    if (response.statusCode == 200) {
+      message = response.body;
+    } else {
+      message = 'delete failed';
+    }
+    return message;
   }
 }
 
