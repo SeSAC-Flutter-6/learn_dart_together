@@ -10,7 +10,7 @@ POST https://jsonplaceholder.typicode.com/todos HTTP/1.1
 Content-Type: application/json
 
 {
-    "userId": 100,
+    "userId": 1001,
     "title": "test",
     "completed": false
 }
