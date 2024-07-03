@@ -4,7 +4,6 @@ import 'package:learn_dart_together/18_dto_mapper/practice_3/mapper/content_mapp
 import 'package:learn_dart_together/18_dto_mapper/practice_3/repository/photo_repository.dart';
 import 'package:learn_dart_together/18_dto_mapper/practice_3/repository/photo_repository_impl.dart';
 import 'package:test/test.dart';
-import 'package:collection/collection.dart';
 
 void main() {
   final json = [
@@ -57,7 +56,7 @@ void main() {
     test('mock json 데이터에서 변환된 것과 실제로 같은지 테스트', () async {
       final actualData = await photoRepositoryImpl.getAllPhotos();
       final testData = json.map((e) => PhotoDto.fromJson(e).toPhoto()).toList();
-      expect(IterableEquality().equals(actualData, testData), true);
+      expect(actualData, testData);
     });
   });
 }
