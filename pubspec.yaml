@@ -9,8 +9,10 @@ environment:
 # Add regular dependencies here.
 dependencies:
   collection: ^1.19.0
+  equatable: ^2.0.5
   http: ^1.2.1
   json_annotation: ^4.9.0
+  web_socket_channel: ^3.0.0
   # path: ^1.8.0
 
 dev_dependencies:
