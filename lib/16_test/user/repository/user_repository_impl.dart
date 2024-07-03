@@ -1,7 +1,7 @@
 import 'package:collection/collection.dart';
 import 'package:learn_dart_together/16_test/user/data_source/user_data_source.dart';
+import 'package:learn_dart_together/16_test/user/model/user.dart';
 import 'package:learn_dart_together/16_test/user/repository/user_repository.dart';
-import '../model/user.dart';
 
 class UserRepositoryImpl implements UserRepository {
   final UserDataSource _userDataSource;

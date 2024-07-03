@@ -5,11 +5,7 @@ class Person {
   int age;
   Animal pet;
 
-  Person({
-    required this.name,
-    required this.age,
-    required this.pet
-  });
+  Person({required this.name, required this.age, required this.pet});
 
   @override
   String toString() {
@@ -24,19 +20,16 @@ class Person {
           name == other.name &&
           age == other.age &&
           pet == other.pet;
-          
+
   @override
   int get hashCode => name.hashCode ^ age ^ pet.hashCode;
-  
+
   Person copyWith({
     String? name,
     int? age,
     Animal? pet,
   }) {
     return Person(
-      name: name ?? this.name,
-      age: age ?? this.age,
-      pet: pet ?? this.pet
-    );
+        name: name ?? this.name, age: age ?? this.age, pet: pet ?? this.pet);
   }
 }
