@@ -27,6 +27,7 @@ void main() {
 
   List<dynamic> collectionChartDataListJson =
       jsonData['collectionChartDataList'];
+  // ignore: unused_local_variable
   List<CollectionChartData> collectionChartDataList =
       collectionChartDataListJson
           .map((item) => CollectionChartData.fromJson(item))
