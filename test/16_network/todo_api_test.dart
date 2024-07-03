@@ -1,6 +1,6 @@
 import 'package:learn_dart_together/16_network/data_source/todo/todo_api.dart';
 import 'package:learn_dart_together/16_network/data_source/todo/todo_api_impl.dart';
-import 'package:learn_dart_together/16_network/dto/todo_dto/todo_dto.dart';
+import 'package:learn_dart_together/16_network/dto/todo_dto.dart';
 import 'package:learn_dart_together/16_network/mapper/todo_mapper.dart';
 import 'package:learn_dart_together/16_network/model/todo.dart';
 import 'package:test/test.dart';

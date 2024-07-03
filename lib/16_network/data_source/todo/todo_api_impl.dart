@@ -1,6 +1,6 @@
 import 'dart:convert';
 import 'package:learn_dart_together/16_network/data_source/todo/todo_api.dart';
-import 'package:learn_dart_together/16_network/dto/todo_dto/todo_dto.dart';
+import 'package:learn_dart_together/16_network/dto/todo_dto.dart';
 import 'package:http/http.dart' as http;
 
 class TodoApiImpl implements TodoApi {
