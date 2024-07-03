@@ -1,6 +1,5 @@
 import 'package:learn_dart_together/15_dto_mapper/dto/user_dto/address.dart';
 import 'package:learn_dart_together/15_dto_mapper/dto/user_dto/company.dart';
-import 'package:learn_dart_together/15_dto_mapper/dto/user_dto/geo.dart';
 import 'package:learn_dart_together/15_dto_mapper/dto/user_dto/user_dto.dart';
 import 'package:learn_dart_together/15_dto_mapper/model/user.dart';
 
@@ -29,17 +28,7 @@ extension UserDtoMapper on User {
       name: name,
       username: username,
       email: email,
-      address: address ??
-          Address(
-            street: '',
-            suite: '',
-            city: '',
-            zipcode: '',
-            geo: Geo(
-              lat: latitude.toString(),
-              lng: longitude.toString(),
-            ),
-          ),
+      address: address,
       phone: phone,
       website: website,
       company: company,
