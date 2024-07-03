@@ -1,12 +1,16 @@
+import 'package:http/http.dart' as http;
+
 class DataSource {
-  Future<List<User>> getUserData
-
-  async
-
-  {
-
-  final response = await
-}}
+  Future<List<User>> getUserData() async {
+    final response = await http.get(Uri.parse('https://example.com/users'));
+    if (response.statusCode == 200) {
+      List<dynamic> userJson = json.decode(response.body);
+      return userJson.map((json) => User.fromJson(json)).toList();
+    } else {
+      throw Exception('Failed to load users');
+    }
+  }
+}
 
 class User {
   int id;
@@ -39,33 +43,6 @@ class User {
     required this.website,
     required this.company,
   });
-
-  Map<String, dynamic> toJson() =>
-      {
-        'id': id,
-        'username': username,
-        'address': address,
-        'street': street,
-        'suite': suite,
-        'city': city,
-        'zipcode': zipcode,
-        'geo': geo,
-        'lat': lat,
-        'lng': lng,
-        'phone': phone,
-        'website': website,
-        'company': company,
-
-      };
-
-  User.fromJson(Map<String, dynamic> json) :
-    id = json['id'],
-    username = json['username'],
-    address = json['address'],
-    street = json['street'],
-    suite = json['suite'],
-    city = json['city'],
-    zipcode = json['zipcode'],
 
 
 }
