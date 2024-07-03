@@ -1,21 +1,21 @@
 class MovieDetail {
-  bool adult;
-  int id;
-  String imdbId;
-  List<String> originCountry;
-  String originalLanguage;
-  String originalTitle;
-  String overview;
-  double popularity;
-  String posterPath;
-  String releaseDate;
-  int runtime;
-  String status;
-  String tagline;
-  String title;
-  bool video;
-  double voteAverage;
-  int voteCount;
+  final bool adult;
+  final int id;
+  final String imdbId;
+  final List<String> originCountry;
+  final String originalLanguage;
+  final String originalTitle;
+  final String overview;
+  final double popularity;
+  final String posterPath;
+  final String releaseDate;
+  final int runtime;
+  final String status;
+  final String tagline;
+  final String title;
+  final bool video;
+  final double voteAverage;
+  final int voteCount;
 
 //<editor-fold desc="Data Methods">
   MovieDetail({
