@@ -19,6 +19,7 @@ dependencies:
   json_annotation: ^4.9.0
   mockito: ^5.4.4
   freezed_annotation: ^2.4.1
+  shelf_web_socket: ^2.0.0
   # path: ^1.8.0
 
 dev_dependencies:
