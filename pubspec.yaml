@@ -13,6 +13,7 @@ dependencies:
   fast_csv: ^0.2.11
   http: ^1.2.1
   json_annotation: ^4.9.0
+  shelf: ^1.4.2
   xml: ^6.5.0
   # path: ^1.8.0
 
