@@ -1,5 +1,6 @@
 import 'package:learn_dart_together/17_test/data_source/mask_store_data_source.dart';
-import 'package:learn_dart_together/17_test/model/store.dart';
+
+import '../dto/mask_store_dto.dart';
 
 class InMemoryMaskStoreDataSourceImpl implements MaskStoreDataSource {
   final _json = [
@@ -39,7 +40,7 @@ class InMemoryMaskStoreDataSourceImpl implements MaskStoreDataSource {
   ];
 
   @override
-  Future<List<Store>> getStores(num lat, num lng) async {
-    return _json.map((e) => Store.fromJson(e)).toList();
+  Future<List<StoreDto>> getStores(num lat, num lng) async {
+    return _json.map((e) => StoreDto.fromJson(e)).toList();
   }
 }
