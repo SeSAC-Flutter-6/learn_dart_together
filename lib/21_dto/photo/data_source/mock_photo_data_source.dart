@@ -2,7 +2,7 @@ import 'package:learn_dart_together/21_dto/photo/data_source/photo_data_source.d
 import 'package:learn_dart_together/21_dto/photo/dto/photo_dto.dart';
 
 class MockPhotoDataSource implements PhotoDataSource {
-  final data1 = [
+  final _data1 = [
     {
       "id": 1,
       "type": "article",
@@ -51,6 +51,6 @@ class MockPhotoDataSource implements PhotoDataSource {
 
   @override
   Future<List<PhotoDto>> getPhotoDto() async {
-    return data1.map((e) => PhotoDto.fromJson(e)).toList();
+    return _data1.map((e) => PhotoDto.fromJson(e)).toList();
   }
 }
