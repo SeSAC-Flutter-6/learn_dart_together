@@ -22,7 +22,7 @@ void main() {
     }
   ];
 
-  test('', () async {
+  test('PhotoDataSource이 postman에서 만든 api에서도 정상 작동한다.', () async {
     final photoDataSource = PhotoDataSource(baseUrl: mockUrl);
     final photoRepositoryImpl = PhotoRepositoryImpl(photoDataSource);
     final fakeData = await photoRepositoryImpl.getPhotos(1);

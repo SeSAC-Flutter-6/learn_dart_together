@@ -12,10 +12,10 @@ class MovieRepositoryImpl implements MovieRepository {
   MovieRepositoryImpl(this._movieApi);
 
   @override
-  Future<List<Movie>?> getMovieInfoList() async {
+  Future<List<Movie>> getMovieInfoList() async {
     final movieDto = await _movieApi.getMovieInfoList();
 
-    return movieDto?.map((dto) => dto.toMovie()).toList();
+    return movieDto.map((dto) => dto.toMovie()).toList();
   }
 
   @override
