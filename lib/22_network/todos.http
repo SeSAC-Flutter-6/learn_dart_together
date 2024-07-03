@@ -1,0 +1,34 @@
+### GET 요청
+GET https://jsonplaceholder.typicode.com/todos 
+Accept: application/json
+
+### POST 요청
+POST https://jsonplaceholder.typicode.com/todos
+Content-Type: application/json
+
+{
+    "userId": 201, 
+    "title": "test", 
+    "completed": "test"
+}
+
+### PUT 요청
+PUT https://jsonplaceholder.typicode.com/todos/2
+Content-Type: application/json
+
+{
+    "userId": 2,
+    "title": "test",
+    "completed": "test"
+}
+
+### PATCH 요청
+PATCH https://jsonplaceholder.typicode.com/todos/3
+Content-Type: application/json
+
+{
+    "title": "test"
+}
+
+### DELETE 요청 
+DELETE https://jsonplaceholder.typicode.com/todos/1
