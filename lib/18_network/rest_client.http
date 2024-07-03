@@ -1,0 +1,34 @@
+### GET 투두 데이터 목록 가져오기
+GET https://jsonplaceholder.typicode.com/todos
+Accept: application/json
+
+### POST 새 데이터를 등록하면 id가 201인 투두 데이터 생성
+POST https://jsonplaceholder.typicode.com/todos
+Content-Type: application/json
+
+{
+    "userId": 1,
+    "title": "POST test",
+    "completed": true
+}
+
+### PUT id가 1인 투두 데이터의 내용 전체를 업데이트
+PUT https://jsonplaceholder.typicode.com/todos/1
+Content-Type: application/json
+
+{
+    "userId": 1,
+    "title": "PUT test",
+    "completed": true
+}
+
+### PATCH id가 2인 투두 데이터의 제목을 업데이트
+PATCH https://jsonplaceholder.typicode.com/todos/2
+Content-Type: application/json
+
+{
+    "title": "PATCH test"
+}
+
+### DELETE id가 3인 투두 데이터 삭제
+DELETE https://jsonplaceholder.typicode.com/todos/3
