@@ -10,7 +10,7 @@ class DefaultPhotoDataSourceImpl implements PhotoDataSource {
   @override
   Future<List<PhotoDTO>> getPhotos(String query) async {
     try {
-      final response = await http.get(Uri.parse('${_baseURL}&q='));
+      final response = await http.get(Uri.parse('${_baseURL}&q=${query}'));
       if (response.statusCode == 200) {
         final jsonList = jsonDecode(response.body);
         return jsonList
