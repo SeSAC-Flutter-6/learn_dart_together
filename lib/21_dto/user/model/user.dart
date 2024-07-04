@@ -1,8 +1,8 @@
 class User {
   final String name;
   final String email;
-  double latitude;
-  double longitude;
+  final double latitude;
+  final double longitude;
 
 //<editor-fold desc="Data Methods">
   User({

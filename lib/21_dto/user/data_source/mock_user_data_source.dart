@@ -2,7 +2,7 @@ import 'package:learn_dart_together/21_dto/user/data_source/user_data_source.dar
 import 'package:learn_dart_together/21_dto/user/dto/user_dto.dart';
 
 class MockUserDataSource implements UserDataSource {
-  final data = [
+  final _data = [
     {
       "id": 1,
       "name": "Leanne Graham",
@@ -47,6 +47,6 @@ class MockUserDataSource implements UserDataSource {
 
   @override
   Future<List<UserDto>> getUserDto() async {
-    return data.map((e) => UserDto.fromJson(e)).toList();
+    return _data.map((e) => UserDto.fromJson(e)).toList();
   }
 }
