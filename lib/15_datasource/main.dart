@@ -32,8 +32,28 @@ class Todo {
         title = json['title'],
         completed = json['completed'];
 
+
+
   @override
   String toString() {
     return 'Todo{userId: $userId, id: $id, title: $title, completed: $completed}';
+  }
+
+  Map<String, dynamic> toJson() {
+    return {
+      'userId': userId,
+      'id': id,
+      'title': title,
+      'completed': completed,
+    };
+  }
+
+  factory Todo.fromMap(Map<String, dynamic> map) {
+    return Todo(
+      userId: map['userId'] as int,
+      id: map['id'] as int,
+      title: map['title'] as String,
+      completed: map['completed'] as bool,
+    );
   }
 }
