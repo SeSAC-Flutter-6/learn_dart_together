@@ -1,0 +1,38 @@
+### GET 요청 - 모든 TODO 항목 가져오기
+GET https://jsonplaceholder.typicode.com/todos
+Accept: application/json
+
+### GET 요청 - 특정 TODO 항목 가져오기
+GET https://jsonplaceholder.typicode.com/todos/200
+Accept: application/json
+
+### POST 요청 - 새로운 TODO 항목 생성
+POST https://jsonplaceholder.typicode.com/todos
+Content-Type: application/json
+
+{
+  "userId": 1,
+  "title": "Buy groceries",
+  "completed": false
+}
+
+### PUT 요청 - TODO 항목 전체 수정
+PUT https://jsonplaceholder.typicode.com/todos/1
+Content-Type: application/json
+
+{
+  "userId": 1,
+  "title": "Walk the dog",
+  "completed": true
+}
+
+### PATCH 요청 - TODO 항목 부분 수정
+PATCH https://jsonplaceholder.typicode.com/todos/1
+Content-Type: application/json
+
+{
+  "title": "Walk the cat"
+}
+
+### DELETE 요청 - TODO 항목 삭제
+DELETE https://jsonplaceholder.typicode.com/todos/1
