@@ -11,7 +11,7 @@ Future<Uint8List> downloadImage(String url) async {
 
 Future<File> saveFile(Uint8List bytes, String filename) async {
   final file = File(filename);
-  file.writeAsBytesSync(bytes);
+  await file.writeAsBytes(bytes);
   
   return file;
 }

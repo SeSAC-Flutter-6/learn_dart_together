@@ -1,0 +1,4 @@
+enum ErrorList {
+  cannotDivideZero,
+  unknown,
+}

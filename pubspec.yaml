@@ -11,6 +11,8 @@ dependencies:
   collection: ^1.19.0
   csv: ^6.0.0
   fast_csv: ^0.2.11
+  freezed: ^2.5.4
+  freezed_annotation: ^2.4.2
   http: ^1.2.1
   json_annotation: ^4.9.0
   shelf: ^1.4.2
