@@ -12,3 +12,7 @@ pubspec.lock  # Except for application packages
 
 # Mac
 .DS_Store
+
+*.freezed.dart
+.g.dart
+*.freezed.dart

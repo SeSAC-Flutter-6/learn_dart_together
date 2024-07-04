@@ -1,8 +1,6 @@
-import 'dart:convert';
 import 'package:dio/dio.dart';
 import 'package:learn_dart_together/21_network/dto/todo_dto.dart';
 import 'package:learn_dart_together/21_network/data_source/todo_api.dart';
-import 'package:learn_dart_together/21_network/model/todo.dart';
 
 class TodoApiImpl implements TodoApi {
   final Dio _dio;
