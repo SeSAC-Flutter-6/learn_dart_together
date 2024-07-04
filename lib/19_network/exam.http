@@ -5,7 +5,7 @@ Content-Type: application/json
 ### todo를 가져오기
 https://jsonplaceholder.typicode.com/todos
 
-###
+### todo POST 요청
 POST https://jsonplaceholder.typicode.com/todos HTTP/1.1
 Content-Type: application/json
 
@@ -14,12 +14,12 @@ Content-Type: application/json
     "title": "test",
     "completed": false
 }
-###
+### todo PATCH 요청
 PATCH  https://jsonplaceholder.typicode.com/todos/201
 Content-Type: application/json
 {
     "title": "test22",
     "completed": true
 }
-###
+### todo DELETE 요청
 DELETE  https://jsonplaceholder.typicode.com/todos/201
