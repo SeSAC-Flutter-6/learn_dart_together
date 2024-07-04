@@ -32,7 +32,7 @@ class MovieApiImpl implements MovieApi {
   }
 
   @override
-  Future<MovieDetailDto?> getMovie({required int movieId}) async {
+  Future<MovieDetailDto?> getMovieDetail({required int movieId}) async {
     try {
       final response = await http.get(Uri.parse(
           '$_baseUrl/${movieId.toString()}?api_key=$_apiKey&language=ko-KR'));
