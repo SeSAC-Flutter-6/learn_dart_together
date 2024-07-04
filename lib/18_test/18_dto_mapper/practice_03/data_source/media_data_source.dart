@@ -1,6 +1,8 @@
-abstract interface class MediaDataSource {
-  Future<List<MediaDto>> getMedias();
+import 'package:learn_dart_together/18_test/18_dto_mapper/practice_03/dto/photo_dto.dart';
 
-  Future<MediaDto?> getMedia(int id);
+abstract interface class MediaDataSource {
+  Future<List<PhotoDto>> getPhotos();
+
+  Future<PhotoDto?> getPhoto(int id);
 
 }
