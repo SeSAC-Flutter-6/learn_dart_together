@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-23752272-12"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'UA-23752272-12');
+  </script>
+
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta charset="utf-8">
+  <title>알리미프로 - 학원 등하원 알림 서비스</title>
+  <base href="/">
+
+  <meta name="description" content="월 8,250원(프로모션 적용시)이면 원생의 등원/하원 알림 서비스를 학부모에게 제공할 수 있습니다"/>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+
+  <!-- ios, android -->
+  <link rel="apple-touch-icon" sizes="180x180" href="ic_launcher-web.png"/>
+  <link rel="icon" type="image/png" href="ic_launcher-web.png" sizes="192x192">
+
+  <!-- 머티리얼 아이콘 -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+  <!-- twitter -->
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:site" content="알리미 프로">
+  <meta name="twitter:title" content="알리미 프로">
+  <meta name="twitter:description" content="월 8,250원(프로모션 적용시)이면 원생의 등원/하원 알림 서비스를 학부모에게 제공할 수 있습니다">
+  <meta name="twitter:image" content="https://alimipro.com/assets/device_capture.png">
+
+  <!-- facebook and other social sites -->
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="알리미 프로">
+  <meta property="og:title" content="알리미 프로">
+  <meta property="og:description" content="월 8,250원(프로모션 적용시)이면 원생의 등원/하원 알림 서비스를 학부모에게 제공할 수 있습니다">
+  <meta property="og:image" content="https://alimipro.com/assets/device_capture.png">
+  <meta property="og:url" content="https://alimipro.com">
+
+  <meta name="naver-site-verification" content="7663f113d51edc03dfebed3ffe86aed0fd1c7700"/>
+<link rel="stylesheet" href="styles.35a60bda0709c6f74e7e.css"></head>
+
+<body>
+  <app-root></app-root>
+<script type="text/javascript" src="runtime.a66f828dca56eeb90e02.js"></script><script type="text/javascript" src="polyfills.23f5ea98fd5e44d8ec15.js"></script><script type="text/javascript" src="main.36ac1cde0208845400ec.js"></script></body>
+
+</html>
