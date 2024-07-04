@@ -12,7 +12,7 @@ class Album with _$Album {
     required int id,
     required int userId,
     required String title,
-    @Default([]) required List<Todo> todos,
+    @Default([]) List<Todo> todos,
   }) = _Album;
 
   factory Album.fromJson(Map<String, Object?> json) => _$AlbumFromJson(json);
