@@ -29,8 +29,8 @@ void main() {
   switch (result) {
     //result내에는 Success와 Error로만 강제되니까 switch문을 써서 분기를 나눌수 있다.
     case Success<double>():
-      print('성공: ${result.data.toString()}');
+      print('성공: $result');
     case Error<double>():
-      print('실패 : ${result.e.toString()}');
+      print('실패 : $result');
   }
 }
