@@ -5,7 +5,7 @@ part 'photo_dto.g.dart';
 
 @JsonSerializable()
 class PhotoDto {
-  int? id;
+  dynamic id;
   Type? type;
   String? title;
   String? content;

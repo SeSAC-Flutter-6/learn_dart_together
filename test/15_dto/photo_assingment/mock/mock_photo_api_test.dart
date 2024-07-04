@@ -18,7 +18,7 @@ void main() {
       "created_at": "2020-01-01",
     },
     {
-      "id": 2,
+      "id": null,
       "type": null,
       "url": "https://example.com/image.jpg",
       "caption": "This is an image.",
