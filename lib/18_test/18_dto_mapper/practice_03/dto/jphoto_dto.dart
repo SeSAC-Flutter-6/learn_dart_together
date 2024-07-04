@@ -11,7 +11,7 @@ class PhotoDto {
   String? url;
   String? caption;
   DateTime? createdAt;
-  ContentType type;
+  ContentType? type;
 
   PhotoDto ({
     this.id,

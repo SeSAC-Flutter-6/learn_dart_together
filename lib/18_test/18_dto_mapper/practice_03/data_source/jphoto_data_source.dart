@@ -1,6 +1,6 @@
 
 import 'package:learn_dart_together/17_factory_singleton/model/photo_model.dart';
-import 'package:learn_dart_together/18_test/18_dto_mapper/practice_03/dto/photo_dto.dart';
+import 'package:learn_dart_together/18_test/18_dto_mapper/practice_03/dto/jphoto_dto.dart';
 import 'package:learn_dart_together/data_source/data_source.dart';
 
 class MockPhotoApi implements PhotoDataSource {
