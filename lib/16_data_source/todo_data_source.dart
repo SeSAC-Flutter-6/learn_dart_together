@@ -9,7 +9,7 @@ class TodoDataSource {
     String? baseUrl,
   }) : _baseUrl = baseUrl ?? 'https://jsonplaceholder.typicode.com/todos';
 
-  Future<Todo> getTodo({int? id}) async {
+  Future<Todo> getTodo({required int id}) async {
     // http
     //     .get(Uri.parse('https://jsonplaceholder.typicode.com/todos/1'))
     //     .then((res) => jsonDecode(res.body))
@@ -48,7 +48,7 @@ class TodoDataSource {
     return message;
   }
 
-  Future<String> updateTodo({int? id}) async {
+  Future<String> updateTodo({required int id}) async {
     final response = await http.put(Uri.parse('$_baseUrl/$id'),
         headers: <String, String>{
           'Content-Type': 'application/json; charset=UTF-8',
@@ -66,7 +66,7 @@ class TodoDataSource {
     return message;
   }
 
-  Future<String> deleteTodo({int? id}) async {
+  Future<String> deleteTodo({required int id}) async {
     final response = await http.delete(Uri.parse('$_baseUrl/$id'));
     final String message;
     if (response.statusCode == 200) {
