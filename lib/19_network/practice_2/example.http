@@ -1,0 +1,35 @@
+### https://jsonplaceholder.typicode.com/todos
+
+### GET 요청
+GET https://jsonplaceholder.typicode.com/todos
+Accept: application/json
+
+### POST 요청
+POST https://jsonplaceholder.typicode.com/todos
+Content-Type: application/json
+
+{
+    "userId": 1,
+    "title": "sunt aut facere repellat provident occaecati excepturi optio reprehenderit",
+    "body": "quia et suscipit\nsuscipit recusandae consequuntur expedita et cum\nreprehenderit molestiae ut ut quas totam\nnostrum rerum est autem sunt rem eveniet architecto"
+}
+
+### PUT 요청
+PUT https://jsonplaceholder.typicode.com/todos/1
+Content-Type: application/json
+
+{
+    "title": "reprehenderit",
+    "body": "cum\nreprehenderit molestiae ut ut quas totam\nnostrum rerum est autem sunt rem eveniet architecto"
+}
+
+### PATCH 요청
+PATCH https://jsonplaceholder.typicode.com/todos/1
+Content-Type: application/json
+
+{
+    "title": "Patched Title test"
+}
+
+### DELETE 요청
+DELETE https://jsonplaceholder.typicode.com/todos/1
