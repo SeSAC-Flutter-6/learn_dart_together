@@ -28,7 +28,7 @@ class Calculate {
     return Result.success(a - b);
   }
 
-  static Result<num, ErrorType> multiply(int a, int b) {
+  static Result<int, ErrorType> multiply(int a, int b) {
     if (a * b > _max) {
       return Result.error(ErrorType.overflow);
     } else if (a * b < _min) {
