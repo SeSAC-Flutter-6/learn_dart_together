@@ -43,7 +43,7 @@ class UserDataSource {
       body: jsonEncode(userDto.toJson()),
     );
 
-    if (response.statusCode != 201) {
+    if (response.statusCode != 200) {
       throw Exception('Failed to update user.');
     }
   }
