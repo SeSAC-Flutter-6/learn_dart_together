@@ -13,9 +13,10 @@ class DefaultPhotoDataSourceImpl implements PhotoDataSource {
       final response = await http.get(Uri.parse('${_baseURL}&q=${query}'));
       if (response.statusCode == 200) {
         final jsonList = jsonDecode(response.body);
-        return jsonList
+        final list = jsonList
             .map((e) => PhotoDTO.fromJson(e))
             .toList();
+        return List.unmodifiable(list);
       } else {
         throw Exception('Failed to load photos: ${response.statusCode}');
       }
