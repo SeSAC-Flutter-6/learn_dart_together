@@ -17,10 +17,10 @@ class DefaultPhotoDataSourceImpl implements PhotoDataSource {
             .map((e) => PhotoDTO.fromJson(e))
             .toList();
       } else {
-        throw Exception('Failed to load mask stores: ${response.statusCode}');
+        throw Exception('Failed to load photos: ${response.statusCode}');
       }
     } catch (error) {
-      throw Exception('Error fetching mask stores: $error');
+      throw Exception('Error fetching photos: $error');
     }
   }
 }
