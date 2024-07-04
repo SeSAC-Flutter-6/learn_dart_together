@@ -10,8 +10,10 @@ typedef DoubleResult = Result<double, RangeError>;
 
 class Calculator {
   static DoubleResult _getResult(double n) {
-    if (n > double.infinity) return Result.error(RangeError.overflow);
-    if (n < -double.infinity) return Result.error(RangeError.underflow);
+    if (n > double.maxFinite) return Result.error(RangeError.overflow);
+    if (n != 0.0 && n.abs() < double.minPositive) {
+      return Result.error(RangeError.underflow);
+    }
     return Result.success(n);
   }
 

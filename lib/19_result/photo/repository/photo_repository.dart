@@ -10,8 +10,7 @@ abstract interface class PhotoRepository {
 class PhotoRepositoryImpl implements PhotoRepository {
   final PhotoDataSource _photoDataSource;
 
-  PhotoRepositoryImpl({required PhotoDataSource photoDataSource})
-      : _photoDataSource = photoDataSource;
+  PhotoRepositoryImpl(this._photoDataSource);
 
   @override
   Future<Result<List<Photo>, String>> getPhotos(String query) async {
