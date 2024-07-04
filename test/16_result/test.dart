@@ -1,3 +1,4 @@
+import 'package:learn_dart_together/16_result/calculator.dart';
 import 'package:learn_dart_together/16_result/photo.dart';
 import 'package:learn_dart_together/16_result/photo_data_source_impl.dart';
 import 'package:learn_dart_together/16_result/photo_repository.dart';
@@ -12,33 +13,44 @@ import 'package:test/scaffolding.dart';
 typedef PhotoResult = Error<List<Photo>, PhotoRepositoryError>;
 
 void main() {
+  group('Image Search API', () {
+    test('10초 이상 지연 시 timeout Exception 발생', () async {
+      final datasource = TimeoutPhotoDataSourceImpl();
+      final respositoryImpl = PhotoRepositoryImpl(datasource);
+      final result = await respositoryImpl.getPhotos('asd');
 
-  test('10초 이상 지연 시 timeout Exception 발생', () async {
-    final datasource = TimeoutPhotoDataSourceImpl();
-    final respositoryImpl = PhotoRepositoryImpl(datasource);
-    final result = await respositoryImpl.getPhotos('asd');
+      // Result 타입을 Error로 Cast
+      final error = result as PhotoResult;
+      expect(error.error, PhotoRepositoryError.networkTimeout);
+    });
 
-    // Result 타입을 Error로 Cast
-    final error = result as PhotoResult;
-    expect(error.error, PhotoRepositoryError.networkTimeout);
+    test('비속어 사용 시 Exception 발생', () async {
+      final datasource = DefaultPhotoDataSourceImpl();
+      final repositoryImpl = PhotoRepositoryImpl(datasource);
+      final result = await repositoryImpl.getPhotos('바보');
+
+      // Result 타입을 Error로 Cast
+      final error = result as PhotoResult;
+      expect(error.error, PhotoRepositoryError.profanityDetected);
+    });
+
+    test('정의되지 않은 에러 발생 시 unkown Error 반환', () async {
+      final datasource = UnknownPhotoDataSourceImpl();
+      final repositoryImpl = PhotoRepositoryImpl(datasource);
+      final result = await repositoryImpl.getPhotos('apple');
+
+      final error = result as PhotoResult;
+      expect(error.error, PhotoRepositoryError.unknown);
+    });
   });
 
-  test('비속어 사용 시 Exception 발생', () async {
-    final datasource = DefaultPhotoDataSourceImpl();
-    final repositoryImpl = PhotoRepositoryImpl(datasource);
-    final result = await repositoryImpl.getPhotos('바보');
+  group('Calculator', () {
+    test('0으로 나눌 경우 에러 발생', () {
+      final Calculator calculator = Calculator();
+      final result = calculator.divide(0, 1);
 
-    // Result 타입을 Error로 Cast
-    final error = result as PhotoResult;
-    expect(error.error, PhotoRepositoryError.profanityDetected);
-  });
-  
-  test('정의되지 않은 에러 발생 시 unkown Error 반환', () async {
-    final datasource = UnknownPhotoDataSourceImpl();
-    final repositoryImpl = PhotoRepositoryImpl(datasource);
-    final result = await repositoryImpl.getPhotos('apple');
-    
-    final error = result as PhotoResult;
-    expect(error.error, PhotoRepositoryError.unknown);
+      final error = result as Error<num, CalculatorError>;
+      expect(error.error, CalculatorError.calculationError);
+    });
   });
 }
