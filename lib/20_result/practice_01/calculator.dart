@@ -5,6 +5,7 @@ class Calculator {
     return Result.success(a + b);
   }
 
+
   Result<double> subtract(double a, double b) {
     return Result.success(a - b);
   }
