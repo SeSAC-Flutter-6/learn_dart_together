@@ -1,5 +1,9 @@
 import 'dart:io';
+import 'package:json_annotation/json_annotation.dart';
 
+part 'photo_dto_g.dart';
+
+@JsonSerializable()
 class PhotoDto {
   int? id;
   String? title;
@@ -7,7 +11,7 @@ class PhotoDto {
   String? url;
   String? caption;
   DateTime? createdAt;
-  ContentType type;
+  ContentType? type;
 
   PhotoDto ({
     this.id,
@@ -17,6 +21,8 @@ class PhotoDto {
     this.caption,
     this.createdAt,
     required this.type,
+
+
 });
 
 
