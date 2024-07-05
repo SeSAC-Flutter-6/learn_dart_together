@@ -14,3 +14,5 @@ pubspec.lock  # Except for application packages
 .DS_Store
 
 *.g.dart
+
+*.lock
