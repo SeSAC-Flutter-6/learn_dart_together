@@ -8,8 +8,7 @@ import 'package:test/test.dart';
 void main() {
   late PhotoRepositoryImpl repository;
   late PhotoApi photoApi;
-  //TODO:wip
-  final String moockBaseUrl = '';
+
   group('PhotoRepositoryImpl 테스트', () {
     setUp(() {
       photoApi = PhotoApiImpl();
@@ -18,28 +17,39 @@ void main() {
 
     test('유효한 키워드로 사진 검색', () async {
       final result = await repository.getPhotos(firstKeyword: 'nature');
+      expect(result, isA<Success<List<Photo>, String>>());
 
-      expect(result, isA<Success<List<Photo>>>());
-
-      result.when(
-        success: (data) {},
-        error: (message) {
-          fail('에러가 발생하면 안됩니다: $message');
-        },
-      );
+      switch (result) {
+        case Success(:final data):
+          expect(data, isA<List<Photo>>());
+        case Error(:final error):
+          print(error);
+      }
     });
 
-    test('비속어 키워드로 검색 시 에러 반환', () async {
+    test('바보 검색시 비속어로 판단', () async {
       final result = await repository.getPhotos(firstKeyword: '바보');
-    });
-    test('존재하지 않는 키워드로 검색 시 빈 리스트 반환', () async {
-      final result =
-          await repository.getPhotos(firstKeyword: 'asdfghjklqwertyuiop');
+
+      expect(result, isA<Error<List<Photo>, String>>());
+
+      switch (result) {
+        case Success(:final data):
+          expect(data, isA<List<Photo>>());
+        case Error(:final error):
+          expect(error, '비속어를 키워드로 사용할 수 없습니다');
+      }
     });
 
     test('두 개의 키워드로 검색', () async {
       final result =
           await repository.getPhotos(firstKeyword: 'cat', secondKeyword: 'dog');
+      expect(result, isA<Success<List<Photo>, String>>());
+      switch (result) {
+        case Success(:final data):
+          expect(data, isA<List<Photo>>());
+        case Error(:final error):
+          print(error);
+      }
     });
   });
 }
