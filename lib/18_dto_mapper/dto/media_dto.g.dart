@@ -7,17 +7,13 @@ part of 'media_dto.dart';
 // **************************************************************************
 
 MediaDto _$MediaDtoFromJson(Map<String, dynamic> json) => MediaDto(
-      id: json['id'] != null
-          ? (json['id'] is String
-              ? int.tryParse(json['id'])
-              : json['id'] as int?)
-          : null,
+      id: (json['id'] as num?)?.toInt(),
       type: json['type'] as String?,
       title: json['title'] as String?,
       content: json['content'] as String?,
       caption: json['caption'] as String?,
       url: json['url'] as String?,
-      createdAt: json['created_at'] as String?,
+      createdAt: json['createdAt'] as String?,
     );
 
 Map<String, dynamic> _$MediaDtoToJson(MediaDto instance) => <String, dynamic>{
@@ -27,5 +23,5 @@ Map<String, dynamic> _$MediaDtoToJson(MediaDto instance) => <String, dynamic>{
       'content': instance.content,
       'caption': instance.caption,
       'url': instance.url,
-      'created_at': instance.createdAt,
+      'createdAt': instance.createdAt,
     };
