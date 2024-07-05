@@ -64,6 +64,7 @@ interface BookRepository {
     + Book updateBook(Book book)
     + Book deleteBook(Book book)
     + void cancelDelete()
+    + void extension()
 }
 
 interface CheckoutRepository {
