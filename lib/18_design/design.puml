@@ -1,0 +1,98 @@
+@startuml
+
+class User {
+    + int id
+    + String name
+    + DateTime registedDate
+    + String address
+    + String phone
+    + DateTime birth
+}
+
+class Book {
+    + int id
+    + String title
+    + int extensionCount;
+    + CheckoutStatus checkoutStatus
+}
+
+class Checkout {
+    + int id
+    + int userId
+    + int bookId
+    + bool isReturned
+    + DateTime checkoutDate
+    + DateTime returnDate
+}
+
+class UserDataSource {
+    + List<User> getUsers()
+    + User getUser(int id)
+    + User createUser(User user)
+    + User updateUser(User user)
+    + User deleteUser(User user)
+}
+
+class BookDataSource {
+    + List<Book> getBooks()
+    + Book getBook(int id)
+    + Book createBook(Book book)
+    + Book updateBook(Book book)
+    + Book deleteBook(Book book)
+}
+
+class CheckoutDataSource {
+    + List<Checkout> getCheckouts()
+    + Checkout getCheckout(int id)
+    + Checkout createCheckout(Checkout checkout)
+    + Checkout updateCheckout(Checkout checkout)
+}
+
+interface UserRepository {
+    + List<User> getUsers()
+    + User getUser(int id)
+    + User createUser(User user)
+    + User updateUser(User user)
+    + User deleteUser(User user)
+    + void cancelDelete()
+}
+
+interface BookRepository {
+    + List<Book> getBooks()
+    + Book getBook(int id)
+    + Book createBook(Book book)
+    + Book updateBook(Book book)
+    + Book deleteBook(Book book)
+    + void cancelDelete()
+}
+
+interface CheckoutRepository {
+    + List<Checkout> getCheckouts()
+    + Checkout getCheckout(int id)
+    + Checkout createCheckout(Checkout checkout)
+    + Checkout updateCheckout(Checkout checkout)
+}
+
+class UserRepositoryImpl implements UserRepository {
+    + UserRepositoryImpl(UserDataSource)
+}
+class BookRepositoryImpl implements BookRepository {
+    + BookRepositoryImpl(BookDataSource)
+}
+class CheckoutRepositoryImpl implements CheckoutRepository {
+    + CheckoutRepositoryImpl(CheckoutDataSource)
+}
+
+class LibraryService {
+    + LibraryService(UserRepository userRepository, BookRepository bookRepository, CheckoutRepository checkoutRepository)
+}
+
+UserRepositoryImpl --> UserDataSource
+BookRepositoryImpl --> BookDataSource
+CheckoutRepositoryImpl --> CheckoutDataSource
+
+LibraryService --> UserRepository
+LibraryService --> BookRepository
+LibraryService --> CheckoutRepository
+
+@enduml
