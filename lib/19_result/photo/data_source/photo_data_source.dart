@@ -8,13 +8,14 @@ abstract interface class PhotoDataSource {
 }
 
 class MockPhotoDataSource implements PhotoDataSource {
-  static const baseUrl = 'https://pixabay.com/api/';
-  static const key = '44778600-cfe08ce4b2d6f2bb2ce5be47c';
+  static const _baseUrl = 'https://pixabay.com/api/';
+  static const _key = '44778600-cfe08ce4b2d6f2bb2ce5be47c';
 
   @override
   Future<Result<List<PhotoDto>, String>> getPhotos(String query) async {
     try {
-      final response = await http.get(Uri.parse('$baseUrl?key=$key&q=$query'));
+      final response =
+          await http.get(Uri.parse('$_baseUrl?key=$_key&q=$query'));
       if (response.statusCode == 200) {
         final List jsonList = jsonDecode(response.body)["hits"];
         final dtos = jsonList.map((e) => PhotoDto.fromJson(e)).toList();
