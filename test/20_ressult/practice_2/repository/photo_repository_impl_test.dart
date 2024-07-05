@@ -15,7 +15,7 @@ import 'package:learn_dart_together/20_ressult/practice_2/data_source/photo_api.
 import 'package:learn_dart_together/20_ressult/practice_2/mapper/photo_mapper.dart';
 
 void main() {
-  group('PhotoRepositoryImpl', () {
+  group('PhotoRepositoryImpl getPhotos 테스트', () {
     late PhotoRepositoryImpl repository;
     late PhotoDataSource dataSource;
 
@@ -25,19 +25,19 @@ void main() {
       repository = PhotoRepositoryImpl(dataSource);
     });
 
-    test('returns error when query is empty', () async {
+    test('쿼리가 비어있으면 에러를 리턴한다', () async {
       final result = await repository.getPhotos('');
       expect(result, isA<Error<List<Photo>>>());
       expect((result as Error<List<Photo>>).e, '쿼리가 비어있습니다');
     });
 
-    test('returns error when query contains inappropriate word', () async {
+    test('부적절한 단어가 들어오면 에러를 리턴한다', () async {
       final result = await repository.getPhotos('바보');
       expect(result, isA<Error<List<Photo>>>());
       expect((result as Error<List<Photo>>).e, '비속어를 사용할 수 없습니다');
     });
 
-    test('returns success with photo list when query is valid', () async {
+    test('적절한 단어가 들어오면 동작을 수행한다', () async {
       dataSource = MockPhotoApi();
       repository = PhotoRepositoryImpl(dataSource);
       final result = await repository.getPhotos('valid query');
@@ -50,7 +50,7 @@ void main() {
       expect((result as Success<List<Photo>>).data, expectedPhotos);
     });
 
-    test('returns error on TimeoutException', () async {
+    test('TimeoutException가 발생하면 TimeoutException를 throw한다', () async {
       dataSource = MockTimeoutExceptionPhotoApi();
       repository = PhotoRepositoryImpl(dataSource);
       final result = await repository.getPhotos('timeout');
@@ -60,7 +60,7 @@ void main() {
           throwsA(isA<TimeoutException>()));
     });
 
-    test('returns error on ClientException', () async {
+    test('ClientException가 발생하면 ClientException을 throw한다', () async {
       dataSource = MockClientExceptionPhotoApi();
       repository = PhotoRepositoryImpl(dataSource);
       final result = await repository.getPhotos('no internet');
@@ -70,7 +70,7 @@ void main() {
           throwsA(isA<ClientException>()));
     });
 
-    test('returns error on unknown exception', () async {
+    test('알 수 없는 네트워크 에러가 발생하면 Exepction을 throw한다', () async {
       dataSource = MockUnknownExceptionPhotoApi();
       repository = PhotoRepositoryImpl(dataSource);
       final result = await repository.getPhotos('unknown');
