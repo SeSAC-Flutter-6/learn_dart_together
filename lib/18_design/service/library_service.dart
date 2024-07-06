@@ -90,8 +90,4 @@ class LibraryService {
       }
     }
   }
-
-  void manageBook() {}
-
-  void manageCheckout() {}
 }
