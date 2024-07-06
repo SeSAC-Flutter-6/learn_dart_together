@@ -13,5 +13,7 @@ abstract interface class UserRepository {
 
   Future<Result<User>> deleteUser(int id);
 
-  Future<void> cancelDelete();
+  Future<Result<void>> cancelDelete();
+
+  Future<Result<User>> findByName(String name);
 }

@@ -1,14 +1,16 @@
 import 'dart:io';
 
-import 'package:learn_dart_together/18_design/service/user_manage.dart';
+import 'package:learn_dart_together/18_design/service/manage/book_manage.dart';
+import 'package:learn_dart_together/18_design/service/manage/user_manage.dart';
 
 import '../controller/file_controller.dart';
 
 class LibraryService {
   UserManage userService;
+  BookManage bookManage;
   FileController fileController;
 
-  LibraryService(this.fileController, this.userService);
+  LibraryService(this.fileController, this.userService, this.bookManage);
 
   Future<void> initialize() async {
     // (path, header in csv)
@@ -22,7 +24,7 @@ class LibraryService {
       (
         'book_file.csv',
         [
-          ['id', 'title', 'extensionCount', 'checkoutStatus']
+          ['id', 'title', 'extensionCount', 'checkoutStatus', 'publishedData']
         ]
       ),
       (
@@ -41,21 +43,28 @@ class LibraryService {
       ),
     ];
 
+    final path = 'lib/18_design/assets/';
+    await folderCheck(path);
+
     for ((String, List<List<String>>) data in createFileList) {
-      final path = 'lib/18_design/assets/${data.$1}';
-      await fileController.initialize(path, data.$2);
+      final filePath = '$path${data.$1}';
 
       // 파일이 생성되었는지 확인
-      File file = File(path);
-      if (!await file.exists()) {
-        throw Exception('파일 생성 실패: $path');
+      File file = File(filePath);
+      if (!(await file.exists())) {
+        await fileController.initialize(filePath, data.$2);
+        print('파일 생성 완료: $filePath');
       }
     }
-    print('초기화 완료');
+  }
+
+  Future<void> folderCheck(String path) async {
+    Directory directory = Directory(path);
+    if (!await directory.exists()) await directory.create(recursive: true);
   }
 
   Future<void> start() async {
-    // await initialize();
+    await initialize();
 
     while (true) {
       print('1. 회원관리\t\t2. 도서관리\t\t 3. 대출관리\t\t 4.종료');
@@ -65,7 +74,7 @@ class LibraryService {
           await userService.manage();
           break;
         case '2':
-          manageBook();
+          await bookManage.manage();
           break;
         case '3':
           manageCheckout();

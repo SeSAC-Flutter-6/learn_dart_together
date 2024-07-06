@@ -1,3 +1,4 @@
+import 'package:collection/collection.dart';
 import 'package:learn_dart_together/18_design/core/result.dart';
 import 'package:learn_dart_together/18_design/data/data_source/user_data_source.dart';
 import 'package:learn_dart_together/18_design/data/model/user.dart';
@@ -14,7 +15,7 @@ class UserRepositoryImpl implements UserRepository {
       final result = await _userDataSource.cancelDelete();
       return Result.success(result);
     } catch (e) {
-      return Result.error('createUser error');
+      return Result.error('cancelDelete error');
     }
   }
 
@@ -65,6 +66,21 @@ class UserRepositoryImpl implements UserRepository {
       return Result.success(result);
     } catch (e) {
       return Result.error('updateUser error');
+    }
+  }
+
+  @override
+  Future<Result<User>> findByName(String name) async {
+    try {
+      final getUsersResult = await _userDataSource.getUsers();
+      final user =
+          getUsersResult.singleWhereOrNull((user) => user.name == name);
+
+      if (user == null) throw Result.error('not find User');
+
+      return Result.success(user);
+    } catch (e) {
+      return Result.error('findUser error');
     }
   }
 }

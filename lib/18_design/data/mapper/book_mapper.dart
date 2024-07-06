@@ -1,16 +1,16 @@
 import 'package:intl/intl.dart';
+import 'package:learn_dart_together/18_design/data/model/book.dart';
 import 'package:learn_dart_together/18_design/data/model/user.dart';
 
-extension UserMapper on User {
+extension BookMapper on Book {
   String toCSV() {
     final DateFormat formatter = DateFormat('yyyy-MM-dd');
     return [
       id.toString(),
-      name,
-      formatter.format(registeredData),
-      address,
-      phone,
-      formatter.format(birth),
+      title,
+      extensionCount,
+      checkoutStatus.name,
+      formatter.format(publishedData),
     ].join(',');
   }
 }

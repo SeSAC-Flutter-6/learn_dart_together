@@ -3,15 +3,17 @@ import 'dart:io';
 
 import 'package:collection/collection.dart';
 import 'package:fast_csv/csv_converter.dart';
+import 'package:learn_dart_together/18_design/data/mapper/book_mapper.dart';
+import 'package:learn_dart_together/18_design/data/model/book.dart';
 import 'package:learn_dart_together/18_design/data/model/user.dart';
 
 import '../mapper/user_mapper.dart';
 
-class UserDataSource {
-  static const _fileName = 'user_file.csv';
+class BookDataSource {
+  static const _fileName = 'book_file.csv';
   static const _path = 'lib/18_design/assets/$_fileName';
 
-  Future<List<User>> getUsers() async {
+  Future<List<Book>> getBooks() async {
     try {
       final input = File(_path);
       final data = await input.readAsString();
@@ -19,13 +21,13 @@ class UserDataSource {
 
       fields.removeAt(0);
 
-      return fields.map((row) => User.fromCsv(row)).toList();
+      return fields.map((row) => Book.fromCsv(row)).toList();
     } catch (e) {
       throw Exception(e);
     }
   }
 
-  Future<User?> getUser(int id) async {
+  Future<Book?> getBook(int id) async {
     try {
       final input = File(_path);
       final data = await input.readAsString();
@@ -34,65 +36,60 @@ class UserDataSource {
       fields.removeAt(0);
 
       return fields
-          .map((row) => User.fromCsv(row))
-          .singleWhereOrNull((user) => user.id == id);
+          .map((row) => Book.fromCsv(row))
+          .singleWhereOrNull((book) => book.id == id);
     } catch (e) {
       throw Exception(e);
     }
   }
 
-  Future<User> createUser(User user) async {
+  Future<Book> createBook(Book book) async {
     try {
       final input = File(_path);
+      print(book.title);
       await input.writeAsString(
-        '\n${UserMapper(user).toCSV()}',
+        '\n${BookMapper(book).toCSV()}',
         mode: FileMode.append,
         encoding: utf8,
       );
-      return user;
+      return book;
     } catch (e) {
       throw Exception(e);
     }
   }
 
-  Future<User> deleteUser(int id) async {
+  Future<Book> deleteBook(int id) async {
     try {
-      final user = await getUser(id);
-      if (user == null) throw Exception('User not found');
+      final book = await getBook(id);
+      if (book == null) throw Exception('User not found');
 
       final input = File(_path);
       final tempFile = File('lib/18_design/assets/temp_$_fileName');
       final lines = await input.readAsLines();
-      final target = UserMapper(user).toCSV();
+      final target = BookMapper(book).toCSV();
 
       final result = lines
           .where((line) => line.trim().isNotEmpty && line != target)
           .join('\n');
 
-      await input.writeAsString(
-        result,
-        encoding: utf8,
-      );
-      await tempFile.writeAsString(
-        target,
-        encoding: utf8,
-      );
+      await input.writeAsString(result, encoding: utf8,);
+      await tempFile.writeAsString(target, encoding: utf8,);
 
-      return user;
+      return book;
     } catch (e) {
       throw Exception(e);
     }
   }
 
-  Future<User> updateUser(int targetId, User user) async {
+  Future<Book> updateBook(int targetId, Book book) async {
     try {
       final input = File(_path);
       final lines = await input.readAsLines();
-      final targetUser = await getUser(targetId);
-      if (targetUser == null) throw Exception('User not found');
+      final targetBook = await getBook(targetId);
+      if (targetBook == null) throw Exception('User not found');
 
-      final target = UserMapper(targetUser).toCSV();
-      final goal = UserMapper(user).toCSV();
+      final target = BookMapper(targetBook).toCSV();
+      final goal = BookMapper(book).toCSV();
 
       final result = lines.map((line) {
         if (line == target) {
@@ -101,12 +98,9 @@ class UserDataSource {
         return line;
       }).toList();
 
-      await input.writeAsString(
-        result.join('\n'),
-        encoding: utf8,
-      );
+      await input.writeAsString(result.join('\n'), encoding: utf8,);
 
-      return user;
+      return book;
     } catch (e) {
       throw Exception(e);
     }
@@ -123,11 +117,7 @@ class UserDataSource {
 
       final deletedLine = await tempFile.readAsString();
 
-      await mainFile.writeAsString(
-        '\n$deletedLine',
-        mode: FileMode.append,
-        encoding: utf8,
-      );
+      await mainFile.writeAsString('\n$deletedLine', mode: FileMode.append, encoding: utf8,);
 
       await tempFile.delete();
     } catch (e) {
