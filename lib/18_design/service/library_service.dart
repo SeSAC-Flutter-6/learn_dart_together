@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:learn_dart_together/18_design/service/manage/book_manage.dart';
+import 'package:learn_dart_together/18_design/service/manage/checkout_manage.dart';
 import 'package:learn_dart_together/18_design/service/manage/user_manage.dart';
 
 import '../controller/file_controller.dart';
@@ -8,9 +9,11 @@ import '../controller/file_controller.dart';
 class LibraryService {
   UserManage userService;
   BookManage bookManage;
+  CheckoutManage checkoutManage;
   FileController fileController;
 
-  LibraryService(this.fileController, this.userService, this.bookManage);
+  LibraryService(this.fileController, this.userService, this.bookManage,
+      this.checkoutManage);
 
   Future<void> initialize() async {
     // (path, header in csv)
@@ -18,13 +21,13 @@ class LibraryService {
       (
         'user_file.csv',
         [
-          ['id', 'name', 'registedData', 'address', 'phone', 'birth']
+          ['id', 'name', 'registeredData', 'address', 'phone', 'birth']
         ]
       ),
       (
         'book_file.csv',
         [
-          ['id', 'title', 'extensionCount', 'checkoutStatus', 'publishedData']
+          ['id', 'title', 'checkoutStatus', 'publishedData']
         ]
       ),
       (
@@ -34,10 +37,10 @@ class LibraryService {
             'id',
             'userId',
             'bookId',
-            'address',
             'isReturned',
             'checkoutDate',
-            'returnDate'
+            'returnDate',
+            'extensionCount',
           ]
         ]
       ),
@@ -77,7 +80,7 @@ class LibraryService {
           await bookManage.manage();
           break;
         case '3':
-          manageCheckout();
+          await checkoutManage.manage();
           break;
         case '4':
           exit(0);

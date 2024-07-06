@@ -5,9 +5,6 @@ import 'package:collection/collection.dart';
 import 'package:fast_csv/csv_converter.dart';
 import 'package:learn_dart_together/18_design/data/mapper/book_mapper.dart';
 import 'package:learn_dart_together/18_design/data/model/book.dart';
-import 'package:learn_dart_together/18_design/data/model/user.dart';
-
-import '../mapper/user_mapper.dart';
 
 class BookDataSource {
   static const _fileName = 'book_file.csv';
@@ -46,7 +43,6 @@ class BookDataSource {
   Future<Book> createBook(Book book) async {
     try {
       final input = File(_path);
-      print(book.title);
       await input.writeAsString(
         '\n${BookMapper(book).toCSV()}',
         mode: FileMode.append,
@@ -61,7 +57,7 @@ class BookDataSource {
   Future<Book> deleteBook(int id) async {
     try {
       final book = await getBook(id);
-      if (book == null) throw Exception('User not found');
+      if (book == null) throw Exception('book not found');
 
       final input = File(_path);
       final tempFile = File('lib/18_design/assets/temp_$_fileName');
@@ -86,7 +82,7 @@ class BookDataSource {
       final input = File(_path);
       final lines = await input.readAsLines();
       final targetBook = await getBook(targetId);
-      if (targetBook == null) throw Exception('User not found');
+      if (targetBook == null) throw Exception('book not found');
 
       final target = BookMapper(targetBook).toCSV();
       final goal = BookMapper(book).toCSV();

@@ -1,11 +1,10 @@
 import 'dart:io';
+import 'dart:math';
 
 import 'package:learn_dart_together/18_design/core/result.dart';
 import 'package:learn_dart_together/18_design/data/model/book.dart';
 import 'package:learn_dart_together/18_design/data/repository_impl/book_repository_impl.dart';
 import 'package:learn_dart_together/18_design/utils/parse_published_date.dart';
-
-import '../../utils/constant.dart';
 
 class BookManage {
   final BookRepositoryImpl _bookRepositoryImpl;
@@ -13,7 +12,8 @@ class BookManage {
   BookManage(this._bookRepositoryImpl);
 
   Future<void> manage() async {
-    print('0. 뒤로\t\t1. 도서조회\t\t2. 도서등록\t\t 3. 도서수정\t\t 4. 도서삭제\t\t5. 삭제취소');
+    print(
+        '0. 뒤로\t\t1. 도서조회\t\t2. 도서등록\t\t 3. 도서수정\t\t 4. 도서삭제\t\t5. 삭제취소\t\t6. 최간 출간된 도서 조회');
     final input = stdin.readLineSync();
     while (true) {
       switch (input) {
@@ -39,6 +39,9 @@ class BookManage {
         case '5':
           await cancelDelete();
           return;
+        case '6':
+          await getBooksBySortedRecent();
+          return;
         case _:
           print('잘못된 입력');
           return;
@@ -57,15 +60,28 @@ class BookManage {
     return [];
   }
 
+  Future<List<Book>> getBooksBySortedRecent() async {
+    final getBooksResult = await _bookRepositoryImpl.getBooksSortedByRecent();
+    switch (getBooksResult) {
+      case Success(:final data):
+        return data;
+      case Error(:final e):
+        print(e);
+    }
+    return [];
+  }
+
   Future<void> createBook() async {
     final books = await getBooks();
-
-    final id = (books.isNotEmpty) ? books.last.id + 1 : 1;
+    int id = 1;
+    for (Book book in books) {
+      id = max(book.id, id);
+    }
+    id += 1;
 
     print('도서 등록 시작');
     print('제목을 입력해주세요');
     final title = stdin.readLineSync() ?? '';
-    print(title);
 
     print('출간날짜를 입력해주세요 ex)19961216');
     String publishedDate;
@@ -84,7 +100,6 @@ class BookManage {
     final newBook = Book(
       id: id,
       title: title,
-      extensionCount: BOOKEXTENSIONCOUNT,
       checkoutStatus: CheckoutStatus.readied,
       publishedData: date,
     );

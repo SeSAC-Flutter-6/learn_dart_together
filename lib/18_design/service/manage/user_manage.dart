@@ -1,4 +1,5 @@
 import 'dart:io';
+import 'dart:math';
 
 import 'package:learn_dart_together/18_design/core/result.dart';
 import 'package:learn_dart_together/18_design/utils/parse_phone.dart';
@@ -61,7 +62,11 @@ class UserManage {
   Future<void> createUser() async {
     DateTime now = DateTime.now();
     final users = await getUsers();
-    final id = (users.isNotEmpty) ? users.last.id + 1 : 1;
+    int id = 1;
+    for (User user in users) {
+      id = max(user.id, id);
+    }
+    id += 1;
 
     final (name, address, phone, birthDate) = inputUserInfo();
 

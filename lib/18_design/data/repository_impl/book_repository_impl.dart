@@ -22,6 +22,11 @@ class BookRepositoryImpl implements BookRepository {
   @override
   Future<Result<Book>> createBook(Book book) async {
     try {
+      final now = DateTime.now();
+      if (now.isBefore(book.publishedData)) {
+        return Result.error('현재 날짜보다 이후로 출간 날짜를 입력 불가');
+      }
+
       final result = await _bookDataSource.createBook(book);
       return Result.success(result);
     } catch (e) {
@@ -78,6 +83,33 @@ class BookRepositoryImpl implements BookRepository {
   Future<Result<Book>> updateBook(int targetId, Book book) async {
     try {
       final result = await _bookDataSource.updateBook(targetId, book);
+      return Result.success(result);
+    } catch (e) {
+      return Result.error('updateBook error');
+    }
+  }
+
+  @override
+  Future<Result<List<Book>>> getBooksCheckoutAble() async {
+    try {
+      final books = await _bookDataSource.getBooks();
+      final result = books
+          .where((book) => book.checkoutStatus == CheckoutStatus.readied)
+          .toList();
+
+      return Result.success(result);
+    } catch (e) {
+      return Result.error('updateBook error');
+    }
+  }
+
+  @override
+  Future<Result<List<Book>>> getBooksSortedByRecent() async {
+    try {
+      final books = await _bookDataSource.getBooks();
+      final result = books.sortedByCompare(
+          (element) => element.publishedData, (a, b) => -a.compareTo(b));
+
       return Result.success(result);
     } catch (e) {
       return Result.error('updateBook error');

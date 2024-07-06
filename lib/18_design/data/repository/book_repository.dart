@@ -1,10 +1,12 @@
-import 'package:learn_dart_together/18_design/data/model/user.dart';
-
 import '../../core/result.dart';
 import '../model/book.dart';
 
 abstract interface class BookRepository {
   Future<Result<List<Book>>> getBooks();
+
+  Future<Result<List<Book>>> getBooksCheckoutAble();
+
+  Future<Result<List<Book>>> getBooksSortedByRecent();
 
   Future<Result<Book?>> getBook(int id);
 

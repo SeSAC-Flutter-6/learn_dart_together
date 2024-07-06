@@ -8,7 +8,6 @@ extension BookMapper on Book {
     return [
       id.toString(),
       title,
-      extensionCount,
       checkoutStatus.name,
       formatter.format(publishedData),
     ].join(',');

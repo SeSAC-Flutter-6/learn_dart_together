@@ -9,7 +9,6 @@ class Book with _$Book {
   const factory Book({
     required int id,
     required String title,
-    required int extensionCount,
     required CheckoutStatus checkoutStatus,
     required DateTime publishedData,
   }) = _Book;
@@ -19,9 +18,8 @@ class Book with _$Book {
   factory Book.fromCsv(List<String> csv) => Book(
         id: int.parse(csv[0]),
         title: csv[1],
-        extensionCount: int.parse(csv[2]),
-        checkoutStatus: CheckoutStatusExtension.fromString(csv[3]),
-        publishedData: DateTime.parse(csv[4]),
+        checkoutStatus: CheckoutStatusExtension.fromString(csv[2]),
+        publishedData: DateTime.parse(csv[3]),
       );
 }
 
