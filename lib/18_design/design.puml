@@ -12,8 +12,8 @@ class User {
 class Book {
     + int id
     + String title
-    + int extensionCount;
     + CheckoutStatus checkoutStatus
+    + DateTime publishedData
 }
 
 class Checkout {
@@ -23,6 +23,7 @@ class Checkout {
     + bool isReturned
     + DateTime checkoutDate
     + DateTime returnDate
+    + int extensionCount
 }
 
 class UserDataSource {
@@ -52,26 +53,32 @@ interface UserRepository {
     + List<User> getUsers()
     + User getUser(int id)
     + User createUser(User user)
-    + User updateUser(User user)
-    + User deleteUser(User user)
+    + User updateUser(int targetId, User user)
+    + User deleteUser(int id)
     + void cancelDelete()
+    + User findByName(String name)
 }
 
 interface BookRepository {
     + List<Book> getBooks()
+    + List<Book> getBooksCheckoutAble()
+    + List<Book> getBooksSortedByRecent()
     + Book getBook(int id)
     + Book createBook(Book book)
-    + Book updateBook(Book book)
+    + Book updateBook(int targetId, Book book)
     + Book deleteBook(Book book)
     + void cancelDelete()
-    + void extension()
+    + Book findByName(String name)
 }
 
 interface CheckoutRepository {
-    + List<Checkout> getCheckouts()
+    + List<Checkout> getSortedByReturnCheckouts()
     + Checkout getCheckout(int id)
-    + Checkout createCheckout(Checkout checkout)
-    + Checkout updateCheckout(Checkout checkout)
+    + Checkout createCheckout(Checkout checkout, Book book)
+    + Checkout returnBook(int userId, String title)
+    + Checkout findByCheckoutId(int id)
+    + void extensionCheckout(Book book)
+    + List<Book> getBooksCheckoutedByUser(User user)
 }
 
 class UserRepositoryImpl implements UserRepository {
@@ -81,17 +88,58 @@ class BookRepositoryImpl implements BookRepository {
     + BookRepositoryImpl(BookDataSource)
 }
 class CheckoutRepositoryImpl implements CheckoutRepository {
-    + CheckoutRepositoryImpl(CheckoutDataSource)
+    + CheckoutRepositoryImpl(CheckoutDataSource, BookDataSource)
 }
 
 class LibraryService {
-    + LibraryService(UserRepository userRepository, BookRepository bookRepository, CheckoutRepository checkoutRepository)
+    + LibraryService(FileController fileController, UserRepository userRepository, BookRepository bookRepository, CheckoutRepository checkoutRepository)
+    + void initialize()
+    + void folderCheck()
 }
 
-UserRepositoryImpl --> UserDataSource
-BookRepositoryImpl --> BookDataSource
-CheckoutRepositoryImpl --> CheckoutDataSource
+class UserManage {
+    + UserManage(UserRepositoryImpl)
+    + void manage()
+    + List<User> getUsers()
+    + void createUser()
+    + (String, String, String, DateTime) inputUserInfo()
+    + User findByName()
+    + void updateUser()
+    + void deleteUser()
+    + void cancelDelete()
+}
+class BookManage {
+    + BookManage(BookRepositoryImpl)
+    + void manage()
+    + List<Book> getBooks()
+    + List<Book> getBooksBySortedRecent()
+    + void createBook()
+    + Book findByName()
+    + void updateBook()
+    + void deleteBook()
+    + void cancelDelete()
+}
 
+class CheckoutManage {
+    + CheckoutManage(_userRepositoryImpl, BookRepositoryImpl, CheckoutRepositoryImpl)
+    + void manage()
+    + List<Checkout> getCheckouts()
+    + void createCheckout()
+    + void returnBook()
+    + void extension()
+    + User inputUser()
+    + Book inputBook()
+}
+
+UserRepositoryImpl --> UserRepository
+BookRepositoryImpl --> BookRepository
+CheckoutRepositoryImpl --> CheckoutRepository
+UserManage --> UserRepositoryImpl
+BookManage --> BookRepositoryImpl
+CheckoutManage --> UserRepositoryImpl
+CheckoutManage --> BookRepositoryImpl
+CheckoutManage --> CheckoutRepositoryImpl
+LibraryService --> FileController
 LibraryService --> UserRepository
 LibraryService --> BookRepository
 LibraryService --> CheckoutRepository
