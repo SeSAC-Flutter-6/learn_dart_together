@@ -21,8 +21,7 @@ class BookDataSourceImpl implements BookDataSource {
     final allFile = await _getFile();
     final file = allFile.sublist(1);
 
-    final List<Book> bookList =
-        file.map((e) => Book.fromJson(Book.fromList(e).toJson())).toList();
+    final List<Book> bookList = file.map((e) => Book.fromList(e)).toList();
     return bookList;
   }
 
@@ -43,8 +42,7 @@ class BookDataSourceImpl implements BookDataSource {
     final allFile = await _getFile();
     final first = allFile[0];
     final file = allFile.sublist(1);
-    final List<Book> bookList =
-        file.map((e) => Book.fromJson(Book.fromList(e).toJson())).toList();
+    final List<Book> bookList = file.map((e) => Book.fromList(e)).toList();
     final index = bookList.indexWhere((e) => e.id == book.id);
     bookList[index] = book;
     final csvList = bookList.map((e) => e.toJson().values.toList()).toList();
@@ -60,8 +58,7 @@ class BookDataSourceImpl implements BookDataSource {
     final allFile = await _getFile();
     final first = allFile[0];
     final file = allFile.sublist(1);
-    final List<Book> bookList =
-        file.map((e) => Book.fromJson(Book.fromList(e).toJson())).toList();
+    final List<Book> bookList = file.map((e) => Book.fromList(e)).toList();
     bookList.removeWhere((e) => e.id == book.id);
     final csvList = bookList.map((e) => e.toJson().values.toList()).toList();
     csvList.insert(0, first);
@@ -79,7 +76,7 @@ void main() async {
       isBorrowable: true);
 
   // print(await BookDataSourceImpl().getBooks());
-  // await BookDataSourceImpl().addBook(book);
-  await BookDataSourceImpl().deleteBook(book);
+  await BookDataSourceImpl().addBook(book);
+  // await BookDataSourceImpl().deleteBook(book);
   // await BookDataSourceImpl().updateBook(book);
 }
