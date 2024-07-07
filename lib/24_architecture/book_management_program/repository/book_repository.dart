@@ -12,6 +12,8 @@ abstract interface class BookRepository {
 
   Future<Result<List<Book>, ErrorType>> getBooks();
 
+  Future<Result<List<Book>, ErrorType>> getBorrowableBooks();
+
   Future<Result<Book, ErrorType>> getBook({required int id});
 
   Future<Result<void, ErrorType>> updateBook({

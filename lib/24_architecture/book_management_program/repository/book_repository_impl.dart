@@ -86,7 +86,7 @@ class BookRepositoryImpl implements BookRepository {
 
   //빌릴수있는 책 목록 얻기
   @override
-  Future<Result<List<Book>, ErrorType>> getBooks() async {
+  Future<Result<List<Book>, ErrorType>> getBorrowableBooks() async {
     try {
       final data = await _bookDataSource.getBooks();
       final borrowableBooks =
@@ -133,6 +133,16 @@ class BookRepositoryImpl implements BookRepository {
         }
       case Error<Book, ErrorType>():
         return Result.error(ErrorType.noDataError);
+    }
+  }
+
+  @override
+  Future<Result<List<Book>, ErrorType>> getBooks() async{
+    try {
+      final data = await _bookDataSource.getBooks();
+      return Result.success(data);
+    } catch (e) {
+      return Result.error(ErrorType.readError);
     }
   }
 }
