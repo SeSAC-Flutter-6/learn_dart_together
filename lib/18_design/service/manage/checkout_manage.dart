@@ -27,7 +27,7 @@ class CheckoutManage {
         case '0':
           return;
         case '1':
-          final checkouts = await getCheckouts();
+          final checkouts = await _getCheckouts();
           if (checkouts.isEmpty) {
             print('대출 목록이 없습니다.');
           } else {
@@ -35,13 +35,13 @@ class CheckoutManage {
           }
           return;
         case '2':
-          await createCheckout();
+          await _createCheckout();
           return;
         case '3':
-          await returnBook();
+          await _returnBook();
           return;
         case '4':
-          await extension();
+          await _extension();
           return;
         case _:
           print('잘못된 입력');
@@ -50,7 +50,7 @@ class CheckoutManage {
     }
   }
 
-  Future<List<Checkout>> getCheckouts() async {
+  Future<List<Checkout>> _getCheckouts() async {
     final getCheckoutsResult =
         await _checkoutRepositoryImpl.getSortedByReturnCheckouts();
     switch (getCheckoutsResult) {
@@ -62,8 +62,8 @@ class CheckoutManage {
     return [];
   }
 
-  Future<void> createCheckout() async {
-    final checkouts = await getCheckouts();
+  Future<void> _createCheckout() async {
+    final checkouts = await _getCheckouts();
     int id = 1;
     for (Checkout checkout in checkouts) {
       id = max(checkout.id, id);
@@ -71,8 +71,8 @@ class CheckoutManage {
     id += 1;
 
     print('대출 시작');
-    final user = await inputUser();
-    final book = await inputBook();
+    final user = await _inputUser();
+    final book = await _inputBook();
 
     DateTime now = DateTime.now();
     DateTime twoWeeksLater = now.add(Duration(days: 14));
@@ -97,7 +97,7 @@ class CheckoutManage {
     }
   }
 
-  Future<void> returnBook() async {
+  Future<void> _returnBook() async {
     print('당신의 이름은?');
     final name = stdin.readLineSync() ?? '';
     final getUserResult = await _userRepositoryImpl.findByName(name);
@@ -131,7 +131,7 @@ class CheckoutManage {
     }
   }
 
-  Future<void> extension() async {
+  Future<void> _extension() async {
     print('연장할 책의 이름을 입력해주세요.');
     final title = stdin.readLineSync() ?? '';
     final bookResult = await _bookRepositoryImpl.findByName(title);
@@ -153,7 +153,7 @@ class CheckoutManage {
     }
   }
 
-  Future<User> inputUser() async {
+  Future<User> _inputUser() async {
     final getUsersResult = await _userRepositoryImpl.getUsers();
     switch (getUsersResult) {
       case Success(:final data):
@@ -175,7 +175,7 @@ class CheckoutManage {
     throw Exception('대출 - getUsers fail');
   }
 
-  Future<Book> inputBook() async {
+  Future<Book> _inputBook() async {
     final getBooksResult = await _bookRepositoryImpl.getBooksCheckoutAble();
     switch (getBooksResult) {
       case Success(:final data):

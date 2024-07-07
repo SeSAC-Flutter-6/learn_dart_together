@@ -15,7 +15,7 @@ class LibraryService {
   LibraryService(this.fileController, this.userService, this.bookManage,
       this.checkoutManage);
 
-  Future<void> initialize() async {
+  Future<void> _initialize() async {
     // (path, header in csv)
     final List<(String, List<List<String>>)> createFileList = [
       (
@@ -47,7 +47,7 @@ class LibraryService {
     ];
 
     final path = 'lib/18_design/assets/';
-    await folderCheck(path);
+    await _folderCheck(path);
 
     for ((String, List<List<String>>) data in createFileList) {
       final filePath = '$path${data.$1}';
@@ -61,13 +61,13 @@ class LibraryService {
     }
   }
 
-  Future<void> folderCheck(String path) async {
+  Future<void> _folderCheck(String path) async {
     Directory directory = Directory(path);
     if (!await directory.exists()) await directory.create(recursive: true);
   }
 
   Future<void> start() async {
-    await initialize();
+    await _initialize();
 
     while (true) {
       print('1. 회원관리\t\t2. 도서관리\t\t 3. 대출관리\t\t 4.종료');

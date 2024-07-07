@@ -20,7 +20,7 @@ class BookManage {
         case '0':
           return;
         case '1':
-          final books = await getBooks();
+          final books = await _getBooks();
           if (books.isEmpty) {
             print('아무 도서도 없습니다.');
           } else {
@@ -28,19 +28,19 @@ class BookManage {
           }
           return;
         case '2':
-          await createBook();
+          await _createBook();
           return;
         case '3':
-          await updateBook();
+          await _updateBook();
           return;
         case '4':
-          await deleteBook();
+          await _deleteBook();
           return;
         case '5':
-          await cancelDelete();
+          await _cancelDelete();
           return;
         case '6':
-          await getBooksBySortedRecent();
+          await _getBooksBySortedRecent();
           return;
         case _:
           print('잘못된 입력');
@@ -49,7 +49,7 @@ class BookManage {
     }
   }
 
-  Future<List<Book>> getBooks() async {
+  Future<List<Book>> _getBooks() async {
     final getBooksResult = await _bookRepositoryImpl.getBooks();
     switch (getBooksResult) {
       case Success(:final data):
@@ -60,7 +60,7 @@ class BookManage {
     return [];
   }
 
-  Future<List<Book>> getBooksBySortedRecent() async {
+  Future<List<Book>> _getBooksBySortedRecent() async {
     final getBooksResult = await _bookRepositoryImpl.getBooksSortedByRecent();
     switch (getBooksResult) {
       case Success(:final data):
@@ -71,8 +71,8 @@ class BookManage {
     return [];
   }
 
-  Future<void> createBook() async {
-    final books = await getBooks();
+  Future<void> _createBook() async {
+    final books = await _getBooks();
     int id = 1;
     for (Book book in books) {
       id = max(book.id, id);
@@ -113,7 +113,7 @@ class BookManage {
     }
   }
 
-  Future<Book> findByName() async {
+  Future<Book> _findByName() async {
     while (true) {
       print('찾을 도서 이름을 입력해주세요.');
       final targetName = stdin.readLineSync() ?? '';
@@ -127,15 +127,15 @@ class BookManage {
     }
   }
 
-  Future<void> updateBook() async {
-    final books = await getBooks();
+  Future<void> _updateBook() async {
+    final books = await _getBooks();
     if (books.isEmpty) {
       print('갱신 할 도서가 없습니다.');
       return;
     }
     print(books);
 
-    final targetBook = await findByName();
+    final targetBook = await _findByName();
 
     print('도서의 정보를 모두 새로 입력합니다.');
     print('제목을 입력해주세요');
@@ -153,15 +153,15 @@ class BookManage {
     }
   }
 
-  Future<void> deleteBook() async {
-    final books = await getBooks();
+  Future<void> _deleteBook() async {
+    final books = await _getBooks();
     if (books.isEmpty) {
       print('삭제 할 도서가 없습니다.');
       return;
     }
     print(books);
 
-    final targetBook = await findByName();
+    final targetBook = await _findByName();
     switch (await _bookRepositoryImpl.deleteBook(targetBook.id)) {
       case Success(:final data):
         print('삭제가 완료되었습니다.');
@@ -170,7 +170,7 @@ class BookManage {
     }
   }
 
-  Future<void> cancelDelete() async {
+  Future<void> _cancelDelete() async {
     switch (await _bookRepositoryImpl.cancelDelete()) {
       case Success(:final data):
         print('삭제가 취소되었습니다.');

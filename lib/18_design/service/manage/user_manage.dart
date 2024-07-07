@@ -7,7 +7,6 @@ import 'package:learn_dart_together/18_design/utils/parse_phone.dart';
 import '../../data/model/user.dart';
 import '../../data/repository_impl/user_repository_impl.dart';
 import '../../utils/parse_birth_date.dart';
-import 'package:intl/intl.dart';
 
 class UserManage {
   final UserRepositoryImpl _userRepositoryImpl;
@@ -22,7 +21,7 @@ class UserManage {
         case '0':
           return;
         case '1':
-          final users = await getUsers();
+          final users = await _getUsers();
           if (users.isEmpty) {
             print('아무 회원도 없습니다.');
           } else {
@@ -30,16 +29,16 @@ class UserManage {
           }
           return;
         case '2':
-          await createUser();
+          await _createUser();
           return;
         case '3':
-          await updateUser();
+          await _updateUser();
           return;
         case '4':
-          await deleteUser();
+          await _deleteUser();
           return;
         case '5':
-          await cancelDelete();
+          await _cancelDelete();
           return;
         case _:
           print('잘못된 입력');
@@ -48,7 +47,7 @@ class UserManage {
     }
   }
 
-  Future<List<User>> getUsers() async {
+  Future<List<User>> _getUsers() async {
     final getUsersResult = await _userRepositoryImpl.getUsers();
     switch (getUsersResult) {
       case Success(:final data):
@@ -59,16 +58,16 @@ class UserManage {
     return [];
   }
 
-  Future<void> createUser() async {
+  Future<void> _createUser() async {
     DateTime now = DateTime.now();
-    final users = await getUsers();
+    final users = await _getUsers();
     int id = 1;
     for (User user in users) {
       id = max(user.id, id);
     }
     id += 1;
 
-    final (name, address, phone, birthDate) = inputUserInfo();
+    final (name, address, phone, birthDate) = _inputUserInfo();
 
     final newUser = User(
       id: id,
@@ -88,7 +87,7 @@ class UserManage {
     }
   }
 
-  (String, String, String, DateTime) inputUserInfo() {
+  (String, String, String, DateTime) _inputUserInfo() {
     print('회원 등록 시작');
     print('이름을 입력해주세요');
     final name = stdin.readLineSync() ?? '';
@@ -121,7 +120,7 @@ class UserManage {
     return (name, address, phone, birthDate);
   }
 
-  Future<User> findByName() async {
+  Future<User> _findByName() async {
     while (true) {
       print('찾을 회원의 이름을 입력해주세요.');
       final targetName = stdin.readLineSync() ?? '';
@@ -135,18 +134,18 @@ class UserManage {
     }
   }
 
-  Future<void> updateUser() async {
-    final users = await getUsers();
+  Future<void> _updateUser() async {
+    final users = await _getUsers();
     if (users.isEmpty) {
       print('갱신 할 유저가 없습니다.');
       return;
     }
     print(users);
 
-    final targetUser = await findByName();
+    final targetUser = await _findByName();
 
     print('회원의 정보를 모두 새로 입력합니다.');
-    final (name, address, phone, birthDate) = inputUserInfo();
+    final (name, address, phone, birthDate) = _inputUserInfo();
     final copyUser = targetUser.copyWith(
         name: name, address: address, phone: phone, birth: birthDate);
 
@@ -162,15 +161,15 @@ class UserManage {
     }
   }
 
-  Future<void> deleteUser() async {
-    final users = await getUsers();
+  Future<void> _deleteUser() async {
+    final users = await _getUsers();
     if (users.isEmpty) {
       print('삭제 할 유저가 없습니다.');
       return;
     }
     print(users);
 
-    final targetUser = await findByName();
+    final targetUser = await _findByName();
     switch (await _userRepositoryImpl.deleteUser(targetUser.id)) {
       case Success(:final data):
         print('삭제가 완료되었습니다.');
@@ -179,7 +178,7 @@ class UserManage {
     }
   }
 
-  Future<void> cancelDelete() async {
+  Future<void> _cancelDelete() async {
     switch (await _userRepositoryImpl.cancelDelete()) {
       case Success(:final data):
         print('삭제가 취소되었습니다.');
