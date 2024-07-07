@@ -7,12 +7,12 @@ import 'package:learn_dart_together/18_design/service/manage/user_manage.dart';
 import '../controller/file_controller.dart';
 
 class LibraryService {
-  UserManage userService;
+  UserManage userManage;
   BookManage bookManage;
   CheckoutManage checkoutManage;
   FileController fileController;
 
-  LibraryService(this.fileController, this.userService, this.bookManage,
+  LibraryService(this.fileController, this.userManage, this.bookManage,
       this.checkoutManage);
 
   Future<void> _initialize() async {
@@ -74,7 +74,7 @@ class LibraryService {
       final input = stdin.readLineSync();
       switch (input) {
         case '1':
-          await userService.manage();
+          await userManage.manage();
           break;
         case '2':
           await bookManage.manage();
