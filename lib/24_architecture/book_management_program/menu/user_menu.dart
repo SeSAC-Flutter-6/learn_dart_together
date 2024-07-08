@@ -75,13 +75,13 @@ class UserMenu {
   Future<void> updateUser() async {
     print('수정할 회원의 id를 입력하세요');
     final id = stdin.readLineSync();
-    print('변경하실 이름을 입력하세요');
+    print('변경하실 이름을 입력하세요. 없으시면 enter를 누르세요');
     final name = stdin.readLineSync();
-    print('변경하실 주소를 입력하세요');
+    print('변경하실 주소를 입력하세요. 없으시면 enter를 누르세요');
     final address = stdin.readLineSync();
-    print('변경하실 연락처를 입력하세요');
+    print('변경하실 연락처를 입력하세요. 없으시면 enter를 누르세요');
     final phoneNumber = stdin.readLineSync();
-    print('변경하실 생년월일을 입력하세요 형식 : (YYYY/mm/DD)');
+    print('변경하실 생년월일을 입력하세요 형식 : (YYYY/mm/DD) 없으시면 enter를 누르세요');
     final birthday = stdin.readLineSync();
     if (id!.isNotEmpty) {
       if (name!.isEmpty &&
