@@ -21,4 +21,4 @@ final String jsonString = '''[
     }
   ]''';
 // JSON 문자열을 List로 변환
-List<dynamic> jsonList = jsonDecode(jsonString);
+List<String> jsonList = jsonDecode(jsonString);

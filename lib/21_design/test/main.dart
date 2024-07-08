@@ -1,4 +1,5 @@
 import 'package:learn_dart_together/21_design/core/result.dart';
+import 'package:learn_dart_together/21_design/data/model/gender.dart';
 import 'package:learn_dart_together/21_design/data/model/user.dart';
 import 'package:learn_dart_together/21_design/data/repository/user_repository.dart';
 import 'package:learn_dart_together/21_design/data/repository/user_repository_impl.dart';
@@ -10,7 +11,19 @@ void main() async {
 
   switch (result) {
     case Success<List<User>, NetworkError>():
-      print(result.data);
+      for (int i = 0; i < result.data.length; i++) {
+        print('유저ID : ${result.data[i].id}');
+        print('이름 : ${result.data[i].name}');
+        print('주소 : ${result.data[i].address}');
+        print('성별 : ${(result.data[i].gender == Gender.male) ? '남자' : '여자'}');
+      }
+      for (User user in result.data) {
+        print('유저ID : ${user.id}');
+        print('이름 : ${user.name}');
+        print('주소 : ${user.address}');
+        print('성별 : ${user.gender}');
+      }
+
     case Error<List<User>, NetworkError>():
       {
         switch (result.error) {

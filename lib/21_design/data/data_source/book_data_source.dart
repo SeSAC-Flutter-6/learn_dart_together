@@ -1,17 +1,15 @@
-import 'package:learn_dart_together/20_result/practice_01/core/result.dart';
-
-import '../model/book.dart';
-
-abstract interface class BookDataSource {
-  Future<Result<Book, Error>> getBookCreate(Book book);
-
-  Future<Book, Error> getBookRead(int id);
-
-  Future<List<Book, Error>> fetchReadBooks();
-
-  //Future<Book?> getBook(int id);
-
-  Future<Book, Error> getBookUpdate(Book book);
-
-  Future<Book, Error> getBookDelete(Book book);
-}
+// import '../model/book.dart';
+// import '../repository/book_repository.dart';
+// import 'package:learn_dart_together/21_design/core/result.dart';
+//
+// abstract interface class BookDataSource {
+//   Future<Result<Book, NetworkError>> getBookCreate(Book book);
+//
+//   Future<Result<Book, NetworkError>> getBookRead(int id);
+//
+//   Future<Result<List<Book>, NetworkError>> fetchReadBooks();
+//
+//   Future<Result<Book, NetworkError>> getBookUpdate(Book book);
+//
+//   Future<Result<Book, NetworkError>> getBookDelete(Book book);
+// }
