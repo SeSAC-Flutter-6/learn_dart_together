@@ -180,9 +180,6 @@ class UserMenu {
     print('1.네  2.아니요');
     final answer = stdin.readLineSync();
     switch (answer) {
-      case '':
-        print('취소되었습니다.');
-        showUserMenu();
       case '1':
         final result =
             await UserRepositoryImpl(userDataSource: UserDataSourceImpl())
@@ -202,7 +199,10 @@ class UserMenu {
         }
       case '2':
         print('이전 화면으로 되돌아갑니다.');
-        showUserMenu();
+        await showUserMenu();
+      default:
+        print('취소되었습니다.');
+        await showUserMenu();
     }
   }
 }

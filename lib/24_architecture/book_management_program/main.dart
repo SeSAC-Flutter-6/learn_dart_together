@@ -15,8 +15,6 @@ void showFirstMenu() {
   print('1. 회원관리  2. 도서관리  3. 대출관리  4.종료');
   final data = stdin.readLineSync();
   switch (data) {
-    case '':
-      showFirstMenu();
     case '1':
       showUserMenu();
     case '2':
@@ -26,61 +24,63 @@ void showFirstMenu() {
     case '4':
       print('프로그램 종료');
       exit(0);
+    default:
+      showFirstMenu();
   }
 }
 
-void showUserMenu() async {
+Future<void> showUserMenu() async {
   print('0. 뒤로가기,  1. 회원목록  2. 회원등록  3.회원수정  4.회원삭제  5.회원검색  6.삭제취소');
   final data = stdin.readLineSync();
   switch (data) {
-    case '':
-      showUserMenu();
     case '0':
       showFirstMenu();
     case '1':
       await UserMenu().showUsers();
-      showUserMenu();
+      await showUserMenu();
     case '2':
       await UserMenu().registerUser();
-      showUserMenu();
+      await showUserMenu();
     case '3':
       await UserMenu().updateUser();
-      showUserMenu();
+      await showUserMenu();
     case '4':
       await UserMenu().deleteUser();
-      showUserMenu();
+      await showUserMenu();
     case '5':
       await UserMenu().findUser();
-      showUserMenu();
+      await showUserMenu();
     case '6':
       await UserMenu().cancelDelete();
-      showUserMenu();
+      await showUserMenu();
+    default:
+      await showUserMenu();
   }
 }
 
-void showBookMenu() async {
+Future<void> showBookMenu() async {
   print('0. 뒤로가기,  1. 도서목록  2. 도서등록  3.도서수정  4.도서삭제  5.도서검색');
   final data = stdin.readLineSync();
   switch (data) {
-    case '':
-      showBookMenu();
     case '0':
       showFirstMenu();
     case '1':
       await BookMenu().showBorrowableBooks();
-      showBookMenu();
+      await showBookMenu();
     case '2':
       await BookMenu().createBook();
-      showBookMenu();
+      await showBookMenu();
     case '3':
       await BookMenu().updateBook();
-      showBookMenu();
+      await showBookMenu();
     case '4':
       await BookMenu().deleteBook();
-      showBookMenu();
+      await showBookMenu();
     case '5':
       await BookMenu().findBook();
-      showBookMenu();
+      await showBookMenu();
+    default:
+      await showBookMenu();
   }
 }
 
@@ -101,6 +101,8 @@ void showBorrowInfoMenu() async {
       showBorrowInfoMenu();
     case '4':
       await BorrowInfoMenu().renewBook();
+      showBorrowInfoMenu();
+    default:
       showBorrowInfoMenu();
   }
 }

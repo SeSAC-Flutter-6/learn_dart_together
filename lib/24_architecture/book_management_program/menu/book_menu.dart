@@ -58,7 +58,7 @@ class BookMenu {
   Future<void> createBook() async {
     print('책 제목을 입력하세요');
     final title = stdin.readLineSync();
-    print('출간일을 입력하세요');
+    print('출간일을 입력하세요 형식: (YYYY/mm/DD');
     final publishDate = stdin.readLineSync();
     print('저자를 입력하세요');
     final author = stdin.readLineSync();
