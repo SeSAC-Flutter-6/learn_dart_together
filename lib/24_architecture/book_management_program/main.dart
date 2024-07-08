@@ -46,9 +46,17 @@ void showUserMenu() async {
       await UserMenu().registerUser();
       showUserMenu();
     case '3':
+      await UserMenu().updateUser();
+      showUserMenu();
     case '4':
+      await UserMenu().deleteUser();
+      showUserMenu();
     case '5':
+      await UserMenu().findUser();
+      showUserMenu();
     case '6':
+      await UserMenu().cancelDelete();
+      showUserMenu();
   }
 }
 

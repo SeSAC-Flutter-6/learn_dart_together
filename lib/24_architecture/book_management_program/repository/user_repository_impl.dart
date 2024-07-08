@@ -19,14 +19,15 @@ class UserRepositoryImpl implements UserRepository {
     required String address,
     required String phoneNumber,
     required String birthday,
+    String? registrationDate,
   }) async {
     final data = await getUsers();
     switch (data) {
       case Success<List<User>, ErrorType>():
         try {
           final user = User(
-              id: data.data.sorted((a, b) => a.id.compareTo(b.id)).last.id + 1,
-              registrationDate:
+              id: data.data.isEmpty ? 1 : data.data.map((e) => e.id).max + 1,
+              registrationDate: registrationDate ??
                   DateTime.now().toString().split(' ')[0].replaceAll('-', '/'),
               name: name,
               address: address,
@@ -116,6 +117,7 @@ class UserRepositoryImpl implements UserRepository {
       final result = await createUser(
           name: deletedUser!.name,
           address: deletedUser!.address,
+          registrationDate: deletedUser!.registrationDate,
           phoneNumber: deletedUser!.phoneNumber,
           birthday: deletedUser!.birthday);
       switch (result) {
