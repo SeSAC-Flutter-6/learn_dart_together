@@ -32,7 +32,7 @@ class UserRepositoryImpl implements UserRepository {
         print('user 정보가 삭제되었습니다.');
       } else {
         print('user 정보가 없습니다.');
-      }//없으면 알려주는 로직
+      } //없으면 알려주는 로직
       return Result.success(user);
     } on TimeoutException {
       return Result.error(NetworkError.requestTimeout);
@@ -42,19 +42,47 @@ class UserRepositoryImpl implements UserRepository {
   }
 
   @override
-  Future<Result<User, Error>> getUserCreate(User user) {
-    // TODO: implement getUserCreate
-    throw UnimplementedError();
+  Future<Result<User, NetworkError>> getUserCreate(User user) async {
+    try {
+      List<User> users = jsonList
+          .map((jsonItem) => User.fromJson(jsonItem as Map<String, dynamic>))
+          .toList();
+      if (!users.contains(user)) {
+        users.add(user);
+        print('user 정보가 가입되었습니다.');
+      } else {
+        print('user 정보가 이미 존재합니다.');
+      } //없으면 알려주는 로직
+      return Result.success(user);
+    } on TimeoutException {
+      return Result.error(NetworkError.requestTimeout);
+    } catch (e) {
+      return Result.error(NetworkError.unknown);
+    }
   }
 
   @override
-  Future<Result<User, Error>> getUserRead(int id) {
-    // TODO: implement getUserRead
-    throw UnimplementedError();
+  Future<Result<User, NetworkError>> getUserRead(int id) async {
+    try {
+      List<User> users = jsonList
+          .map((jsonItem) => User.fromJson(jsonItem as Map<String, dynamic>))
+          .toList();
+      final User selectedUser = users.firstWhere((e) => e.id == id);
+      if (selectedUser != null) {
+        print('ID 검색 성공');
+      } else {
+        print('없는 유저ID 입니다.');
+      } //없으면 알려주는 로직
+      return Result.success(selectedUser);
+    } on TimeoutException {
+      return Result.error(NetworkError.requestTimeout);
+    } catch (e) {
+      return Result.error(NetworkError.unknown);
+    }
   }
 
   @override
-  Future<Result<User, Error>> getUserUpdate(User user) {
+  Future<Result<User, NetworkError>> getUserUpdate(User user) {
     // TODO: implement getUserUpdate
     throw UnimplementedError();
   }
