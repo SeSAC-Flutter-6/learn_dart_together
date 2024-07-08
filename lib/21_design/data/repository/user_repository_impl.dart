@@ -82,8 +82,26 @@ class UserRepositoryImpl implements UserRepository {
   }
 
   @override
-  Future<Result<User, NetworkError>> getUserUpdate(User user) {
-    // TODO: implement getUserUpdate
-    throw UnimplementedError();
+  Future<Result<User, NetworkError>> getUserUpdate(User user) async {
+    try {
+      List<User> users = jsonList
+          .map((jsonItem) => User.fromJson(jsonItem as Map<String, dynamic>))
+          .toList();
+      final User selectedUser = users.firstWhere((e) => e.id == user.id);
+      if (selectedUser != null) {
+        final int selectedUserIndex = users.indexOf(selectedUser);
+        users.remove(selectedUser); //기존유저
+        users.insert(selectedUserIndex, user);
+        //업데이트된 유저(같은 인덱스에 넣을 수도 있는 방법 공부)
+        //selectedUser 인덱스를 확인 한 후에 insert로 기존 user 인덱스 위치에 다시 들어간다
+      } else {
+        print('user 정보가 존재하지 않습니다.');
+      } //없으면 알려주는 로직
+      return Result.success(user);
+    } on TimeoutException {
+      return Result.error(NetworkError.requestTimeout);
+    } catch (e) {
+      return Result.error(NetworkError.unknown);
+    }
   }
 }
