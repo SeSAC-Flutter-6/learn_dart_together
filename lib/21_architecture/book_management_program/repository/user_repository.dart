@@ -1,7 +1,6 @@
 import 'package:learn_dart_together/21_architecture/book_management_program/core/result.dart';
 import 'package:learn_dart_together/21_architecture/book_management_program/error/enum.dart';
 
-
 import '../model/user.dart';
 
 abstract interface class UserRepository {
@@ -25,5 +24,6 @@ abstract interface class UserRepository {
   });
 
   Future<Result<void, ErrorType>> deleteUser({required int id});
+
   Future<Result<void, ErrorType>> cancelDelete();
 }
