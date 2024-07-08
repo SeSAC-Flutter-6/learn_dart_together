@@ -38,7 +38,7 @@ class BookRepositoryImpl implements BookRepository {
       case Success<List<Book>, ErrorType>():
         try {
           final book = Book(
-            id: data.data.sorted((a, b) => a.id.compareTo(b.id)).last.id + 1,
+            id: data.data.isEmpty ? 1 : data.data.map((e) => e.id).max + 1,
             title: title,
             publishDate: publishDate,
             author: author,
@@ -89,8 +89,10 @@ class BookRepositoryImpl implements BookRepository {
   Future<Result<List<Book>, ErrorType>> getBorrowableBooks() async {
     try {
       final data = await _bookDataSource.getBooks();
-      final borrowableBooks =
-          data.where((e) => e.isBorrowable == true).toList();
+      final borrowableBooks = data
+          .where((e) => e.isBorrowable == true)
+          .sorted((a, b) => -a.publishDate.compareTo(b.publishDate))
+          .toList();
       return Result.success(borrowableBooks);
     } catch (e) {
       return Result.error(ErrorType.readError);
@@ -137,7 +139,7 @@ class BookRepositoryImpl implements BookRepository {
   }
 
   @override
-  Future<Result<List<Book>, ErrorType>> getBooks() async{
+  Future<Result<List<Book>, ErrorType>> getBooks() async {
     try {
       final data = await _bookDataSource.getBooks();
       return Result.success(data);
