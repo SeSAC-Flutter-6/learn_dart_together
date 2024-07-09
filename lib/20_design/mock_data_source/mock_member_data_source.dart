@@ -1,30 +1,49 @@
 import 'dart:io';
 import 'package:learn_dart_together/20_design/data_source/member_data_source.dart';
 import 'package:learn_dart_together/20_design/model/member.dart';
+import 'package:learn_dart_together/20_design/utils/constant.dart';
 import 'package:learn_dart_together/20_design/utils/function.dart';
 
 class MockMemberDataSource implements MemberDataSource {
-  final _file =
-      '/Users/caliapark/Desktop/Practice/lib/20_design/mock_data_source/member_data.csv';
+  List<Member>? _members;
+  final String _csvFile = memberCsvFile;
+  late Future<void> _initializationDone;
 
-  @override
-  Future<List<Member>> getMember({int? id, String? name}) async {
+  MockMemberDataSource() {
+    _initializationDone = _initMembers();
+  }
+
+  Future<void> _initMembers() async {
     try {
-      final List<Member> members = await csvToList(_file);
-      return members.where((member) {
-        if (id != null) return member.id == id;
-        if (name != null) return member.name == name;
-        return true;
-      }).toList();
+      _members = await csvToMemberList(_csvFile);
     } catch (e) {
-      rethrow;
+      print('회원 데이터 불러오기 실패: $e');
+      _members = [];
     }
   }
 
   @override
+  Future<List<Member>> getMember({int? id, String? name}) async {
+    await _initializationDone;
+    if (_members == null) {
+      throw Exception('회원 데이터 초기화 실패');
+    }
+    if (id != null) {
+      return _members!.where((member) => member.id == id).toList();
+    } else if (name != null) {
+      return _members!
+          .where((member) =>
+              member.name.toLowerCase().contains(name.toLowerCase()))
+          .toList();
+    }
+    return _members!;
+  }
+
+  @override
   Future<void> addMember(Member member) async {
-    await File(_file)
-        .writeAsString('\n${member.toCsv()}', mode: FileMode.append);
+    await _initializationDone;
+    _members?.add(member);
+    await _saveMembersToCSV();
   }
 
   @override
@@ -35,43 +54,46 @@ class MockMemberDataSource implements MemberDataSource {
     String? phoneNumber,
     DateTime? birthDate,
   }) async {
-    final members = await getMember();
-    final index = members.indexWhere((e) => e.id == id);
+    await _initializationDone;
+    if (_members == null) return null;
 
+    final index = _members!.indexWhere((member) => member.id == id);
     if (index != -1) {
-      final member = members[index];
-      final updatedmember = member.copyWith(
+      final member = _members![index];
+      final updatedMember = member.copyWith(
         name: name ?? member.name,
         address: address ?? member.address,
         phoneNumber: phoneNumber ?? member.phoneNumber,
         birthDate: birthDate ?? member.birthDate,
       );
-      members[index] = updatedmember;
-
-      String content =
-          'id,name,address,phoneNumber,birthDate,registrationDate\n';
-      content += members.map((member) => member.toCsv()).join('\n');
-      await File(_file).writeAsString(content);
-      return updatedmember;
+      _members![index] = updatedMember;
+      await _saveMembersToCSV();
+      return updatedMember;
     }
     return null;
   }
 
   @override
   Future<Member?> deleteMember({required int id}) async {
-    final members = await getMember();
-    final index = members.indexWhere((e) => e.id == id);
+    await _initializationDone;
+    if (_members == null) return null;
 
+    final index = _members!.indexWhere((member) => member.id == id);
     if (index != -1) {
-      final member = members[index];
-      members.removeAt(index);
-
-      String content =
-          'id,name,address,phoneNumber,birthDate,registrationDate\n';
-      content += members.map((member) => member.toCsv()).join('\n');
-      await File(_file).writeAsString(content);
-      return member;
+      final deletedMember = _members!.removeAt(index);
+      await _saveMembersToCSV();
+      return deletedMember;
     }
     return null;
+  }
+
+  Future<void> _saveMembersToCSV() async {
+    if (_members == null) return;
+    final csvContent = [
+      'id,name,address,phoneNumber,birthDate,registrationDate',
+      ..._members!.map((member) =>
+          '${member.id},${member.name},${member.address},${member.phoneNumber},${member.birthDate.toString().substring(0, 10)},${member.registrationDate.toString().substring(0, 10)}')
+    ].join('\n');
+    await File(_csvFile).writeAsString(csvContent);
   }
 }

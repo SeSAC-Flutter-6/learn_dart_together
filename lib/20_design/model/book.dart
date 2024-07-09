@@ -16,3 +16,9 @@ class Book with _$Book {
 
   factory Book.fromJson(Map<String, Object?> json) => _$BookFromJson(json);
 }
+
+extension BookInfo on Book {
+  String toInfo() {
+    return 'Book(id: $id, title: $title, author: $author, summary: $summary, publishedDate: ${publishedDate.toString().substring(0, 10)}, isBorrowable: $isBorrowable)';
+  }
+}

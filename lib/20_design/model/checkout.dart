@@ -7,6 +7,7 @@ enum BookStatus {
   borrowed,
   returned,
   overdue,
+  unknown,
 }
 
 @freezed
@@ -25,4 +26,10 @@ class Checkout with _$Checkout {
 
   factory Checkout.fromJson(Map<String, Object?> json) =>
       _$CheckoutFromJson(json);
+}
+
+extension CheckoutInfo on Checkout {
+  String toInfo() {
+    return 'Checkout(id: $id, memberId: $memberId, memberName: $memberName, bookId: $bookId, bookTitle: $bookTitle, borrowDate: ${borrowDate.toString().substring(0, 10)}, returnDate: ${returnDate.toString().substring(0, 10)}, bookStatus: $bookStatus, isExtendable: $isExtendable)';
+  }
 }

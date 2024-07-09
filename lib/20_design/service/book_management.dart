@@ -1,18 +1,22 @@
+import 'package:collection/collection.dart';
 import 'package:learn_dart_together/19_result/core/result.dart';
 import 'package:learn_dart_together/20_design/model/book.dart';
 import 'package:learn_dart_together/20_design/repository/book_repository.dart';
 import 'package:learn_dart_together/20_design/service/my_library.dart';
 import 'package:learn_dart_together/20_design/utils/function.dart';
 
-class MemberManagement {
+class BookManagement {
   final MyLibrary _myLibrary;
   final BookRepository _bookRepository;
 
-  MemberManagement(this._myLibrary, this._bookRepository);
+  BookManagement(
+    this._myLibrary,
+    this._bookRepository,
+  );
 
-  Future<void> manageMember() async {
+  Future<void> manageBook() async {
     while (true) {
-      final input = _validateInput(
+      final input = validateInput(
           '0. 뒤로   1. 도서조회   2. 도서검색   3. 도서등록   4. 도서수정   5. 도서삭제');
       if (input == null) continue;
 
@@ -46,20 +50,23 @@ class MemberManagement {
     final books = await _bookRepository.getBook();
     switch (books) {
       case Success():
-        final input = _validateInput('1. 제목순   2. 출간일순\n');
+        final input = validateInput('1. 제목순   2. 출간일순   3. 대출가능도서');
         if (input == null) return;
 
-        final BookList = books.data;
+        List<Book> bookList = [];
         switch (input) {
           case '1':
-            BookList.sort((a, b) => a.title.compareTo(b.title));
+            bookList = books.data.sorted((a, b) => a.title.compareTo(b.title));
           case '2':
-            BookList.sort((a, b) => a.publishedDate.compareTo(b.publishedDate));
+            bookList = books.data
+                .sorted((a, b) => a.publishedDate.compareTo(b.publishedDate));
+          case '3':
+            bookList = books.data.where((book) => book.isBorrowable).toList();
           default:
-            print('잘못된 입력: 숫자(1~2)를 입력하세요.');
+            print('잘못된 입력: 숫자(1~3)를 입력하세요.');
             return;
         }
-        BookList.forEach((book) => print(book.toInfo()));
+        bookList.forEach((book) => print(book.toInfo()));
         break;
       case Error():
         print(books.error);
@@ -68,7 +75,7 @@ class MemberManagement {
   }
 
   Future<void> searchBook() async {
-    final input = _validateInput('검색할 도서 ID 또는 제목을 입력하세요.');
+    final input = validateInput('검색할 도서 ID 또는 제목을 입력하세요.');
     if (input == null) return;
 
     final id = int.tryParse(input);
@@ -82,7 +89,7 @@ class MemberManagement {
   }
 
   Future<void> registerBook() async {
-    final input = _validateInput(
+    final input = validateInput(
         '등록할 도서 제목, 저자명, 내용, 출간일, 대출가능여부를 아래와 같이 입력하세요.\n데미안/헤르만 헤세/자기 자신을 찾기 위한 한 소년의 성장 이야기/1919-01-01/true');
     if (input == null) return;
 
@@ -102,10 +109,10 @@ class MemberManagement {
   }
 
   Future<void> updateBook() async {
-    final id = _validateId('수정할 도서 ID를 입력하세요.');
+    final id = validateId('수정할 도서 ID를 입력하세요.');
     if (id == null) return;
 
-    final input = _validateInput(
+    final input = validateInput(
         '수정할 도서 제목, 저자명, 내용, 출간일, 대출가능여부를 아래와 같이 입력하세요. 기존 정보를 유지하고 싶은 항목은 * 입력\n데미안/*/*/*/false');
     if (input == null) return;
 
@@ -130,34 +137,12 @@ class MemberManagement {
   }
 
   Future<void> deleteBook() async {
-    final id = _validateId('삭제할 도서 ID를 입력하세요.');
+    final id = validateId('삭제할 도서 ID를 입력하세요.');
     if (id == null) return;
 
     final book = await _bookRepository.deleteBook(id: id);
     _printResult(book, '도서정보를 삭제했습니다.');
   }
-}
-
-String? _validateInput(String prompt) {
-  print(prompt);
-  final input = stdin.readLineSync();
-  if (input == null || input.isEmpty) {
-    print('잘못된 입력: 입력이 유효하지 않습니다.');
-    return null;
-  }
-  return input;
-}
-
-int? _validateId(String prompt) {
-  final input = _validateInput(prompt);
-  if (input == null) return null;
-
-  final id = int.tryParse(input);
-  if (id == null) {
-    print('잘못된 입력: 유효한 숫자를 입력하세요.');
-    return null;
-  }
-  return id;
 }
 
 void _printResult(Result<Book, String> result, String message) {

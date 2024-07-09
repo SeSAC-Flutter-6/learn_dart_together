@@ -30,11 +30,7 @@ class Member with _$Member {
   }
 }
 
-extension Converter on Member {
-  String toCsv() {
-    return '$id,$name,$address,$phoneNumber,${birthDate.toString().substring(0, 10)},${registrationDate.toString().substring(0, 10)}';
-  }
-
+extension MemberInfo on Member {
   String toInfo() {
     return 'Member(id: $id, name: $name, address: $address, phoneNumber: $phoneNumber, birthDate: ${birthDate.toString().substring(0, 10)}, registrationDate: ${registrationDate.toString().substring(0, 10)}';
   }

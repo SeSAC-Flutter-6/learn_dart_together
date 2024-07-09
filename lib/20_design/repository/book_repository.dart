@@ -5,11 +5,11 @@ abstract interface class BookRepository {
   Future<Result<List<Book>, String>> getBook({int? id, String? title});
 
   Future<Result<Book, String>> registerBook({
-    String? title,
-    String? author,
-    String? summary,
-    DateTime? publishedDate,
-    bool? isBorrowable,
+    required String title,
+    required String author,
+    required String summary,
+    required DateTime publishedDate,
+    required bool isBorrowable,
   });
 
   Future<Result<Book, String>> updateBook({

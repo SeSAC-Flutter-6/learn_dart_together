@@ -1,0 +1,5 @@
+id,memberId,memberName,bookId,bookTitle,borrowDate,returnDate,bookStatus,isExtendable
+1,2,김야옹,2,해리 포터와 비밀의 방,2024-07-07,2024-07-21,returned,true
+2,3,최삐약,3,해리 포터와 죽음의 성물,2024-06-07,2024-06-28,overdue,false
+3,2,김야옹,1,반지의 제왕,2024-07-10,2024-07-24,borrowed,true
+4,4,이멍멍,2,해리 포터와 비밀의 방,2024-07-07,2024-07-28,borrowed,false

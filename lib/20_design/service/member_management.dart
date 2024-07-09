@@ -1,9 +1,7 @@
-import 'dart:io';
 import 'package:learn_dart_together/19_result/core/result.dart';
 import 'package:learn_dart_together/20_design/model/member.dart';
 import 'package:learn_dart_together/20_design/service/my_library.dart';
 import 'package:learn_dart_together/20_design/repository/member_repository.dart';
-
 import '../utils/function.dart';
 
 class MemberManagement {
@@ -14,7 +12,7 @@ class MemberManagement {
 
   Future<void> manageMember() async {
     while (true) {
-      final input = _validateInput(
+      final input = validateInput(
           '0. 뒤로   1. 회원조회   2. 회원검색   3. 회원등록   4. 회원수정   5. 회원삭제   6.삭제취소');
       if (input == null) continue;
 
@@ -51,7 +49,7 @@ class MemberManagement {
     final members = await _memberRepository.getMember();
     switch (members) {
       case Success():
-        final input = _validateInput('1. 이름순   2. 가입날짜순\n');
+        final input = validateInput('1. 이름순   2. 가입날짜순');
         if (input == null) return;
 
         final memberList = members.data;
@@ -74,7 +72,7 @@ class MemberManagement {
   }
 
   Future<void> searchMember() async {
-    final input = _validateInput('검색할 회원 ID 또는 이름을 입력하세요.');
+    final input = validateInput('검색할 회원 ID 또는 이름을 입력하세요.');
     if (input == null) return;
 
     final id = int.tryParse(input);
@@ -88,7 +86,7 @@ class MemberManagement {
   }
 
   Future<void> registerMember() async {
-    final input = _validateInput(
+    final input = validateInput(
         '등록할 회원 이름, 주소, 연락처, 생일을 아래와 같이 입력하세요.\n박주현/서울시 영등포구/010-1234-5678/1998-12-15');
     if (input == null) return;
 
@@ -109,10 +107,10 @@ class MemberManagement {
   }
 
   Future<void> updateMember() async {
-    final id = _validateId('수정할 회원 ID를 입력하세요.');
+    final id = validateId('수정할 회원 ID를 입력하세요.');
     if (id == null) return;
 
-    final input = _validateInput(
+    final input = validateInput(
         '수정할 회원 이름, 주소, 연락처, 생일을 아래와 같이 입력하세요. 기존 정보를 유지하고 싶은 항목은 * 입력\n김주현/*/010-1111-1111/*');
     if (input == null) return;
 
@@ -134,7 +132,7 @@ class MemberManagement {
   }
 
   Future<void> deleteMember() async {
-    final id = _validateId('삭제할 회원 ID를 입력하세요.');
+    final id = validateId('삭제할 회원 ID를 입력하세요.');
     if (id == null) return;
 
     final member = await _memberRepository.deleteMember(id: id);
@@ -145,28 +143,6 @@ class MemberManagement {
     final result = await _memberRepository.undoDeleteMember();
     _printResult(result, '회원정보를 복원했습니다.');
   }
-}
-
-String? _validateInput(String prompt) {
-  print(prompt);
-  final input = stdin.readLineSync();
-  if (input == null || input.isEmpty) {
-    print('잘못된 입력: 입력이 유효하지 않습니다.');
-    return null;
-  }
-  return input;
-}
-
-int? _validateId(String prompt) {
-  final input = _validateInput(prompt);
-  if (input == null) return null;
-
-  final id = int.tryParse(input);
-  if (id == null) {
-    print('잘못된 입력: 유효한 숫자를 입력하세요.');
-    return null;
-  }
-  return id;
 }
 
 void _printResult(Result<Member, String> result, String message) {

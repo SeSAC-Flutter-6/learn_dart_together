@@ -1,2 +1,4 @@
 id,title,author,summary,publishedDate,isBorrowable
-0,반지의 제왕,톨킨,1954-07-29,true
+1,반지의 제왕,J.R.R. 톨킨,반지의 제왕 반지 원정대,1954-07-29,true
+2,해리 포터와 비밀의 방,J.K. 롤링,해리 포터와 비밀의 방,1998-08-10,true
+3,해리 포터와 죽음의 성물,J.K. 롤링,해리 포터와 죽음의 성물,2007-10-10,false
