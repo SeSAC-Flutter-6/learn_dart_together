@@ -1,0 +1,61 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+enum Gender {
+    Male,
+    Female,
+}
+
+class Book{
+ +int id,
+ +String title,
+ +DateTime publishDate,
+ +bool isLoanable,
+ +DateTime loanDate,
+ +DateTime returnDate,
+}
+class User  {
++int id,
++String name,
++Gender gender,
++String address,
++DateTime birth,
++bool isMember,
++DateTime createdAt,
++List<Book> loanBooks,
++Gender gender,
+}
+User *-- Book
+
+interface BookRepository {
++bool addBookInformation(Book book);
++List<Book> getAvailableBooks();
++List<Book> getBooksSortedByPublishedDate();
++Book? getBookById(int id);
++void updateBook(int id, Book book); 
+int generateBookId();
++void deleteBook(int id);
++Future<void> saveBooks();
+}
+class BookRepositoryImpl implements BookRepository {
+-List<Book> books = [];
+-int _bookId = 0;
+
+}
+interface UserRepository {
++bool addUser(User user); 
++List<User> getAllUsers();
++User? getUserById(int id);
++void updateUser(int id, User user);
++void deleteUser(int id); int generateUserId();
++Future<void> saveUsers();
++User? undoDeleteUser(int id);
+
+}
+class UserRepositoryImpl implements UserRepository {
+-List<User> _userList = [];
+-List<User> _deletedUserList = []
+-int _currentId = 0;
+}
+
+@enduml 
