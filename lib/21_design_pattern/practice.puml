@@ -1,0 +1,131 @@
+@startuml practice
+
+class Book {
+    - int id
+    - String title
+    - String author
+    - String isbn
+    - DateTime publishDate    
+}
+class User {
+    - int id
+    - String name
+    - String phone
+    - String address
+    - Gender gender
+}
+class CheckOut {
+    - int id
+    - Book book
+    - User user
+    - DateTime chekcOutDate
+    - DateTime dueDate
+    - DateTime? returnDate
+    - int extensionCount 
+}
+
+interface BookDataSource {
+    + Future<Book> getBook(int id)
+    + Future<List<Book>> getBooks()
+    + Future<void>  addBook(Book book)
+    + Future<void>  updateBook(Book book)
+    + Future<void>  deleteBook(int id)
+}
+
+class BookDataSourceImpl implements BookDataSource {
+    + Future<Book> getBook(int id)
+    + Future<List<Book>> getBooks()
+    + Future<void>  addBook(Book book)
+    + Future<void>  updateBook(Book book)
+    + Future<void>  deleteBook(int id)
+}
+
+interface UserDataSource {
+    + Future<User> getUser(int id)
+    + Future<List<User>> getUsers()
+    + Future<void>  addUser(User user)
+    + Future<void>  updateUser(User user)
+    + Future<void>  deleteUser(int id)
+}
+class UserDataSourceImpl implements UserDataSource {
+    + Future<User> getUser(int id)
+    + Future<List<User>> getUsers()
+    + Future<void>  addUser(User user)
+    + Future<void>  updateUser(User user)
+    + Future<void>  deleteUser(int id)
+}
+interface CheckOutDataSource {
+    + Future<CheckOut> getCheckOut(int id)
+    + Future<List<CheckOut>> getCheckOuts()
+    + Future<void>  addCheckOut(CheckOut checkOut)
+    + Future<void>  updateCheckOut(CheckOut checkOut)
+    + Future<void>  deleteCheckOut(int id)
+}
+
+class CheckOutDataSourceImpl implements CheckOutDataSource {
+    + Future<CheckOut> getCheckOut(int id)
+    + Future<List<CheckOut>> getCheckOuts()
+    + Future<void>  addCheckOut(CheckOut checkOut)
+    + Future<void>  updateCheckOut(CheckOut checkOut)
+    + Future<void>  deleteCheckOut(int id)
+}
+
+interface UserRepository {
+    + Future<Result<User,Error>> getUser(int id)
+    + Future<Result<List<User,Error>>> getUsers()
+    + Future<Result<void,Error>>  addUser(User user)
+    + Future<Result<void,Error>>  updateUser(User user)
+    + Future<Result<void,Error>>  deleteUser(int id)
+}
+
+class UserRepositoryImpl implements UserRepository{
+    - UserDataSource userDataSource
+    + Future<Result<User,Error>> getUser(int id)
+    + Future<Result<List<User,Error>>> getUsers()
+    + Future<Result<void,Error>>  addUser(User user)
+    + Future<Result<void,Error>>  updateUser(User user)
+    + Future<Result<void,Error>>  deleteUser(int id)
+}
+
+interface LibraryRepository{
+    + Future<Result<Book,Error>> getBook(int id)
+    + Future<Result<List<Book,Error>>> getBooks()
+    + Future<Result<void,Error>>  addBook(Book book)
+    + Future<Result<void,Error>>  updateBook(Book book)
+    + Future<Result<void,Error>>  deleteBook(int id)
+    + Future<Result<CheckOut,Error>> getCheckOut(int id)
+    + Future<Result<List<CheckOut,Error>>> getCheckOuts()
+    + Future<Result<void,Error>>  addCheckOut(CheckOut checkOut)
+    + Future<Result<void,Error>>  updateCheckOut(CheckOut checkOut)
+    + Future<Result<void,Error>>  deleteCheckOut(int id)
+
+    + Future<Result<void,Error>>  returnBook(int checkOutId)
+    + Future<Result<void,Error>>  extendDueDate(int checkOutId)
+}
+
+class LibraryRepositoryImpl implements LibraryRepository{
+    - BookDataSource bookDataSource
+    - CheckOutDataSource checkOutDataSource
+    + Future<Result<Book,Error>> getBook(int id)
+    + Future<Result<List<Book,Error>>> getBooks()
+    + Future<Result<void,Error>>  addBook(Book book)
+    + Future<Result<void,Error>>  updateBook(Book book)
+    + Future<Result<void,Error>>  deleteBook(int id)
+    + Future<Result<CheckOut,Error>> getCheckOut(int id)
+    + Future<Result<List<CheckOut,Error>>> getCheckOuts()
+    + Future<Result<void,Error>>  addCheckOut(CheckOut checkOut)
+    + Future<Result<void,Error>>  updateCheckOut(CheckOut checkOut)
+    + Future<Result<void,Error>>  deleteCheckOut(int id)  
+
+    + Future<Result<void,Error>>  returnBook(int checkOutId)
+    + Future<Result<void,Error>>  extendDueDate(int checkOutId)  
+}
+
+CheckOut --> User : has
+CheckOut --> Book : has
+
+UserRepositoryImpl ..> UserDataSource : uses
+LibraryRepositoryImpl ..> BookDataSource : uses
+LibraryRepositoryImpl ..> CheckOutDataSource : uses
+
+@enduml
