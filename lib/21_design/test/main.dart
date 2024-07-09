@@ -1,8 +1,10 @@
 import 'package:learn_dart_together/21_design/core/result.dart';
 import 'package:learn_dart_together/21_design/data/model/gender.dart';
 import 'package:learn_dart_together/21_design/data/model/user.dart';
-import 'package:learn_dart_together/21_design/data/repository/user_repository.dart';
+
 import 'package:learn_dart_together/21_design/data/repository/user_repository_impl.dart';
+
+import '../core/network_error.dart';
 
 void main() async {
   final userRepository = UserRepositoryImpl();

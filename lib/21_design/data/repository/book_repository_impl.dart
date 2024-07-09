@@ -4,10 +4,17 @@ import 'package:learn_dart_together/21_design/core/result.dart';
 import 'package:learn_dart_together/21_design/data/data_source/book_data_source_api.dart';
 import 'package:learn_dart_together/21_design/data/model/book.dart';
 import 'package:learn_dart_together/21_design/data/repository/book_repository.dart';
+import '../../core/network_error.dart';
 
 class BookRepositoryImpl implements BookRepository {
+  final filepath =
+      'E:/src/lecture/sesac_learn_dart_together/learn_dart_together'
+      '/lib/21_design/data/data_source/books.text';
+
+
   @override
   Future<Result<List<Book>, NetworkError>> fetchReadBooks() async {
+    final jsonBookStringList = await BooksApi().loadBooksFromFile(filepath);
     try {
       List<Book> books = jsonBookStringList
           .map((e) => Book.fromJson(e as Map<String, dynamic>))
@@ -22,12 +29,14 @@ class BookRepositoryImpl implements BookRepository {
 
   @override
   Future<Result<Book, NetworkError>> getBookCreate(Book book) async {
+    final jsonBookStringList = await BooksApi().loadBooksFromFile(filepath);
     try {
       List<Book> books = jsonBookStringList
           .map((e) => Book.fromJson(e as Map<String, dynamic>))
           .toList();
       if (!books.contains(book)) {
         books.add(book);
+        await BooksApi().updateBooksFromFile(filepath, books);
         print('book 정보가 추가되었습니다.');
       } else {
         print('book 정보가 이미 존재합니다.');
@@ -42,12 +51,14 @@ class BookRepositoryImpl implements BookRepository {
 
   @override
   Future<Result<Book, NetworkError>> getBookDelete(Book book) async {
+    final jsonBookStringList = await BooksApi().loadBooksFromFile(filepath);
     try {
       List<Book> books = jsonBookStringList
           .map((e) => Book.fromJson(e as Map<String, dynamic>))
           .toList();
       if (books.contains(book)) {
         books.remove(book);
+        await BooksApi().updateBooksFromFile(filepath, books);
         print('책 정보가 삭제되었습니다.');
       } else {
         print('책 정보가 존재하지 않습니다.');
@@ -62,6 +73,7 @@ class BookRepositoryImpl implements BookRepository {
 
   @override
   Future<Result<Book, NetworkError>> getBookRead(int id) async {
+    final jsonBookStringList = await BooksApi().loadBooksFromFile(filepath);
     try {
       List<Book> books = jsonBookStringList
           .map((e) => Book.fromJson(e as Map<String, dynamic>))
@@ -83,6 +95,7 @@ class BookRepositoryImpl implements BookRepository {
 
   @override
   Future<Result<Book, NetworkError>> getBookUpdate(Book book) async {
+    final jsonBookStringList = await BooksApi().loadBooksFromFile(filepath);
     try {
       List<Book> books = jsonBookStringList
           .map((e) => Book.fromJson(e as Map<String, dynamic>))
@@ -97,6 +110,7 @@ class BookRepositoryImpl implements BookRepository {
         final int selectedBookIndex = books.indexOf(selectedBook);
         books.remove(selectedBook);
         books.insert(selectedBookIndex, book);
+        await BooksApi().updateBooksFromFile(filepath, books);
       } else {
         print('book 정보가 존재하지 않습니다.');
       }
@@ -107,4 +121,16 @@ class BookRepositoryImpl implements BookRepository {
       return Result.error(NetworkError.unknown);
     }
   }
+}
+
+void main() async {
+  final book = Book(
+    id: 1,
+    title: '생존코딩',
+    author: '오준석',
+    publishedAt: DateTime(2022, 11, 22),
+    isbn: '1212',
+  );
+  print(book);
+
 }

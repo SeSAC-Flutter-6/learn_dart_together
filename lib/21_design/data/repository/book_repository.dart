@@ -1,11 +1,7 @@
 import 'package:learn_dart_together/21_design/core/result.dart';
 
+import '../../core/network_error.dart';
 import '../model/book.dart';
-
-enum NetworkError {
-  requestTimeout,
-  unknown,
-}
 
 abstract interface class BookRepository {
   Future<Result<Book, NetworkError>> getBookCreate(Book book);

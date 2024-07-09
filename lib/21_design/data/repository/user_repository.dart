@@ -1,10 +1,7 @@
 import 'package:learn_dart_together/21_design/data/model/user.dart';
+import '../../core/network_error.dart';
 import '../../core/result.dart';
 
-enum NetworkError {
-  requestTimeout,
-  unknown,
-}
 
 abstract interface class UserRepository {
   Future<Result<User, NetworkError>> getUserCreate(User user);

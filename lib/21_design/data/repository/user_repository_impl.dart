@@ -5,12 +5,19 @@ import 'package:learn_dart_together/21_design/data/data_source/user_data_source_
 import 'package:learn_dart_together/21_design/data/model/user.dart';
 import 'package:learn_dart_together/21_design/data/repository/user_repository.dart';
 
+import '../../core/network_error.dart';
+
 class UserRepositoryImpl implements UserRepository {
+  final filepath = 'E:/src/lecture/sesac_learn_dart_together/learn_dart_together'
+      '/lib/21_design/data/data_source/users.text';
+
   @override
   Future<Result<List<User>, NetworkError>> fetchReadUsers() async {
     // List를 User 객체 리스트로 변환
+    final jsonUserStringList = await UsersApi().loadUsersFromFile(
+        filepath);
     try {
-      List<User> users = jsonList
+      List<User> users = jsonUserStringList
           .map((jsonItem) => User.fromJson(jsonItem as Map<String, dynamic>))
           .toList();
       return Result.success(users);
@@ -23,8 +30,10 @@ class UserRepositoryImpl implements UserRepository {
 
   @override
   Future<Result<User, NetworkError>> getUserDelete(User user) async {
+    final jsonUserStringList =
+    await UsersApi().loadUsersFromFile(filepath);
     try {
-      List<User> users = jsonList
+      List<User> users = jsonUserStringList
           .map((jsonItem) => User.fromJson(jsonItem as Map<String, dynamic>))
           .toList();
       if (users.contains(user)) {
@@ -43,8 +52,10 @@ class UserRepositoryImpl implements UserRepository {
 
   @override
   Future<Result<User, NetworkError>> getUserCreate(User user) async {
+    final jsonUserStringList =
+    await UsersApi().loadUsersFromFile(filepath);
     try {
-      List<User> users = jsonList
+      List<User> users = jsonUserStringList
           .map((jsonItem) => User.fromJson(jsonItem as Map<String, dynamic>))
           .toList();
       if (!users.contains(user)) {
@@ -63,8 +74,10 @@ class UserRepositoryImpl implements UserRepository {
 
   @override
   Future<Result<User, NetworkError>> getUserRead(int id) async {
+    final jsonUserStringList =
+    await UsersApi().loadUsersFromFile(filepath);
     try {
-      List<User> users = jsonList
+      List<User> users = jsonUserStringList
           .map((jsonItem) => User.fromJson(jsonItem as Map<String, dynamic>))
           .toList();
       final User selectedUser = users.firstWhere((e) => e.id == id);
@@ -83,8 +96,10 @@ class UserRepositoryImpl implements UserRepository {
 
   @override
   Future<Result<User, NetworkError>> getUserUpdate(User user) async {
+    final jsonUserStringList =
+    await UsersApi().loadUsersFromFile(filepath);
     try {
-      List<User> users = jsonList
+      List<User> users = jsonUserStringList
           .map((jsonItem) => User.fromJson(jsonItem as Map<String, dynamic>))
           .toList();
       final User selectedUser = users.firstWhere((e) => e.id == user.id);
