@@ -17,24 +17,6 @@ class MemoryCheckOutApi implements CheckOutDataSource {
     return checkOuts.firstWhere((checkOut) => checkOut.id == id);
   }
 
-  // @override
-  // Future<Book> createBook(Book book) async {
-  //   List<Book> books = await getBooks();
-
-  //   Book newBook = Book(
-  //     id: books.isNotEmpty ? books.last.id! + 1 : 1,
-  //     title: book.title,
-  //     author: book.author,
-  //     isbn: book.isbn,
-  //     publishedDate: book.publishedDate,
-  //   );
-
-  //   books.add(newBook);
-  //   List<String> csvData = books.map((book) => book.toCsv()).toList();
-  //   await writeCsvFile(csvFilePath, csvData);
-  //   return newBook;
-  // }
-
   @override
   Future<CheckOut> createCheckOut(CheckOut checkOut) async {
     List<CheckOut> checkOuts = await getCheckOuts();
@@ -68,31 +50,6 @@ class MemoryCheckOutApi implements CheckOutDataSource {
         csvFilePath, checkOuts.map((checkOut) => checkOut.toCsv()).toList());
     return checkOutToDelete;
   }
-
-  // @override
-  // Future<User> updateUser(User user) async {
-  //   List<User> users = await getUsers();
-  //   int index = users.indexWhere((u) => u.id == user.id);
-
-  //   if (index == -1) {
-  //     throw Exception('User not found');
-  //   }
-
-  //   User existingUser = users[index];
-
-  //   User updatedUser = User(
-  //     id: existingUser.id,
-  //     name: user.name.isNotEmpty ? user.name : existingUser.name,
-  //     phone: user.phone.isNotEmpty ? user.phone : existingUser.phone,
-  //     address: user.address.isNotEmpty ? user.address : existingUser.address,
-  //     birthday: user.birthday ?? existingUser.birthday,
-  //     createdAt: user.createdAt ?? existingUser.createdAt,
-  //   );
-
-  //   users[index] = updatedUser;
-  //   await writeCsvFile(csvFilePath, users.map((user) => user.toCsv()).toList());
-  //   return updatedUser;
-  // }
 
   @override
   Future<CheckOut> updateCheckOut(CheckOut checkOut) async {
