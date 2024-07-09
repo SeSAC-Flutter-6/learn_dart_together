@@ -10,10 +10,11 @@ class MockMemberDataSource implements MemberDataSource {
   late Future<void> _initializationDone;
 
   MockMemberDataSource() {
-    _initializationDone = _initMembers();
+    _initializationDone = fetchMembers();
   }
 
-  Future<void> _initMembers() async {
+  @override
+  Future<void> fetchMembers() async {
     try {
       _members = await csvToMemberList(_csvFile);
     } catch (e) {
@@ -30,7 +31,8 @@ class MockMemberDataSource implements MemberDataSource {
     }
     if (id != null) {
       return _members!.where((member) => member.id == id).toList();
-    } else if (name != null) {
+    }
+    if (name != null) {
       return _members!
           .where((member) =>
               member.name.toLowerCase().contains(name.toLowerCase()))

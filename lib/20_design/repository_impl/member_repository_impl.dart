@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:learn_dart_together/19_result/core/result.dart';
 import 'package:learn_dart_together/20_design/data_source/member_data_source.dart';
 import 'package:learn_dart_together/20_design/model/member.dart';
@@ -5,7 +7,6 @@ import 'package:learn_dart_together/20_design/repository/member_repository.dart'
 
 class MemberRepositoryImpl implements MemberRepository {
   final MemberDataSource _memberDataSource;
-  int _id = 0;
   final List<Member> _deletedMembers = [];
 
   MemberRepositoryImpl(this._memberDataSource);
@@ -30,9 +31,10 @@ class MemberRepositoryImpl implements MemberRepository {
     required String phoneNumber,
     required DateTime birthDate,
   }) async {
+    int id = (await _memberDataSource.getMember()).map((e) => e.id).reduce(max);
     try {
       final member = Member(
-        id: ++_id,
+        id: ++id,
         name: name,
         address: address,
         phoneNumber: phoneNumber,
@@ -77,9 +79,8 @@ class MemberRepositoryImpl implements MemberRepository {
       if (deletedMember != null) {
         _deletedMembers.add(deletedMember);
         return Result.success(deletedMember);
-      } else {
-        return Result.error('등록된 회원정보가 없습니다');
       }
+      return Result.error('등록된 회원정보가 없습니다');
     } catch (e) {
       return Result.error('회원삭제 중 오류 발생: $e');
     }
@@ -92,11 +93,15 @@ class MemberRepositoryImpl implements MemberRepository {
         final restoredMember = _deletedMembers.removeLast();
         _memberDataSource.addMember(restoredMember);
         return Result.success(restoredMember);
-      } else {
-        return Result.error('삭제한 회원정보가 없습니다.');
       }
+      return Result.error('삭제한 회원정보가 없습니다.');
     } catch (e) {
       return Result.error('삭제취소 중 오류 발생: $e');
     }
+  }
+
+  @override
+  Future<void> restoreMembers() async {
+    await _memberDataSource.fetchMembers();
   }
 }

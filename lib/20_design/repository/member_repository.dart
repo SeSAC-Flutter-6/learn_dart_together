@@ -22,4 +22,6 @@ abstract interface class MemberRepository {
   Future<Result<Member, String>> deleteMember({required int id});
 
   Future<Result<Member, String>> undoDeleteMember();
+
+  Future<void> restoreMembers();
 }

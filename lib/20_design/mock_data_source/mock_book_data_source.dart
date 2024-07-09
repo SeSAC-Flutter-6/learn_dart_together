@@ -10,10 +10,11 @@ class MockBookDataSource implements BookDataSource {
   late Future<void> _initializationDone;
 
   MockBookDataSource() {
-    _initializationDone = _initBooks();
+    _initializationDone = fetchBooks();
   }
 
-  Future<void> _initBooks() async {
+  @override
+  Future<void> fetchBooks() async {
     try {
       _books = await csvToBookList(_csvFile);
     } catch (e) {
@@ -28,9 +29,8 @@ class MockBookDataSource implements BookDataSource {
     if (_books == null) {
       throw Exception('도서 데이터 초기화 실패');
     }
-    if (id != null) {
-      return _books!.where((book) => book.id == id).toList();
-    } else if (title != null) {
+    if (id != null) return _books!.where((book) => book.id == id).toList();
+    if (title != null) {
       return _books!.where((book) => book.title.contains(title)).toList();
     }
     return _books!;

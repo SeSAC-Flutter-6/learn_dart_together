@@ -56,9 +56,11 @@ class MemberManagement {
         switch (input) {
           case '1':
             memberList.sort((a, b) => a.name.compareTo(b.name));
+            break;
           case '2':
             memberList.sort(
                 (a, b) => a.registrationDate.compareTo(b.registrationDate));
+            break;
           default:
             print('잘못된 입력: 숫자(1~2)를 입력하세요.');
             return;
@@ -80,8 +82,10 @@ class MemberManagement {
     switch (members) {
       case Success():
         members.data.forEach((member) => print(member.toInfo()));
+        break;
       case Error():
         print(members.error);
+        break;
     }
   }
 
@@ -143,15 +147,19 @@ class MemberManagement {
     final result = await _memberRepository.undoDeleteMember();
     _printResult(result, '회원정보를 복원했습니다.');
   }
-}
 
-void _printResult(Result<Member, String> result, String message) {
-  switch (result) {
-    case Success():
-      print('${result.data.toInfo()} $message');
-      break;
-    case Error():
-      print(result.error);
-      break;
+  Future<void> restoreMembers() async {
+    await _memberRepository.restoreMembers();
+  }
+
+  void _printResult(Result<Member, String> result, String message) {
+    switch (result) {
+      case Success():
+        print('${result.data.toInfo()} $message');
+        break;
+      case Error():
+        print(result.error);
+        break;
+    }
   }
 }

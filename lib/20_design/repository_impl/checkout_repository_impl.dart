@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:collection/collection.dart';
 import 'package:learn_dart_together/19_result/core/result.dart';
 import 'package:learn_dart_together/20_design/data_source/book_data_source.dart';
@@ -10,7 +12,6 @@ class CheckoutRepositoryImpl implements CheckoutRepository {
   final CheckoutDataSource _checkoutDataSource;
   final MemberDataSource _memberDataSource;
   final BookDataSource _bookDataSource;
-  int _id = 0;
 
   CheckoutRepositoryImpl(
     this._checkoutDataSource,
@@ -53,8 +54,11 @@ class CheckoutRepositoryImpl implements CheckoutRepository {
       if (book.isEmpty) return Result.error('등록된 도서정보가 없습니다.');
       if (!book.first.isBorrowable) return Result.error('이미 대여중인 도서입니다.');
 
+      int id = (await _checkoutDataSource.getCheckout())
+          .map((e) => e.id)
+          .reduce(max);
       final checkout = Checkout(
-        id: ++_id,
+        id: ++id,
         memberId: memberId,
         memberName: member.first.name,
         bookId: bookId,
@@ -117,5 +121,10 @@ class CheckoutRepositoryImpl implements CheckoutRepository {
     } catch (e) {
       return Result.error('대여연장 중 오류 발생: $e');
     }
+  }
+
+  @override
+  Future<void> restoreCheckouts() async {
+    await _checkoutDataSource.fetchCheckouts();
   }
 }

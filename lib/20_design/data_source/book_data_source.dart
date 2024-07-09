@@ -1,6 +1,8 @@
 import 'package:learn_dart_together/20_design/model/book.dart';
 
 abstract interface class BookDataSource {
+  Future<void> fetchBooks();
+
   Future<List<Book>> getBook({int? id, String? title});
 
   Future<void> addBook(Book book);

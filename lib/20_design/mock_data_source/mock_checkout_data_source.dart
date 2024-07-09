@@ -10,10 +10,10 @@ class MockCheckoutDataSource implements CheckoutDataSource {
   late Future<void> _initializationDone;
 
   MockCheckoutDataSource() {
-    _initializationDone = _initBooks();
+    _initializationDone = fetchCheckouts();
   }
 
-  Future<void> _initBooks() async {
+  Future<void> fetchCheckouts() async {
     try {
       _checkouts = await csvToCheckoutList(_csvFile);
     } catch (e) {
@@ -32,7 +32,8 @@ class MockCheckoutDataSource implements CheckoutDataSource {
       return _checkouts!
           .where((checkout) => checkout.memberId == memberId)
           .toList();
-    } else if (bookId != null) {
+    }
+    if (bookId != null) {
       return _checkouts!
           .where((checkout) => checkout.bookId == bookId)
           .toList();

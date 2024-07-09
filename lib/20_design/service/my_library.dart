@@ -30,7 +30,7 @@ class MyLibrary {
 
   Future<void> displayMain() async {
     while (true) {
-      print('1. 회원관리   2. 도서관리   3. 대출/반납/연장   4. 백업   5. 백업 데이터 복원   6. 종료');
+      print('1. 회원관리   2. 도서관리   3. 대출/반납/연장   4. 백업   5. 백업 데이터 불러오기   6. 종료');
       final input = stdin.readLineSync()!;
       switch (input) {
         case '1':
@@ -52,6 +52,7 @@ class MyLibrary {
           exit(0);
         default:
           print('숫자(1~6)를 입력하세요.');
+          break;
       }
     }
   }
@@ -61,18 +62,58 @@ class MyLibrary {
     final input = stdin.readLineSync()!;
     final path = input.endsWith('/') ? input : '$input/';
 
-    await File('${path}member_data.csv').copy(memberCsvFile);
-    await File('${path}book_data.csv').copy(bookCsvFile);
-    await File('${path}checkout_data.csv').copy(checkoutCsvFile);
+    final directory = Directory(path);
+    if (!await directory.exists()) {
+      print('경로가 존재하지 않습니다: $path');
+      return;
+    }
+    try {
+      await File(memberCsvFile).copy('${path}member_data.csv');
+      await File(bookCsvFile).copy('${path}book_data.csv');
+      await File(checkoutCsvFile).copy('${path}checkout_data.csv');
+      print('파일이 성공적으로 저장되었습니다.');
+    } catch (e) {
+      print('파일 저장 중 오류가 발생했습니다: $e');
+    }
   }
 
   Future<void> restoreData() async {
-    print('불러올 백업 파일의 경로를 입력하세요.');
-    final input = stdin.readLineSync()!;
+    try {
+      print('불러올 회원정보 파일의 경로를 입력하세요.');
+      final memberBackup = stdin.readLineSync();
+      print('불러올 도서정보 파일의 경로를 입력하세요.');
+      final bookBackup = stdin.readLineSync();
+      print('불러올 대여/반납정보 파일의 경로를 입력하세요.');
+      final checkoutBackup = stdin.readLineSync();
 
-    await File(memberCsvFile).copy(input);
-    await File(bookCsvFile).copy(input);
-    await File(checkoutCsvFile).copy(input);
+      if (memberBackup == null ||
+          bookBackup == null ||
+          checkoutBackup == null) {
+        throw Exception('모든 파일 경로를 입력해야 합니다.');
+      }
+
+      await _copyFile(memberBackup, memberCsvFile, '회원정보');
+      await _copyFile(bookBackup, bookCsvFile, '도서정보');
+      await _copyFile(checkoutBackup, checkoutCsvFile, '대여/반납정보');
+
+      await Future.wait([
+        _memberManagement.restoreMembers(),
+        _bookManagement.restoreBooks(),
+        _checkoutManagement.restoreCheckouts(),
+      ]);
+
+      print('데이터 복원이 완료되었습니다.');
+    } catch (e) {
+      print('데이터 복원 중 오류가 발생했습니다: $e');
+    }
+  }
+
+  Future<void> _copyFile(String source, String storage, String data) async {
+    if (await File(source).exists()) {
+      await File(source).copy(storage);
+    } else {
+      throw Exception('$data 파일을 찾을 수 없습니다: $source');
+    }
   }
 }
 

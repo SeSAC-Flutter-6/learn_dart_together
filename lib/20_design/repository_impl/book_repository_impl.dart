@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:learn_dart_together/19_result/core/result.dart';
 import 'package:learn_dart_together/20_design/data_source/book_data_source.dart';
 import 'package:learn_dart_together/20_design/model/book.dart';
@@ -5,7 +7,6 @@ import 'package:learn_dart_together/20_design/repository/book_repository.dart';
 
 class BookRepositoryImpl implements BookRepository {
   final BookDataSource _bookDataSource;
-  int _id = 0;
 
   BookRepositoryImpl(this._bookDataSource);
 
@@ -29,9 +30,10 @@ class BookRepositoryImpl implements BookRepository {
     required DateTime publishedDate,
     required bool isBorrowable,
   }) async {
+    int id = (await _bookDataSource.getBook()).map((e) => e.id).reduce(max);
     try {
       final book = Book(
-        id: ++_id,
+        id: ++id,
         title: title,
         author: author,
         summary: summary,
@@ -74,13 +76,15 @@ class BookRepositoryImpl implements BookRepository {
   Future<Result<Book, String>> deleteBook({required int id}) async {
     try {
       final deletedBook = await _bookDataSource.deleteBook(id: id);
-      if (deletedBook != null) {
-        return Result.success(deletedBook);
-      } else {
-        return Result.error('등록된 도서정보가 없습니다');
-      }
+      if (deletedBook != null) return Result.success(deletedBook);
+      return Result.error('등록된 도서정보가 없습니다');
     } catch (e) {
       return Result.error('도서삭제 중 오류 발생: $e');
     }
+  }
+
+  @override
+  Future<void> restoreBooks() async {
+    await _bookDataSource.fetchBooks();
   }
 }

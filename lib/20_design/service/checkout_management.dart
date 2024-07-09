@@ -1,5 +1,6 @@
 import 'package:collection/collection.dart';
 import 'package:learn_dart_together/19_result/core/result.dart';
+import 'package:learn_dart_together/20_design/model/book.dart';
 import 'package:learn_dart_together/20_design/model/checkout.dart';
 import 'package:learn_dart_together/20_design/repository/checkout_repository.dart';
 import 'package:learn_dart_together/20_design/service/my_library.dart';
@@ -51,6 +52,7 @@ class CheckoutManagement {
     switch (checkouts) {
       case Success():
         checkouts.data
+            .where((e) => e.bookStatus != BookStatus.returned)
             .sorted((a, b) => a.returnDate.compareTo(b.returnDate))
             .forEach((checkout) => print(checkout.toInfo()));
         break;
@@ -68,8 +70,10 @@ class CheckoutManagement {
     switch (checkouts) {
       case Success():
         checkouts.data.forEach((checkout) => print(checkout.toInfo()));
+        break;
       case Error():
         print(checkouts.error);
+        break;
     }
   }
 
@@ -113,6 +117,10 @@ class CheckoutManagement {
       bookId: bookId,
     );
     _printResult(member, '대여기간을 연장했습니다.');
+  }
+
+  Future<void> restoreCheckouts() async {
+    await _checkoutRepository.restoreCheckouts();
   }
 
   void _printResult(Result<Checkout, String> result, String message) {

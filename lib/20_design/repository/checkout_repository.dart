@@ -18,4 +18,6 @@ abstract interface class CheckoutRepository {
     required int memberId,
     required int bookId,
   });
+
+  Future<void> restoreCheckouts();
 }

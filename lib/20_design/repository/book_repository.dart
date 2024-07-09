@@ -22,4 +22,6 @@ abstract interface class BookRepository {
   });
 
   Future<Result<Book, String>> deleteBook({required int id});
+
+  Future<void> restoreBooks();
 }

@@ -57,11 +57,14 @@ class BookManagement {
         switch (input) {
           case '1':
             bookList = books.data.sorted((a, b) => a.title.compareTo(b.title));
+            break;
           case '2':
             bookList = books.data
-                .sorted((a, b) => a.publishedDate.compareTo(b.publishedDate));
+                .sorted((a, b) => -a.publishedDate.compareTo(b.publishedDate));
+            break;
           case '3':
             bookList = books.data.where((book) => book.isBorrowable).toList();
+            break;
           default:
             print('잘못된 입력: 숫자(1~3)를 입력하세요.');
             return;
@@ -83,8 +86,10 @@ class BookManagement {
     switch (books) {
       case Success():
         books.data.forEach((book) => print(book.toInfo()));
+        break;
       case Error():
         print(books.error);
+        break;
     }
   }
 
@@ -143,15 +148,19 @@ class BookManagement {
     final book = await _bookRepository.deleteBook(id: id);
     _printResult(book, '도서정보를 삭제했습니다.');
   }
-}
 
-void _printResult(Result<Book, String> result, String message) {
-  switch (result) {
-    case Success():
-      print('${result.data.toInfo()} $message');
-      break;
-    case Error():
-      print(result.error);
-      break;
+  Future<void> restoreBooks() async {
+    await _bookRepository.restoreBooks();
+  }
+
+  void _printResult(Result<Book, String> result, String message) {
+    switch (result) {
+      case Success():
+        print('${result.data.toInfo()} $message');
+        break;
+      case Error():
+        print(result.error);
+        break;
+    }
   }
 }
