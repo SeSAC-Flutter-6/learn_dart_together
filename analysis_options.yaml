@@ -34,3 +34,12 @@ analyzer:
   exclude:
     - "**/*.g.dart"
     - "**/*.freezed.dart"
+
+targets:
+  $default:
+    builders:
+      freezed:
+        options:
+          format: false
+          map: false
+          when: false

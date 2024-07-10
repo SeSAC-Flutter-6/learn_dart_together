@@ -1,0 +1,102 @@
+[
+  {
+    "id": 1,
+    "book": {
+      "id": 1,
+      "title": "Harry Potter",
+      "author": "abbie",
+      "publishedAt": "2012-07-02",
+      "isbn": 9780134787961
+    },
+    "user": {
+      "id": 1,
+      "name": "한석봉",
+      "address": "서울 중구 신당동",
+      "gender": "male"
+    },
+    "checkOutDate": "2023-01-10",
+    "dueDate": "2023-01-20",
+    "returnDate": null,
+    "extensionCount": 0
+  },
+  {
+    "id": 2,
+    "book": {
+      "id": 2,
+      "title": "Harry Potter : series 2",
+      "author": "abbie",
+      "publishedAt": "2014-12-12",
+      "isbn": 9781838647778
+    },
+    "user": {
+      "id": 2,
+      "name": "김석봉",
+      "address": "서울 중구 당동",
+      "gender": "male"
+    },
+    "checkOutDate": "2023-02-15",
+    "dueDate": "2023-02-25",
+    "returnDate": "2023-02-24",
+    "extensionCount": 1
+  },
+  {
+    "id": 3,
+    "book": {
+      "id": 3,
+      "title": "Harry Potter : series 3",
+      "author": "abbie",
+      "publishedAt": "2018-10-15",
+      "isbn": 9781449330897
+    },
+    "user": {
+      "id": 3,
+      "name": "한채이",
+      "address": "서울 강서구 신월동",
+      "gender": "female"
+    },
+    "checkOutDate": "2023-03-01",
+    "dueDate": "2023-03-11",
+    "returnDate": null,
+    "extensionCount": 2
+  },
+  {
+    "id": 4,
+    "book": {
+      "id": 1,
+      "title": "Harry Potter",
+      "author": "abbie",
+      "publishedAt": "2012-07-02",
+      "isbn": 9780134787961
+    },
+    "user": {
+      "id": 2,
+      "name": "김석봉",
+      "address": "서울 중구 당동",
+      "gender": "male"
+    },
+    "checkOutDate": "2023-04-10",
+    "dueDate": "2023-04-20",
+    "returnDate": "2023-04-19",
+    "extensionCount": 0
+  },
+  {
+    "id": 5,
+    "book": {
+      "id": 2,
+      "title": "Harry Potter : series 2",
+      "author": "abbie",
+      "publishedAt": "2014-12-12",
+      "isbn": 9781838647778
+    },
+    "user": {
+      "id": 1,
+      "name": "한석봉",
+      "address": "서울 중구 신당동",
+      "gender": "male"
+    },
+    "checkOutDate": "2023-05-20",
+    "dueDate": "2023-05-30",
+    "returnDate": null,
+    "extensionCount": 3
+  }
+]

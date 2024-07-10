@@ -1,0 +1,210 @@
+@startuml
+scale 2
+class Book {
+- int id
+- String title
+- String author
+- DateTime publishedAt
+- String isbn
+}
+
+class User {
+- int id
+- String name
+- String address
+- Gender gender
+}
+
+class CheckOut {
+- int id
+- Book book
+- User user
+- DateTime checkOutDate
+- DateTime dueDate
+- DateTime? returnDate
+- int extensionCount
+
+}
+
+interface BookDataSource {
+
+ Future<Book, Error> getBookCreate(Book book)
+
+ Future<Book, Error> getBookRead(int id)
+
+ Future<List<Book>> fetchReadBook()
+
+ Future<Book, Error> getBookUpdate(Book book)
+
+ Future<Book, Error> getBookDelete(Book book)
+
+}
+
+class BookDataSourceImpl implements BookDataSource {
+
+ Future<Book, Error> getBookCreate(Book book)
+
+ Future<Book, Error> getBookRead(int id)
+
+ Future<List<Book>> fetchReadBook()
+
+ Future<Book, Error> getBookUpdate(Book book)
+
+ Future<Book, Error> getBookDelete(Book book)
+
+ }
+
+interface UserDataSource {
+
+ Future<User, Error> getUserCreate(User user)
+
+ Future<User, Error> getUserRead(int id)
+
+ Future<List<User>> fetchReadUser()
+
+ Future<User, Error> getUserUpdate(User user)
+
+ Future<User, Error> getUserDelete(User user)
+
+}
+
+class UserDataSourceImpl implements UserDataSource {
+
+  Future<User, Error> getUserCreate(User user)
+
+  Future<User, Error> getUserRead(int id)
+
+  Future<List<User>> fetchReadUser()
+
+  Future<User, Error> getUserUpdate(User user)
+
+  Future<User, Error> getUserDelete(User user)
+
+}
+
+interface CheckOutDataSource {
+
+  Future<CheckOut, Error> getCheckOutCreate(CheckOut checkout)
+
+  Future<CheckOut, Error> getCheckRead(int id)
+
+  Future<List<CheckOut>> fetchReadCheckOut()
+
+  Future<CheckOut, Error>> getCheckOutUpdate(CheckOut checkout)
+
+  Future<Checkout, Error> getCheckOutDelete(CheckOut checkout)
+
+}
+
+class CheckOutDataSourceImpl implements CheckOutDataSource {
+
+  Future<CheckOut, Error> getCheckOutCreate(CheckOut checkout)
+
+  Future<CheckOut, Error> getCheckRead(int id)
+
+  Future<List<CheckOut>> fetchReadCheckOut()
+
+  Future<CheckOut, Error>> getCheckOutUpdate(CheckOut checkout)
+
+  Future<CheckOut, Error> getCheckOutDelete(CheckOut checkout)
+
+}
+
+interface UserRepository {
+
+  Future<Result<User, Error>> getUserCreate(User user)
+
+  Future<Result<User, Error>> getUserRead(int id)
+
+  Future<Result<List<User>>> fetchReadUser()
+
+  Future<Result<User, Error>> getUserUpdate(User user)
+
+  Future<Result<User, Error>> getUserDelete(User user)
+
+}
+
+class UserRepositoryImpl implements UserRepository {
+
+  Future<Result<User, Error>> getUserCreate(User user)
+
+  Future<Result<User, Error>> getUserRead(int id)
+
+  Future<Result<List<User>>> fetchReadUser()
+
+  Future<Result<User, Error>> getUserUpdate(User user)
+
+  Future<Result<User, Error>> getUserDelete(User user)
+
+}
+
+interface LibraryRepository {
+
+  Future<Result<Book, Error>> getBookCreate(Book book)
+
+  Future<Result<Book, Error>> getBookRead(int id)
+
+  Future<Result<List<Book>>> fetchReadBook()
+
+  Future<Result<Book, Error>> getBookUpdate(Book book)
+
+  Future<Result<Book, Error>> getBookDelete(Book book)
+
+  Future<Result<CheckOut, Error>> getCheckOutCreate(CheckOut checkout)
+
+  Future<Result<CheckOut, Error>> getCheckRead(int id)
+
+  Future<Result<List<CheckOut>>> fetchReadCheckOut()
+
+  Future<Result<CheckOut, Error>> getCheckOutUpdate(CheckOut checkout)
+
+  Future<Result<Checkout, Error>> getCheckOutDelete(CheckOut checkout)
+
+  Future<Result<CheckOut, Error>> getCheckOutExtension(CheckOut checkout)
+
+  Future<Result<CheckOut, Error>> getReturnCheckOut(CheckOut checkout)
+}
+
+class LibraryRepositoryImpl implements LibraryRepository {
+
+  Future<Result<Book, Error>> getBookCreate(Book book)
+
+  Future<Result<Book, Error>> getBookRead(int id)
+
+  Future<Result<List<Book>>> fetchReadBook()
+
+  Future<Result<Book, Error>> getBookUpdate(Book book)
+
+  Future<Result<Book, Error>> getBookDelete(Book book)
+
+  Future<Result<CheckOut, Error>> getCheckOutCreate(CheckOut checkout)
+
+  Future<Result<CheckOut, Error>> getCheckRead(int id)
+
+  Future<Result<List<CheckOut>>> fetchReadCheckOut()
+
+  Future<Result<CheckOut, Error>> getCheckOutUpdate(CheckOut checkout)
+
+  Future<Result<CheckOut, Error>> getCheckOutDelete(CheckOut checkout)
+
+  Future<Result<CheckOut, Error>> getCheckOutExtension(CheckOut checkout)
+
+  Future<Result<CheckOut, Error>> getReturnCheckOut(CheckOut checkout)
+}
+
+
+enum Gender {
+ MALE
+ FEMALE
+}
+
+CheckOut --> User : has
+CheckOut --> Book : has
+
+UserRepositoryImpl ..> UserDataSource : uses
+LibraryRepositoryImpl ..> BookDataSource : uses
+LibraryRepositoryImpl ..> UserDataSource : uses
+LibraryRepositoryImpl ..> CheckOutDataSource : uses
+
+
+@enduml
