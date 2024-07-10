@@ -13,21 +13,21 @@ class CalculatorService {
 
   static CalculatorService get instance => _instance;
 
-  Result<num> add(num a, num b) {
+  static Result<num> add(num a, num b) {
     return Result.success(a + b);
   }
 
-  Result<num> subtract(num a, num b) {
+  static Result<num> subtract(num a, num b) {
     return Result.success(a - b);
   }
 
-  Result<num> multiply(num a, num b) {
+  static Result<num> multiply(num a, num b) {
     return Result.success(a * b);
   }
 
   // 0으로 나누면 결과는 Infinity가 나와버린다.
   // 과제의 취지에 맞게 고의로 throw를 발생
-  Result<num> divide(num a, num b) {
+  static Result<num> divide(num a, num b) {
     try {
       if (b == 0) throw ();
 

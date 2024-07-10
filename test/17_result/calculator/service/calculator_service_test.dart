@@ -5,10 +5,8 @@ import 'package:test/test.dart';
 
 void main() {
   group('CalculatorService', () {
-    final calculator = CalculatorService.instance;
-
     test('adds two numbers', () {
-      final result = calculator.add(2, 3);
+      final result = CalculatorService.add(2, 3);
       result.when(
         success: (value) {
           expect(value, 5);
@@ -20,7 +18,7 @@ void main() {
     });
 
     test('subtracts two numbers', () {
-      final result = calculator.subtract(5, 3);
+      final result = CalculatorService.subtract(5, 3);
       result.when(
         success: (value) {
           expect(value, 2);
@@ -32,7 +30,7 @@ void main() {
     });
 
     test('multiplies two numbers', () {
-      final result = calculator.multiply(2, 3);
+      final result = CalculatorService.multiply(2, 3);
       result.when(
         success: (value) {
           expect(value, 6);
@@ -44,7 +42,7 @@ void main() {
     });
 
     test('divides two numbers', () {
-      final result = calculator.divide(6, 3);
+      final result = CalculatorService.divide(6, 3);
       result.when(
         success: (value) {
           expect(value, 2);
@@ -56,8 +54,7 @@ void main() {
     });
 
     test('throws an error when dividing by zero', () {
-      final result = calculator.divide(6, 0);
-      print(result);
+      final result = CalculatorService.divide(6, 0);
       result.when(
         success: (value) {
           fail('Expected an error result');

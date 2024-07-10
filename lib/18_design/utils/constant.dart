@@ -1,0 +1,1 @@
+final int BOOKEXTENSIONCOUNT = 1;
