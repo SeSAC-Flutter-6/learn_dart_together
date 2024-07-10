@@ -128,4 +128,13 @@ class Todo {
         title: title ?? this.title,
         completed: completed ?? this.completed,
       );
+
+  Map<String, dynamic> toJson() {
+    return {
+      'userId': this.userId,
+      'id': this.id,
+      'title': this.title,
+      'completed': this.completed,
+    };
+  }
 }
