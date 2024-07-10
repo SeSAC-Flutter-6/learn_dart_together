@@ -34,8 +34,5 @@ void main() {
 
   Result<double, String> result = calculator.divide(10, 0);
 
-  result.when(
-    success: (data) => print('Result: $data'),
-    error: (message) => print('Error: $message'),
-  );
+
 }

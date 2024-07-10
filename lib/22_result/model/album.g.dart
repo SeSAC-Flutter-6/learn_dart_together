@@ -18,4 +18,3 @@ Map<String, dynamic> _$$AlbumImplToJson(_$AlbumImpl instance) =>
       'userId': instance.userId,
       'title': instance.title,
     };
-
